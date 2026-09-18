@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { identity } from "@/data/content";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -12,11 +13,20 @@ export function Nav() {
           href="#top"
           className="flex items-center gap-2 font-display text-sm font-semibold text-ink-900 dark:text-white"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 font-display text-sm font-bold text-white">
-            {identity.initials}
+          <span className="relative h-9 w-9 flex-shrink-0 overflow-hidden rounded-full border border-brand-300 dark:border-brand-700">
+            <Image src={identity.photo} alt="" fill sizes="36px" className="object-cover" />
           </span>
           <span className="hidden sm:inline">{identity.name}</span>
         </a>
+
+        <nav className="hidden items-center gap-6 text-sm font-medium text-ink-600 dark:text-ink-300 md:flex">
+          <a href="#about" className="transition-colors hover:text-brand-700 dark:hover:text-brand-400">
+            About
+          </a>
+          <a href="#showcase" className="transition-colors hover:text-brand-700 dark:hover:text-brand-400">
+            Work
+          </a>
+        </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
           <a

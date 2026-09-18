@@ -1,5 +1,6 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
+import { AboutSection } from "@/components/about-section";
 import { Tabs } from "@/components/tabs";
 import { OpenCamSection } from "@/components/opencam-section";
 import { ForkSection } from "@/components/fork-section";
@@ -12,8 +13,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <AboutSection />
 
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 border-t border-ink-200 dark:border-ink-800">
           <Tabs
             tabs={[
               { id: "opencam", label: "OpenCAM Framework", content: <OpenCamSection /> },

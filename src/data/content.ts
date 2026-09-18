@@ -18,6 +18,96 @@ export const identity = {
   linkedin: "https://linkedin.com/in/shamik-mukherjee",
   github: "https://github.com/ShamikM88",
   initials: "SM",
+  photo: "/profile.jpg",
+};
+
+export const about = {
+  bio: "Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. MBA from IIT Bombay, nine years in payments and pre-sales before that. Outside of the day job, I direct Claude Code to build production-grade AI systems solo — the two case studies below are that work.",
+  languages: ["English (C2)", "Hindi (C1)", "Bengali (Native)"],
+  // Reverse-chronological. The Summer Intern (SBI, 05/2013-07/2013) entry is deliberately
+  // excluded here too, same standing decision as CVs (see 01-candidate-profile.md) - minimal
+  // signal from 12+ years back, and the M.Mgmt. entry below already covers the period.
+  timeline: [
+    {
+      title: "Product Owner",
+      company: "Cognizant Technology Solutions",
+      location: "Farnborough, UK",
+      dates: "02/2026 – present",
+      highlight: "Leading wallet-provisioning validation across Google Pay & Samsung Pay for a large-scale card migration programme.",
+    },
+    {
+      title: "Product Owner (Proxy) & Onsite Delivery Manager",
+      company: "Cognizant Technology Solutions",
+      location: "Farnborough, UK",
+      dates: "05/2022 – 01/2026",
+      highlight: "Launched Virtual Card autofill to 100% of eligible cardholders — 275,000+ transactions in the first 60 days. Star Award – Excellence in Delivery (2024).",
+    },
+    {
+      title: "Pre-Sales Solution Architect",
+      company: "Cognizant Technology Solutions",
+      location: "Kolkata, India",
+      dates: "07/2019 – 04/2022",
+      highlight: "Architected and won proposals totalling >$100M TCV across DevOps, test automation, and quality engineering programmes.",
+    },
+    {
+      title: "Pre-Sales Lead / Senior Analyst",
+      company: "Cognizant Technology Solutions",
+      location: "Kolkata, India",
+      dates: "01/2016 – 06/2019",
+      highlight: "Owned the full bid lifecycle — RFP/RFI, solution design, commercial modelling — across the banking & financial services portfolio.",
+    },
+    {
+      title: "Business Analyst & Test Lead",
+      company: "Cognizant Technology Solutions",
+      location: "Kolkata, India",
+      dates: "08/2014 – 12/2015",
+      highlight: "Led a 10-engineer QA team validating transaction authorisation during a major network upgrade, including new tokenisation capabilities.",
+    },
+    {
+      title: "Presales Consultant",
+      company: "Cognizant Technology Solutions",
+      location: "Pune, India",
+      dates: "05/2014 – 08/2014",
+      highlight: "Supported the BFS Quality Engineering & Assurance practice's bid responses and solution development.",
+    },
+    {
+      title: "Software Engineer (Java)",
+      company: "Tata Consultancy Services",
+      location: "Mumbai, India",
+      dates: "12/2010 – 06/2012",
+      highlight: "Engineered enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules.",
+    },
+  ],
+  education: [
+    { degree: "M.Mgmt. (MBA equivalent)", institution: "SJMSOM, IIT Bombay", period: "2012 – 2014", detail: "GPA 8.38/10.0" },
+    { degree: "B.Tech., Computer Science", institution: "West Bengal University of Technology", period: "2006 – 2010", detail: "GPA 8.47/10.0" },
+  ],
+  awards: [
+    "Star Award — Excellence in Delivery (Cognizant, 2024)",
+    "Cognizant Cheers Award — co-authored whitepaper",
+    "2nd Runners Up — White Paper Contest",
+    "Pillar of the Month — Business Development",
+    "Pillar of the Month — Training & Mentoring",
+    "TCS Gems — Tata Consultancy Services",
+  ],
+  skills: [
+    {
+      category: "Product & Delivery",
+      tags: ["Backlog Ownership", "PI Planning", "MVP Definition", "Scrum", "SAFe", "Stakeholder Management"],
+    },
+    {
+      category: "Payments Domain",
+      tags: ["Digital Payments", "Tokenisation (EMV)", "Wallet Integrations", "Issuer Push Provisioning", "PCI / RBI Compliance"],
+    },
+    {
+      category: "Commercial & Pre-Sales",
+      tags: ["Business Case Development", "RFP/RFI Bid Management", "Commercial Modelling", "Go-to-Market Strategy"],
+    },
+    {
+      category: "AI-Directed Delivery",
+      tags: ["Multi-Agent System Architecture", "Claude Code", "AI-Output Governance", "Prompt Architecture"],
+    },
+  ],
 };
 
 export const statStrip = [
