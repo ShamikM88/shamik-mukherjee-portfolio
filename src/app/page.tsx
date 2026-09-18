@@ -15,7 +15,7 @@ export default function Home() {
         <Hero />
         <AboutSection />
 
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 border-t border-ink-200 dark:border-ink-800">
+        <section className="mx-auto max-w-5xl border-t border-ink-200 px-6 py-20 dark:border-ink-800 sm:px-8 sm:py-28">
           <Tabs
             tabs={[
               { id: "opencam", label: "OpenCAM Framework", content: <OpenCamSection /> },

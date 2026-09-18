@@ -13,15 +13,15 @@ const featureIcons = [LayoutDashboard, Mail, GitCompareArrows, Zap];
 
 export function ForkSection() {
   return (
-    <div className="flex flex-col gap-8">
-      {/* Header card */}
-      <Card hover={false} className="flex flex-col gap-4">
+    <div className="flex flex-col gap-16">
+      {/* Header */}
+      <div className="flex flex-col gap-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex flex-col gap-2">
-            <h3 className="font-display text-2xl font-semibold text-ink-900 dark:text-white">
+            <h3 className="font-display text-3xl font-semibold text-ink-900 dark:text-white">
               {fork.title}
             </h3>
-            <p className="text-sm text-ink-500 dark:text-ink-400">{fork.subtitle}</p>
+            <p className="text-base text-ink-500 dark:text-ink-400">{fork.subtitle}</p>
           </div>
           <div className="flex gap-2">
             <CopyMarkdownButton markdown={jobSearchForkMarkdown} />
@@ -45,10 +45,10 @@ export function ForkSection() {
           ))}
         </div>
 
-        <p className="rounded-xl bg-ink-100 px-4 py-3 text-sm leading-relaxed text-ink-600 dark:bg-ink-800 dark:text-ink-300">
+        <p className="max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
           {fork.disclosure}
         </p>
-      </Card>
+      </div>
 
       {/* 4-grid feature cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

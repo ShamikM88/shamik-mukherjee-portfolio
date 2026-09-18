@@ -3,12 +3,12 @@ import { Card } from "@/components/ui";
 
 export function GovernanceSection() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <div>
-        <h3 className="font-display text-2xl font-semibold text-ink-900 dark:text-white">
+        <h3 className="font-display text-3xl font-semibold text-ink-900 dark:text-white">
           {governanceComparison.heading}
         </h3>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
           {governanceComparison.intro}
         </p>
       </div>
