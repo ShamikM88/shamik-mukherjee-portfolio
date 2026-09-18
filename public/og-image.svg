@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#04241c"/>
+      <stop offset="100%" stop-color="#0a634a"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#149c72" stroke-opacity="0.18" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <rect x="80" y="80" width="88" height="88" rx="20" fill="#149c72"/>
+  <text x="124" y="140" font-family="Arial, sans-serif" font-weight="700" font-size="40" fill="#ffffff" text-anchor="middle">SM</text>
+
+  <text x="80" y="290" font-family="Arial, sans-serif" font-weight="700" font-size="64" fill="#ffffff">Shamik Mukherjee</text>
+  <text x="80" y="350" font-family="Arial, sans-serif" font-weight="500" font-size="34" fill="#5fe0ac">Senior Product Owner / AI Product Manager</text>
+
+  <text x="80" y="410" font-family="Arial, sans-serif" font-weight="400" font-size="24" fill="#c9f7e4">Digital Payments &#183; Tokenization &#183; Multi-Agent AI Systems</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="80" y="470" width="280" height="90" rx="16" fill="#0a634a" fill-opacity="0.6"/>
+    <text x="104" y="510" font-size="30" font-weight="700" fill="#ffffff">1</text>
+    <text x="104" y="536" font-size="16" fill="#c9f7e4">AI Framework Built Solo</text>
+
+    <rect x="380" y="470" width="280" height="90" rx="16" fill="#0a634a" fill-opacity="0.6"/>
+    <text x="404" y="510" font-size="30" font-weight="700" fill="#ffffff">325+</text>
+    <text x="404" y="536" font-size="16" fill="#c9f7e4">Automated Tests Written</text>
+
+    <rect x="680" y="470" width="320" height="90" rx="16" fill="#0a634a" fill-opacity="0.6"/>
+    <text x="704" y="510" font-size="30" font-weight="700" fill="#ffffff">150+</text>
+    <text x="704" y="536" font-size="16" fill="#c9f7e4">Job Postings Auto-Deduped</text>
+  </g>
+</svg>
