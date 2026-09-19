@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
@@ -43,24 +42,6 @@ export default function JobSearchAutomationPage() {
             outcomes={fork.outcomes}
             visuals={fork.visuals}
             heroIllustration={<ForkBanner />}
-            visualIllustrations={[
-              <Image
-                key="a"
-                src="/build-shots/fork-commits.png"
-                alt="Commit history on the ai-job-search fork's GitHub repository"
-                width={1280}
-                height={820}
-                className="h-full w-full object-cover object-top"
-              />,
-              <Image
-                key="b"
-                src="/build-shots/dashboard-filtered.png"
-                alt="The live job-search dashboard filtered to postings not yet applied to"
-                width={1353}
-                height={770}
-                className="h-full w-full object-cover object-top"
-              />,
-            ]}
             related={{
               href: "/case-studies/opencam/",
               title: openCam.shortTitle,

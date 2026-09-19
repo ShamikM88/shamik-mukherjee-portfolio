@@ -308,12 +308,36 @@ export const openCam = {
   visuals: {
     heading: "Inside the build",
     items: [
-      { caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main." },
-      { caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list." },
-      { caption: "Feature requests tracked as GitHub enhancement issues — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess." },
-      { caption: "The financial spreading output — every ratio traceable to a raw line item, DSCR shown per year rather than as a single number. Synthetic demo data, generated for this writeup." },
-      { caption: "The CAM's Facility Conditions section, with a grounding note disclosing exactly which inputs came from the relationship team, unverified against a live feed. Synthetic demo data." },
-      { caption: "The Collateral section's LGD/coverage workout — average vs. max LGD, cover %, all computed from the same disclosed inputs. Synthetic demo data." },
+      {
+        caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main.",
+        src: "/build-shots/opencam-prs.png",
+        alt: "Merged pull requests on the open-cam-framework GitHub repository",
+      },
+      {
+        caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list.",
+        src: "/build-shots/opencam-issues.png",
+        alt: "Closed GitHub issues from the 19-issue gap-analysis audit",
+      },
+      {
+        caption: "Feature requests tracked as GitHub enhancement issues — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess.",
+        src: "/build-shots/opencam-enhancements.png",
+        alt: "GitHub issues tracked with the enhancement label — feature requests from real usage",
+      },
+      {
+        caption: "The financial spreading output — every ratio traceable to a raw line item, DSCR shown per year rather than as a single number. Synthetic demo data, generated for this writeup.",
+        src: "/build-shots/opencam-spreading-demo.png",
+        alt: "Financial spreading output showing revenue, EBITDA, and DSCR computed per year from raw line items — synthetic demo data",
+      },
+      {
+        caption: "The CAM's Facility Conditions section, with a grounding note disclosing exactly which inputs came from the relationship team, unverified against a live feed. Synthetic demo data.",
+        src: "/build-shots/opencam-cam-facility-demo.png",
+        alt: "CAM Facility Conditions section with a grounding note disclosing unverified inputs — synthetic demo data",
+      },
+      {
+        caption: "The Collateral section's LGD/coverage workout — average vs. max LGD, cover %, all computed from the same disclosed inputs. Synthetic demo data.",
+        src: "/build-shots/opencam-cam-collateral-demo.png",
+        alt: "CAM Collateral section showing LGD and coverage calculations — synthetic demo data",
+      },
     ],
   },
 };
@@ -392,8 +416,16 @@ export const fork = {
   visuals: {
     heading: "Inside the build",
     items: [
-      { caption: "48 fork-specific commits on GitHub, diverged from the upstream MadsLorentzen/ai-job-search base." },
-      { caption: "The live dashboard, filtered to postings not yet applied to — fit scoring, gates, and dedup status per row." },
+      {
+        caption: "48 fork-specific commits on GitHub, diverged from the upstream MadsLorentzen/ai-job-search base.",
+        src: "/build-shots/fork-commits.png",
+        alt: "Commit history on the ai-job-search fork's GitHub repository",
+      },
+      {
+        caption: "The live dashboard, filtered to postings not yet applied to — fit scoring, gates, and dedup status per row.",
+        src: "/build-shots/dashboard-filtered.png",
+        alt: "The live job-search dashboard filtered to postings not yet applied to",
+      },
     ],
   },
 };

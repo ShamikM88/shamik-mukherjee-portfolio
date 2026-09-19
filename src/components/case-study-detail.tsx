@@ -12,7 +12,7 @@ type TextBlock = { heading: string; paragraphs: string[]; frictionBullets?: stri
 type StepBlock = { heading: string; steps: { title: string; body: string }[] };
 type ItemBlock = { heading: string; items: { title: string; body: string }[] };
 type OutcomeBlock = { heading: string; stats: { value: string; label: string }[]; bullets: string[] };
-type VisualBlock = { heading: string; items: { caption: string }[] };
+type VisualBlock = { heading: string; items: { caption: string; src: string; alt: string }[] };
 type ScopeBlock = {
   heading: string;
   lanes: { label: string; sublabel: string; tone: "brand-strong" | "brand-muted" | "ember" | "muted"; items: string[] }[];
@@ -34,7 +34,6 @@ export function CaseStudyDetail({
   outcomes,
   visuals,
   heroIllustration,
-  visualIllustrations,
   related,
   baseRepo,
   headerExtra,
@@ -57,7 +56,6 @@ export function CaseStudyDetail({
   outcomes: OutcomeBlock;
   visuals: VisualBlock;
   heroIllustration: ReactNode;
-  visualIllustrations: ReactNode[];
   related: { href: string; title: string; description: string };
   /** Extra header link(s) after View Source / baseRepo, e.g. a live PR-count badge. */
   headerExtra?: ReactNode;
@@ -336,9 +334,7 @@ export function CaseStudyDetail({
           {visuals.heading}
         </h2>
         <div className="mt-6">
-          <VisualsCarousel
-            items={visuals.items.map((item, i) => ({ caption: item.caption, illustration: visualIllustrations[i] }))}
-          />
+          <VisualsCarousel items={visuals.items} />
         </div>
       </div>
 
