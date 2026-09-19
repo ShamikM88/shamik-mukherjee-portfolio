@@ -22,7 +22,7 @@ const mono = IBM_Plex_Mono({
 });
 
 const SITE_URL = "https://shamik-mukherjee-portfolio.vercel.app";
-const TITLE = "Shamik Mukherjee — Senior Product Owner / AI Product Manager";
+const TITLE = "Shamik Mukherjee — Product Manager / Senior Product Owner";
 const DESCRIPTION =
   "Product Owner in digital payments and tokenization, building AI-directed multi-agent systems solo. See OpenCAM Framework (a Maker-Checker credit underwriting system) and an automated job-search pipeline.";
 
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   keywords: [
     "Shamik Mukherjee",
+    "Product Manager",
     "Product Owner",
-    "AI Product Manager",
     "Digital Payments",
     "Tokenization",
     "Claude Code",

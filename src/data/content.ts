@@ -9,7 +9,7 @@
 
 export const identity = {
   name: "Shamik Mukherjee",
-  headline: "Senior Product Owner / AI Product Manager",
+  headline: "Product Manager / Senior Product Owner",
   currentRole: "Product Owner",
   currentEmployer: "Cognizant Technology Solutions",
   domainLine: "Digital Payments · Tokenization · Wallet Integrations (Google Pay, Samsung Pay) · Agile Delivery",

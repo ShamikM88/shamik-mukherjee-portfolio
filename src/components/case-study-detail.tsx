@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
-import { Badge, CopyMarkdownButton } from "@/components/ui";
+import { Badge, DownloadCaseStudyButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
 import { VisualsCarousel } from "@/components/visuals-carousel";
 import { ScopeLanes } from "@/components/scope-lanes";
@@ -27,6 +27,7 @@ export function CaseStudyDetail({
   subtitle,
   repoUrl,
   markdown,
+  markdownFilename,
   meta,
   problem,
   process,
@@ -49,6 +50,7 @@ export function CaseStudyDetail({
   subtitle: string;
   repoUrl: string;
   markdown: string;
+  markdownFilename: string;
   meta: Meta;
   problem: TextBlock;
   process: StepBlock;
@@ -87,7 +89,7 @@ export function CaseStudyDetail({
         </h1>
         <p className="max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">{subtitle}</p>
         <div className="flex gap-2">
-          <CopyMarkdownButton markdown={markdown} />
+          <DownloadCaseStudyButton markdown={markdown} filename={markdownFilename} />
           <a
             href={repoUrl}
             target="_blank"

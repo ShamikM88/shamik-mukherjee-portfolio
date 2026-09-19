@@ -36,6 +36,7 @@ export default function OpenCamPage() {
             subtitle={openCam.subtitle}
             repoUrl={openCam.repoUrl}
             markdown={openCamMarkdown}
+            markdownFilename="OpenCAM-Framework-Case-Study.md"
             meta={openCam.meta}
             problem={openCam.problem}
             scope={openCam.scope}

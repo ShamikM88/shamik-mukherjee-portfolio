@@ -35,6 +35,7 @@ export default function JobSearchAutomationPage() {
             subtitle={fork.subtitle}
             repoUrl={fork.forkRepoUrl}
             markdown={jobSearchForkMarkdown}
+            markdownFilename="AI-Job-Search-Fork-Case-Study.md"
             meta={fork.meta}
             problem={fork.problem}
             process={fork.process}

@@ -19,9 +19,11 @@ export function Hero() {
               <span className="text-gradient-brand">{identity.taglineHighlight}</span>
             </h1>
 
-            <p className="max-w-lg text-lg leading-relaxed text-ink-600 dark:text-ink-300">
-              {identity.headline} · {identity.domainLine}. Based in {identity.location}.
-            </p>
+            <div className="flex max-w-lg flex-col gap-1.5 leading-relaxed text-ink-600 dark:text-ink-300">
+              <p className="text-xl font-medium text-ink-800 dark:text-ink-100">{identity.headline}</p>
+              <p className="text-lg">{identity.domainLine}</p>
+              <p className="text-lg">Based in {identity.location}.</p>
+            </div>
 
             <div className="flex flex-wrap gap-3 pt-3">
               <a

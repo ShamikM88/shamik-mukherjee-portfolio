@@ -11,8 +11,8 @@ export function Footer() {
             Let&apos;s build something people love.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-ink-600 dark:text-ink-300">
-            I&apos;m actively looking for my next Product Owner / PM role. If this resonates, say
-            hello.
+            I&apos;m actively looking for my next Product Manager / Product Owner role. If this
+            resonates, say hello.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
