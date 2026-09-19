@@ -116,7 +116,7 @@ export const about = {
 
 export const statStrip = [
   { value: "1", label: "Multi-Agent AI Framework Built Solo", sublabel: "OpenCAM Framework" },
-  { value: "338+", label: "Automated Tests Written", sublabel: "OpenCAM Framework" },
+  { value: "339+", label: "Automated Tests Written", sublabel: "OpenCAM Framework" },
   { value: "150+", label: "Job Postings Processed & Auto-Deduped", sublabel: "Job-search automation" },
 ];
 
@@ -204,7 +204,7 @@ export const openCam = {
       {
         letter: "C",
         title: "Financial Spreading & Auditable Excel Export",
-        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference.",
+        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead — the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed, a real reduction in audit guarantee, disclosed rather than buried.",
       },
       {
         letter: "D",
@@ -273,7 +273,7 @@ export const openCam = {
       },
       {
         title: "Code computes numbers, not the model",
-        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — the model can narrate a number, but it can never produce one.",
+        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — and a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities — the model can narrate a number, but it can never produce one.",
       },
       {
         title: "Cut scope, don't half-implement",
@@ -297,7 +297,7 @@ export const openCam = {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "338+", label: "passing tests (up from 188 at MVP)" },
+      { value: "339+", label: "passing tests (up from 188 at MVP)" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
     ],
     bullets: [
@@ -403,7 +403,7 @@ export const governanceComparison = {
   rows: [
     ["Commit Policy", "100% PR-based, zero direct-to-main", "Direct commits to master"],
     ["Issue Tracking", "Formal GitHub Issues (19-issue gap audit)", "None — solo, no backlog overhead"],
-    ["QA Model", "338 automated tests, regression-gated", "Manual verification against live runs"],
+    ["QA Model", "339 automated tests, regression-gated", "Manual verification against live runs"],
     ["Target Audience", "Other institutions (designed to be forked)", "Personal use only (N=1)"],
     ["Risk Profile", "Production-adjacent, third-party dependent", "Low-risk personal tooling, fast iteration"],
   ],
