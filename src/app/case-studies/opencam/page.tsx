@@ -40,6 +40,16 @@ export default function OpenCamPage() {
             problem={openCam.problem}
             scope={openCam.scope}
             features={openCam.features}
+            workflow={openCam.workflow}
+            workflowIllustration={
+              <Image
+                src="/illustrations/opencam-workflow.jpg"
+                alt="OpenCAM pipeline diagram: /calibrate forks into /triage or /research, both converging into /spread, /collateral, /project, /assemble; /research also has a standalone Research Brief export"
+                width={1200}
+                height={896}
+                className="h-full w-full object-cover"
+              />
+            }
             strategy={openCam.strategy}
             process={openCam.process}
             decisions={openCam.decisions}

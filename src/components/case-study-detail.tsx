@@ -19,6 +19,7 @@ type ScopeBlock = {
 };
 type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
 type StrategyBlock = { heading: string; intro: string; cards: { title: string; body: string }[] };
+type WorkflowBlock = { heading: string; intro: string; note?: string };
 
 export function CaseStudyDetail({
   title,
@@ -40,6 +41,8 @@ export function CaseStudyDetail({
   outcomeStatOverrides,
   scope,
   features,
+  workflow,
+  workflowIllustration,
   strategy,
 }: {
   title: string;
@@ -66,6 +69,9 @@ export function CaseStudyDetail({
   scope?: ScopeBlock;
   /** Structured feature/product-requirements list — optional. */
   features?: FeatureBlock;
+  /** Workflow/pipeline diagram section — optional, needs both the text block and the illustration. */
+  workflow?: WorkflowBlock;
+  workflowIllustration?: ReactNode;
   /** Validation & strategic-context cards (buy-vs-build, economics, adoption) — optional. */
   strategy?: StrategyBlock;
 }) {
@@ -197,6 +203,29 @@ export function CaseStudyDetail({
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Workflow diagram */}
+      {workflow && workflowIllustration && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Workflow
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {workflow.heading}
+          </h2>
+          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-center">
+            <div className="overflow-hidden rounded-2xl border border-ink-200 dark:border-white/10">
+              {workflowIllustration}
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300">{workflow.intro}</p>
+              {workflow.note && (
+                <p className="text-sm leading-relaxed text-ink-500 dark:text-ink-400">{workflow.note}</p>
+              )}
+            </div>
           </div>
         </div>
       )}

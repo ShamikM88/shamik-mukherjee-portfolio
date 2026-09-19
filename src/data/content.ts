@@ -218,6 +218,12 @@ export const openCam = {
       },
     ],
   },
+  workflow: {
+    heading: "How the pipeline actually connects",
+    intro:
+      "Two entry points, one shared spine. Every deal starts at /calibrate, then an analyst chooses /triage for a full CAM or /research for a standalone qualitative brief — both write the same state, so a deal can always continue into the full pipeline later without redoing work.",
+    note: "One nuance the diagram simplifies: a deal continuing from /research rejoins directly at /spread, skipping /commercial entirely — /research already produced that output.",
+  },
   strategy: {
     heading: "Validation & strategic context",
     intro:
