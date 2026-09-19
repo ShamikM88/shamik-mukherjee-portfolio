@@ -6,6 +6,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { OpenCamBanner } from "@/components/project-thumbnails";
+import { LiveMergedPRCount } from "@/components/live-github-stat";
 import { openCam, fork } from "@/data/content";
 import { openCamMarkdown } from "@/lib/case-study-markdown";
 
@@ -65,6 +66,7 @@ export default function OpenCamPage() {
               title: fork.shortTitle,
               description: fork.subtitle,
             }}
+            headerExtra={<LiveMergedPRCount repo="ShamikM88/open-cam-framework" fallback={37} />}
           />
         </div>
       </main>

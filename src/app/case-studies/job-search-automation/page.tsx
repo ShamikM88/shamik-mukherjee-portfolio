@@ -6,6 +6,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ForkBanner } from "@/components/project-thumbnails";
+import { LiveCommitsAhead } from "@/components/live-github-stat";
 import { openCam, fork } from "@/data/content";
 import { jobSearchForkMarkdown } from "@/lib/case-study-markdown";
 
@@ -66,6 +67,9 @@ export default function JobSearchAutomationPage() {
               description: openCam.subtitle,
             }}
             baseRepo={{ url: fork.baseRepoUrl, label: "Forked from MadsLorentzen/ai-job-search" }}
+            outcomeStatOverrides={{
+              1: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
+            }}
           />
         </div>
       </main>

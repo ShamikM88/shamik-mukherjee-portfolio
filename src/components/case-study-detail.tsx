@@ -28,6 +28,8 @@ export function CaseStudyDetail({
   visualIllustrations,
   related,
   baseRepo,
+  headerExtra,
+  outcomeStatOverrides,
 }: {
   title: string;
   badges: string[];
@@ -43,6 +45,10 @@ export function CaseStudyDetail({
   heroIllustration: ReactNode;
   visualIllustrations: [ReactNode, ReactNode];
   related: { href: string; title: string; description: string };
+  /** Extra header link(s) after View Source / baseRepo, e.g. a live PR-count badge. */
+  headerExtra?: ReactNode;
+  /** Replace a specific outcome stat's displayed value with a live-fetched ReactNode, keyed by index. */
+  outcomeStatOverrides?: Record<number, ReactNode>;
   /** Only set for projects built on someone else's open-source base. */
   baseRepo?: { url: string; label: string };
 }) {
@@ -80,6 +86,11 @@ export function CaseStudyDetail({
               <GitFork className="h-3.5 w-3.5" aria-hidden />
               {baseRepo.label}
             </a>
+          )}
+          {headerExtra && (
+            <span className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 dark:border-white/15 dark:bg-white/5 dark:text-ink-300">
+              {headerExtra}
+            </span>
           )}
         </div>
       </div>
@@ -173,12 +184,14 @@ export function CaseStudyDetail({
           {outcomes.heading}
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {outcomes.stats.map((s) => (
+          {outcomes.stats.map((s, i) => (
             <div
               key={s.label}
               className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
             >
-              <p className="font-display text-2xl font-bold text-brand-600 dark:text-brand-400">{s.value}</p>
+              <p className="font-display text-2xl font-bold text-brand-600 dark:text-brand-400">
+                {outcomeStatOverrides?.[i] ?? s.value}
+              </p>
               <p className="mt-1 text-sm text-ink-600 dark:text-ink-300">{s.label}</p>
             </div>
           ))}
