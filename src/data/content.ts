@@ -165,15 +165,15 @@ export const openCam = {
     heading: "Calls I made, and why",
     items: [
       {
-        title: "Two independent agents, not one self-grading prompt",
+        title: "Independent agents, not one prompt",
         body: "A single agent auditing its own draft agrees with itself. The Underwriter and Risk Reviewer share no reasoning context, and the Reviewer can only downgrade a verdict — its value comes from auditing cold.",
       },
       {
-        title: "Numbers computed in code, never by the model",
+        title: "Code computes numbers, not the model",
         body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — the model can narrate a number, but it can never produce one.",
       },
       {
-        title: "Cut scope mid-flight instead of half-implementing four asks",
+        title: "Cut scope, don't half-implement",
         body: "One issue bundled four separable asks together. Rather than push all four through unreviewed, I shipped just the well-bounded piece and explicitly disclosed the other three as deferred, not quietly dropped.",
       },
       {
@@ -253,7 +253,7 @@ export const fork = {
         body: "Contrast with OpenCAM: that's a multi-user tool that has to be defensible to someone else. This is solo personal tooling — direct-to-master rapid feedback loops win when I'm the only stakeholder.",
       },
       {
-        title: "Dedup against full history, not just this run",
+        title: "Full history checked, not just this run",
         body: "ID-based checks only catch a repost when the ID matches. Comparing normalized company + title against every existing entry, regardless of prior scrape date, catches the case ID checks structurally can't.",
       },
       {
