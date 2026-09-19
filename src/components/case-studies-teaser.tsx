@@ -8,23 +8,21 @@ const cards = [
     id: "opencam",
     href: "/case-studies/opencam/",
     thumbnail: <OpenCamThumbnail />,
-    tags: [openCam.badges[0], "Fintech"],
-    title: openCam.title,
-    description:
-      "Solo-built a Maker-Checker multi-agent system that drafts and audits Credit Assessment Memorandums, gated by a deterministic policy engine.",
-    statValue: "325+",
-    statLabel: "tests written",
+    tags: openCam.badges,
+    title: openCam.shortTitle,
+    description: openCam.subtitle,
+    statValue: openCam.outcomes.stats[1].value,
+    statLabel: openCam.outcomes.stats[1].label,
   },
   {
     id: "fork",
     href: "/case-studies/job-search-automation/",
     thumbnail: <ForkThumbnail />,
-    tags: [fork.badges[0], "Automation"],
-    title: fork.title,
-    description:
-      "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, and a live application dashboard.",
-    statValue: "150+",
-    statLabel: "postings auto-deduped",
+    tags: fork.badges,
+    title: fork.shortTitle,
+    description: fork.subtitle,
+    statValue: fork.outcomes.stats[0].value,
+    statLabel: fork.outcomes.stats[0].label,
   },
 ];
 

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
-import { ForkSection } from "@/components/fork-section";
-import { GovernanceSection } from "@/components/governance-section";
 import { Footer } from "@/components/footer";
-import { fork } from "@/data/content";
+import { CaseStudyDetail } from "@/components/case-study-detail";
+import { ForkBanner, ForkThumbnail, ForkDedupVisual } from "@/components/project-thumbnails";
+import { openCam, fork } from "@/data/content";
+import { jobSearchForkMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
-  title: `${fork.title} — Shamik Mukherjee`,
-  description:
-    "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, and a live application dashboard.",
+  title: `${fork.shortTitle} — Shamik Mukherjee`,
+  description: fork.subtitle,
 };
 
 export default function JobSearchAutomationPage() {
@@ -24,14 +24,30 @@ export default function JobSearchAutomationPage() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 transition-colors hover:text-ink-900 dark:text-ink-400 dark:hover:text-white"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-            Back to case studies
+            All case studies
           </Link>
         </div>
-        <div className="mx-auto max-w-5xl px-6 py-12 sm:px-8 sm:py-16">
-          <ForkSection />
-        </div>
-        <div className="mx-auto max-w-5xl border-t border-ink-200 px-6 py-16 dark:border-white/10 sm:px-8 sm:py-20">
-          <GovernanceSection />
+        <div className="mx-auto max-w-5xl px-6 py-10 sm:px-8 sm:py-14">
+          <CaseStudyDetail
+            title={fork.title}
+            badges={fork.badges}
+            subtitle={fork.subtitle}
+            repoUrl={fork.forkRepoUrl}
+            markdown={jobSearchForkMarkdown}
+            meta={fork.meta}
+            problem={fork.problem}
+            process={fork.process}
+            decisions={fork.decisions}
+            outcomes={fork.outcomes}
+            visuals={fork.visuals}
+            heroIllustration={<ForkBanner />}
+            visualIllustrations={[<ForkThumbnail key="a" />, <ForkDedupVisual key="b" />]}
+            related={{
+              href: "/case-studies/opencam/",
+              title: openCam.shortTitle,
+              description: openCam.subtitle,
+            }}
+          />
         </div>
       </main>
       <Footer />

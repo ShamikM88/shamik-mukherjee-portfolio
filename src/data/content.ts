@@ -121,120 +121,159 @@ export const statStrip = [
 ];
 
 export const openCam = {
-  title: "OpenCAM Framework",
-  subtitle: "Primary Case Study — built solo, ground-up",
+  title: "OpenCAM — Autonomous Maker-Checker Framework",
+  shortTitle: "OpenCAM Framework",
+  subtitle:
+    "Engineered a dual-agent LLM pipeline with deterministic policy gating, targeting a cut in CAM drafting time from a business day to 15–30 minutes.",
   repoUrl: "https://github.com/ShamikM88/open-cam-framework",
-  badges: ["Multi-Agent AI", "Deterministic Policy Engine", "Enterprise Governance"],
+  badges: ["Multi-Agent AI", "Credit Risk"],
   status: "Early-stage, actively developed · validated with one analyst to date",
-  scorecard: [
-    {
-      label: "Time-to-First-Draft",
-      value: "~1 business day → 15–30 min",
-      note: "Target, not yet measured at scale",
-    },
-    {
-      label: "Compliance Defect Rate",
-      value: "Code-gated checks before human review",
-      note: "Target: 0% ungrounded claims reach committee",
-    },
-    {
-      label: "Audit Trail",
-      value: "Model/prompt-version provenance per deal",
-      note: "Target: 100% of deals carry provenance",
-    },
-  ],
-  architectureFlow: [
-    "Raw Financials / PDFs",
-    "Spreading Engine",
-    "Maker Agent (Underwriter)",
-    "Deterministic Policy Engine",
-    "Checker Agent (Risk Reviewer)",
-    "Audit-Ready Export",
-  ],
-  features: [
-    {
-      title: "A. Maker-Checker Governance Loop",
-      body: "Two genuinely independent agents — an Underwriter that drafts, a Risk Reviewer that audits — with no shared reasoning context and the power to only downgrade a verdict, never upgrade one. Maker and Checker can also run on different underlying models, so drafting and audit don't share the same blind spots.",
-    },
-    {
-      title: "B. Deterministic Policy & Compliance Engine",
-      body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against the ratio computed from raw financials — never silently defaulted. Conditions Precedent are generated deterministically from the deal's actual collateral structure, and every reported figure is checked against ground-truth financials within a 0.5% tolerance before the Checker even sees it.",
-    },
-    {
-      title: "C. Financial Spreading & Auditable Excel Export",
-      body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion — is computed straight from the raw line items shown in the workbook, with formulas generated from a label-based row layout so a row reorder can never silently break a reference. An undefined ratio (e.g. a debt-free company's DSCR) is always shown as genuinely undefined, never coerced to a misleading 0.",
-    },
-    {
-      title: "D. Confidentiality-by-Design",
-      body: "Every artifact derived from a user's real business — calibration samples, generated deal state, output documents — writes only to git-ignored paths, enforced as a rule before any new feature is built, not audited in after the fact. A fork can be customized on live, confidential deal data with zero risk of a proprietary figure reaching the shared open-source repo.",
-    },
-  ],
-  validation: {
-    heading: "Validation & Governance",
-    points: [
-      "Validated hands-on with one real analyst to date — the framework is early-stage, and these are target numbers, not formal multi-tenant pilot data.",
-      "35 merged PRs, zero direct-to-main commits — every change was reviewed before merge.",
-      "Hardened via a dedicated 19-issue gap-analysis audit sequenced in risk-weighted severity order, plus two live-user-feedback-driven fast-follows shipped the same sprint they surfaced.",
-      "188 → 325 passing tests over the project's life, with regression coverage required before any fix was treated as done.",
+  meta: {
+    role: "Product Owner — strategy, prompt architecture, policy rules; directed Claude Code for all implementation",
+    timeline: "Sep 2026 · ongoing",
+    stack: "Python · Claude Code · Anthropic API · Deterministic policy engine",
+  },
+  problem: {
+    heading: "What was broken",
+    paragraphs: [
+      "I watched my wife, a corporate credit analyst, prepare Credit Assessment Memorandums every day against hard credit-committee deadlines — manual financial spreading, then drafting a narrative under time pressure with real reputational risk if a number was wrong.",
+      "Early attempts at using an LLM to draft the memo directly were faster but untrustworthy: grounding was only ever a \"cite your source\" prompt instruction, not an enforced rule, so an unsupported claim could reach committee undetected — and a codebase audit later caught a debt-free company's DSCR being silently computed as 0 instead of undefined, which would have wrongly flagged a healthy borrower as a covenant breach.",
+    ],
+  },
+  process: {
+    heading: "How I worked it",
+    steps: [
+      {
+        title: "Started from a real workflow, not a hypothesis",
+        body: "Modeled the primary persona directly on my wife's own day as a credit analyst — the actual friction was manual spreading and narrative drafting under deadline pressure, not a problem I picked because it sounded interesting.",
+      },
+      {
+        title: "Shipped the Maker-Checker loop in one day",
+        body: "Scoped the MVP tightly — 20 merged PRs in a single day — around one correct, end-to-end loop before going deep on any single feature: template system, spreading engine, .docx export, and the governance loop itself.",
+      },
+      {
+        title: "Ran a dedicated gap-analysis audit, sequenced by risk",
+        body: "Once the MVP worked, I audited the live codebase for 19 further issues and merged fixes in risk-weighted severity order — correctness and security bugs first, cosmetic issues after, feature work last.",
+      },
+      {
+        title: "Reprioritized around real feedback, not backlog guesses",
+        body: "Two items came directly from my wife hitting the pipeline's limits on a real deal — a rigid spreading schema and an all-or-nothing automation model — and I pulled both to the top of the queue and shipped them the same week.",
+      },
+    ],
+  },
+  decisions: {
+    heading: "Calls I made, and why",
+    items: [
+      {
+        title: "Two independent agents, not one self-grading prompt",
+        body: "A single agent auditing its own draft agrees with itself. The Underwriter and Risk Reviewer share no reasoning context, and the Reviewer can only downgrade a verdict — its value comes from auditing cold.",
+      },
+      {
+        title: "Numbers computed in code, never by the model",
+        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — the model can narrate a number, but it can never produce one.",
+      },
+      {
+        title: "Cut scope mid-flight instead of half-implementing four asks",
+        body: "One issue bundled four separable asks together. Rather than push all four through unreviewed, I shipped just the well-bounded piece and explicitly disclosed the other three as deferred, not quietly dropped.",
+      },
+    ],
+  },
+  outcomes: {
+    heading: "What changed",
+    stats: [
+      { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
+      { value: "325+", label: "passing tests (up from 188 at MVP)" },
+      { value: "0", label: "financial figures the model is allowed to compute itself" },
+    ],
+    bullets: [
+      "Trust turned out to be a product feature: the debt-free-DSCR catch is concrete evidence that code-level verification, not model judgment, is what makes the loop actually trustworthy.",
+      "Real usage surfaced the two highest-value roadmap items faster than the original audit backlog did — ship it, use it, let genuine friction drive the backlog.",
+    ],
+  },
+  visuals: {
+    heading: "Inside the build",
+    items: [
+      { caption: "Maker drafts with cited evidence; Checker independently re-verifies every claim." },
+      { caption: "Ratios and covenant tests computed deterministically in code, then narrated by the model." },
     ],
   },
 };
 
-type ForkFeature = {
-  title: string;
-  body: string;
-  mock?: { statuses: string[] } | { pipeline: string[] };
-  before?: string;
-  after?: string;
-  metricPill?: string;
-};
-
-export const fork: {
-  title: string;
-  subtitle: string;
-  baseRepoUrl: string;
-  forkRepoUrl: string;
-  badges: string[];
-  disclosure: string;
-  features: ForkFeature[];
-  governance: { heading: string; points: string[] };
-} = {
-  title: "AI Job Search Automation",
-  subtitle: "Feature Spotlight — automation on a forked base, not authored from scratch",
+export const fork = {
+  title: "AI Job Search — Pipeline & Status Automation",
+  shortTitle: "AI Job Search Automation",
+  subtitle:
+    "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, and a live application dashboard — automation layered on a forked base, not authored from scratch.",
   baseRepoUrl: "https://github.com/MadsLorentzen/ai-job-search",
   forkRepoUrl: "https://github.com/ShamikM88/ai-job-search",
-  badges: ["Rapid Automation", "Personal Tooling", "Local-Only PII"],
-  disclosure:
-    "Built on an open-source job-search framework (MadsLorentzen/ai-job-search); the automation, dedup logic, Gmail sync, and dashboard below are original work layered on top of it, not a from-scratch build.",
-  features: [
-    {
-      title: "Live Application Dashboard",
-      body: "Replaced a static export with a live, server-rendered local dashboard: multi-select filters, a date-range filter, and a dedicated Applied / Rejected / Interview status view across the full tracked pipeline.",
-      mock: { statuses: ["Applied", "Rejected", "Interview"] },
-    },
-    {
-      title: "Gmail Status Sync",
-      body: "An automated pipeline that scans Gmail for interview, offer, and rejection signals against every open application and proposes tracker updates for review — no manual inbox rereading to keep status current.",
-      mock: { pipeline: ["Inbox", "Signal detected", "Proposed update", "Tracker"] },
-    },
-    {
-      title: "Cross-Portal Dedup",
-      body: "Extended dedup beyond exact-URL and job-ID matching to a same-company-title check against the entire scrape history — catching an employer relisting an unfilled role under a brand-new listing ID.",
-      before: "A role relisted under a new ID slips past ID-based dedup and resurfaces as a fresh application candidate.",
-      after: "Matched against full scrape history by normalized company + title and flagged as a repost before it reaches the pipeline again.",
-    },
-    {
-      title: "Cost-Efficiency Caching",
-      body: "A shared, normalized-filename cache for fetched postings and company research, so the same job or company is looked up once across the pipeline's lifetime.",
-      metricPill: "1 fetch instead of 2",
-    },
-  ],
-  governance: {
-    heading: "Governance & Privacy",
-    points: [
-      "Every piece of sensitive data this fork touches — the application tracker, scraped-job cache, Gmail sync state, cached research, and a confidential-client reference file — is git-ignored and lives only on local disk.",
-      "Verified, not just designed: a full git log --full-history audit confirms zero PII or client data has ever been committed to this repository's history.",
-      "Direct-to-master commits, no PR/Issue backlog — a deliberate choice for solo personal tooling, not an oversight.",
+  badges: ["Agentic AI", "Personal Tooling"],
+  meta: {
+    role: "Sole developer & end user — directed Claude Code for all implementation",
+    timeline: "Aug 2026 · ongoing",
+    stack: "JavaScript (Bun) · Claude Code · Gmail API",
+  },
+  problem: {
+    heading: "What was broken",
+    paragraphs: [
+      "The framework's default output was a static snapshot and application outcomes lived entirely in employer emails I had to notice, reread, and hand-transcribe — with dozens of applications in flight, status updates silently lagged reality.",
+      "Portal-level dedup only matched on exact URL or job ID, which missed an employer relisting an unfilled role under a brand-new ID. That wasn't hypothetical: a role I'd already been rejected from was scraped three times under three different LinkedIn IDs, and the surviving copy nearly went out again in a fresh application batch before I caught it.",
+    ],
+  },
+  process: {
+    heading: "How I worked it",
+    steps: [
+      {
+        title: "Used my own job search as the test bed",
+        body: "Forked the framework in August 2026 to run my active search across the UK, Germany, and Ireland, and used the fork itself as the vehicle to close real gaps I hit using it daily.",
+      },
+      {
+        title: "Ran it direct-to-master, deliberately",
+        body: "48 fork-specific commits with no PR-per-change or issue-tracked backlog — a live scraper hitting real job portals needed a tight edit-run-observe loop, and review overhead has no payoff when I'm the only contributor and the only person affected by a regression.",
+      },
+      {
+        title: "Closed the repost gap after it actually cost me",
+        body: "The three-LinkedIn-ID incident directly drove a same-company-title check against the entire scrape history, not just the current run's pool — catching the exact failure mode that had already happened once.",
+      },
+      {
+        title: "Held data governance to a fixed bar regardless of iteration speed",
+        body: "Every piece of sensitive data — the tracker, scraped-job cache, Gmail sync state, cached research — stayed git-ignored throughout, verified afterward with a full git log --full-history audit rather than just assumed.",
+      },
+    ],
+  },
+  decisions: {
+    heading: "Calls I made, and why",
+    items: [
+      {
+        title: "Direct-to-master, not PR-per-change",
+        body: "Contrast with OpenCAM: that's a multi-user tool that has to be defensible to someone else. This is solo personal tooling — direct-to-master rapid feedback loops win when I'm the only stakeholder.",
+      },
+      {
+        title: "Dedup against full history, not just this run",
+        body: "ID-based checks only catch a repost when the ID matches. Comparing normalized company + title against every existing entry, regardless of prior scrape date, catches the case ID checks structurally can't.",
+      },
+      {
+        title: "Cache once, reuse everywhere",
+        body: "/rank and /apply were each independently re-fetching the same posting. A shared, normalized-filename cache means the common rank-then-apply path costs one fetch instead of two.",
+      },
+    ],
+  },
+  outcomes: {
+    heading: "What changed",
+    stats: [
+      { value: "150+", label: "job postings processed & auto-deduped" },
+      { value: "48", label: "fork-specific commits shipped, direct-to-master" },
+      { value: "0", label: "PII or client data ever committed — verified via git audit" },
+    ],
+    bullets: [
+      "The repost-hardening fix closes a failure mode that had already cost one wasted application before it shipped — zero repeats since.",
+      "One representative Gmail-sync run resolved 7 outcome updates and surfaced 2 new leads from an 11-thread window in a single pass, replacing unbounded manual inbox rereading.",
+    ],
+  },
+  visuals: {
+    heading: "Inside the build",
+    items: [
+      { caption: "Applied / Rejected / Interview, filtered live from the full tracked pipeline." },
+      { caption: "Inbox signal → proposed update → tracker — never written without review." },
     ],
   },
 };
