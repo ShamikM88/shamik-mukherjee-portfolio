@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { identity } from "@/data/content";
 
@@ -47,6 +48,9 @@ export function Footer() {
             >
               <Github className="h-4 w-4" aria-hidden />
             </a>
+            <Link href="/approach/" className="transition-colors hover:text-brand-600 dark:hover:text-brand-400">
+              Delivery approach
+            </Link>
             <span>Built with Claude Code</span>
           </div>
         </div>

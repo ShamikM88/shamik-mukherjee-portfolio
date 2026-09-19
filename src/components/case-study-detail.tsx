@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ExternalLink, Mail, ArrowRight } from "lucide-react";
+import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
 import { Badge, CopyMarkdownButton } from "@/components/ui";
 
-type Meta = { role: string; timeline: string; stack: string };
+type Meta = { role: string; timeline: string; stack: string; status: string };
 type TextBlock = { heading: string; paragraphs: string[] };
 type StepBlock = { heading: string; steps: { title: string; body: string }[] };
 type ItemBlock = { heading: string; items: { title: string; body: string }[] };
@@ -26,6 +26,7 @@ export function CaseStudyDetail({
   heroIllustration,
   visualIllustrations,
   related,
+  baseRepo,
 }: {
   title: string;
   badges: string[];
@@ -41,6 +42,8 @@ export function CaseStudyDetail({
   heroIllustration: ReactNode;
   visualIllustrations: [ReactNode, ReactNode];
   related: { href: string; title: string; description: string };
+  /** Only set for projects built on someone else's open-source base. */
+  baseRepo?: { url: string; label: string };
 }) {
   return (
     <div className="flex flex-col gap-16">
@@ -66,6 +69,17 @@ export function CaseStudyDetail({
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             View Source
           </a>
+          {baseRepo && (
+            <a
+              href={baseRepo.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
+            >
+              <GitFork className="h-3.5 w-3.5" aria-hidden />
+              {baseRepo.label}
+            </a>
+          )}
         </div>
       </div>
 
@@ -73,7 +87,7 @@ export function CaseStudyDetail({
       <div className="aspect-[800/380] w-full overflow-hidden rounded-2xl">{heroIllustration}</div>
 
       {/* Meta bar */}
-      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Role</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.role}</p>
@@ -85,6 +99,10 @@ export function CaseStudyDetail({
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Stack</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.stack}</p>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Status</p>
+          <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.status}</p>
         </div>
       </div>
 
@@ -147,6 +165,13 @@ export function CaseStudyDetail({
             </div>
           ))}
         </div>
+        <Link
+          href="/approach/"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+        >
+          See how this compares to the other project&apos;s delivery model
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+        </Link>
       </div>
 
       {/* Outcomes */}

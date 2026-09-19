@@ -47,6 +47,7 @@ export default function JobSearchAutomationPage() {
               title: openCam.shortTitle,
               description: openCam.subtitle,
             }}
+            baseRepo={{ url: fork.baseRepoUrl, label: "Forked from MadsLorentzen/ai-job-search" }}
           />
         </div>
       </main>

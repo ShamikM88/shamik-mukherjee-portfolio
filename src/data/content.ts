@@ -127,11 +127,11 @@ export const openCam = {
     "Engineered a dual-agent LLM pipeline with deterministic policy gating, targeting a cut in CAM drafting time from a business day to 15–30 minutes.",
   repoUrl: "https://github.com/ShamikM88/open-cam-framework",
   badges: ["Multi-Agent AI", "Credit Risk"],
-  status: "Early-stage, actively developed · validated with one analyst to date",
   meta: {
     role: "Product Owner — strategy, prompt architecture, policy rules; directed Claude Code for all implementation",
     timeline: "Sep 2026 · ongoing",
     stack: "Python · Claude Code · Anthropic API · Deterministic policy engine",
+    status: "Early-stage · validated with one analyst to date",
   },
   problem: {
     heading: "What was broken",
@@ -176,6 +176,10 @@ export const openCam = {
         title: "Cut scope mid-flight instead of half-implementing four asks",
         body: "One issue bundled four separable asks together. Rather than push all four through unreviewed, I shipped just the well-bounded piece and explicitly disclosed the other three as deferred, not quietly dropped.",
       },
+      {
+        title: "Reopened an issue I'd already closed",
+        body: "I'd marked Issue #31 resolved once Maker/Checker could run on different models in code. A later review caught that the setting was never actually switched on in production — the audit wasn't independent. I reopened it and only re-closed once I'd verified it working end to end.",
+      },
     ],
   },
   outcomes: {
@@ -211,9 +215,10 @@ export const fork = {
     role: "Sole developer & end user — directed Claude Code for all implementation",
     timeline: "Aug 2026 · ongoing",
     stack: "JavaScript (Bun) · Claude Code · Gmail API",
+    status: "Active — used daily for my own job search",
   },
   problem: {
-    heading: "What was broken",
+    heading: "What was missing",
     paragraphs: [
       "The framework's default output was a static snapshot and application outcomes lived entirely in employer emails I had to notice, reread, and hand-transcribe — with dozens of applications in flight, status updates silently lagged reality.",
       "Portal-level dedup only matched on exact URL or job ID, which missed an employer relisting an unfilled role under a brand-new ID. That wasn't hypothetical: a role I'd already been rejected from was scraped three times under three different LinkedIn IDs, and the surviving copy nearly went out again in a fresh application batch before I caught it.",
