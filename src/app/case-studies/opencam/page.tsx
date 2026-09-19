@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
-import { OpenCamBanner, OpenCamThumbnail, OpenCamSpreadingVisual } from "@/components/project-thumbnails";
+import { OpenCamBanner } from "@/components/project-thumbnails";
 import { openCam, fork } from "@/data/content";
 import { openCamMarkdown } from "@/lib/case-study-markdown";
 
@@ -41,7 +42,24 @@ export default function OpenCamPage() {
             outcomes={openCam.outcomes}
             visuals={openCam.visuals}
             heroIllustration={<OpenCamBanner />}
-            visualIllustrations={[<OpenCamThumbnail key="a" />, <OpenCamSpreadingVisual key="b" />]}
+            visualIllustrations={[
+              <Image
+                key="a"
+                src="/build-shots/opencam-prs.png"
+                alt="Merged pull requests on the open-cam-framework GitHub repository"
+                width={1280}
+                height={820}
+                className="h-full w-full object-cover object-top"
+              />,
+              <Image
+                key="b"
+                src="/build-shots/opencam-issues.png"
+                alt="Closed GitHub issues from the 19-issue gap-analysis audit"
+                width={1280}
+                height={820}
+                className="h-full w-full object-cover object-top"
+              />,
+            ]}
             related={{
               href: "/case-studies/job-search-automation/",
               title: fork.shortTitle,

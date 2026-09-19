@@ -197,8 +197,8 @@ export const openCam = {
   visuals: {
     heading: "Inside the build",
     items: [
-      { caption: "Maker drafts with cited evidence; Checker independently re-verifies every claim." },
-      { caption: "Ratios and covenant tests computed deterministically in code, then narrated by the model." },
+      { caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main." },
+      { caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list." },
     ],
   },
 };
@@ -277,8 +277,8 @@ export const fork = {
   visuals: {
     heading: "Inside the build",
     items: [
-      { caption: "Applied / Rejected / Interview, filtered live from the full tracked pipeline." },
-      { caption: "Inbox signal → proposed update → tracker — never written without review." },
+      { caption: "48 fork-specific commits on GitHub, diverged from the upstream MadsLorentzen/ai-job-search base." },
+      { caption: "The live dashboard, filtered to postings not yet applied to — fit scoring, gates, and dedup status per row." },
     ],
   },
 };
