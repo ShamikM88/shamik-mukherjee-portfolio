@@ -311,6 +311,9 @@ export const openCam = {
       { caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main." },
       { caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list." },
       { caption: "Feature requests tracked as GitHub enhancement issues — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess." },
+      { caption: "The financial spreading output — every ratio traceable to a raw line item, DSCR shown per year rather than as a single number. Synthetic demo data, generated for this writeup." },
+      { caption: "The CAM's Facility Conditions section, with a grounding note disclosing exactly which inputs came from the relationship team, unverified against a live feed. Synthetic demo data." },
+      { caption: "The Collateral section's LGD/coverage workout — average vs. max LGD, cover %, all computed from the same disclosed inputs. Synthetic demo data." },
     ],
   },
 };

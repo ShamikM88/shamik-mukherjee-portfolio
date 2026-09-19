@@ -81,6 +81,30 @@ export default function OpenCamPage() {
                 height={820}
                 className="h-full w-full object-cover object-top"
               />,
+              <Image
+                key="d"
+                src="/build-shots/opencam-spreading-demo.png"
+                alt="Financial spreading output showing revenue, EBITDA, and DSCR computed per year from raw line items — synthetic demo data"
+                width={953}
+                height={1020}
+                className="h-full w-full object-cover object-top"
+              />,
+              <Image
+                key="e"
+                src="/build-shots/opencam-cam-facility-demo.png"
+                alt="CAM Facility Conditions section with a grounding note disclosing unverified inputs — synthetic demo data"
+                width={936}
+                height={752}
+                className="h-full w-full object-cover object-top"
+              />,
+              <Image
+                key="f"
+                src="/build-shots/opencam-cam-collateral-demo.png"
+                alt="CAM Collateral section showing LGD and coverage calculations — synthetic demo data"
+                width={932}
+                height={747}
+                className="h-full w-full object-cover object-top"
+              />,
             ]}
             related={{
               href: "/case-studies/job-search-automation/",
