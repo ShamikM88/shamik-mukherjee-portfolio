@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
 import { Badge, CopyMarkdownButton } from "@/components/ui";
+import { DecisionsCarousel } from "@/components/decisions-carousel";
 
 type Meta = { role: string; timeline: string; stack: string; status: string };
 type TextBlock = { heading: string; paragraphs: string[] };
@@ -153,19 +154,8 @@ export function CaseStudyDetail({
         <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
           {decisions.heading}
         </h2>
-        <div className="-mx-6 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-3 sm:mx-0 sm:px-0">
-          {decisions.items.map((item) => (
-            <div
-              key={item.title}
-              className="flex w-[22rem] flex-shrink-0 snap-start flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
-            >
-              <h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-display text-sm font-semibold text-ink-900 dark:text-white">
-                {item.title}
-              </h3>
-              <div className="h-px w-full bg-ink-100 dark:bg-white/10" />
-              <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.body}</p>
-            </div>
-          ))}
+        <div className="mt-6">
+          <DecisionsCarousel items={decisions.items} />
         </div>
         <Link
           href="/approach/"
