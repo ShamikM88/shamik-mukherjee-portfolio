@@ -199,6 +199,7 @@ export const openCam = {
     items: [
       { caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main." },
       { caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list." },
+      { caption: "Feature requests tracked as GitHub enhancement issues — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess." },
     ],
   },
 };

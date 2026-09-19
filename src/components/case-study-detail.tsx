@@ -4,6 +4,7 @@ import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
 import { Badge, CopyMarkdownButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
+import { VisualsCarousel } from "@/components/visuals-carousel";
 
 type Meta = { role: string; timeline: string; stack: string; status: string };
 type TextBlock = { heading: string; paragraphs: string[] };
@@ -43,7 +44,7 @@ export function CaseStudyDetail({
   outcomes: OutcomeBlock;
   visuals: VisualBlock;
   heroIllustration: ReactNode;
-  visualIllustrations: [ReactNode, ReactNode];
+  visualIllustrations: ReactNode[];
   related: { href: string; title: string; description: string };
   /** Extra header link(s) after View Source / baseRepo, e.g. a live PR-count badge. */
   headerExtra?: ReactNode;
@@ -214,13 +215,10 @@ export function CaseStudyDetail({
         <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
           {visuals.heading}
         </h2>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {visuals.items.map((item, i) => (
-            <div key={item.caption} className="flex flex-col gap-2">
-              <div className="aspect-[5/3] w-full overflow-hidden rounded-2xl">{visualIllustrations[i]}</div>
-              <p className="text-sm text-ink-500 dark:text-ink-400">{item.caption}</p>
-            </div>
-          ))}
+        <div className="mt-6">
+          <VisualsCarousel
+            items={visuals.items.map((item, i) => ({ caption: item.caption, illustration: visualIllustrations[i] }))}
+          />
         </div>
       </div>
 

@@ -60,6 +60,14 @@ export default function OpenCamPage() {
                 height={820}
                 className="h-full w-full object-cover object-top"
               />,
+              <Image
+                key="c"
+                src="/build-shots/opencam-enhancements.png"
+                alt="GitHub issues tracked with the enhancement label — feature requests from real usage"
+                width={1280}
+                height={820}
+                className="h-full w-full object-cover object-top"
+              />,
             ]}
             related={{
               href: "/case-studies/job-search-automation/",
