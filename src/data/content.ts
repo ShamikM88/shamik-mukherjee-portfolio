@@ -174,6 +174,7 @@ export const openCam = {
           "Forward-year projections & stress testing",
           "Conditions Subsequent tracking, Net Debt/EBITDA & FCF ratios",
           "Source-citation hyperlinking",
+          "AML/sanctions/PEP screening & ESG scoring",
         ],
       },
       {
@@ -182,7 +183,6 @@ export const openCam = {
         tone: "muted" as const,
         items: [
           "Multi-currency/FX support — today's desk is GBP-only",
-          "AML/sanctions/PEP screening & ESG scoring",
           "Full covenant step-down/cure-period modeling — scoped down to just Conditions Subsequent tracking",
         ],
       },

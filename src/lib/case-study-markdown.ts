@@ -23,8 +23,8 @@ I built OpenCAM Framework to automate how Credit Assessment Memorandums (CAMs) g
 
 - **Must have** (MVP, PRs #1–20): CAM template system, spreading engine with formula validation, .docx export, the Maker-Checker loop itself, deterministic policy engine, critical correctness/security fixes.
 - **Should have** (fast-follow, PR #24): wiring policy checks into the primary slash-command interface, not just the headless script.
-- **Could have** (post-MVP depth): forward-year projections & stress testing, Conditions Subsequent tracking, source-citation hyperlinking.
-- **Won't have** (explicitly deferred, disclosed not hidden): multi-currency/FX support, AML/sanctions/PEP/ESG screening, full covenant step-down/cure-period modeling.
+- **Could have** (post-MVP depth): forward-year projections & stress testing, Conditions Subsequent tracking, source-citation hyperlinking, AML/sanctions/PEP/ESG screening.
+- **Won't have** (explicitly deferred, disclosed not hidden): multi-currency/FX support, full covenant step-down/cure-period modeling.
 
 ## 3. Feature Breakdown
 
