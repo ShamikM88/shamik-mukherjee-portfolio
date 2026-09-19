@@ -116,7 +116,7 @@ export const about = {
 
 export const statStrip = [
   { value: "1", label: "Multi-Agent AI Framework Built Solo", sublabel: "OpenCAM Framework" },
-  { value: "325+", label: "Automated Tests Written", sublabel: "OpenCAM Framework" },
+  { value: "338+", label: "Automated Tests Written", sublabel: "OpenCAM Framework" },
   { value: "150+", label: "Job Postings Processed & Auto-Deduped", sublabel: "Job-search automation" },
 ];
 
@@ -211,6 +211,11 @@ export const openCam = {
         title: "Confidentiality-by-Design",
         body: "Every artifact derived from a user's real business — calibration samples, templates, deal state, output — writes only to git-ignored paths, enforced as a build rule, not audited in after the fact.",
       },
+      {
+        letter: "E",
+        title: "Standalone Research Workflow (/research)",
+        body: "A separate command for an analyst who just needs the qualitative picture — company and sector research, Go/No-Go screening — without running the full CAM pipeline. It writes the same state.json keys the full pipeline would, so a deal that later needs a full CAM can continue straight in without redoing anything, and exports its own standalone Research Brief through a script kept deliberately separate from the full CAM exporter.",
+      },
     ],
   },
   strategy: {
@@ -286,7 +291,7 @@ export const openCam = {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "325+", label: "passing tests (up from 188 at MVP)" },
+      { value: "338+", label: "passing tests (up from 188 at MVP)" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
     ],
     bullets: [
@@ -392,7 +397,7 @@ export const governanceComparison = {
   rows: [
     ["Commit Policy", "100% PR-based, zero direct-to-main", "Direct commits to master"],
     ["Issue Tracking", "Formal GitHub Issues (19-issue gap audit)", "None — solo, no backlog overhead"],
-    ["QA Model", "325 automated tests, regression-gated", "Manual verification against live runs"],
+    ["QA Model", "338 automated tests, regression-gated", "Manual verification against live runs"],
     ["Target Audience", "Other institutions (designed to be forked)", "Personal use only (N=1)"],
     ["Risk Profile", "Production-adjacent, third-party dependent", "Low-risk personal tooling, fast iteration"],
   ],

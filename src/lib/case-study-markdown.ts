@@ -36,6 +36,8 @@ I built OpenCAM Framework to automate how Credit Assessment Memorandums (CAMs) g
 
 **D. Confidentiality-by-Design** — every artifact derived from a user's real business writes only to git-ignored paths, enforced as a rule before any new feature is built.
 
+**E. Standalone Research Workflow (\`/research\`)** — a separate command for company/sector research and Go/No-Go screening without running the full CAM pipeline, writing the same state that lets a deal continue into the full pipeline later without redoing work.
+
 ## 4. Execution & Governance
 
 Every change went through a pull request — 35 merged PRs, zero commits pushed straight to main — and every gap, bug, or feedback item got tracked as a GitHub issue before it was prioritized. Built solo, directing Claude Code to do the implementation: owned the product strategy, the prompt design for both agents, the policy-engine rules, and reviewed and tested every change before merge.
@@ -44,7 +46,7 @@ Hardened via a dedicated 19-issue gap-analysis audit (#21–#39), sequenced and 
 
 ## 5. Outcomes & Validation
 
-- Went from a standing start to a fully working Maker-Checker CAM pipeline — 188 passing tests — in one day. Hardened into a gap-audited system covered by 325 tests.
+- Went from a standing start to a fully working Maker-Checker CAM pipeline — 188 passing tests — in one day. Hardened into a gap-audited system covered by 338 tests.
 - Directly caught and fixed a scenario where the system's own logic would have produced a materially wrong credit decision — a healthy, debt-free borrower failing a covenant.
 - Shipped both live-feedback-driven items the same sprint they surfaced.
 
