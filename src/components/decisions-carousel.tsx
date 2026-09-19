@@ -69,9 +69,9 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
           <div
             key={item.title}
             data-decision-card
-            className="flex w-[calc(50%-0.5rem)] flex-shrink-0 flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
+            className="flex w-full flex-shrink-0 flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07] sm:w-[calc(50%-0.5rem)]"
           >
-            <h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-display text-sm font-semibold text-ink-900 dark:text-white">
+            <h3 className="font-display text-sm font-semibold text-ink-900 dark:text-white sm:overflow-hidden sm:text-ellipsis sm:whitespace-nowrap">
               {item.title}
             </h3>
             <div className="h-px w-full bg-ink-100 dark:bg-white/10" />
