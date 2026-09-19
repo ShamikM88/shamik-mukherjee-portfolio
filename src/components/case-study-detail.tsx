@@ -5,13 +5,20 @@ import { identity } from "@/data/content";
 import { Badge, CopyMarkdownButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
 import { VisualsCarousel } from "@/components/visuals-carousel";
+import { ScopeLanes } from "@/components/scope-lanes";
 
 type Meta = { role: string; timeline: string; stack: string; status: string };
-type TextBlock = { heading: string; paragraphs: string[] };
+type TextBlock = { heading: string; paragraphs: string[]; frictionBullets?: string[] };
 type StepBlock = { heading: string; steps: { title: string; body: string }[] };
 type ItemBlock = { heading: string; items: { title: string; body: string }[] };
 type OutcomeBlock = { heading: string; stats: { value: string; label: string }[]; bullets: string[] };
 type VisualBlock = { heading: string; items: { caption: string }[] };
+type ScopeBlock = {
+  heading: string;
+  lanes: { label: string; sublabel: string; tone: "brand-strong" | "brand-muted" | "ember" | "muted"; items: string[] }[];
+};
+type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
+type StrategyBlock = { heading: string; intro: string; cards: { title: string; body: string }[] };
 
 export function CaseStudyDetail({
   title,
@@ -31,6 +38,9 @@ export function CaseStudyDetail({
   baseRepo,
   headerExtra,
   outcomeStatOverrides,
+  scope,
+  features,
+  strategy,
 }: {
   title: string;
   badges: string[];
@@ -52,6 +62,12 @@ export function CaseStudyDetail({
   outcomeStatOverrides?: Record<number, ReactNode>;
   /** Only set for projects built on someone else's open-source base. */
   baseRepo?: { url: string; label: string };
+  /** MoSCoW scope breakdown — optional, not every case study has this depth of source material. */
+  scope?: ScopeBlock;
+  /** Structured feature/product-requirements list — optional. */
+  features?: FeatureBlock;
+  /** Validation & strategic-context cards (buy-vs-build, economics, adoption) — optional. */
+  strategy?: StrategyBlock;
 }) {
   return (
     <div className="flex flex-col gap-16">
@@ -132,7 +148,82 @@ export function CaseStudyDetail({
             </p>
           ))}
         </div>
+        {problem.frictionBullets && (
+          <ul className="mt-4 flex max-w-2xl flex-col gap-2.5">
+            {problem.frictionBullets.map((b) => (
+              <li key={b} className="flex gap-2.5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-brand-500" aria-hidden />
+                {b}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+
+      {/* Scope & Prioritization */}
+      {scope && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Scope</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {scope.heading}
+          </h2>
+          <div className="mt-6">
+            <ScopeLanes lanes={scope.lanes} />
+          </div>
+        </div>
+      )}
+
+      {/* Features */}
+      {features && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Product
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {features.heading}
+          </h2>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {features.items.map((f) => (
+              <div
+                key={f.letter}
+                className="flex gap-4 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+              >
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-100 font-display text-sm font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
+                  {f.letter}
+                </span>
+                <div>
+                  <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">{f.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Validation & Strategic Context */}
+      {strategy && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Strategy
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {strategy.heading}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">{strategy.intro}</p>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {strategy.cards.map((c) => (
+              <div
+                key={c.title}
+                className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+              >
+                <h3 className="font-display text-sm font-semibold text-ink-900 dark:text-white">{c.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Process */}
       <div>

@@ -81,7 +81,7 @@ export function VisualsCarousel({
             className="flex w-full flex-shrink-0 flex-col gap-2 rounded-2xl p-1 transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover sm:w-[calc(50%-0.5rem)]"
           >
             <div className="aspect-[5/3] w-full overflow-hidden rounded-2xl">{item.illustration}</div>
-            <p className="text-sm text-ink-500 dark:text-ink-400">{item.caption}</p>
+            <p className="text-xs text-ink-500 dark:text-ink-400">{item.caption}</p>
           </div>
         ))}
       </div>

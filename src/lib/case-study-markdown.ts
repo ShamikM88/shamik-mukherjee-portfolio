@@ -19,7 +19,14 @@ I built OpenCAM Framework to automate how Credit Assessment Memorandums (CAMs) g
 
 *Everything above is validated with one analyst so far.*
 
-## 2. Feature Breakdown
+## 2. Scope & Prioritization (MoSCoW)
+
+- **Must have** (MVP, PRs #1–20): CAM template system, spreading engine with formula validation, .docx export, the Maker-Checker loop itself, deterministic policy engine, critical correctness/security fixes.
+- **Should have** (fast-follow, PR #24): wiring policy checks into the primary slash-command interface, not just the headless script.
+- **Could have** (post-MVP depth): forward-year projections & stress testing, Conditions Subsequent tracking, source-citation hyperlinking.
+- **Won't have** (explicitly deferred, disclosed not hidden): multi-currency/FX support, AML/sanctions/PEP/ESG screening, full covenant step-down/cure-period modeling.
+
+## 3. Feature Breakdown
 
 **A. Maker-Checker Governance Loop** — two genuinely independent agents (Underwriter drafts, Risk Reviewer audits), no shared reasoning context, power to only downgrade a verdict, never upgrade one. Maker and Checker can run on different underlying models.
 
@@ -29,19 +36,25 @@ I built OpenCAM Framework to automate how Credit Assessment Memorandums (CAMs) g
 
 **D. Confidentiality-by-Design** — every artifact derived from a user's real business writes only to git-ignored paths, enforced as a rule before any new feature is built.
 
-## 3. Execution & Governance
+## 4. Execution & Governance
 
 Every change went through a pull request — 35 merged PRs, zero commits pushed straight to main — and every gap, bug, or feedback item got tracked as a GitHub issue before it was prioritized. Built solo, directing Claude Code to do the implementation: owned the product strategy, the prompt design for both agents, the policy-engine rules, and reviewed and tested every change before merge.
 
 Hardened via a dedicated 19-issue gap-analysis audit (#21–#39), sequenced and merged in risk-weighted severity order — critical correctness/security bugs first, then lower-severity display-only bugs, then feature-completeness work.
 
-## 4. Outcomes & Validation
+## 5. Outcomes & Validation
 
 - Went from a standing start to a fully working Maker-Checker CAM pipeline — 188 passing tests — in one day. Hardened into a gap-audited system covered by 325 tests.
 - Directly caught and fixed a scenario where the system's own logic would have produced a materially wrong credit decision — a healthy, debt-free borrower failing a covenant.
 - Shipped both live-feedback-driven items the same sprint they surfaced.
 
 This framework is early-stage, built and validated with one target user. The figures above are directional estimates from hands-on use, not formal multi-tenant pilot data.
+
+## 6. Strategic Context
+
+- **Buy vs. build:** vendor platforms (e.g. nCino, Moody's CreditLens) don't give an inspectable, code-level audit trail of how a specific AI draft was checked — this closes that gap while keeping deal data off a third-party cloud.
+- **Unit economics:** no separate metered API bill per step beyond existing Claude Code access, against multiple hours of analyst time saved per deal.
+- **Enterprise adoption:** runs locally, writes only git-ignored files — usable without sending confidential figures to a third party or needing IT to approve a new vendor integration.
 `;
 
 export const jobSearchForkMarkdown = `# AI Job Search Fork — Feature Spotlight / Micro-Case Study

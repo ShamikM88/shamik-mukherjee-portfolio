@@ -38,6 +38,9 @@ export default function OpenCamPage() {
             markdown={openCamMarkdown}
             meta={openCam.meta}
             problem={openCam.problem}
+            scope={openCam.scope}
+            features={openCam.features}
+            strategy={openCam.strategy}
             process={openCam.process}
             decisions={openCam.decisions}
             outcomes={openCam.outcomes}

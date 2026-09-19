@@ -136,8 +136,100 @@ export const openCam = {
   problem: {
     heading: "What was broken",
     paragraphs: [
-      "I watched my wife, a corporate credit analyst, prepare Credit Assessment Memorandums every day against hard credit-committee deadlines — manual financial spreading, then drafting a narrative under time pressure with real reputational risk if a number was wrong.",
+      "I watched my wife, a corporate credit analyst, prepare Credit Assessment Memorandums every day against hard credit-committee deadlines — manual financial spreading, then drafting a narrative under time pressure with real reputational risk if a number was wrong. She's running several deals at once, and borrower financials arrive as PDFs or spreadsheets from relationship directors, often before the accounts are even filed with Companies House.",
       "Early attempts at using an LLM to draft the memo directly were faster but untrustworthy: grounding was only ever a \"cite your source\" prompt instruction, not an enforced rule, so an unsupported claim could reach committee undetected — and a codebase audit later caught a debt-free company's DSCR being silently computed as 0 instead of undefined, which would have wrongly flagged a healthy borrower as a covenant breach.",
+    ],
+    frictionBullets: [
+      "One rigid spreading schema couldn't handle real deal variety — a borrower embedding Depreciation inside Cost of Goods Sold, a real house convention, broke the single schema the MVP shipped with.",
+      "The pipeline assumed every deal wanted the full automation stack — there was no way to ask for just the qualitative research while spreading a non-standard deal by hand.",
+    ],
+  },
+  scope: {
+    heading: "What I scoped in, and what I explicitly didn't",
+    lanes: [
+      {
+        label: "Must have",
+        sublabel: "MVP — shipped in PRs #1–20",
+        tone: "brand-strong" as const,
+        items: [
+          "CAM template system",
+          "Spreading engine with formula validation",
+          ".docx export",
+          "The Maker-Checker governance loop itself",
+          "Deterministic policy engine layered on LLM narrative",
+          "Critical correctness/security fixes before wider use",
+        ],
+      },
+      {
+        label: "Should have",
+        sublabel: "Fast-follow — shipped in PR #24",
+        tone: "brand-muted" as const,
+        items: ["Wiring policy checks into the primary slash-command interface, not just the headless script"],
+      },
+      {
+        label: "Could have",
+        sublabel: "Post-MVP depth",
+        tone: "ember" as const,
+        items: [
+          "Forward-year projections & stress testing",
+          "Conditions Subsequent tracking, Net Debt/EBITDA & FCF ratios",
+          "Source-citation hyperlinking",
+        ],
+      },
+      {
+        label: "Won't have",
+        sublabel: "Explicitly deferred, disclosed not hidden",
+        tone: "muted" as const,
+        items: [
+          "Multi-currency/FX support — today's desk is GBP-only",
+          "AML/sanctions/PEP screening & ESG scoring",
+          "Full covenant step-down/cure-period modeling — scoped down to just Conditions Subsequent tracking",
+        ],
+      },
+    ],
+  },
+  features: {
+    heading: "What it does",
+    items: [
+      {
+        letter: "A",
+        title: "Maker-Checker Governance Loop",
+        body: "Two genuinely independent agents — an Underwriter drafts, a Risk Reviewer audits — with no shared reasoning context, and the power to only downgrade a verdict, never upgrade one. Maker and Checker can run on different underlying models, so drafting and audit don't share the same blind spots.",
+      },
+      {
+        letter: "B",
+        title: "Deterministic Policy & Compliance Engine",
+        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed from raw financials — never silently defaulted. Every reported figure is checked against ground-truth financials within a 0.5% tolerance before the Checker even sees it.",
+      },
+      {
+        letter: "C",
+        title: "Financial Spreading & Auditable Excel Export",
+        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference.",
+      },
+      {
+        letter: "D",
+        title: "Confidentiality-by-Design",
+        body: "Every artifact derived from a user's real business — calibration samples, templates, deal state, output — writes only to git-ignored paths, enforced as a build rule, not audited in after the fact.",
+      },
+    ],
+  },
+  strategy: {
+    heading: "Validation & strategic context",
+    intro:
+      "This framework is early-stage, built and validated with one target user — my wife, a corporate credit analyst. I'd rather show the reasoning openly than present these as more settled than they are.",
+    cards: [
+      {
+        title: "Buy vs. build",
+        body: "Platforms like nCino or Moody's CreditLens run on vendor-defined schemas and don't give an inspectable, code-level audit trail of how a specific AI draft was checked — that's the exact gap this closes, while keeping confidential deal data off a third-party cloud entirely.",
+      },
+      {
+        title: "Unit economics",
+        body: "Slash commands shell out to the same local policy-check modules as the headless script — no separate metered API bill per step beyond the analyst's existing Claude Code access, against multiple hours of a qualified analyst's time saved per deal.",
+      },
+      {
+        title: "Enterprise adoption",
+        body: "Because it runs locally and writes nothing but git-ignored files, an analyst or a bank could use it without sending a single confidential figure to a third-party service, and without IT needing to approve a new vendor integration into core banking systems.",
+      },
     ],
   },
   process: {
@@ -179,6 +271,14 @@ export const openCam = {
       {
         title: "Reopened an issue I'd already closed",
         body: "I'd marked Issue #31 resolved once Maker/Checker could run on different models in code. A later review caught that the setting was never actually switched on in production — the audit wasn't independent. I reopened it and only re-closed once I'd verified it working end to end.",
+      },
+      {
+        title: "Fixed what tests couldn't catch, same day",
+        body: "My first live production run leaked markdown formatting artifacts and raw internal JSON into the exported Word document. I fixed both within the day (PR #40) and codified durable prompt guidance alongside the fix, so the same class of gap couldn't recur.",
+      },
+      {
+        title: "Severity order beats arrival order",
+        body: "Working the 19-issue gap-analysis backlog, I shipped the highest-criticality correctness and security fixes first (PR #41: date-resume logic, a race condition, a hardcoded model), then lower-severity display bugs (PR #42), then feature work — any fix that could change a credit decision landed before anything cosmetic did.",
       },
     ],
   },
