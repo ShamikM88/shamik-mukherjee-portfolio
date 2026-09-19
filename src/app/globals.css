@@ -22,10 +22,15 @@
   .text-balance {
     text-wrap: balance;
   }
-  .bg-grid {
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-sky-400 via-blue-500 to-purple-500 bg-clip-text text-transparent;
+  }
+  .bg-gradient-brand {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500;
+  }
+  .bg-glow {
     background-image:
-      linear-gradient(to right, rgb(20 156 114 / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(20 156 114 / 0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
+      radial-gradient(ellipse 900px 500px at 85% 0%, rgb(59 130 246 / 0.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 15% 30%, rgb(168 85 247 / 0.12), transparent 60%);
   }
 }

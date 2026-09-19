@@ -1,0 +1,93 @@
+import { ArrowRight } from "lucide-react";
+import { openCam, fork } from "@/data/content";
+import { OpenCamThumbnail, ForkThumbnail } from "@/components/project-thumbnails";
+
+const cards = [
+  {
+    id: "opencam",
+    thumbnail: <OpenCamThumbnail />,
+    tags: [openCam.badges[0], "Fintech"],
+    title: openCam.title,
+    description:
+      "Solo-built a Maker-Checker multi-agent system that drafts and audits Credit Assessment Memorandums, gated by a deterministic policy engine.",
+    statValue: "325+",
+    statLabel: "tests written",
+  },
+  {
+    id: "fork",
+    thumbnail: <ForkThumbnail />,
+    tags: [fork.badges[0], "Automation"],
+    title: fork.title,
+    description:
+      "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, and a live application dashboard.",
+    statValue: "150+",
+    statLabel: "postings auto-deduped",
+  },
+];
+
+export function CaseStudiesTeaser() {
+  return (
+    <section id="work" className="border-t border-ink-200 dark:border-white/10">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Selected work
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-ink-900 dark:text-white sm:text-4xl">
+              Case studies
+            </h2>
+          </div>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {cards.map((card) => (
+            <a
+              key={card.id}
+              href={`#${card.id}`}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/25"
+            >
+              <div className="aspect-[5/3] w-full overflow-hidden">{card.thumbnail}</div>
+
+              <div className="flex flex-1 flex-col gap-3 p-6">
+                <div className="flex flex-wrap gap-2">
+                  {card.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-ink-100 px-2.5 py-1 text-xs font-medium text-ink-600 dark:bg-white/10 dark:text-ink-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="font-display text-xl font-semibold text-ink-900 dark:text-white">
+                  {card.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                  {card.description}
+                </p>
+
+                <div className="mt-auto flex items-center justify-between border-t border-ink-100 pt-4 dark:border-white/10">
+                  <div>
+                    <span className="font-display text-lg font-bold text-brand-600 dark:text-brand-400">
+                      {card.statValue}
+                    </span>
+                    <span className="ml-1.5 text-xs text-ink-500 dark:text-ink-400">
+                      {card.statLabel}
+                    </span>
+                  </div>
+                  <span className="flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors group-hover:text-brand-600 dark:text-ink-400 dark:group-hover:text-brand-400">
+                    Read case study
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

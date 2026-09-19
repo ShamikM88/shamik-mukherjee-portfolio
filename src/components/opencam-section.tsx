@@ -21,7 +21,7 @@ export function OpenCamSection() {
               href={openCam.repoUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-brand-700 dark:hover:text-brand-400"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
             >
               <ExternalLink className="h-3.5 w-3.5" aria-hidden />
               View Source
@@ -39,7 +39,7 @@ export function OpenCamSection() {
       </div>
 
       {/* Scorecard — unboxed, stat-strip style for consistency with the hero */}
-      <div className="grid grid-cols-1 gap-8 border-y border-ink-200 py-10 dark:border-ink-800 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 border-y border-ink-200 py-10 dark:border-white/10 sm:grid-cols-3">
         {openCam.scorecard.map((m) => (
           <div key={m.label}>
             <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">

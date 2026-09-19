@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui";
 
 export function AboutSection() {
   return (
-    <section id="about" className="border-t border-ink-200 dark:border-ink-800">
+    <section id="about" className="border-t border-ink-200 dark:border-white/10">
       <div className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-28">
         <h2 className="font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
           About
@@ -30,7 +30,7 @@ export function AboutSection() {
           <h3 className="mb-10 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
             Career Timeline
           </h3>
-          <ol className="relative flex flex-col gap-10 border-l-2 border-ink-200 pl-7 dark:border-ink-800">
+          <ol className="relative flex flex-col gap-10 border-l-2 border-ink-200 pl-7 dark:border-white/10">
             {about.timeline.map((role) => (
               <li key={`${role.title}-${role.dates}`} className="relative">
                 <span
