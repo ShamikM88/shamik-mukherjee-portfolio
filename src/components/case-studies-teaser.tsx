@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { openCam, fork } from "@/data/content";
 import { OpenCamThumbnail, ForkThumbnail } from "@/components/project-thumbnails";
@@ -5,6 +6,7 @@ import { OpenCamThumbnail, ForkThumbnail } from "@/components/project-thumbnails
 const cards = [
   {
     id: "opencam",
+    href: "/case-studies/opencam/",
     thumbnail: <OpenCamThumbnail />,
     tags: [openCam.badges[0], "Fintech"],
     title: openCam.title,
@@ -15,6 +17,7 @@ const cards = [
   },
   {
     id: "fork",
+    href: "/case-studies/job-search-automation/",
     thumbnail: <ForkThumbnail />,
     tags: [fork.badges[0], "Automation"],
     title: fork.title,
@@ -42,9 +45,9 @@ export function CaseStudiesTeaser() {
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {cards.map((card) => (
-            <a
+            <Link
               key={card.id}
-              href={`#${card.id}`}
+              href={card.href}
               className="group flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/25"
             >
               <div className="aspect-[5/3] w-full overflow-hidden">{card.thumbnail}</div>
@@ -84,7 +87,7 @@ export function CaseStudiesTeaser() {
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

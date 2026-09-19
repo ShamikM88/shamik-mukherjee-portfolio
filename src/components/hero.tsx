@@ -32,7 +32,7 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
               <a
-                href="#about"
+                href="/about/"
                 className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
               >
                 About me
