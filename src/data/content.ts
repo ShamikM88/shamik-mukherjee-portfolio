@@ -397,7 +397,7 @@ export const fork = {
   title: "AI Job Search — Pipeline & Status Automation",
   shortTitle: "AI Job Search Automation",
   subtitle:
-    "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, and a live application dashboard — automation layered on a forked base, not authored from scratch.",
+    "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, a live application dashboard, and a shared posting-fetch cache — automation layered on a forked base, not authored from scratch.",
   baseRepoUrl: "https://github.com/MadsLorentzen/ai-job-search",
   forkRepoUrl: "https://github.com/ShamikM88/ai-job-search",
   badges: ["Agentic AI", "Personal Tooling"],
