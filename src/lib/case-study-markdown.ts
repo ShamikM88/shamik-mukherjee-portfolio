@@ -147,7 +147,7 @@ Every checkpoint in this journey — \`state.json\`, the exported \`.docx\`/\`.x
 
 **What I've measured so far:**
 
-- I went from a standing start to a fully working Maker-Checker CAM pipeline — 188 passing tests — in one day. From there I hardened it into a gap-audited system covered by 339 tests, with deterministic policy enforcement running identically on both interfaces.
+- I went from a standing start to a fully working Maker-Checker CAM pipeline — 188 passing tests — in one day. From there I hardened it into a gap-audited system covered by 330+ tests, with deterministic policy enforcement running identically on both interfaces.
 - I directly caught and fixed a scenario where the system's own logic would have produced a materially wrong credit decision — a healthy, debt-free borrower failing a covenant. That's concrete evidence to me that code-enforced verification, not model judgment alone, is the load-bearing safety mechanism here.
 - Shipped both live-feedback-driven items the same sprint they surfaced — analyst-supplied pre-spread financials (#55, PR #63) and deal-intake routing/copilot mode (#56, PR #61) — closing the loop from real user friction to a shipped fix faster than the original gap-analysis backlog did.
 

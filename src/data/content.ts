@@ -22,14 +22,14 @@ export const identity = {
   // Personal-brand tagline, not a sourced fact - an honest characterization of the
   // actual pattern across both case studies below (shipped, AI-directed delivery).
   taglineLead: "I ship products in digital payments —",
-  taglineHighlight: "and I direct AI to build them.",
+  taglineHighlight: "and off the clock, I direct AI to build production-grade systems solo.",
 };
 
 export const about = {
   // Short hero assertion + supporting subtext, rendered as two visual tiers instead
   // of one dense paragraph.
   headline: "13+ years connecting technology, business, and delivery.",
-  bio: "Product Owner in digital payments and an IIT Bombay MBA, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The two case studies on this site are that work.",
+  bio: "An IIT Bombay MBA and Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The two case studies on this site are that work.",
   heroStats: [
     { value: "13+", label: "Years of experience" },
     { value: "4", label: "Career chapters" },
@@ -286,7 +286,7 @@ export const openCam = {
       },
       {
         title: "Unit economics",
-        body: "Slash commands shell out to the same local policy-check modules as the headless script — no separate metered API bill per step beyond the analyst's existing Claude Code access, against multiple hours of a qualified analyst's time saved per deal.",
+        body: "Slash commands shell out to the same local policy-check modules as the headless script — no separate metered API bill per step beyond the analyst's existing Claude Code access, against a target of multiple hours of analyst time per deal if the 15–30 minute goal holds at scale.",
       },
       {
         title: "Enterprise adoption",
@@ -348,7 +348,7 @@ export const openCam = {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "339+", label: "passing tests (up from 188 at MVP)" },
+      { value: "330+", label: "passing tests (up from 188 at MVP)" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
     ],
     bullets: [
@@ -440,7 +440,7 @@ export const fork = {
     items: [
       {
         title: "Direct-to-master, not PR-per-change",
-        body: "Contrast with OpenCAM: that's a multi-user tool that has to be defensible to someone else. This is solo personal tooling — direct-to-master rapid feedback loops win when I'm the only stakeholder.",
+        body: "Contrast this with OpenCAM, a multi-user tool that has to be defensible to someone else. This is solo personal tooling — direct-to-master rapid feedback loops win when I'm the only stakeholder.",
       },
       {
         title: "Full history checked, not just this run",
