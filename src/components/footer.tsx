@@ -18,7 +18,7 @@ export function Footer({ showCta = true }: { showCta?: boolean }) {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
                 href={`mailto:${identity.email}`}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(99,102,241,0.5)] transition-transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
               >
                 <Mail className="h-4 w-4" aria-hidden />
                 {identity.email}

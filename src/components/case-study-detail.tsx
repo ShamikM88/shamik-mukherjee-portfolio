@@ -371,7 +371,7 @@ export function CaseStudyDetail({
 
         <a
           href={`mailto:${identity.email}`}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(99,102,241,0.5)] transition-transform hover:scale-[1.02]"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
         >
           <Mail className="h-4 w-4" aria-hidden />
           Talk about this work
