@@ -27,6 +27,13 @@ const config: Config = {
           500: "#e6832a",
           600: "#c8661c",
         },
+        // Cool secondary accent — used for the "Lightweight Delivery" mode on the
+        // Approach page, distinct from ember's other unrelated uses elsewhere.
+        blue: {
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+        },
         ink: {
           50: "#f6f7f8",
           100: "#eceef0",

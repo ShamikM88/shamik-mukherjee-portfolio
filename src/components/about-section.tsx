@@ -97,7 +97,7 @@ export function AboutSection() {
                 key={item.title}
                 className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]"
               >
-                <p className="font-display text-sm font-semibold text-ember-600 dark:text-ember-400">
+                <p className="font-display text-sm font-semibold text-brand-600 dark:text-brand-400">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h4 className="mt-2 font-display text-base font-semibold text-ink-900 dark:text-white">

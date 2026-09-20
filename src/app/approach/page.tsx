@@ -61,7 +61,7 @@ export default function ApproachPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p
-                          className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-ember-600 dark:text-ember-400"}`}
+                          className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-blue-600 dark:text-blue-400"}`}
                         >
                           Mode {mode.number} · {mode.label}
                         </p>
@@ -70,7 +70,7 @@ export default function ApproachPage() {
                         </h3>
                       </div>
                       <span
-                        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${isControlled ? "bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400" : "bg-ember-400/15 text-ember-600 dark:text-ember-400"}`}
+                        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${isControlled ? "bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400" : "bg-blue-400/15 text-blue-600 dark:text-blue-400"}`}
                       >
                         <Icon className="h-4 w-4" aria-hidden />
                       </span>
@@ -108,7 +108,7 @@ export default function ApproachPage() {
                   key={item.question}
                   className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
                 >
-                  <p className="font-display text-sm font-semibold text-ember-600 dark:text-ember-400">
+                  <p className="font-display text-sm font-semibold text-brand-600 dark:text-brand-400">
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="mt-2 font-display text-base font-semibold text-ink-900 dark:text-white">
@@ -135,10 +135,10 @@ export default function ApproachPage() {
                   <Link
                     key={item.title}
                     href={item.linkHref}
-                    className={`group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-ember-400"}`}
+                    className={`group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-blue-400"}`}
                   >
                     <p
-                      className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-ember-600 dark:text-ember-400"}`}
+                      className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-blue-600 dark:text-blue-400"}`}
                     >
                       {item.badge}
                     </p>
@@ -147,7 +147,7 @@ export default function ApproachPage() {
                     </h3>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.body}</p>
                     <span
-                      className={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${isControlled ? "text-brand-600 group-hover:text-brand-700 dark:text-brand-400 dark:group-hover:text-brand-300" : "text-ember-600 group-hover:text-ember-500 dark:text-ember-400"}`}
+                      className={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${isControlled ? "text-brand-600 group-hover:text-brand-700 dark:text-brand-400 dark:group-hover:text-brand-300" : "text-blue-600 group-hover:text-blue-500 dark:text-blue-400"}`}
                     >
                       {item.linkLabel}
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />

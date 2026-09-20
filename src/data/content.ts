@@ -100,7 +100,7 @@ export const about = {
       },
       {
         title: "Owning outcomes in delivery",
-        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping a feature to 275,000+ real users, and now directing Claude Code to build production-grade AI systems on the side. Different tools, same discipline: define what \"done\" means, and don't sign off until it's actually true.",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build production-grade AI systems on the side. Different tools, same discipline: define what \"done\" means, and don't sign off until it's actually true.",
       },
     ],
   },
@@ -483,12 +483,12 @@ export const fork = {
 
 export const governanceComparison = {
   heading: "Match the governance to the risk.",
-  subhead: "Deciding how much process a piece of work needs isn't new to me — I led QA governance on a bank's network upgrade and won over $100M in bid proposals before I ever built with AI. I apply the same judgment to the two systems I direct today.",
+  subhead: "This isn't a new muscle for me. Deciding how much process a proposal or a programme actually needs is something I did for years in pre-sales and delivery, long before I built anything with AI. I use that same judgment on the two systems I direct today.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
   framing:
-    "OpenCAM and my job-search tooling sit at opposite ends of that same call. OpenCAM sits upstream of real credit decisions at a real institution, so it runs with the same discipline I brought to that network upgrade — independent verification, a paper trail, nothing shipped without review. My own job-search tooling only has to answer to me, so it runs lighter: direct commits, no backlog, my own daily use as the test.",
+    "OpenCAM and my job-search tooling sit at opposite ends of that same call. OpenCAM is built to sit upstream of real credit decisions — even at this early, one-analyst-validated stage, it runs against a real analyst's real deal data, so it gets the same rigor I've applied to regulated delivery work for years: independent verification, a paper trail, nothing shipped without review. My own job-search tooling only has to answer to me, so it runs lighter: direct commits, no backlog, my own daily use as the test.",
   modes: [
     {
       number: "01",
@@ -522,7 +522,7 @@ export const governanceComparison = {
     items: [
       {
         question: "What happens if this is wrong?",
-        answer: "I map the blast radius first. OpenCAM sits upstream of real credit decisions at a real institution — a wrong answer has financial and reputational consequence. My job-search tooling's worst case is a missed application. Consequence sets the minimum control level.",
+        answer: "I map the blast radius first. OpenCAM is built to sit upstream of real credit decisions — a wrong answer there has financial and reputational consequence. My job-search tooling's worst case is a missed application. Consequence sets the minimum control level.",
       },
       {
         question: "Who needs to trust the result?",
