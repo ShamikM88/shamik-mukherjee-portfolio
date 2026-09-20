@@ -115,9 +115,9 @@ export const about = {
 };
 
 export const statStrip = [
-  { value: "1", label: "Multi-Agent AI Framework Built Solo", sublabel: "OpenCAM Framework" },
-  { value: "339+", label: "Automated Tests Written", sublabel: "OpenCAM Framework" },
-  { value: "150+", label: "Job Postings Processed & Auto-Deduped", sublabel: "Job-search automation" },
+  { value: "1", label: "Multi-Agent AI System Shipped 0→1, Solo", sublabel: "OpenCAM Framework" },
+  { value: "2", label: "Feedback-Driven Features Shipped the Same Week Requested", sublabel: "OpenCAM Framework" },
+  { value: "4", label: "Custom Features Shipped on a Forked Base", sublabel: "Job-search automation" },
 ];
 
 export const openCam = {

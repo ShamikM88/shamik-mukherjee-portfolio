@@ -11,8 +11,8 @@ const cards = [
     tags: openCam.badges,
     title: openCam.shortTitle,
     description: openCam.subtitle,
-    statValue: openCam.outcomes.stats[1].value,
-    statLabel: openCam.outcomes.stats[1].label,
+    statValue: openCam.outcomes.stats[0].value,
+    statLabel: openCam.outcomes.stats[0].label,
   },
   {
     id: "fork",
@@ -21,8 +21,8 @@ const cards = [
     tags: fork.badges,
     title: fork.shortTitle,
     description: fork.subtitle,
-    statValue: fork.outcomes.stats[0].value,
-    statLabel: fork.outcomes.stats[0].label,
+    statValue: fork.outcomes.stats[2].value,
+    statLabel: fork.outcomes.stats[2].label,
   },
 ];
 

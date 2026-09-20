@@ -7,7 +7,7 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden bg-glow">
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-20">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_400px] lg:gap-12">
-          <div className="flex flex-col items-start gap-7 order-2 lg:order-1">
+          <div className="flex flex-col items-start gap-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
               Currently: {identity.currentRole} · {identity.currentEmployer}
@@ -42,7 +42,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <div className="flex justify-center lg:justify-end">
             <div className="relative">
               <div
                 className="absolute -inset-3 rounded-[2.25rem] bg-gradient-brand opacity-30 blur-2xl"
@@ -62,7 +62,10 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-8 border-t border-ink-200 pt-10 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <p className="mt-20 text-sm font-medium text-ink-500 dark:text-ink-400">
+          Two AI systems shipped solo — strategy through shipped code.
+        </p>
+        <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-10 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           {statStrip.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <dd className="font-display text-4xl font-bold text-ink-900 dark:text-white">

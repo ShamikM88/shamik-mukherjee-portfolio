@@ -52,6 +52,11 @@ export default function JobSearchAutomationPage() {
             outcomeStatOverrides={{
               1: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
             }}
+            governanceNote={{
+              text: "Run in Fast-Iterate mode — lighter process ceremony by design for solo personal tooling, not a lower bar.",
+              linkHref: "/approach/",
+              linkLabel: "See the governance comparison against OpenCAM →",
+            }}
           />
         </div>
       </main>
