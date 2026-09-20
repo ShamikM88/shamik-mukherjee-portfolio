@@ -26,62 +26,89 @@ export const identity = {
 };
 
 export const about = {
-  bio: "Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. MBA from IIT Bombay; 13+ years across product ownership, pre-sales, and engineering in payments and financial services. Outside of the day job, I direct Claude Code to build production-grade AI systems solo — the two case studies on this site are that work.",
+  // Short hero assertion + supporting subtext, rendered as two visual tiers instead
+  // of one dense paragraph.
+  headline: "13+ years connecting technology, business, and delivery.",
+  bio: "Product Owner in digital payments and an IIT Bombay MBA, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The two case studies on this site are that work.",
+  heroStats: [
+    { value: "13+", label: "Years of experience" },
+    { value: "4", label: "Career chapters" },
+    { value: "IITB", label: "MBA, 2014" },
+  ],
   languages: ["English (C2)", "Hindi (C1)", "Bengali (Native)", "German (A0)"],
-  // Reverse-chronological. The Summer Intern (SBI, 05/2013-07/2013) entry is deliberately
-  // excluded here too, same standing decision as CVs (see 01-candidate-profile.md) - minimal
-  // signal from 12+ years back, and the M.Mgmt. entry below already covers the period.
-  timeline: [
+  // Grouped by employer/chapter rather than by individual title - the full title-level
+  // detail (dates, role names) lives in each chapter's subtitle/highlights instead of as
+  // separate entries. B.Tech (2006-2010) is deliberately not a chapter here - it doesn't
+  // support its own "what this taught me" narrative the way an MBA or a job does - but it's
+  // still fully present in Education below, so nothing is silently dropped. The Summer
+  // Intern (SBI, 05/2013-07/2013) stays excluded too, same standing decision as CVs.
+  chapters: [
     {
-      title: "Product Owner",
-      company: "Cognizant Technology Solutions",
-      location: "Farnborough, UK",
-      dates: "02/2026 – present",
-      highlight: "Leading wallet-provisioning validation across Google Pay & Samsung Pay for a large-scale card migration programme.",
-    },
-    {
-      title: "Product Owner (Proxy) & Onsite Delivery Manager",
-      company: "Cognizant Technology Solutions",
-      location: "Farnborough, UK",
-      dates: "05/2022 – 01/2026",
-      highlight: "Owned the retrieval flow for Virtual Card autofill in Google Chrome — the real-time component behind every autofill event — reaching 100% of eligible cardholders with 275,000+ successful requests in the first 60 days. Star Award – Excellence in Delivery (2024).",
-    },
-    {
-      title: "Pre-Sales Solution Architect",
-      company: "Cognizant Technology Solutions",
-      location: "Kolkata, India",
-      dates: "07/2019 – 04/2022",
-      highlight: "Architected and won proposals totalling >$100M TCV across DevOps, test automation, and quality engineering programmes.",
-    },
-    {
-      title: "Pre-Sales Lead / Senior Analyst",
-      company: "Cognizant Technology Solutions",
-      location: "Kolkata, India",
-      dates: "01/2016 – 06/2019",
-      highlight: "Owned the full bid lifecycle — RFP/RFI, solution design, commercial modelling — across the banking & financial services portfolio.",
-    },
-    {
-      title: "Business Analyst & Test Lead",
-      company: "Cognizant Technology Solutions",
-      location: "Kolkata, India",
-      dates: "08/2014 – 12/2015",
-      highlight: "Led a 10-engineer QA team validating transaction authorisation during a major network upgrade, including new tokenisation capabilities.",
-    },
-    {
-      title: "Presales Consultant",
-      company: "Cognizant Technology Solutions",
-      location: "Pune, India",
-      dates: "05/2014 – 08/2014",
-      highlight: "Supported the BFS Quality Engineering & Assurance practice's bid responses and solution development.",
-    },
-    {
-      title: "Software Engineer (Java)",
+      icon: "building",
+      dates: "Dec 2010 – Jun 2012",
       company: "Tata Consultancy Services",
-      location: "Mumbai, India",
-      dates: "12/2010 – 06/2012",
-      highlight: "Engineered enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules.",
+      subtitle: "Software Engineer, Mumbai",
+      description: "Built my foundation in enterprise technology, engineering enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules. Learned how large, regulated organisations turn requirements into dependable delivery.",
+    },
+    {
+      icon: "graduation",
+      dates: "2012 – 2014",
+      company: "SJMSOM, IIT Bombay",
+      subtitle: "M.Mgmt. (MBA equivalent)",
+      description: "Added a formal business lens to my technology experience — strategy, operations, and commercial decision-making, graduating with an 8.38/10.0 GPA. This is where I started asking which problems were worth solving, not just how to solve them.",
+    },
+    {
+      icon: "briefcase",
+      dates: "May 2014 – Apr 2022",
+      company: "Cognizant Technology Solutions",
+      subtitle: "Presales Consultant → Business Analyst & Test Lead → Pre-Sales Lead → Pre-Sales Solution Architect",
+      description: "Nearly eight years moving between pre-sales and delivery across India and the UK market — supporting BFS bid responses, leading a QA team through a major network upgrade, then owning the full bid lifecycle and architecting proposals across DevOps, test automation, and quality engineering.",
+      highlights: [
+        "Led a 10-engineer QA team validating transaction authorisation during a major network upgrade, including new tokenisation capabilities",
+        "Owned the full bid lifecycle — RFP/RFI, solution design, commercial modelling — across the banking & financial services portfolio",
+        "Architected and won proposals totalling >$100M TCV across DevOps, test automation, and quality engineering programmes",
+      ],
+    },
+    {
+      icon: "rocket",
+      dates: "May 2022 – Present",
+      company: "Cognizant Technology Solutions",
+      subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
+      description: "Moved onsite to the UK as Onsite Delivery Manager and Proxy Product Owner, then into the Product Owner role outright. Shipped a real feature to real users, then took ownership of a live card-migration programme.",
+      highlights: [
+        "Owned the retrieval flow for Virtual Card autofill in Google Chrome — 100% of eligible cardholders reached, 275,000+ successful requests in the first 60 days; Star Award – Excellence in Delivery (2024)",
+        "Now leading wallet-provisioning validation across Google Pay & Samsung Pay for a large-scale card migration programme",
+      ],
     },
   ],
+  // Reflective counterpart to the chapters above - what each one actually taught me,
+  // not just what happened. Same 4-chapter split as Career Timeline, on purpose.
+  progression: {
+    heading: "Each role added a new lens",
+    items: [
+      {
+        title: "Learning the mechanics of delivery",
+        body: "I began in enterprise IT at TCS, engineering enhancements to a national securities depository. It taught me how large, regulated organisations actually ship — the coordination, the testing discipline, and the respect for dependable systems that still shapes how I run delivery today.",
+      },
+      {
+        title: "Adding the business perspective",
+        body: "My MBA at IIT Bombay moved me past implementation questions to the bigger one: which problems are worth solving, how value actually gets created, and what trade-offs a business should accept. It's the lens I still reach for before writing a single acceptance criterion.",
+      },
+      {
+        title: "Shaping solutions in pre-sales",
+        body: "Nearly eight years in pre-sales taught me to find the real need behind a brief, align stakeholders who don't naturally agree, and win proposals — over $100M TCV worth — by making trade-offs visible instead of hiding them. That's the same instinct I now bring to backlog prioritisation.",
+      },
+      {
+        title: "Owning outcomes in delivery",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping a feature to 275,000+ real users, and now directing Claude Code to build production-grade AI systems on the side. Different tools, same discipline: define what \"done\" means, and don't sign off until it's actually true.",
+      },
+    ],
+  },
+  whatIBring: {
+    heading: "A translator and an owner",
+    body: "I'm most useful where the problem is ambiguous and the stakeholder landscape is complex — moving from a client conversation to a product decision, then staying close enough to delivery to help a team ship with clarity.",
+    tags: ["Product Discovery", "Stakeholder Alignment", "Pre-Sales & Solution Shaping", "AI-Directed Delivery", "Evidence-Led Decisions"],
+  },
   education: [
     { degree: "M.Mgmt. (MBA equivalent)", institution: "SJMSOM, IIT Bombay", period: "2012 – 2014", detail: "GPA 8.38/10.0" },
     { degree: "B.Tech., Computer Science", institution: "West Bengal University of Technology", period: "2006 – 2010", detail: "GPA 8.47/10.0" },
@@ -131,6 +158,11 @@ export const about = {
       "None of this is a separate skill I picked up because AI is trendy, either. Writing acceptance criteria, deciding what \"done\" actually means, and reviewing work before it ships is what I've done for a living for years — directing Claude Code is the same discipline, pointed at a different kind of team member. The bar I'd hold a sprint deliverable to is the bar I hold an AI-generated change to. If something comes back marked \"fixed,\" I ask what I'd ask any developer: fixed where, exactly, and is that the part that actually matters or just the part that was easy to check. Deciding what ships this week versus what gets disclosed as deferred rather than quietly dropped is scope management I'd run on any programme, payments or otherwise.",
       "The same instinct decides how much process surrounds a piece of work. Something other people might fork gets a pull request and an issue tracker before anything merges. Something only I use gets neither, on purpose. Matching the rigor to the actual stakes, not to habit, is most of the job.",
     ],
+  },
+  nextChapter: {
+    eyebrow: "Next chapter",
+    heading: "Building products that turn complexity into progress.",
+    subtext: "I'm exploring Product Manager and Product Owner roles where technical depth, commercial thinking, and hands-on delivery all matter.",
   },
 };
 
