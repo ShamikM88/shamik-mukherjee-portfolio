@@ -482,20 +482,75 @@ export const fork = {
 };
 
 export const governanceComparison = {
-  heading: "PM Delivery & Dual-Governance Model",
-  intro:
-    "Two different governance models, chosen deliberately for two different risk profiles — not one default applied everywhere.",
+  heading: "Match the governance to the risk.",
+  subhead: "The right operating model is neither \"move fast\" nor \"add process.\" It's the lightest system that protects the outcome.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
   framing:
     "Governance overhead isn't free, and neither is the lack of it. The question isn't how much process is correct in general — it's how much this risk profile actually needs. I run two live projects side by side that need opposite answers, and matching the rigor to the actual stakes, not to habit, is most of the job.",
-  columns: ["Dimension", "OpenCAM (Enterprise Mode)", "Job Search Automation (Fast-Iterate Mode)"],
-  rows: [
-    ["Commit Policy", "100% PR-based, zero direct-to-main", "Direct commits to master"],
-    ["Issue Tracking", "Formal GitHub Issues (19-issue gap audit)", "None — solo, no backlog overhead"],
-    ["QA Model", "339 automated tests, regression-gated", "Manual verification against live runs"],
-    ["Target Audience", "Other institutions (designed to be forked)", "Personal use only (N=1)"],
-    ["Risk Profile", "Production-adjacent, third-party dependent", "Low-risk personal tooling, fast iteration"],
+  modes: [
+    {
+      number: "01",
+      label: "Controlled Delivery",
+      title: "Guardrails before velocity",
+      description: "For regulated, shared, or irreversible work. The process creates evidence, makes accountability explicit, and fails closed.",
+      dimensions: [
+        { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
+        { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
+        { label: "QA Model", value: "339 automated tests, regression-gated" },
+        { label: "Target Audience", value: "Other institutions (designed to be forked)" },
+        { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
+      ],
+    },
+    {
+      number: "02",
+      label: "Lightweight Delivery",
+      title: "Learning before ceremony",
+      description: "For bounded, reversible, personal-scale work. The process protects the essentials, then removes friction so learning stays fast.",
+      dimensions: [
+        { label: "Commit Policy", value: "Direct commits to master" },
+        { label: "Issue Tracking", value: "None — solo, no backlog overhead" },
+        { label: "QA Model", value: "Manual verification against live runs" },
+        { label: "Target Audience", value: "Personal use only (N=1)" },
+        { label: "Risk Profile", value: "Low-risk personal tooling, fast iteration" },
+      ],
+    },
   ],
+  decisionQuestions: {
+    heading: "Three questions before process",
+    items: [
+      {
+        question: "What happens if this is wrong?",
+        answer: "I map the blast radius first. OpenCAM sits upstream of real credit decisions at a real institution — a wrong answer has financial and reputational consequence. My job-search tooling's worst case is a missed application. Consequence sets the minimum control level.",
+      },
+      {
+        question: "Who needs to trust the result?",
+        answer: "A bank adopting OpenCAM needs to verify what was checked and by whom, without me there to explain it — that needs traceable, independent evidence. My own job-search tooling only has to earn my own trust, in real time.",
+      },
+      {
+        question: "What's the cheapest honest proof?",
+        answer: "For OpenCAM, that meant 339 regression-gated tests and an independent Maker-Checker loop. For personal tooling, daily use against my own real job search was itself the test — I added controls only where a failure would be expensive or invisible.",
+      },
+    ],
+  },
+  proof: {
+    heading: "The model changed the result",
+    items: [
+      {
+        badge: "Controlled · OpenCAM",
+        title: "Reopening a governance gap before it mattered",
+        body: "I'd marked Issue #31 resolved once Maker and Checker could run on different models in code. A later review — the kind strict governance forces — caught that the setting was never actually switched on in production, meaning the audit hadn't been independent at all. I reopened it and only re-closed it once verified end to end.",
+        linkLabel: "Read the OpenCAM case study",
+        linkHref: "/case-studies/opencam/",
+      },
+      {
+        badge: "Lightweight · AI Job Search",
+        title: "A same-day fix, no PR queue required",
+        body: "A role I'd already been rejected from got scraped three times under three different job IDs, and the surviving copy nearly went out again in a batch of applications. The fix shipped the same day I caught it — direct to master, because on personal tooling the fastest path to \"this can't happen again\" was also the right one.",
+        linkLabel: "Read the job-search case study",
+        linkHref: "/case-studies/job-search-automation/",
+      },
+    ],
+  },
 };

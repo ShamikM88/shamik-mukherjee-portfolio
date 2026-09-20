@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { Card } from "@/components/ui";
 import { governanceComparison } from "@/data/content";
+
+const MODE_ICONS = [ShieldCheck, Zap];
 
 export const metadata: Metadata = {
   title: "Delivery Approach — Shamik Mukherjee",
-  description: governanceComparison.intro,
+  description: governanceComparison.subhead,
 };
 
 export default function ApproachPage() {
@@ -28,81 +29,126 @@ export default function ApproachPage() {
 
         <div className="mx-auto max-w-5xl px-6 py-10 sm:px-8 sm:py-14">
           <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-            Approach
+            Delivery approach
           </p>
           <h1 className="mt-2 text-balance font-display text-4xl font-semibold text-ink-900 dark:text-white sm:text-5xl">
             {governanceComparison.heading}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
-            {governanceComparison.intro}
+            {governanceComparison.subhead}
           </p>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
             {governanceComparison.framing}
           </p>
 
-          <Card hover={false} className="mt-10 overflow-x-auto p-0">
-            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b border-ink-200 dark:border-white/10">
-                  {governanceComparison.columns.map((col, i) => (
-                    <th
-                      key={col}
-                      className={`px-5 py-4 font-display text-xs font-semibold uppercase tracking-wider ${
-                        i === 0
-                          ? "text-ink-500 dark:text-ink-400"
-                          : i === 1
-                            ? "text-brand-700 dark:text-brand-400"
-                            : "text-ember-600 dark:text-ember-400"
-                      }`}
-                    >
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {governanceComparison.rows.map((row, rIdx) => (
-                  <tr
-                    key={row[0]}
-                    className={rIdx % 2 === 0 ? "bg-white dark:bg-ink-900" : "bg-ink-50 dark:bg-ink-900/50"}
+          {/* Two Operating Modes */}
+          <div className="mt-16">
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Two operating modes
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+              Same discipline. Different weight.
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {governanceComparison.modes.map((mode, i) => {
+                const Icon = MODE_ICONS[i];
+                const isControlled = i === 0;
+                return (
+                  <div
+                    key={mode.label}
+                    className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]"
                   >
-                    {row.map((cell, cIdx) => (
-                      <td
-                        key={cell}
-                        className={`px-5 py-4 align-top leading-relaxed ${
-                          cIdx === 0
-                            ? "font-medium text-ink-700 dark:text-ink-200"
-                            : "text-ink-600 dark:text-ink-300"
-                        }`}
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p
+                          className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-ember-600 dark:text-ember-400"}`}
+                        >
+                          Mode {mode.number} · {mode.label}
+                        </p>
+                        <h3 className="mt-1.5 font-display text-lg font-semibold text-ink-900 dark:text-white">
+                          {mode.title}
+                        </h3>
+                      </div>
+                      <span
+                        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${isControlled ? "bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400" : "bg-ember-400/15 text-ember-600 dark:text-ember-400"}`}
                       >
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Card>
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                      {mode.description}
+                    </p>
+                    <dl className="mt-5 flex flex-col divide-y divide-ink-100 border-t border-ink-100 dark:divide-white/10 dark:border-white/10">
+                      {mode.dimensions.map((d) => (
+                        <div key={d.label} className="flex flex-col gap-0.5 py-3">
+                          <dt className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">
+                            {d.label}
+                          </dt>
+                          <dd className="text-sm leading-relaxed text-ink-700 dark:text-ink-200">{d.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Link
-              href="/case-studies/opencam/"
-              className="rounded-2xl border border-ink-200 bg-white p-5 transition-colors hover:border-brand-300 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
-            >
-              <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">
-                OpenCAM Framework
-              </p>
-              <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">See the Enterprise Mode case study</p>
-            </Link>
-            <Link
-              href="/case-studies/job-search-automation/"
-              className="rounded-2xl border border-ink-200 bg-white p-5 transition-colors hover:border-brand-300 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
-            >
-              <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">
-                AI Job Search Automation
-              </p>
-              <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">See the Fast-Iterate Mode case study</p>
-            </Link>
+          {/* How I Decide */}
+          <div className="mt-16">
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              How I decide
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+              {governanceComparison.decisionQuestions.heading}
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {governanceComparison.decisionQuestions.items.map((item, i) => (
+                <div
+                  key={item.question}
+                  className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+                >
+                  <p className="font-display text-sm font-semibold text-ember-600 dark:text-ember-400">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 font-display text-base font-semibold text-ink-900 dark:text-white">
+                    {item.question}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Proof in Practice */}
+          <div className="mt-16">
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Proof in practice
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+              {governanceComparison.proof.heading}
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {governanceComparison.proof.items.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.linkHref}
+                  className="group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                    {item.badge}
+                  </p>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-ink-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.body}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors group-hover:text-brand-700 dark:text-brand-400 dark:group-hover:text-brand-300">
+                    {item.linkLabel}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </main>
