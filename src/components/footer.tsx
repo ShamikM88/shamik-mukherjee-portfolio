@@ -36,7 +36,7 @@ export function Footer({ showCta = true }: { showCta?: boolean }) {
           </div>
         )}
 
-        <div className={`flex flex-col items-center justify-between gap-4 text-xs text-ink-400 dark:text-ink-500 sm:flex-row ${showCta ? "mt-10" : ""}`}>
+        <div className={`flex flex-col items-center justify-between gap-4 text-xs text-ink-400 sm:flex-row ${showCta ? "mt-10" : ""}`}>
           <p>
             © {new Date().getFullYear()} {identity.name} · {identity.location}
           </p>

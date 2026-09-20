@@ -30,7 +30,11 @@ export function Nav() {
 
         <nav className="hidden items-center gap-5 text-sm font-medium text-ink-600 dark:text-ink-300 md:flex lg:gap-8">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-ink-900 dark:hover:text-white">
+            <a
+              key={link.href}
+              href={link.href}
+              className="-mx-3 rounded-full px-3 py-1.5 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:hover:bg-white/10 dark:hover:text-white"
+            >
               {link.label}
             </a>
           ))}
@@ -42,7 +46,7 @@ export function Nav() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub profile"
-            className="hidden h-9 w-9 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white sm:flex"
+            className="hidden h-11 w-11 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white sm:flex"
           >
             <Github className="h-[18px] w-[18px]" aria-hidden />
           </a>
@@ -51,7 +55,7 @@ export function Nav() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn profile"
-            className="hidden h-9 w-9 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white sm:flex"
+            className="hidden h-11 w-11 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white sm:flex"
           >
             <Linkedin className="h-[18px] w-[18px]" aria-hidden />
           </a>
@@ -68,7 +72,7 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white md:hidden"
           >
             {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
           </button>
@@ -102,7 +106,7 @@ export function Nav() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub profile"
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
+              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
             >
               <Github className="h-[18px] w-[18px]" aria-hidden />
             </a>
@@ -111,7 +115,7 @@ export function Nav() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn profile"
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
+              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
             >
               <Linkedin className="h-[18px] w-[18px]" aria-hidden />
             </a>

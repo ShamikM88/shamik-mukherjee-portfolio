@@ -23,14 +23,14 @@
     text-wrap: balance;
   }
   .text-gradient-brand {
-    @apply bg-gradient-to-r from-sky-400 via-blue-500 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-b from-brand-400 to-brand-600 bg-clip-text text-transparent;
   }
   .bg-gradient-brand {
-    @apply bg-gradient-to-r from-blue-500 to-purple-500;
+    @apply bg-gradient-to-r from-brand-600 to-brand-700;
   }
   .bg-glow {
     background-image:
-      radial-gradient(ellipse 900px 500px at 85% 0%, rgb(59 130 246 / 0.16), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 15% 30%, rgb(168 85 247 / 0.12), transparent 60%);
+      radial-gradient(ellipse 900px 500px at 85% 0%, rgb(20 156 114 / 0.14), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 15% 30%, rgb(230 131 42 / 0.1), transparent 60%);
   }
 }

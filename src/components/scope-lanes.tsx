@@ -43,7 +43,7 @@ export function ScopeLanes({ lanes }: { lanes: Lane[] }) {
             className={`rounded-2xl ${s.border} border-x border-b border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]`}
           >
             <h3 className={`font-display text-sm font-semibold ${s.label}`}>{lane.label}</h3>
-            <p className="mt-0.5 text-xs text-ink-400 dark:text-ink-500">{lane.sublabel}</p>
+            <p className="mt-0.5 text-xs text-ink-400">{lane.sublabel}</p>
             <ul className="mt-3 flex flex-col gap-2">
               {lane.items.map((item) => (
                 <li key={item} className={`flex gap-2.5 text-sm leading-relaxed ${s.item}`}>

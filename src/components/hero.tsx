@@ -13,7 +13,7 @@ export function Hero() {
               Currently: {identity.currentRole} · {identity.currentEmployer}
             </span>
 
-            <h1 className="text-balance font-display text-5xl font-semibold leading-[1.08] text-ink-900 dark:text-white sm:text-6xl lg:text-[3.75rem]">
+            <h1 className="text-balance font-display text-4xl font-semibold leading-[1.08] text-ink-900 dark:text-white sm:text-5xl lg:text-[3.75rem]">
               {identity.taglineLead}
               <br />
               <span className="text-gradient-brand">{identity.taglineHighlight}</span>
@@ -28,7 +28,7 @@ export function Hero() {
             <div className="flex flex-wrap gap-3 pt-3">
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(99,102,241,0.5)] transition-transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
               >
                 View case studies
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -62,7 +62,7 @@ export function Hero() {
           </div>
         </div>
 
-        <p className="mt-20 text-sm font-medium text-ink-500 dark:text-ink-400">
+        <p className="mt-10 text-sm font-medium text-ink-500 dark:text-ink-400 sm:mt-20">
           Two AI systems shipped solo — strategy through shipped code.
         </p>
         <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-10 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">

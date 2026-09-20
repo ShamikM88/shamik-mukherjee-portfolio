@@ -127,19 +127,19 @@ export function CaseStudyDetail({
       {/* Meta bar */}
       <div className="grid grid-cols-1 gap-6 rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Role</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Role</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.role}</p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Timeline</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Timeline</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.timeline}</p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Stack</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Stack</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.stack}</p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Status</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Status</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.status}</p>
         </div>
       </div>
@@ -366,7 +366,7 @@ export function CaseStudyDetail({
             <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">{related.title}</p>
             <p className="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{related.description}</p>
           </div>
-          <ArrowRight className="h-4 w-4 flex-shrink-0 text-ink-400 dark:text-ink-500" aria-hidden />
+          <ArrowRight className="h-4 w-4 flex-shrink-0 text-ink-400" aria-hidden />
         </Link>
 
         <a

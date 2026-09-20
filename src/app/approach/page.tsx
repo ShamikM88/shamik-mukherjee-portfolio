@@ -81,7 +81,7 @@ export default function ApproachPage() {
                     <dl className="mt-5 flex flex-col divide-y divide-ink-100 border-t border-ink-100 dark:divide-white/10 dark:border-white/10">
                       {mode.dimensions.map((d) => (
                         <div key={d.label} className="flex flex-col gap-0.5 py-3">
-                          <dt className="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">
+                          <dt className="text-xs font-semibold uppercase tracking-wider text-ink-400">
                             {d.label}
                           </dt>
                           <dd className="text-sm leading-relaxed text-ink-700 dark:text-ink-200">{d.value}</dd>

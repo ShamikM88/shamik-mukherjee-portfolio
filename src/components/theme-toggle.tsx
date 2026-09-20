@@ -13,7 +13,7 @@ export function ThemeToggle() {
   if (!mounted) {
     // Avoid a hydration mismatch: render a fixed-size placeholder until the client
     // knows the resolved (system or stored) theme.
-    return <div className="h-9 w-9" aria-hidden />;
+    return <div className="h-11 w-11" aria-hidden />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -23,7 +23,7 @@ export function ThemeToggle() {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-600 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-600 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
     >
       {isDark ? <Sun className="h-4 w-4" aria-hidden /> : <Moon className="h-4 w-4" aria-hidden />}
     </button>
