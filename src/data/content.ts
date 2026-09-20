@@ -44,7 +44,7 @@ export const about = {
       company: "Cognizant Technology Solutions",
       location: "Farnborough, UK",
       dates: "05/2022 – 01/2026",
-      highlight: "Launched Virtual Card autofill to 100% of eligible cardholders — 275,000+ transactions in the first 60 days. Star Award – Excellence in Delivery (2024).",
+      highlight: "Owned the retrieval flow for Virtual Card autofill in Google Chrome — the real-time component behind every autofill event — reaching 100% of eligible cardholders with 275,000+ successful requests in the first 60 days. Star Award – Excellence in Delivery (2024).",
     },
     {
       title: "Pre-Sales Solution Architect",
