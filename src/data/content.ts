@@ -112,6 +112,26 @@ export const about = {
       tags: ["Multi-Agent System Architecture", "Claude Code", "AI-Output Governance", "Prompt Architecture"],
     },
   ],
+  // Curated subset for the compact homepage teaser card - the About page itself
+  // still shows the full grouped list above; this one's just for a small card
+  // that shouldn't turn into a wall of badges.
+  featuredSkills: [
+    "Backlog Ownership",
+    "Stakeholder Management",
+    "Digital Payments",
+    "Wallet Integrations",
+    "Go-to-Market Strategy",
+    "Multi-Agent System Architecture",
+    "AI-Output Governance",
+  ],
+  philosophy: {
+    heading: "How I work",
+    paragraphs: [
+      "I don't start with a roadmap. I start by watching someone actually stuck — my wife re-keying figures into a spreading template by hand, working out a covenant ratio against a deadline she didn't set. Or me, rereading an email because the tracker no longer matched what was actually happening. If I can't point to a specific moment someone hit a wall, I don't trust the feature enough to build it.",
+      "None of this is a separate skill I picked up because AI is trendy, either. Writing acceptance criteria, deciding what \"done\" actually means, and reviewing work before it ships is what I've done for a living for years — directing Claude Code is the same discipline, pointed at a different kind of team member. The bar I'd hold a sprint deliverable to is the bar I hold an AI-generated change to. If something comes back marked \"fixed,\" I ask what I'd ask any developer: fixed where, exactly, and is that the part that actually matters or just the part that was easy to check. Deciding what ships this week versus what gets disclosed as deferred rather than quietly dropped is scope management I'd run on any programme, payments or otherwise.",
+      "The same instinct decides how much process surrounds a piece of work. Something other people might fork gets a pull request and an issue tracker before anything merges. Something only I use gets neither, on purpose. Matching the rigor to the actual stakes, not to habit, is most of the job.",
+    ],
+  },
 };
 
 export const statStrip = [

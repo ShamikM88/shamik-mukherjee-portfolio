@@ -3,8 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { about } from "@/data/content";
 import { Badge } from "@/components/ui";
 
-const allSkillTags = about.skills.flatMap((g) => g.tags);
-
 export function AboutTeaser() {
   return (
     <section className="border-t border-ink-200 dark:border-white/10">
@@ -15,7 +13,7 @@ export function AboutTeaser() {
               About
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-              Product ownership, backed by AI-directed execution.
+              Same delivery discipline, pointed at a different kind of team member.
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
               {about.bio}
@@ -30,7 +28,7 @@ export function AboutTeaser() {
           </div>
 
           <div className="flex flex-wrap gap-2 lg:max-w-xs lg:justify-end">
-            {allSkillTags.map((tag) => (
+            {about.featuredSkills.map((tag) => (
               <Badge key={tag} tone="neutral">
                 {tag}
               </Badge>

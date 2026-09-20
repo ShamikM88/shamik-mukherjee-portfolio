@@ -25,6 +25,20 @@ export function AboutSection() {
           </span>
         </div>
 
+        {/* Philosophy */}
+        <div className="mt-20 max-w-2xl">
+          <h3 className="mb-6 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            {about.philosophy.heading}
+          </h3>
+          <div className="flex flex-col gap-4">
+            {about.philosophy.paragraphs.map((p) => (
+              <p key={p} className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
+
         {/* Career Timeline */}
         <div className="mt-20">
           <h3 className="mb-10 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
