@@ -66,7 +66,7 @@ export default function OpenCamPage() {
           />
         </div>
       </main>
-      <Footer />
+      <Footer showCta={false} />
     </>
   );
 }

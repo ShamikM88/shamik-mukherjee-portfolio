@@ -60,7 +60,7 @@ export default function JobSearchAutomationPage() {
           />
         </div>
       </main>
-      <Footer />
+      <Footer showCta={false} />
     </>
   );
 }

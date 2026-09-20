@@ -48,25 +48,25 @@ export const about = {
       dates: "Dec 2010 – Jun 2012",
       company: "Tata Consultancy Services",
       subtitle: "Software Engineer, Mumbai",
-      description: "Built my foundation in enterprise technology, engineering enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules. Learned how large, regulated organisations turn requirements into dependable delivery.",
+      description: "Engineered enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules.",
     },
     {
       icon: "graduation",
       dates: "2012 – 2014",
       company: "SJMSOM, IIT Bombay",
       subtitle: "M.Mgmt. (MBA equivalent)",
-      description: "Added a formal business lens to my technology experience — strategy, operations, and commercial decision-making, graduating with an 8.38/10.0 GPA. This is where I started asking which problems were worth solving, not just how to solve them.",
+      description: "Business strategy, operations, and commercial decision-making — GPA 8.38/10.0.",
     },
     {
       icon: "briefcase",
       dates: "May 2014 – Apr 2022",
       company: "Cognizant Technology Solutions",
       subtitle: "Presales Consultant → Business Analyst & Test Lead → Pre-Sales Lead → Pre-Sales Solution Architect",
-      description: "Nearly eight years moving between pre-sales and delivery across India and the UK market — supporting BFS bid responses, leading a QA team through a major network upgrade, then owning the full bid lifecycle and architecting proposals across DevOps, test automation, and quality engineering.",
+      description: "Nearly eight years across pre-sales and delivery in banking & financial services.",
       highlights: [
-        "Led a 10-engineer QA team validating transaction authorisation during a major network upgrade, including new tokenisation capabilities",
-        "Owned the full bid lifecycle — RFP/RFI, solution design, commercial modelling — across the banking & financial services portfolio",
-        "Architected and won proposals totalling >$100M TCV across DevOps, test automation, and quality engineering programmes",
+        "Led a 10-engineer QA team through a major network upgrade, including new tokenisation capabilities",
+        "Owned the full bid lifecycle — RFP/RFI to commercial modelling — across banking & financial services",
+        "Won proposals totalling >$100M TCV across DevOps, test automation, and QE programmes",
       ],
     },
     {
@@ -74,10 +74,10 @@ export const about = {
       dates: "May 2022 – Present",
       company: "Cognizant Technology Solutions",
       subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
-      description: "Moved onsite to the UK as Onsite Delivery Manager and Proxy Product Owner, then into the Product Owner role outright. Shipped a real feature to real users, then took ownership of a live card-migration programme.",
+      description: "Moved onsite to the UK, then into the Product Owner role outright.",
       highlights: [
-        "Owned the retrieval flow for Virtual Card autofill in Google Chrome — 100% of eligible cardholders reached, 275,000+ successful requests in the first 60 days; Star Award – Excellence in Delivery (2024)",
-        "Now leading wallet-provisioning validation across Google Pay & Samsung Pay for a large-scale card migration programme",
+        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Star Award – Excellence in Delivery (2024)",
+        "Now leading Google Pay & Samsung Pay wallet-provisioning for a card migration programme",
       ],
     },
   ],
@@ -109,18 +109,9 @@ export const about = {
     body: "I'm most useful where the problem is ambiguous and the stakeholder landscape is complex — moving from a client conversation to a product decision, then staying close enough to delivery to help a team ship with clarity.",
     tags: ["Product Discovery", "Stakeholder Alignment", "Pre-Sales & Solution Shaping", "AI-Directed Delivery", "Evidence-Led Decisions"],
   },
-  education: [
-    { degree: "M.Mgmt. (MBA equivalent)", institution: "SJMSOM, IIT Bombay", period: "2012 – 2014", detail: "GPA 8.38/10.0" },
-    { degree: "B.Tech., Computer Science", institution: "West Bengal University of Technology", period: "2006 – 2010", detail: "GPA 8.47/10.0" },
-  ],
-  awards: [
-    "Star Award — Excellence in Delivery (Cognizant, 2024)",
-    "Cognizant Cheers Award — co-authored whitepaper",
-    "2nd Runners Up — White Paper Contest",
-    "Pillar of the Month — Business Development",
-    "Pillar of the Month — Training & Mentoring",
-    "TCS Gems — Tata Consultancy Services",
-  ],
+  // Full Education (incl. B.Tech) and Awards history lives on the CV, not the portfolio -
+  // the Career Timeline/Progression sections above already carry the MBA and Star Award
+  // narratively; the rest is CV-appropriate detail a recruiter/VP already has separately.
   skills: [
     {
       category: "Product & Delivery",

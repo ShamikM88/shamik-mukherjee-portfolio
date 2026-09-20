@@ -1,4 +1,4 @@
-import { Building2, GraduationCap, Briefcase, Rocket, Award, Languages as LanguagesIcon, MapPin, Mail, ArrowRight } from "lucide-react";
+import { Building2, GraduationCap, Briefcase, Rocket, Languages as LanguagesIcon, MapPin, Mail, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { about, identity } from "@/data/content";
 import { Badge } from "@/components/ui";
@@ -109,41 +109,6 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Education + Awards */}
-        <div className="mt-20 grid grid-cols-1 gap-14 sm:grid-cols-2">
-          <div>
-            <h3 className="mb-6 flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              <GraduationCap className="h-4 w-4" aria-hidden />
-              Education
-            </h3>
-            <div className="flex flex-col gap-5">
-              {about.education.map((ed) => (
-                <div key={ed.degree}>
-                  <p className="font-display text-base font-semibold text-ink-900 dark:text-white">
-                    {ed.degree}
-                  </p>
-                  <p className="text-sm text-ink-500 dark:text-ink-400">
-                    {ed.institution} · {ed.period} · {ed.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="mb-6 flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              <Award className="h-4 w-4" aria-hidden />
-              Awards
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {about.awards.map((a) => (
-                <li key={a} className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">
-                  {a}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
         {/* Philosophy */}
         <div className="mt-20 max-w-2xl">

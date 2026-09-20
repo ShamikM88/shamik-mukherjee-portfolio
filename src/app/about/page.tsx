@@ -27,7 +27,7 @@ export default function AboutPage() {
         </div>
         <AboutSection />
       </main>
-      <Footer />
+      <Footer showCta={false} />
     </>
   );
 }
