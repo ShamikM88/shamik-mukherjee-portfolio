@@ -126,11 +126,6 @@ export function AboutSection() {
             ))}
           </div>
         </div>
-
-        {/* Personal footnote */}
-        <p className="mt-20 border-t border-ink-200 pt-8 text-sm text-ink-400 dark:border-white/10 dark:text-ink-500">
-          {about.personalNote}
-        </p>
       </div>
     </section>
   );

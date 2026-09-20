@@ -132,7 +132,6 @@ export const about = {
       "The same instinct decides how much process surrounds a piece of work. Something other people might fork gets a pull request and an issue tracker before anything merges. Something only I use gets neither, on purpose. Matching the rigor to the actual stakes, not to habit, is most of the job.",
     ],
   },
-  personalNote: "A Liverpool supporter since 2005 — Anfield three times, plus Istanbul for the 2019 UEFA Super Cup. It's part of why the UK was always the plan.",
 };
 
 export const statStrip = [
