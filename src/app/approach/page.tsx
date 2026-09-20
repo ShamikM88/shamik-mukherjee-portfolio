@@ -36,6 +36,9 @@ export default function ApproachPage() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
             {governanceComparison.intro}
           </p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
+            {governanceComparison.framing}
+          </p>
 
           <Card hover={false} className="mt-10 overflow-x-auto p-0">
             <table className="w-full min-w-[640px] border-collapse text-left text-sm">

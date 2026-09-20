@@ -147,8 +147,16 @@ export const about = {
     paragraphs: [
       "I don't start with a roadmap. I start by watching someone actually stuck — my wife re-keying figures into a spreading template by hand, working out a covenant ratio against a deadline she didn't set. Or me, rereading an email because the tracker no longer matched what was actually happening. If I can't point to a specific moment someone hit a wall, I don't trust the feature enough to build it.",
       "None of this is a separate skill I picked up because AI is trendy, either. Writing acceptance criteria, deciding what \"done\" actually means, and reviewing work before it ships is what I've done for a living for years — directing Claude Code is the same discipline, pointed at a different kind of team member. The bar I'd hold a sprint deliverable to is the bar I hold an AI-generated change to. If something comes back marked \"fixed,\" I ask what I'd ask any developer: fixed where, exactly, and is that the part that actually matters or just the part that was easy to check. Deciding what ships this week versus what gets disclosed as deferred rather than quietly dropped is scope management I'd run on any programme, payments or otherwise.",
-      "The same instinct decides how much process surrounds a piece of work. Something other people might fork gets a pull request and an issue tracker before anything merges. Something only I use gets neither, on purpose. Matching the rigor to the actual stakes, not to habit, is most of the job.",
     ],
+    // The full "how much process should this get" story now lives on the Approach page
+    // (governanceComparison below) - this is a short, in-context pointer to it rather
+    // than a nav-bar-only link.
+    linkOut: {
+      before: "That same instinct decides how much process I put around a piece of work in the first place — I go deeper on the two very different governance models I actually run on my ",
+      linkLabel: "Delivery Approach",
+      linkHref: "/approach/",
+      after: " page.",
+    },
   },
   nextChapter: {
     eyebrow: "Next chapter",
@@ -477,6 +485,11 @@ export const governanceComparison = {
   heading: "PM Delivery & Dual-Governance Model",
   intro:
     "Two different governance models, chosen deliberately for two different risk profiles — not one default applied everywhere.",
+  // Moved here from the About page's "How I work" section - this is specifically about
+  // governance-matching, and belongs on the page dedicated to that topic rather than
+  // competing with About's broader "how I think about product" narrative.
+  framing:
+    "Governance overhead isn't free, and neither is the lack of it. The question isn't how much process is correct in general — it's how much this risk profile actually needs. I run two live projects side by side that need opposite answers, and matching the rigor to the actual stakes, not to habit, is most of the job.",
   columns: ["Dimension", "OpenCAM (Enterprise Mode)", "Job Search Automation (Fast-Iterate Mode)"],
   rows: [
     ["Commit Policy", "100% PR-based, zero direct-to-main", "Direct commits to master"],

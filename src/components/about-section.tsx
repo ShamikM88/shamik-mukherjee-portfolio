@@ -121,6 +121,16 @@ export function AboutSection() {
                 {p}
               </p>
             ))}
+            <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
+              {about.philosophy.linkOut.before}
+              <Link
+                href={about.philosophy.linkOut.linkHref}
+                className="text-brand-600 underline underline-offset-2 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+              >
+                {about.philosophy.linkOut.linkLabel}
+              </Link>
+              {about.philosophy.linkOut.after}
+            </p>
           </div>
         </div>
 
