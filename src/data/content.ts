@@ -483,12 +483,12 @@ export const fork = {
 
 export const governanceComparison = {
   heading: "Match the governance to the risk.",
-  subhead: "The right operating model is neither \"move fast\" nor \"add process.\" It's the lightest system that protects the outcome.",
+  subhead: "Deciding how much process a piece of work needs isn't new to me — I led QA governance on a bank's network upgrade and won over $100M in bid proposals before I ever built with AI. I apply the same judgment to the two systems I direct today.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
   framing:
-    "Governance overhead isn't free, and neither is the lack of it. The question isn't how much process is correct in general — it's how much this risk profile actually needs. I run two live projects side by side that need opposite answers, and matching the rigor to the actual stakes, not to habit, is most of the job.",
+    "OpenCAM and my job-search tooling sit at opposite ends of that same call. OpenCAM sits upstream of real credit decisions at a real institution, so it runs with the same discipline I brought to that network upgrade — independent verification, a paper trail, nothing shipped without review. My own job-search tooling only has to answer to me, so it runs lighter: direct commits, no backlog, my own daily use as the test.",
   modes: [
     {
       number: "01",
@@ -498,7 +498,7 @@ export const governanceComparison = {
       dimensions: [
         { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
         { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
-        { label: "QA Model", value: "339 automated tests, regression-gated" },
+        { label: "QA Model", value: "330+ automated tests, regression-gated" },
         { label: "Target Audience", value: "Other institutions (designed to be forked)" },
         { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
       ],
@@ -530,7 +530,7 @@ export const governanceComparison = {
       },
       {
         question: "What's the cheapest honest proof?",
-        answer: "For OpenCAM, that meant 339 regression-gated tests and an independent Maker-Checker loop. For personal tooling, daily use against my own real job search was itself the test — I added controls only where a failure would be expensive or invisible.",
+        answer: "For OpenCAM, that meant 330+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
       },
     ],
   },
