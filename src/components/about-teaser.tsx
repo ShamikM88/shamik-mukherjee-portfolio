@@ -13,7 +13,7 @@ export function AboutTeaser() {
               About
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-              Same delivery discipline, pointed at a different kind of team member.
+              I direct AI the same way I&apos;ve always directed delivery.
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
               {about.bio}

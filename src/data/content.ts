@@ -26,8 +26,8 @@ export const identity = {
 };
 
 export const about = {
-  bio: "Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. MBA from IIT Bombay, nine years in payments and pre-sales before that. Outside of the day job, I direct Claude Code to build production-grade AI systems solo — the two case studies below are that work.",
-  languages: ["English (C2)", "Hindi (C1)", "Bengali (Native)"],
+  bio: "Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. MBA from IIT Bombay; 13+ years across product ownership, pre-sales, and engineering in payments and financial services. Outside of the day job, I direct Claude Code to build production-grade AI systems solo — the two case studies on this site are that work.",
+  languages: ["English (C2)", "Hindi (C1)", "Bengali (Native)", "German (A0)"],
   // Reverse-chronological. The Summer Intern (SBI, 05/2013-07/2013) entry is deliberately
   // excluded here too, same standing decision as CVs (see 01-candidate-profile.md) - minimal
   // signal from 12+ years back, and the M.Mgmt. entry below already covers the period.
