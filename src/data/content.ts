@@ -214,7 +214,7 @@ export const openCam = {
       {
         label: "Should have",
         sublabel: "Fast-follow — shipped in PR #24",
-        tone: "brand-muted" as const,
+        tone: "blue" as const,
         items: ["Wiring policy checks into the primary slash-command interface, not just the headless script"],
       },
       {

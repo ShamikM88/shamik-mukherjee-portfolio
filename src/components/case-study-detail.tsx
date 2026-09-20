@@ -15,7 +15,7 @@ type OutcomeBlock = { heading: string; stats: { value: string; label: string }[]
 type VisualBlock = { heading: string; items: { caption: string; src: string; alt: string }[] };
 type ScopeBlock = {
   heading: string;
-  lanes: { label: string; sublabel: string; tone: "brand-strong" | "brand-muted" | "ember" | "muted"; items: string[] }[];
+  lanes: { label: string; sublabel: string; tone: "brand-strong" | "blue" | "ember" | "muted"; items: string[] }[];
 };
 type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
 type StrategyBlock = { heading: string; intro: string; cards: { title: string; body: string }[] };

@@ -1,7 +1,7 @@
 type Lane = {
   label: string;
   sublabel: string;
-  tone: "brand-strong" | "brand-muted" | "ember" | "muted";
+  tone: "brand-strong" | "blue" | "ember" | "muted";
   items: string[];
 };
 
@@ -12,10 +12,10 @@ const toneStyles: Record<Lane["tone"], { border: string; label: string; dot: str
     dot: "bg-brand-500",
     item: "text-ink-700 dark:text-ink-200",
   },
-  "brand-muted": {
-    border: "border-t-4 border-brand-300 dark:border-brand-300/50",
-    label: "text-brand-600 dark:text-brand-300",
-    dot: "bg-brand-300 dark:bg-brand-300/70",
+  blue: {
+    border: "border-t-4 border-blue-400",
+    label: "text-blue-600 dark:text-blue-400",
+    dot: "bg-blue-400",
     item: "text-ink-700 dark:text-ink-200",
   },
   ember: {
