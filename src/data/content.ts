@@ -799,13 +799,23 @@ export const governanceComparison = {
   // Plain-text fallback for metadata.description - the visible page renders a JSX version
   // with "Chrome Autofill retrieval flow" linked (built in approach/page.tsx, same pattern
   // as chromeAutofill's problemWithLink), so this string and that JSX must be kept in sync.
+  // Rewritten to lead with the principle, not a defense of it - the old opening ("This isn't
+  // a new muscle for me") spent its first line pre-empting an objection instead of just
+  // stating the judgment call and letting the Chrome Autofill anchor support it.
   subhead:
-    "This isn't a new muscle for me. Deciding how much process a proposal or a programme actually needs is something I did for years in pre-sales and delivery, long before I built anything with AI — most visibly on the Chrome Autofill retrieval flow, where a formal Definition of Done, staged production rollout, and Google's own certification testing governed every release. I bring that same judgment to the two AI-directed systems I run solo today, scaled to a very different kind of risk.",
+    "Every proposal and programme needs a different amount of process — too much slows down low-risk work, too little lets real risk through. I made that call for years in pre-sales and delivery, most visibly on the Chrome Autofill retrieval flow, governed by a formal Definition of Done, staged production rollout, and Google's own certification testing. I bring the same judgment to the two AI-directed systems I run solo today — just scaled to a different kind of risk.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
   framing:
     "OpenCAM and my job-search tooling sit at opposite ends of that same call. OpenCAM is built to sit upstream of real credit decisions — even at this early, one-analyst-validated stage, it runs against a real analyst's real deal data, so it gets the same rigor I've applied to regulated delivery work for years: independent verification, a paper trail, nothing shipped without review. My own job-search tooling only has to answer to me, so it runs lighter: direct commits, no backlog, my own daily use as the test.",
+  // Numbers above the fold, matching the stat-forward pattern used everywhere else on the
+  // site - this page previously had zero figures until a full scroll past the intro.
+  heroStats: [
+    { value: "330+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
+    { value: "19", label: "Issues Tracked in a Public Gap Audit", sublabel: "Controlled · OpenCAM" },
+    { value: "Same-Day", label: "Fix Shipped, No PR Queue", sublabel: "Lightweight · Job Search" },
+  ],
   modes: [
     {
       number: "01",
@@ -816,7 +826,7 @@ export const governanceComparison = {
         { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
         { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
         { label: "QA Model", value: "330+ automated tests, regression-gated" },
-        { label: "Target Audience", value: "Other institutions (designed to be forked)" },
+        { label: "Target Audience", value: "Other institutions (forkable, not yet forked)" },
         { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
       ],
     },
@@ -870,4 +880,9 @@ export const governanceComparison = {
       },
     ],
   },
+  // Closes the loop this page otherwise leaves implicit - it demonstrates governance
+  // judgment through two AI side projects but never states the transfer back to a hiring
+  // context. Kept short and prose-only, deliberately not another card section.
+  closing:
+    "This is the same judgment I'd bring to any team's delivery process — proportional control on regulated or shared work, and the discipline to strip ceremony away from everything else, rather than defaulting to one process for every kind of risk.",
 };

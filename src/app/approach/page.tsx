@@ -55,12 +55,66 @@ export default function ApproachPage() {
           <h1 className="mt-2 text-balance font-display text-4xl font-semibold text-ink-900 dark:text-white sm:text-5xl">
             {governanceComparison.heading}
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
             {subheadWithLink}
           </p>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
             {governanceComparison.framing}
           </p>
+
+          {/* Numbers above the fold, same pattern as every other page on the site */}
+          <div className="mt-10 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+            {governanceComparison.heroStats.map((stat) => (
+              <div key={stat.label} className="flex flex-col">
+                <dd className="font-display text-3xl font-bold text-ink-900 dark:text-white">{stat.value}</dd>
+                <dd className="mt-1 text-sm text-ink-600 dark:text-ink-300">{stat.label}</dd>
+                <dt className="mt-0.5 text-xs uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                  {stat.sublabel}
+                </dt>
+              </div>
+            ))}
+          </div>
+
+          {/* Proof in Practice - moved up from the bottom of the page: the concrete, slightly
+              unflattering Issue #31 story is the strongest evidence on this page that the
+              governance claims are real, not marketing, and it was previously the last thing
+              a reader would reach after two rounds of framework/theory. */}
+          <div className="mt-16">
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Proof in practice
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+              {governanceComparison.proof.heading}
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {governanceComparison.proof.items.map((item, i) => {
+                const isControlled = i === 0;
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.linkHref}
+                    className={`group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-blue-400"}`}
+                  >
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-blue-600 dark:text-blue-400"}`}
+                    >
+                      {item.badge}
+                    </p>
+                    <h3 className="mt-2 font-display text-lg font-semibold text-ink-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.body}</p>
+                    <span
+                      className={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${isControlled ? "text-brand-600 group-hover:text-brand-700 dark:text-brand-400 dark:group-hover:text-brand-300" : "text-blue-600 group-hover:text-blue-500 dark:text-blue-400"}`}
+                    >
+                      {item.linkLabel}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Two Operating Modes */}
           <div className="mt-16">
@@ -141,42 +195,10 @@ export default function ApproachPage() {
             </div>
           </div>
 
-          {/* Proof in Practice */}
-          <div className="mt-16">
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              Proof in practice
-            </p>
-            <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-              {governanceComparison.proof.heading}
-            </h2>
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {governanceComparison.proof.items.map((item, i) => {
-                const isControlled = i === 0;
-                return (
-                  <Link
-                    key={item.title}
-                    href={item.linkHref}
-                    className={`group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-blue-400"}`}
-                  >
-                    <p
-                      className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-blue-600 dark:text-blue-400"}`}
-                    >
-                      {item.badge}
-                    </p>
-                    <h3 className="mt-2 font-display text-lg font-semibold text-ink-900 dark:text-white">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{item.body}</p>
-                    <span
-                      className={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${isControlled ? "text-brand-600 group-hover:text-brand-700 dark:text-brand-400 dark:group-hover:text-brand-300" : "text-blue-600 group-hover:text-blue-500 dark:text-blue-400"}`}
-                    >
-                      {item.linkLabel}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
+          {/* Closing statement - states the transfer back to a hiring context explicitly,
+              rather than leaving the reader to infer it from two AI side-project examples. */}
+          <div className="mt-16 max-w-3xl border-t border-ink-200 pt-8 dark:border-white/10">
+            <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300">{governanceComparison.closing}</p>
           </div>
         </div>
       </main>
