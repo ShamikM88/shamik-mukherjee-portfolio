@@ -34,24 +34,13 @@ export function Hero() {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-3">
-              <a
-                href="#work"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
-              >
-                View case studies
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
-              <a
-                href="/about/"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-              >
-                About me
-              </a>
-            </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
+          {/* CTAs live here now, under the photo, not in the text column - the text column
+              was taller than the photo (identity block + CTAs), leaving dead space below the
+              photo once alignment switched to items-start. Moving the buttons here balances
+              the two columns and shortens the row, pulling the stat strip up correspondingly. */}
+          <div className="flex flex-col items-center gap-6 lg:items-end">
             <div className="relative">
               <div
                 className="absolute -inset-3 rounded-[2.25rem] bg-gradient-brand opacity-30 blur-2xl"
@@ -67,6 +56,22 @@ export function Hero() {
                   priority
                 />
               </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3 lg:justify-end">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
+              >
+                View case studies
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </a>
+              <a
+                href="/about/"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              >
+                About me
+              </a>
             </div>
           </div>
         </div>
