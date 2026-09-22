@@ -128,7 +128,7 @@ At the same time, specifications and validation rules originally written around 
 
 ---
 
-Role: Product Owner (Proxy PO → PO) — backlog ownership across two squads, B2B integration spec ownership, card migration validation, international issuer onboarding · Timeline: Mid 2022 – present · Stack: B2B Integration Specifications · Agile Delivery (SAFe / PI Planning) · Partner Enablement · Status: Active — ongoing, expanding internationally
+Role: Product Owner (Proxy PO → PO) — backlog ownership across two squads, B2B integration spec ownership, card migration validation, international issuer onboarding · Timeline: Mid 2022 – present · Stack: Legacy On-Prem Applications · Dual-DC Hosting (US) · B2B Integration Specs · Status: Active — ongoing, expanding internationally
 `;
 
 export const openCamMarkdown = `# OpenCAM Framework — PM Case Study

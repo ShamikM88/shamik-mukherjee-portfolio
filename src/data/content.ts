@@ -390,7 +390,7 @@ export const walletProvisioning = {
   meta: {
     role: "Product Owner (Proxy PO → PO) — backlog ownership across two squads, B2B integration spec ownership, card migration validation, international issuer onboarding",
     timeline: "Mid 2022 – present",
-    stack: "B2B Integration Specifications · Agile Delivery (SAFe / PI Planning) · Partner Enablement",
+    stack: "Legacy On-Prem Applications · Dual-DC Hosting (US) · B2B Integration Specs",
     status: "Active — ongoing, expanding internationally",
   },
   problem: {
