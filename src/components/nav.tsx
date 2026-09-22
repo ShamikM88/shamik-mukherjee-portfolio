@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import { identity } from "@/data/content";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ResumeDownloadButton } from "@/components/ui";
 
 const LINKS = [
   { href: "/#work", label: "Case studies" },
@@ -60,9 +61,10 @@ export function Nav() {
             <Linkedin className="h-[18px] w-[18px]" aria-hidden />
           </a>
           <ThemeToggle />
+          <ResumeDownloadButton className="ml-1 hidden md:block" />
           <a
             href={`mailto:${identity.email}`}
-            className="ml-1 hidden items-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 md:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 md:inline-flex"
           >
             <Mail className="h-4 w-4" aria-hidden />
             Let&apos;s talk
@@ -93,32 +95,35 @@ export function Nav() {
               </a>
             ))}
           </nav>
-          <div className="mt-3 flex items-center gap-2 border-t border-ink-200/70 pt-3 dark:border-white/10">
+          <div className="mt-3 flex flex-col gap-2 border-t border-ink-200/70 pt-3 dark:border-white/10">
             <a
               href={`mailto:${identity.email}`}
-              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2.5 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2.5 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
             >
               <Mail className="h-4 w-4" aria-hidden />
               Let&apos;s talk
             </a>
-            <a
-              href={identity.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub profile"
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
-            >
-              <Github className="h-[18px] w-[18px]" aria-hidden />
-            </a>
-            <a
-              href={identity.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn profile"
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
-            >
-              <Linkedin className="h-[18px] w-[18px]" aria-hidden />
-            </a>
+            <ResumeDownloadButton className="[&>button]:w-full [&>button]:justify-center" />
+            <div className="flex items-center gap-2">
+              <a
+                href={identity.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile"
+                className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <Github className="h-[18px] w-[18px]" aria-hidden />
+              </a>
+              <a
+                href={identity.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile"
+                className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:text-ink-400 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <Linkedin className="h-[18px] w-[18px]" aria-hidden />
+              </a>
+            </div>
           </div>
         </div>
       )}

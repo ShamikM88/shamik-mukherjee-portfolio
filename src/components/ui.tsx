@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, Download } from "lucide-react";
+import { Check, ChevronDown, Download, FileDown } from "lucide-react";
 
 export function Badge({ children, tone = "brand" }: { children: React.ReactNode; tone?: "brand" | "ember" | "neutral" }) {
   const tones = {
@@ -71,5 +71,78 @@ export function DownloadCaseStudyButton({
       {downloaded ? <Check className="h-3.5 w-3.5" aria-hidden /> : <Download className="h-3.5 w-3.5" aria-hidden />}
       {downloaded ? "Downloaded" : label}
     </button>
+  );
+}
+
+const RESUME_OPTIONS = [
+  {
+    href: "/resume/Shamik_Mukherjee_CV_UK_Ireland.pdf",
+    label: "UK / Ireland format",
+    sublabel: "Banking-style CV",
+  },
+  {
+    href: "/resume/Shamik_Mukherjee_CV_Germany_Lebenslauf.pdf",
+    label: "Germany format",
+    sublabel: "Lebenslauf",
+  },
+];
+
+/** Split-button pattern (à la GitHub's release download button): one click reveals
+ *  both market formats as direct downloads, rather than guessing which one to link. */
+export function ResumeDownloadButton({ className = "" }: { className?: string }) {
+  const [open, setOpen] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    function onClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
+    }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("click", onClickOutside);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("click", onClickOutside);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className={`relative ${className}`}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className="inline-flex items-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+      >
+        <FileDown className="h-4 w-4" aria-hidden />
+        Resume
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden />
+      </button>
+
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 z-20 mt-2 w-60 overflow-hidden rounded-xl border border-ink-200 bg-white shadow-card-hover dark:border-white/15 dark:bg-ink-900"
+        >
+          {RESUME_OPTIONS.map((opt) => (
+            <a
+              key={opt.href}
+              href={opt.href}
+              download
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="flex flex-col gap-0.5 px-4 py-3 transition-colors hover:bg-ink-50 dark:hover:bg-white/10"
+            >
+              <span className="text-sm font-medium text-ink-900 dark:text-white">{opt.label}</span>
+              <span className="text-xs text-ink-500 dark:text-ink-400">{opt.sublabel}</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
