@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { identity } from "@/data/content";
+import { ResumeDownloadButton } from "@/components/ui";
 
 export function Footer({ showCta = true }: { showCta?: boolean }) {
   return (
@@ -32,6 +33,7 @@ export function Footer({ showCta = true }: { showCta?: boolean }) {
                 <Linkedin className="h-4 w-4" aria-hidden />
                 LinkedIn
               </a>
+              <ResumeDownloadButton />
             </div>
           </div>
         )}

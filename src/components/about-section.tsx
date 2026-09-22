@@ -1,7 +1,7 @@
 import { Building2, GraduationCap, Briefcase, Rocket, Languages as LanguagesIcon, MapPin, Mail, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { about, identity } from "@/data/content";
-import { Badge } from "@/components/ui";
+import { Badge, ResumeDownloadButton } from "@/components/ui";
 
 const CHAPTER_ICONS = { building: Building2, graduation: GraduationCap, briefcase: Briefcase, rocket: Rocket } as const;
 
@@ -17,7 +17,10 @@ export function AboutSection() {
           {about.headline}
         </h3>
 
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">{about.bio}</p>
+        {/* max-w-3xl matches the heading above it - it was narrower (max-w-2xl) than the
+            heading it sits under, which read as an odd "step in" and left a wide dead gap
+            on the right against the page's max-w-5xl container. */}
+        <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600 dark:text-ink-300">{about.bio}</p>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500 dark:text-ink-400">
           <span className="flex items-center gap-1.5">
@@ -63,7 +66,10 @@ export function AboutSection() {
                       {chapter.company}
                     </h4>
                     <p className="mt-0.5 text-sm text-ink-500 dark:text-ink-400">{chapter.subtitle}</p>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                    {/* No max-w cap here - entries with a highlights list already fill the
+                        card's full width via those bullets; entries without one (e.g. TCS)
+                        left a bare gap on the right when the description alone was capped. */}
+                    <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
                       {chapter.description}
                     </p>
                     {chapter.highlights && (
@@ -110,8 +116,9 @@ export function AboutSection() {
         </div>
 
 
-        {/* Philosophy */}
-        <div className="mt-20 max-w-2xl">
+        {/* Philosophy - max-w-3xl for the same reason as the bio above: max-w-2xl left the
+            same wide dead gap on the right against the page's max-w-5xl container. */}
+        <div className="mt-20 max-w-3xl">
           <h3 className="mb-6 font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
             {about.philosophy.heading}
           </h3>
@@ -213,6 +220,7 @@ export function AboutSection() {
               <Mail className="h-4 w-4" aria-hidden />
               Email me
             </a>
+            <ResumeDownloadButton />
           </div>
         </div>
       </div>

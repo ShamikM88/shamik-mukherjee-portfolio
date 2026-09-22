@@ -1,6 +1,63 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase, GraduationCap, MapPin, CreditCard } from "lucide-react";
 import { identity, about, statStrip } from "@/data/content";
+
+// Quick Profile card — replaces the plain photo. Carries the identity facts (role, domain,
+// education, location) directly, so the text column to its left no longer needs to restate them.
+function ProfileRow({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof Briefcase;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-ink-200 bg-white text-brand-600 dark:border-white/10 dark:bg-ink-900 dark:text-brand-400">
+        <Icon className="h-4 w-4" aria-hidden />
+      </span>
+      <div className="min-w-0">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">{label}</p>
+        <p className="mt-0.5 text-sm font-medium leading-snug text-ink-900 dark:text-white">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+// lg:w-[310px] matches the "View case studies" + "About me" button row's rendered width (310px)
+// — below lg both are centered so a small mismatch isn't visible, but lg:items-end right-aligns
+// both, and a narrower card there left a bare gap next to the buttons.
+function QuickProfileCard() {
+  return (
+    <div className="relative w-[280px] sm:w-72 lg:w-[310px]">
+      {/* Neutral dark glow, not the brand-green gradient used elsewhere - reads as soft
+          elevation/depth behind the card rather than a colored wash. */}
+      <div className="absolute -inset-3 rounded-[2.25rem] bg-ink-900 opacity-20 blur-2xl dark:bg-black dark:opacity-40" aria-hidden />
+      <div className="relative flex flex-col gap-5 rounded-[2rem] border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]">
+        {/* Stacked, not side-by-side: a horizontal row forces the photo to compete with the
+            name/subtitle for the card's ~260px content width. Centering the photo above the
+            text instead removes that ceiling, so it can scale independently of the text. */}
+        <div className="flex flex-col items-center gap-3 text-center">
+          <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10">
+            <Image src={identity.photo} alt={`${identity.name} headshot`} fill sizes="112px" className="object-cover" />
+          </div>
+          <div>
+            <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">{identity.name}</p>
+            <p className="text-xs text-ink-500 dark:text-ink-400">Quick profile</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 border-t border-ink-200 pt-5 dark:border-white/10">
+          <ProfileRow icon={Briefcase} label="Role" value="Product Owner, Cognizant" />
+          <ProfileRow icon={CreditCard} label="Domain" value="Digital Payments · Wallets" />
+          <ProfileRow icon={GraduationCap} label="Education" value="MBA, IIT Bombay" />
+          <ProfileRow icon={MapPin} label="Location" value="Reading, UK" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
@@ -20,49 +77,22 @@ export function Hero() {
             {/* max-w-2xl, not the old max-w-lg: at wide viewports the H1 above wraps based on
                 the full grid column width, so a narrower cap here created an asymmetric gap
                 between the headline's right edge and this block's. Widened to track it more
-                closely instead of stopping short. */}
+                closely instead of stopping short.
+                Domain line, "Based in" line, and the "Currently" chip were dropped from here —
+                the Quick Profile card now carries Role/Domain/Location, so restating them here
+                was pure duplication. What's left is the two lines the card doesn't cover. */}
             <div className="flex max-w-2xl flex-col gap-1.5 leading-relaxed text-ink-600 dark:text-ink-300">
               <p className="text-xl font-medium text-ink-800 dark:text-ink-100">{identity.headline}</p>
-              <p className="text-lg">{identity.domainLine}</p>
               {/* Reuses About's own accurate phrasing verbatim — "13+ years" is total career
                   tenure (engineering, pre-sales, delivery), not years spent as a PM/PO specifically.
                   Appending it directly to the job title above would misleadingly imply the latter. */}
               <p className="text-lg">{about.headline}</p>
-              <p className="text-lg">Based in {identity.location}.</p>
-              {/* Moved here from above the headline — a small status pill shouldn't outrank the
-                  hero's biggest line. Grouped with the rest of the identity facts instead, as a
-                  closing beat right before the CTAs. */}
-              <span className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-                Currently: {identity.currentRole} · {identity.currentEmployer}
-              </span>
             </div>
 
-          </div>
-
-          {/* CTAs live here now, under the photo, not in the text column - the text column
-              was taller than the photo (identity block + CTAs), leaving dead space below the
-              photo once alignment switched to items-start. Moving the buttons here balances
-              the two columns and shortens the row, pulling the stat strip up correspondingly. */}
-          <div className="flex flex-col items-center gap-6 lg:items-end">
-            <div className="relative">
-              <div
-                className="absolute -inset-3 rounded-[2.25rem] bg-gradient-brand opacity-30 blur-2xl"
-                aria-hidden
-              />
-              <div className="relative h-56 w-56 flex-shrink-0 overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-64 sm:w-64 lg:h-80 lg:w-80">
-                <Image
-                  src={identity.photo}
-                  alt={`${identity.name} headshot`}
-                  fill
-                  sizes="(min-width: 1024px) 320px, 256px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3 lg:justify-end">
+            {/* Back in the text column, left-aligned - the Quick Profile card is now a
+                self-contained unit on the right and doesn't need the CTAs stacked under it
+                for height-balance the way the plain photo once did. */}
+            <div className="flex flex-wrap gap-3">
               <a
                 href="#work"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
@@ -77,6 +107,10 @@ export function Hero() {
                 About me
               </a>
             </div>
+          </div>
+
+          <div className="flex flex-col items-center lg:items-end">
+            <QuickProfileCard />
           </div>
         </div>
 

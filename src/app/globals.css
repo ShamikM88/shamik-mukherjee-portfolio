@@ -22,8 +22,13 @@
   .text-balance {
     text-wrap: balance;
   }
+  /* Static teal-to-blue gradient - an animated multi-hue version was tried and dropped
+     as distracting; this keeps just the two colors that read well together, no motion. */
   .text-gradient-brand {
-    @apply bg-gradient-to-b from-brand-400 to-brand-600 bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #149c72, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   .bg-gradient-brand {
     @apply bg-gradient-to-r from-brand-600 to-brand-700;
