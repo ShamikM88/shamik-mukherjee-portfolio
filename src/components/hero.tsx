@@ -1,18 +1,16 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { identity, about, statStrip, statStripIntro } from "@/data/content";
+import { identity, about, statStrip } from "@/data/content";
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-glow">
       <div className="mx-auto max-w-6xl px-6 pb-14 pt-10 sm:px-8 sm:pb-16 sm:pt-14">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_360px] lg:gap-12">
+        {/* items-start, not items-center: the text column is taller than the photo now that
+            it carries the full identity block, and centering left dead space above the photo
+            rather than aligning it with the badge at the top of the row. */}
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_360px] lg:gap-12">
           <div className="flex flex-col items-start gap-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-              Currently: {identity.currentRole} · {identity.currentEmployer}
-            </span>
-
             <h1 className="text-balance font-display text-4xl font-semibold leading-[1.08] text-ink-900 dark:text-white sm:text-5xl lg:text-[3.75rem]">
               {identity.taglineLead}
               <br />
@@ -27,6 +25,13 @@ export function Hero() {
                   Appending it directly to the job title above would misleadingly imply the latter. */}
               <p className="text-lg">{about.headline}</p>
               <p className="text-lg">Based in {identity.location}.</p>
+              {/* Moved here from above the headline — a small status pill shouldn't outrank the
+                  hero's biggest line. Grouped with the rest of the identity facts instead, as a
+                  closing beat right before the CTAs. */}
+              <span className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+                Currently: {identity.currentRole} · {identity.currentEmployer}
+              </span>
             </div>
 
             <div className="flex flex-wrap gap-3 pt-3">
@@ -66,13 +71,11 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Tightened from the original mt-20/pt-10 spacing so the stat strip - the site's one
-            piece of hard evidence above everything else - lands close to the fold instead of
-            requiring a full scroll past a large photo and generous whitespace to reach it. */}
-        <p className="mt-6 text-sm font-medium text-ink-500 dark:text-ink-400 sm:mt-8">
-          {statStripIntro}
-        </p>
-        <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        {/* No intro line here on purpose — it restated the headline's own claim (real payments
+            work + solo AI systems) in a smaller font right before the numbers proved it. Spacing
+            tightened from the original mt-20/pt-10 so the stat strip - the site's one piece of
+            hard evidence above everything else - lands close to the fold. */}
+        <div className="mt-10 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:mt-14 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           {statStrip.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <dd className="font-display text-4xl font-bold text-ink-900 dark:text-white">

@@ -178,14 +178,6 @@ export const about = {
   },
 };
 
-// Intro line for the stat strip below the hero - kept here alongside statStrip since
-// the two are tightly coupled (the line has to accurately describe whatever's in the
-// strip). Updated 2026-09-21 when the Chrome Autofill case study became the lead case
-// study: the line now explicitly covers day-job delivery + the two solo AI systems,
-// not just "two AI systems", to stay accurate now that the strip leads with a
-// day-job stat rather than being 100% AI-project stats.
-export const statStripIntro = "Real payments delivery at work — two AI systems shipped solo outside it.";
-
 // Deliberately 3 of the 4 case studies, not one-per-project: every value here has to land
 // as an achievement in under a second of skim time. Job-search automation doesn't currently
 // have a number that clears that bar without either being gameable (postings processed - just
