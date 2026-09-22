@@ -363,6 +363,114 @@ export const chromeAutofill = {
   },
 };
 
+// `walletProvisioning` (added 2026-09-22) covers the candidate's current-role work on the
+// edge applications connecting the network to Google Pay and Samsung Pay. Facts trace to
+// `01-candidate-profile.md`'s Product Owner entries (both the 05/2022-01/2026 and the
+// 02/2026-present role), with extensive candidate clarification gathered in conversation
+// on 2026-09-22 covering team history, scope boundaries, and launch-status timing.
+// CONFIDENTIALITY: this case study covers work connected to a real card portfolio migration
+// (Discover being acquired by, and migrated onto, Capital One) and a real international-issuer
+// programme (Diners Club International, a Discover brand). Neither the client, Capital One,
+// Diners Club/DCI, nor any internal programme name ("Well Managed") is named anywhere below -
+// per the candidate's own explicit instruction, this is told at "the right level of
+// abstraction": a live card portfolio migration and international issuer onboarding, both
+// described functionally. Internal team names (the two squads) are also masked - never named,
+// per the candidate's explicit instruction to "just say two teams." The second international
+// issuer (masked as such) had not yet reached general availability as of this file's last edit
+// (2026-09-22) - re-verify with the candidate before ever describing it as live/launched rather
+// than "currently onboarding."
+export const walletProvisioning = {
+  title: "Google Pay & Samsung Pay — Wallet Provisioning at Scale",
+  shortTitle: "Google Pay & Samsung Pay",
+  subtitle:
+    "Own product backlog and B2B integration specifications for the edge applications connecting a major card network to Google Pay and Samsung Pay — validating that a live card portfolio migration stays invisible to wallet users, while expanding the underlying specification to support international issuers.",
+  repoUrl: "https://developers.google.com/pay/issuers/apis/push-provisioning/android",
+  repoLabel: "View Push Provisioning API Docs",
+  badges: ["Wallet Provisioning", "International Expansion", "Digital Payments"],
+  meta: {
+    role: "Product Owner (Proxy PO → PO) — backlog ownership across two squads, B2B integration spec ownership, card migration validation, international issuer onboarding",
+    timeline: "Mid 2022 – present",
+    stack: "B2B Integration Specifications · Agile Delivery (SAFe / PI Planning) · Partner Enablement",
+    status: "Active — ongoing, expanding internationally",
+  },
+  problem: {
+    heading: "Two live fault lines at once",
+    paragraphs: [
+      "The edge applications connecting the network to Google Pay and Samsung Pay sit on two live fault lines at once. A large-scale card portfolio migration means the underlying card programme itself is changing — and a digital wallet token has to survive that change without the cardholder noticing.",
+      "At the same time, specifications and validation rules originally written around a single primary issuer's conventions have to generalize as international franchise issuers come on board, without losing the rigor that keeps bad data out.",
+    ],
+  },
+  scope: {
+    heading: "My scope: two squads, one backlog owner",
+    lanes: [
+      {
+        label: "Backlog Ownership",
+        sublabel: "Two Squads, Two Boards",
+        tone: "brand-strong" as const,
+        items: [
+          "Epics, user stories, and acceptance criteria across two squads' separate backlogs (Google Pay and Samsung Pay component teams).",
+          "Cross-cutting initiatives — like the card migration validation — synchronized across both teams' boards through shared epics, not a merged backlog.",
+        ],
+      },
+      {
+        label: "B2B Integration Specs",
+        sublabel: "The Contract Partners Build Against",
+        tone: "blue" as const,
+        items: [
+          "Define and maintain the B2B integration specifications partner organisations build against.",
+          "Own the specification changes needed to generalize validation rules for international issuers, without loosening them enough to let bad data through.",
+        ],
+      },
+      {
+        label: "Card Migration Validation",
+        sublabel: "Quality & Continuity",
+        tone: "ember" as const,
+        items: [
+          "Lead wallet provisioning validation across Google Pay and Samsung Pay for a large-scale card migration programme.",
+          "Validate functional behaviour in pre-production for every migration wave before it reaches cardholders.",
+        ],
+      },
+      {
+        label: "Out of Scope",
+        sublabel: "Clear Boundaries",
+        tone: "muted" as const,
+        items: [
+          "Samsung Wallet push provisioning — code-complete, not yet toggled on in production.",
+          "The original Google Pay Transit enablement work — predates this scope.",
+          "Apple Pay — owned by a different team.",
+        ],
+      },
+    ],
+  },
+  caselets: {
+    heading: "Selected initiatives",
+    items: [
+      {
+        title: "Validating that a card migration is invisible to the wallet",
+        body: "When a large card portfolio moves to a new underlying issuer, the physical card changes — but a digital wallet token shouldn't care. My teams validate the functional behavior of provisioned Google Pay and Samsung Pay tokens through every migration wave in pre-production: confirming that once the new card is live, the wallet token quietly picks up the new payment profile with zero cardholder friction — no re-enrollment, no re-adding the card, nothing for the cardholder to notice. The plastic changes; the wallet just keeps working.",
+      },
+      {
+        title: "Token cleanup on a live repersonalization",
+        body: "A live Google Wallet token repersonalization campaign left a long tail — cardholders who hadn't reopened their wallet or had inactive devices never picked up their new payment profile. I planned the date-wise batch schedule for the repersonalization notifications and worked with L1 support to run it, then spent two to three months coordinating directly with Google to unlink the tokens that never came back, cleaning up the legacy tail without disrupting cardholders who'd already migrated.",
+      },
+      {
+        title: "Internationalizing a single-issuer spec",
+        body: "Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer went live in 2025; a second is currently onboarding, validated end-to-end in production ahead of general availability.",
+      },
+    ],
+  },
+  outcomes: {
+    heading: "The impact",
+    stats: [{ value: "2025", label: "first international issuer live on push provisioning" }],
+    bullets: [
+      "Directs two squads' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
+      "Digital wallet tokens continue to work for cardholders through a live, large-scale card portfolio migration — validated in pre-production ahead of each production wave, so the migration stays invisible to the wallet experience.",
+      "Closed out the legacy tail of a live token repersonalization campaign, coordinating directly with Google over several months to clean up tokens that never migrated.",
+      "Proved a specification built for a single issuer could generalize internationally — first market live in 2025, a second validated end-to-end in production ahead of general availability.",
+    ],
+  },
+};
+
 export const openCam = {
   title: "OpenCAM — Autonomous Maker-Checker Framework",
   shortTitle: "OpenCAM Framework",

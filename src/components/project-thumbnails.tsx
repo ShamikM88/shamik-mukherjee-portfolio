@@ -99,6 +99,28 @@ export function ChromeAutofillThumbnail() {
   );
 }
 
+export function WalletProvisioningThumbnail() {
+  const id = "wallet-prov";
+  return (
+    <ThumbFrame gradientId={id} accentFrom="#a78bfa" accentTo="#7c3aed" glowColor="#8b5cf6">
+      <g transform="translate(50,66)">
+        <rect x="10" y="10" width="120" height="78" rx="12" fill="#1e2338" stroke="#4a4468" strokeDasharray="4 4" opacity="0.55" />
+        <rect width="120" height="78" rx="12" fill="#1e2338" stroke="#343b58" />
+        <rect x="14" y="16" width="66" height="10" rx="5" fill="#3a4160" />
+        <rect x="14" y="36" width="92" height="8" rx="4" fill="#3a4160" />
+        <rect x="14" y="58" width="56" height="16" rx="6" fill={`url(#${id}-accent)`} />
+      </g>
+      <path d="M198 105l24 0" stroke="#4b5372" strokeWidth="2.5" strokeDasharray="5 5" fill="none" />
+      <path d="M216 99l8 6-8 6" stroke="#4b5372" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(240,70)">
+        <circle cx="36" cy="36" r="36" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="2.5" />
+        <path d="M20 38l10 8 22-20" stroke="#a78bfa" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <rect x="60" y="184" width="240" height="2" rx="1" fill="#343b58" />
+    </ThumbFrame>
+  );
+}
+
 export function OpenCamThumbnail() {
   const id = "opencam";
   return (
@@ -177,6 +199,35 @@ export function ChromeAutofillBanner() {
         </text>
       </g>
       <DashPanel x={620} y={70} accent="#e6832a" />
+      <rect x="70" y="278" width="260" height="3" rx="1.5" fill="#343b58" />
+    </ThumbFrame>
+  );
+}
+
+export function WalletProvisioningBanner() {
+  const id = "wallet-prov-banner";
+  return (
+    <ThumbFrame gradientId={id} viewBox="0 0 800 380" accentFrom="#a78bfa" accentTo="#7c3aed" glowColor="#8b5cf6">
+      <g transform="translate(70,110)">
+        <rect x="14" y="14" width="220" height="150" rx="14" fill="#1e2338" stroke="#4a4468" strokeDasharray="6 6" opacity="0.55" />
+        <rect width="220" height="150" rx="14" fill="#1e2338" stroke="#343b58" />
+        <rect x="20" y="24" width="110" height="12" rx="6" fill="#3a4160" />
+        <rect x="20" y="52" width="170" height="10" rx="5" fill="#3a4160" />
+        <rect x="20" y="76" width="90" height="24" rx="8" fill={`url(#${id}-accent)`} />
+        <text x="20" y="130" fontFamily="monospace" fontSize="12" fill="#8890b5">
+          New Issuer
+        </text>
+      </g>
+      <path d="M340 185l60 0" stroke="#4b5372" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+      <path d="M388 176l14 9-14 9" stroke="#4b5372" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(430,105)">
+        <circle cx="80" cy="80" r="80" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="3" />
+        <path d="M44 92l24 18 50-46" stroke="#a78bfa" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="80" y="140" textAnchor="middle" fontFamily="monospace" fontSize="11" fill="#8890b5">
+          token unaffected
+        </text>
+      </g>
+      <DashPanel x={620} y={70} accent="#8b5cf6" />
       <rect x="70" y="278" width="260" height="3" rx="1.5" fill="#343b58" />
     </ThumbFrame>
   );

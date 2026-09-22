@@ -34,6 +34,13 @@ const config: Config = {
           500: "#3b82f6",
           600: "#2563eb",
         },
+        // Fourth qualitative accent — added for the wallet-provisioning case study once
+        // ember/brand/blue were all already claimed by the other three case studies.
+        violet: {
+          400: "#a78bfa",
+          500: "#8b5cf6",
+          600: "#7c3aed",
+        },
         ink: {
           50: "#f6f7f8",
           100: "#eceef0",

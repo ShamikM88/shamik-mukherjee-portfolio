@@ -1,10 +1,15 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { chromeAutofill, openCam, fork } from "@/data/content";
-import { ChromeAutofillThumbnail, OpenCamThumbnail, ForkThumbnail } from "@/components/project-thumbnails";
+import { chromeAutofill, walletProvisioning, openCam, fork } from "@/data/content";
+import {
+  ChromeAutofillThumbnail,
+  WalletProvisioningThumbnail,
+  OpenCamThumbnail,
+  ForkThumbnail,
+} from "@/components/project-thumbnails";
 
-export type CaseStudyCardAccent = "ember" | "brand" | "blue";
+export type CaseStudyCardAccent = "ember" | "violet" | "brand" | "blue";
 
 export type CaseStudyCardData = {
   id: string;
@@ -34,6 +39,19 @@ export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
     // Day-job work goes first, deliberately — this is the primary case study,
     // the two personal AI projects below are the differentiator, not the headline.
     accent: "ember",
+  },
+  {
+    id: "wallet-provisioning",
+    href: "/case-studies/wallet-provisioning/",
+    thumbnail: <WalletProvisioningThumbnail />,
+    tags: walletProvisioning.badges,
+    title: walletProvisioning.shortTitle,
+    description: walletProvisioning.subtitle,
+    statValue: walletProvisioning.outcomes.stats[0].value,
+    statLabel: walletProvisioning.outcomes.stats[0].label,
+    // Second day-job case study — slots in right after Chrome Autofill, still ahead
+    // of the personal AI projects, per the same "day job outranks side projects" call.
+    accent: "violet",
   },
   {
     id: "opencam",
@@ -66,6 +84,11 @@ export const ACCENT_STYLES: Record<CaseStudyCardAccent, { border: string; stat: 
     border: "hover:border-ember-400",
     stat: "text-ember-600 dark:text-ember-400",
     link: "group-hover:text-ember-600 dark:group-hover:text-ember-400",
+  },
+  violet: {
+    border: "hover:border-violet-400",
+    stat: "text-violet-600 dark:text-violet-400",
+    link: "group-hover:text-violet-600 dark:group-hover:text-violet-400",
   },
   brand: {
     border: "hover:border-brand-300",

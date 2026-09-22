@@ -21,6 +21,9 @@ type ScopeBlock = {
 type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
 type StrategyBlock = { heading: string; intro: string; cards: { title: string; body: string }[] };
 type WorkflowBlock = { heading: string; intro: string; note?: string };
+/** A handful of distinct, parallel initiatives rather than one linear narrative — for a case
+ *  study whose work doesn't reduce to a single sequential Process/Decisions story. */
+type CaseletBlock = { heading: string; items: { title: string; body: string }[] };
 
 export function CaseStudyDetail({
   title,
@@ -34,6 +37,7 @@ export function CaseStudyDetail({
   problem,
   process,
   decisions,
+  caselets,
   outcomes,
   visuals,
   heroIllustration,
@@ -59,10 +63,15 @@ export function CaseStudyDetail({
   markdownFilename: string;
   meta: Meta;
   problem: TextBlock;
-  process: StepBlock;
-  decisions: ItemBlock;
+  /** Optional — a case study told through caselets instead can omit this. */
+  process?: StepBlock;
+  /** Optional — a case study told through caselets instead can omit this. */
+  decisions?: ItemBlock;
+  /** A handful of parallel initiatives instead of one linear Process/Decisions narrative — optional. */
+  caselets?: CaseletBlock;
   outcomes: OutcomeBlock;
-  visuals: VisualBlock;
+  /** Optional — not every case study has real supporting screenshots to show. */
+  visuals?: VisualBlock;
   heroIllustration: ReactNode;
   /** This case study's own id in CASE_STUDY_CARDS — used to show every *other* case study in "More case studies". */
   currentCaseStudyId: string;
@@ -276,50 +285,77 @@ export function CaseStudyDetail({
       )}
 
       {/* Process */}
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Process</p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-          {process.heading}
-        </h2>
-        <div className="mt-6 flex flex-col gap-4">
-          {process.steps.map((step, i) => (
-            <div
-              key={step.title}
-              className="flex scale-100 gap-4 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:scale-[1.015] hover:bg-ink-50 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
-            >
-              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-100 font-display text-sm font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
-                {i + 1}
-              </span>
-              <div>
-                <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{step.body}</p>
+      {process && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Process</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {process.heading}
+          </h2>
+          <div className="mt-6 flex flex-col gap-4">
+            {process.steps.map((step, i) => (
+              <div
+                key={step.title}
+                className="flex scale-100 gap-4 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:scale-[1.015] hover:bg-ink-50 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
+              >
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-100 font-display text-sm font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{step.body}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Decisions */}
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Decisions</p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-          {decisions.heading}
-        </h2>
-        <div className="mt-6">
-          <DecisionsCarousel items={decisions.items} />
+      {decisions && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Decisions</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {decisions.heading}
+          </h2>
+          <div className="mt-6">
+            <DecisionsCarousel items={decisions.items} />
+          </div>
+          {showApproachLink && (
+            <Link
+              href="/approach/"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+            >
+              See how this compares to the other project&apos;s delivery model
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+          )}
         </div>
-        {showApproachLink && (
-          <Link
-            href="/approach/"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
-          >
-            See how this compares to the other project&apos;s delivery model
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-          </Link>
-        )}
-      </div>
+      )}
+
+      {/* Caselets — a handful of parallel initiatives instead of one linear narrative */}
+      {caselets && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Initiatives
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {caselets.heading}
+          </h2>
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+            {caselets.items.map((c) => (
+              <div
+                key={c.title}
+                className="flex flex-col gap-2.5 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+              >
+                <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">{c.title}</h3>
+                <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Outcomes */}
       <div>
@@ -351,24 +387,26 @@ export function CaseStudyDetail({
       </div>
 
       {/* Supporting visuals */}
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-          Supporting visuals
-        </p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-          {visuals.heading}
-        </h2>
-        <div className="mt-6">
-          <VisualsCarousel items={visuals.items} />
+      {visuals && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Supporting visuals
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
+            {visuals.heading}
+          </h2>
+          <div className="mt-6">
+            <VisualsCarousel items={visuals.items} />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Related + CTA */}
       <div className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Next</p>
         <h2 className="mt-2 font-display text-xl font-semibold text-ink-900 dark:text-white">More case studies</h2>
 
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CASE_STUDY_CARDS.filter((c) => c.id !== currentCaseStudyId).map((card) => (
             <Link
               key={card.id}
