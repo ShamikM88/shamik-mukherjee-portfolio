@@ -12,6 +12,27 @@ export const metadata: Metadata = {
   description: governanceComparison.subhead,
 };
 
+// Links "Chrome Autofill retrieval flow" within the subhead so the enterprise-rigor claim
+// isn't just asserted - it's one click from the case study that backs it up. Built here as
+// JSX (content.ts is a .ts file and can't hold it) by splitting the plain-text subhead
+// around that exact phrase; keep both in sync if the wording ever changes.
+const subheadWithLink = (() => {
+  const linkText = "Chrome Autofill retrieval flow";
+  const [before, after] = governanceComparison.subhead.split(linkText);
+  return (
+    <>
+      {before}
+      <Link
+        href="/case-studies/google-chrome-autofill-virtual-card-number/"
+        className="text-brand-600 underline underline-offset-2 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+      >
+        {linkText}
+      </Link>
+      {after}
+    </>
+  );
+})();
+
 export default function ApproachPage() {
   return (
     <>
@@ -35,7 +56,7 @@ export default function ApproachPage() {
             {governanceComparison.heading}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
-            {governanceComparison.subhead}
+            {subheadWithLink}
           </p>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">
             {governanceComparison.framing}

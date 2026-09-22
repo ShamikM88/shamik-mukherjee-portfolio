@@ -45,6 +45,7 @@ export const about = {
     { value: "13+", label: "Years of experience" },
     { value: "4", label: "Career chapters" },
     { value: "IITB", label: "MBA, 2014" },
+    { value: ">$100M", label: "Proposal TCV won" },
   ],
   languages: ["English (C2)", "Hindi (C1)", "Bengali (Native)", "German (A0)"],
   // Grouped by employer/chapter rather than by individual title - the full title-level
@@ -149,6 +150,7 @@ export const about = {
     "Stakeholder Management",
     "Digital Payments",
     "Wallet Integrations",
+    "Pre-Sales & Bid Management",
     "Go-to-Market Strategy",
     "Multi-Agent System Architecture",
     "AI-Output Governance",
@@ -673,7 +675,11 @@ export const fork = {
 
 export const governanceComparison = {
   heading: "Match the governance to the risk.",
-  subhead: "This isn't a new muscle for me. Deciding how much process a proposal or a programme actually needs is something I did for years in pre-sales and delivery, long before I built anything with AI. I use that same judgment on the two systems I direct today.",
+  // Plain-text fallback for metadata.description - the visible page renders a JSX version
+  // with "Chrome Autofill retrieval flow" linked (built in approach/page.tsx, same pattern
+  // as chromeAutofill's problemWithLink), so this string and that JSX must be kept in sync.
+  subhead:
+    "This isn't a new muscle for me. Deciding how much process a proposal or a programme actually needs is something I did for years in pre-sales and delivery, long before I built anything with AI — most visibly on the Chrome Autofill retrieval flow, where a formal Definition of Done, staged production rollout, and Google's own certification testing governed every release. I bring that same judgment to the two AI-directed systems I run solo today, scaled to a very different kind of risk.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
