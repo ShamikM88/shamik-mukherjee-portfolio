@@ -34,6 +34,7 @@ export default function OpenCamPage() {
             title={openCam.title}
             badges={openCam.badges}
             subtitle={openCam.subtitle}
+            takeaway={openCam.takeaway}
             repoUrl={openCam.repoUrl}
             markdown={openCamMarkdown}
             markdownFilename="OpenCAM-Framework-Case-Study.md"

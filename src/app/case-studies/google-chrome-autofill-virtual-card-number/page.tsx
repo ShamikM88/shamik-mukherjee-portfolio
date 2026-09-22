@@ -62,6 +62,7 @@ export default function ChromeAutofillPage() {
             title={chromeAutofill.title}
             badges={chromeAutofill.badges}
             subtitle={chromeAutofill.subtitle}
+            takeaway={chromeAutofill.takeaway}
             repoUrl={chromeAutofill.repoUrl}
             repoLabel="View Google's API Docs"
             showApproachLink={false}

@@ -29,6 +29,7 @@ export function CaseStudyDetail({
   title,
   badges,
   subtitle,
+  takeaway,
   repoUrl,
   repoLabel = "View Source",
   markdown,
@@ -56,6 +57,9 @@ export function CaseStudyDetail({
   title: string;
   badges: string[];
   subtitle: string;
+  /** One-line headline outcome, shown directly under the subtitle before the reader commits to
+   *  the full Problem/Scope/Process deep-dive — optional, not every case study needs it. */
+  takeaway?: string;
   repoUrl: string;
   /** Label for the repoUrl link — defaults to "View Source"; override for links that aren't a code repo (e.g. a public API reference). */
   repoLabel?: string;
@@ -107,7 +111,13 @@ export function CaseStudyDetail({
         <h1 className="text-balance font-display text-4xl font-semibold leading-[1.1] text-ink-900 dark:text-white sm:text-5xl">
           {title}
         </h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">{subtitle}</p>
+        <p className="max-w-3xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">{subtitle}</p>
+        {takeaway && (
+          <p className="max-w-3xl rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm leading-relaxed text-ink-700 dark:border-brand-500/20 dark:bg-brand-500/10 dark:text-ink-200">
+            <span className="font-semibold text-brand-700 dark:text-brand-400">The takeaway: </span>
+            {takeaway}
+          </p>
+        )}
         <div className="flex gap-2">
           <DownloadCaseStudyButton markdown={markdown} filename={markdownFilename} />
           <a
@@ -185,7 +195,7 @@ export function CaseStudyDetail({
         <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
           {problem.heading}
         </h2>
-        <div className="mt-4 flex max-w-2xl flex-col gap-4">
+        <div className="mt-4 flex max-w-3xl flex-col gap-4">
           {problem.paragraphs.map((p, i) => (
             <p key={i} className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
               {p}
@@ -193,7 +203,7 @@ export function CaseStudyDetail({
           ))}
         </div>
         {problem.frictionBullets && (
-          <ul className="mt-4 flex max-w-2xl flex-col gap-2.5">
+          <ul className="mt-4 flex max-w-3xl flex-col gap-2.5">
             {problem.frictionBullets.map((b) => (
               <li key={b} className="flex gap-2.5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
                 <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-brand-500" aria-hidden />
@@ -277,7 +287,7 @@ export function CaseStudyDetail({
           <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
             {strategy.heading}
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 dark:text-ink-300">{strategy.intro}</p>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600 dark:text-ink-300">{strategy.intro}</p>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {strategy.cards.map((c) => (
               <div

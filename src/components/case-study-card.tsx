@@ -73,8 +73,8 @@ export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
     tags: fork.badges,
     title: fork.shortTitle,
     description: fork.subtitle,
-    statValue: fork.outcomes.stats[2].value,
-    statLabel: fork.outcomes.stats[2].label,
+    statValue: fork.outcomes.stats[0].value,
+    statLabel: fork.outcomes.stats[0].label,
     accent: "blue",
   },
 ];

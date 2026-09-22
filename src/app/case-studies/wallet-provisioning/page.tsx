@@ -32,6 +32,7 @@ export default function WalletProvisioningPage() {
             title={walletProvisioning.title}
             badges={walletProvisioning.badges}
             subtitle={walletProvisioning.subtitle}
+            takeaway={walletProvisioning.takeaway}
             repoUrl={walletProvisioning.repoUrl}
             repoLabel={walletProvisioning.repoLabel}
             showApproachLink={false}

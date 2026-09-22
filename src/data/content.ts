@@ -20,7 +20,11 @@
 
 export const identity = {
   name: "Shamik Mukherjee",
-  headline: "Product Manager / Senior Product Owner",
+  // Was "Product Manager / Senior Product Owner" - a slash-title reads as unresolved
+  // leveling/positioning to a VP audience. Restated as a stated trajectory instead, and now
+  // matches the "I'm exploring Product Manager and Product Owner roles" framing already used
+  // on About's Next Chapter section - per a VP-of-Product review (2026-09-23).
+  headline: "Senior Product Owner — targeting Product Manager scope",
   currentRole: "Product Owner",
   currentEmployer: "Cognizant Technology Solutions",
   domainLine: "Digital Payments · Tokenization · Wallet Integrations (Google Pay, Samsung Pay) · Agile Delivery",
@@ -204,6 +208,10 @@ export const chromeAutofill = {
   shortTitle: "Chrome Virtual Card Autofill",
   subtitle:
     "Owned the technical delivery for the retrieval flow of a major Virtual Card integration with Google Chrome, translating Google's API architecture into an enterprise delivery programme that processed 275,000+ requests in its first 60 days.",
+  // Added per a VP-of-Product review (2026-09-23) - gives the reader a headline outcome before
+  // the Problem/Scope/Process deep-dive, instead of making them read to the bottom for it.
+  takeaway:
+    "$900K settled in the first 45 days, zero card details ever exposed to merchants, delivered against Google's hard 5-second latency SLA.",
   repoUrl: "https://developers.google.com/pay/virtual-cards-v1",
   badges: ["API Integration", "Digital Payments", "Enterprise Delivery"],
   meta: {
@@ -215,7 +223,7 @@ export const chromeAutofill = {
   problem: {
     heading: "The context",
     paragraphs: [
-      "Online checkout has to balance high security against low friction. To solve it, a major US card network partnered with Google to autofill virtual cards directly inside Chrome, so a shopper's real card number never reaches the merchant.",
+      "Online checkout has to balance high security against low friction. To solve it, a major US card network partnered with Google to autofill virtual cards directly inside Chrome, so a shopper's real card number never reaches the merchant. For the network, this wasn't just a UX fix — friction at checkout is what loses top-of-wallet usage to a competing card.",
       "Google defined the overarching solution and API framework (Virtual Cards v1) — but the reality of enterprise software is that execution is where integrations actually succeed or fail. Translating Google's strict cloud requirements into the network's highly regulated, legacy backend architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug into, so delivery meant standing up a new microservice — the edge component for all inbound Google traffic into the network, spanning enrolment, unenrolment, retrieval, and sendOTP — hosted on OpenShift (OCP).",
     ],
     frictionBullets: [
@@ -299,7 +307,11 @@ export const chromeAutofill = {
       },
       {
         title: "Validated live before trusting it at scale",
-        body: "There was no user-facing feedback loop on this — real behavior was the only signal that mattered. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time — seeing individual transactions work end to end before the flow was trusted with real volume.",
+        // "so validation meant..." clause added per a VP-of-Product review (2026-09-23) that
+        // flagged near-zero discovery/validation language across the case studies - same facts,
+        // reframed to name the validation instinct explicitly rather than leaving it implicit
+        // under "process."
+        body: "There was no user-facing feedback loop on this — real behavior was the only signal that mattered, so validation meant watching it myself rather than waiting on a research or support channel that didn't exist yet. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time — seeing individual transactions work end to end before the flow was trusted with real volume.",
       },
     ],
   },
@@ -392,6 +404,10 @@ export const walletProvisioning = {
   shortTitle: "Wallet Provisioning at Scale",
   subtitle:
     "Own product backlog and B2B integration specifications for the edge applications connecting a major US card network to Google Pay and Samsung Pay — validating that a live card portfolio migration stays invisible to wallet users, while expanding the underlying specification to support international issuers.",
+  // Added per a VP-of-Product review (2026-09-23) - see chromeAutofill's takeaway for the
+  // same rationale.
+  takeaway:
+    "First international issuer live on push provisioning in 2025, with zero cardholder-facing disruption through an ongoing, large-scale card portfolio migration.",
   repoUrl: "https://developers.google.com/pay/issuers/apis/push-provisioning/android",
   repoLabel: "View Push Provisioning API Docs",
   badges: ["Wallet Provisioning", "International Expansion", "Digital Payments"],
@@ -489,6 +505,11 @@ export const openCam = {
   shortTitle: "OpenCAM Framework",
   subtitle:
     "Engineered a dual-agent LLM pipeline with deterministic policy gating, targeting a cut in CAM drafting time from a business day to 15–30 minutes.",
+  // Added per a VP-of-Product review (2026-09-23) - leads with the strongest already-proven
+  // fact (a real bug the governance model actually caught) rather than the 15-30 min target,
+  // which is aspirational and unvalidated at scale (N=1) - see the Status field above.
+  takeaway:
+    "A real correctness bug — a debt-free company's DSCR silently computed as 0, not undefined — caught before it could reach a credit committee. Proof the governance model works, not just a design claim.",
   repoUrl: "https://github.com/ShamikM88/open-cam-framework",
   badges: ["Multi-Agent AI", "Credit Risk"],
   meta: {
@@ -711,6 +732,11 @@ export const fork = {
   shortTitle: "AI Job Search Automation",
   subtitle:
     "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, a live application dashboard, and a shared posting-fetch cache — automation layered on a forked base, not authored from scratch.",
+  // Added per a VP-of-Product review (2026-09-23) - leads with the governance/audit fact and
+  // the concrete same-day-fix story, not the "150+ postings processed" figure the statStrip
+  // comment below already calls out as gameable (just run the scraper more).
+  takeaway:
+    "Zero PII or client data ever committed, verified by a full git-history audit — and a real repost bug (one already-rejected role scraped three times, nearly reapplied to) closed the same day it was caught.",
   baseRepoUrl: "https://github.com/MadsLorentzen/ai-job-search",
   forkRepoUrl: "https://github.com/ShamikM88/ai-job-search",
   badges: ["Agentic AI", "Personal Tooling"],
@@ -768,9 +794,14 @@ export const fork = {
   outcomes: {
     heading: "What changed",
     stats: [
+      // Reordered per a VP-of-Product review (2026-09-23) - "150+ postings processed" was
+      // leading despite the statStrip comment above already flagging it as gameable (just run
+      // the scraper more); the governance/audit stat is the strongest, least-gameable one here,
+      // and is also what CASE_STUDY_CARDS pulls for the home-page card - keep that index (now
+      // [0], was [2]) in sync if this array is ever reordered again.
+      { value: "0", label: "PII or client data ever committed — verified via git audit" },
       { value: "150+", label: "job postings processed & auto-deduped" },
       { value: "48", label: "fork-specific commits shipped, direct-to-master" },
-      { value: "0", label: "PII or client data ever committed — verified via git audit" },
     ],
     bullets: [
       "The repost-hardening fix closes a failure mode that had already cost one wasted application before it shipped — zero repeats since.",

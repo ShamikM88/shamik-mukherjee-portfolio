@@ -33,6 +33,7 @@ export default function JobSearchAutomationPage() {
             title={fork.title}
             badges={fork.badges}
             subtitle={fork.subtitle}
+            takeaway={fork.takeaway}
             repoUrl={fork.forkRepoUrl}
             markdown={jobSearchForkMarkdown}
             markdownFilename="AI-Job-Search-Fork-Case-Study.md"
@@ -45,8 +46,11 @@ export default function JobSearchAutomationPage() {
             heroIllustration={<ForkBanner />}
             currentCaseStudyId="fork"
             baseRepo={{ url: fork.baseRepoUrl, label: "Forked from MadsLorentzen/ai-job-search" }}
+            // Index 2 now, not 1 - the outcomes.stats array in content.ts was reordered
+            // (2026-09-23) so "0 PII..." leads instead of the gameable "150+ postings" figure;
+            // this override must track whichever index the "48 commits" stat now sits at.
             outcomeStatOverrides={{
-              1: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
+              2: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
             }}
             calloutNote={{
               text: "Run in Fast-Iterate mode — lighter process ceremony by design for solo personal tooling, not a lower bar.",
