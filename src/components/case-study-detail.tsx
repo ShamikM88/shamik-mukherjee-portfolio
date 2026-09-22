@@ -50,7 +50,7 @@ export function CaseStudyDetail({
   workflow,
   workflowIllustration,
   strategy,
-  governanceNote,
+  calloutNote,
   showApproachLink = true,
 }: {
   title: string;
@@ -90,8 +90,8 @@ export function CaseStudyDetail({
   workflowIllustration?: ReactNode;
   /** Validation & strategic-context cards (buy-vs-build, economics, adoption) — optional. */
   strategy?: StrategyBlock;
-  /** One-line callout explaining a deliberately lighter governance model vs. the other case study — optional. */
-  governanceNote?: { text: string; linkHref: string; linkLabel: string };
+  /** One-line contextual callout — a governance-model note, a domain-insight framing, etc. Link is optional. */
+  calloutNote?: { text: string; linkHref?: string; linkLabel?: string };
   /** Show the "compare delivery models" link under Decisions — only relevant to the two AI-governance case studies (OpenCAM/Fork). Defaults true for backward compatibility. */
   showApproachLink?: boolean;
 }) {
@@ -161,13 +161,21 @@ export function CaseStudyDetail({
         </div>
       </div>
 
-      {/* Governance note — only set on case studies with deliberately lighter process */}
-      {governanceNote && (
+      {/* Callout — a governance-model note, a domain-insight framing, etc. */}
+      {calloutNote && (
         <p className="text-sm italic text-ink-500 dark:text-ink-400">
-          {governanceNote.text}{" "}
-          <Link href={governanceNote.linkHref} className="not-italic text-brand-600 underline underline-offset-2 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
-            {governanceNote.linkLabel}
-          </Link>
+          {calloutNote.text}
+          {calloutNote.linkHref && calloutNote.linkLabel && (
+            <>
+              {" "}
+              <Link
+                href={calloutNote.linkHref}
+                className="not-italic text-brand-600 underline underline-offset-2 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+              >
+                {calloutNote.linkLabel}
+              </Link>
+            </>
+          )}
         </p>
       )}
 
