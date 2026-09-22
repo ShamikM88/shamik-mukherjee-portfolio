@@ -5,20 +5,13 @@ import { identity, about, statStrip, statStripIntro } from "@/data/content";
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-glow">
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-20">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_400px] lg:gap-12">
-          <div className="flex flex-col items-start gap-7">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-                Currently: {identity.currentRole} · {identity.currentEmployer}
-              </span>
-              {/* One proof point visible without scrolling — everything else backing up the
-                  hero's claims otherwise lives below the fold in the stat strip. */}
-              <span className="inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-xs font-medium text-brand-700 dark:border-brand-500/25 dark:bg-brand-500/10 dark:text-brand-300">
-                275K+ successful requests shipped in production
-              </span>
-            </div>
+      <div className="mx-auto max-w-6xl px-6 pb-14 pt-10 sm:px-8 sm:pb-16 sm:pt-14">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_360px] lg:gap-12">
+          <div className="flex flex-col items-start gap-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+              Currently: {identity.currentRole} · {identity.currentEmployer}
+            </span>
 
             <h1 className="text-balance font-display text-4xl font-semibold leading-[1.08] text-ink-900 dark:text-white sm:text-5xl lg:text-[3.75rem]">
               {identity.taglineLead}
@@ -59,12 +52,12 @@ export function Hero() {
                 className="absolute -inset-3 rounded-[2.25rem] bg-gradient-brand opacity-30 blur-2xl"
                 aria-hidden
               />
-              <div className="relative h-64 w-64 flex-shrink-0 overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
+              <div className="relative h-56 w-56 flex-shrink-0 overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-64 sm:w-64 lg:h-80 lg:w-80">
                 <Image
                   src={identity.photo}
                   alt={`${identity.name} headshot`}
                   fill
-                  sizes="(min-width: 1024px) 384px, 320px"
+                  sizes="(min-width: 1024px) 320px, 256px"
                   className="object-cover"
                   priority
                 />
@@ -73,10 +66,13 @@ export function Hero() {
           </div>
         </div>
 
-        <p className="mt-10 text-sm font-medium text-ink-500 dark:text-ink-400 sm:mt-20">
+        {/* Tightened from the original mt-20/pt-10 spacing so the stat strip - the site's one
+            piece of hard evidence above everything else - lands close to the fold instead of
+            requiring a full scroll past a large photo and generous whitespace to reach it. */}
+        <p className="mt-6 text-sm font-medium text-ink-500 dark:text-ink-400 sm:mt-8">
           {statStripIntro}
         </p>
-        <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-10 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           {statStrip.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <dd className="font-display text-4xl font-bold text-ink-900 dark:text-white">

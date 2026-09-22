@@ -32,8 +32,8 @@ export const identity = {
   photo: "/profile.jpg",
   // Personal-brand tagline, not a sourced fact - an honest characterization of the
   // actual pattern across both case studies below (shipped, AI-directed delivery).
-  taglineLead: "I ship products in digital payments —",
-  taglineHighlight: "and off the clock, I direct AI to build production-grade systems solo.",
+  taglineLead: "I ship digital payments products —",
+  taglineHighlight: "off the clock, I direct AI to build production-grade systems, solo.",
 };
 
 export const about = {
