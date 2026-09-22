@@ -1,68 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { chromeAutofill, openCam, fork } from "@/data/content";
-import { ChromeAutofillThumbnail, OpenCamThumbnail, ForkThumbnail } from "@/components/project-thumbnails";
-
-const cards = [
-  {
-    id: "chrome-autofill",
-    href: "/case-studies/google-chrome-autofill-virtual-card-number/",
-    thumbnail: <ChromeAutofillThumbnail />,
-    tags: chromeAutofill.badges,
-    title: chromeAutofill.shortTitle,
-    description: chromeAutofill.subtitle,
-    statValue: chromeAutofill.outcomes.stats[0].value,
-    statLabel: chromeAutofill.outcomes.stats[0].label,
-    // Day-job work goes first, deliberately — this is the primary case study,
-    // the two personal AI projects below are the differentiator, not the headline.
-    accent: "ember" as const,
-  },
-  {
-    id: "opencam",
-    href: "/case-studies/opencam/",
-    thumbnail: <OpenCamThumbnail />,
-    tags: openCam.badges,
-    title: openCam.shortTitle,
-    description: openCam.subtitle,
-    statValue: openCam.outcomes.stats[0].value,
-    statLabel: openCam.outcomes.stats[0].label,
-    // Matches the brand(green)/blue split established on the Approach page and in
-    // the thumbnail illustrations, so a card's accent never contradicts its own image.
-    accent: "brand" as const,
-  },
-  {
-    id: "fork",
-    href: "/case-studies/job-search-automation/",
-    thumbnail: <ForkThumbnail />,
-    tags: fork.badges,
-    title: fork.shortTitle,
-    description: fork.subtitle,
-    statValue: fork.outcomes.stats[2].value,
-    statLabel: fork.outcomes.stats[2].label,
-    accent: "blue" as const,
-  },
-];
-
-const ACCENT_STYLES = {
-  ember: {
-    border: "hover:border-ember-400",
-    stat: "text-ember-600 dark:text-ember-400",
-    link: "group-hover:text-ember-600 dark:group-hover:text-ember-400",
-  },
-  brand: {
-    border: "hover:border-brand-300",
-    stat: "text-brand-600 dark:text-brand-400",
-    link: "group-hover:text-brand-600 dark:group-hover:text-brand-400",
-  },
-  blue: {
-    border: "hover:border-blue-400",
-    stat: "text-blue-600 dark:text-blue-400",
-    link: "group-hover:text-blue-600 dark:group-hover:text-blue-400",
-  },
-};
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CASE_STUDY_CARDS, CaseStudyCard } from "@/components/case-study-card";
 
 export function CaseStudiesTeaser() {
   const scrollerRef = React.useRef<HTMLDivElement>(null);
@@ -149,55 +89,9 @@ export function CaseStudiesTeaser() {
             ref={scrollerRef}
             className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-pl-6 pb-2 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:scroll-pl-10"
           >
-            {cards.map((card) => {
-              const accent = ACCENT_STYLES[card.accent];
-              return (
-                <Link
-                  key={card.id}
-                  href={card.href}
-                  data-case-study-card
-                  className={`group flex w-[85%] flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/25 sm:w-[45%] ${accent.border}`}
-                >
-                  <div className="aspect-[5/3] w-full overflow-hidden">{card.thumbnail}</div>
-
-                  <div className="flex flex-1 flex-col gap-3 p-6">
-                    <div className="flex flex-wrap gap-2">
-                      {card.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-ink-100 px-2.5 py-1 text-xs font-medium text-ink-600 dark:bg-white/10 dark:text-ink-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="font-display text-xl font-semibold text-ink-900 dark:text-white">
-                      {card.title}
-                    </h3>
-
-                    <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">
-                      {card.description}
-                    </p>
-
-                    <div className="mt-auto flex items-center justify-between border-t border-ink-100 pt-4 dark:border-white/10">
-                      <div>
-                        <span className={`font-display text-lg font-bold ${accent.stat}`}>
-                          {card.statValue}
-                        </span>
-                        <span className="ml-1.5 text-xs text-ink-500 dark:text-ink-400">
-                          {card.statLabel}
-                        </span>
-                      </div>
-                      <span className={`flex items-center gap-1 text-sm font-medium text-ink-500 transition-colors dark:text-ink-400 ${accent.link}`}>
-                        Read case study
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+            {CASE_STUDY_CARDS.map((card) => (
+              <CaseStudyCard key={card.id} card={card} className="w-[85%] flex-shrink-0 snap-start sm:w-[45%]" />
+            ))}
           </div>
         </div>
       </div>

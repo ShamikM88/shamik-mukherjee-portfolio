@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { OpenCamBanner } from "@/components/project-thumbnails";
 import { LiveMergedPRCount } from "@/components/live-github-stat";
-import { openCam, fork } from "@/data/content";
+import { openCam } from "@/data/content";
 import { openCamMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
@@ -57,11 +57,7 @@ export default function OpenCamPage() {
             outcomes={openCam.outcomes}
             visuals={openCam.visuals}
             heroIllustration={<OpenCamBanner />}
-            related={{
-              href: "/case-studies/job-search-automation/",
-              title: fork.shortTitle,
-              description: fork.subtitle,
-            }}
+            currentCaseStudyId="opencam"
             headerExtra={<LiveMergedPRCount repo="ShamikM88/open-cam-framework" fallback={37} />}
           />
         </div>

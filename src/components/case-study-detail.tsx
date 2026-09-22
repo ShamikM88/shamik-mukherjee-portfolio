@@ -6,6 +6,7 @@ import { Badge, DownloadCaseStudyButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
 import { VisualsCarousel } from "@/components/visuals-carousel";
 import { ScopeLanes } from "@/components/scope-lanes";
+import { CASE_STUDY_CARDS } from "@/components/case-study-card";
 
 type Meta = { role: string; timeline: string; stack: string; status: string };
 type TextBlock = { heading: string; paragraphs: ReactNode[]; frictionBullets?: string[] };
@@ -36,7 +37,7 @@ export function CaseStudyDetail({
   outcomes,
   visuals,
   heroIllustration,
-  related,
+  currentCaseStudyId,
   baseRepo,
   headerExtra,
   outcomeStatOverrides,
@@ -63,7 +64,8 @@ export function CaseStudyDetail({
   outcomes: OutcomeBlock;
   visuals: VisualBlock;
   heroIllustration: ReactNode;
-  related: { href: string; title: string; description: string };
+  /** This case study's own id in CASE_STUDY_CARDS — used to show every *other* case study in "More case studies". */
+  currentCaseStudyId: string;
   /** Extra header link(s) after View Source / baseRepo, e.g. a live PR-count badge. */
   headerExtra?: ReactNode;
   /** Replace a specific outcome stat's displayed value with a live-fetched ReactNode, keyed by index. */
@@ -366,16 +368,21 @@ export function CaseStudyDetail({
         <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Next</p>
         <h2 className="mt-2 font-display text-xl font-semibold text-ink-900 dark:text-white">More case studies</h2>
 
-        <Link
-          href={related.href}
-          className="mt-4 flex items-center justify-between rounded-xl bg-ink-50 px-5 py-4 transition-colors hover:bg-ink-100 dark:bg-white/5 dark:hover:bg-white/10"
-        >
-          <div>
-            <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">{related.title}</p>
-            <p className="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{related.description}</p>
-          </div>
-          <ArrowRight className="h-4 w-4 flex-shrink-0 text-ink-400" aria-hidden />
-        </Link>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {CASE_STUDY_CARDS.filter((c) => c.id !== currentCaseStudyId).map((card) => (
+            <Link
+              key={card.id}
+              href={card.href}
+              className="flex items-center justify-between gap-3 rounded-xl bg-ink-50 px-5 py-4 transition-colors hover:bg-ink-100 dark:bg-white/5 dark:hover:bg-white/10"
+            >
+              <div className="min-w-0">
+                <p className="font-display text-sm font-semibold text-ink-900 dark:text-white">{card.title}</p>
+                <p className="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{card.description}</p>
+              </div>
+              <ArrowRight className="h-4 w-4 flex-shrink-0 text-ink-400" aria-hidden />
+            </Link>
+          ))}
+        </div>
 
         <a
           href={`mailto:${identity.email}`}

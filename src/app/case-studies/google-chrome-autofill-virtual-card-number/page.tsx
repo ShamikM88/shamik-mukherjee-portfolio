@@ -5,7 +5,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ChromeAutofillBanner } from "@/components/project-thumbnails";
-import { chromeAutofill, openCam } from "@/data/content";
+import { chromeAutofill } from "@/data/content";
 import { chromeAutofillMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
@@ -76,11 +76,7 @@ export default function ChromeAutofillPage() {
             outcomes={chromeAutofill.outcomes}
             visuals={chromeAutofill.visuals}
             heroIllustration={<ChromeAutofillBanner />}
-            related={{
-              href: "/case-studies/opencam/",
-              title: openCam.shortTitle,
-              description: openCam.subtitle,
-            }}
+            currentCaseStudyId="chrome-autofill"
           />
         </div>
       </main>

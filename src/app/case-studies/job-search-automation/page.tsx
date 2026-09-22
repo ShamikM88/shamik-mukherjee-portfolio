@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ForkBanner } from "@/components/project-thumbnails";
 import { LiveCommitsAhead } from "@/components/live-github-stat";
-import { chromeAutofill, fork } from "@/data/content";
+import { fork } from "@/data/content";
 import { jobSearchForkMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
@@ -43,11 +43,7 @@ export default function JobSearchAutomationPage() {
             outcomes={fork.outcomes}
             visuals={fork.visuals}
             heroIllustration={<ForkBanner />}
-            related={{
-              href: "/case-studies/google-chrome-autofill-virtual-card-number/",
-              title: chromeAutofill.shortTitle,
-              description: chromeAutofill.subtitle,
-            }}
+            currentCaseStudyId="fork"
             baseRepo={{ url: fork.baseRepoUrl, label: "Forked from MadsLorentzen/ai-job-search" }}
             outcomeStatOverrides={{
               1: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
