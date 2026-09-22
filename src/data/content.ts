@@ -185,9 +185,17 @@ export const about = {
 // have a number that clears that bar without either being gameable (postings processed - just
 // run the scraper more) or reading as an engineering-output count rather than impact (commits
 // shipped) - it stays fully present as case study #4, just not in this top-of-page highlight.
+// Chrome Autofill's slot uses $900K settled volume, not 275K+ requests, here specifically -
+// confirmed by candidate 2026-09-22 - because this strip's own bar (impact, not an engineering
+// throughput count) is exactly what a raw request count fails; 275K+ still appears on the case
+// study page itself alongside this figure, just not promoted to this top-level highlight.
+// "1st International Issuer" sublabel is Google Pay only, not "Google Pay & Samsung Pay" - the
+// wallet-provisioning case study's Out of Scope is explicit that Samsung Wallet push
+// provisioning is code-complete but not yet toggled on in production, so it cannot have any
+// international issuer live on it; the old sublabel overclaimed by implying both platforms.
 export const statStrip = [
-  { value: "275K+", label: "Successful Autofill Requests in First 60 Days", sublabel: "Chrome Virtual Card Autofill" },
-  { value: "1st", label: "International Issuer Live on Push Provisioning", sublabel: "Google Pay & Samsung Pay" },
+  { value: "$900K", label: "Settled Volume in First 45 Days", sublabel: "Chrome Virtual Card Autofill" },
+  { value: "1st", label: "International Issuer Live on Push Provisioning", sublabel: "Google Pay" },
   { value: "15–30 min", label: "Time-to-First-Draft, Down from a Full Business Day", sublabel: "OpenCAM Framework" },
 ];
 
@@ -320,13 +328,14 @@ export const chromeAutofill = {
       },
       {
         title: "Strict deployment gating",
-        body: "Because of the scale of the card network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.",
+        body: "Because of the scale of the network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.",
       },
     ],
   },
   outcomes: {
     heading: "The impact",
     stats: [
+      { value: "$900K", label: "settled volume in the first 45 days" },
       { value: "275K+", label: "successful autofill requests in the first 60 days" },
       { value: "Zero", label: "actual card details exposed to merchants" },
       { value: "2024", label: "Star Award – Excellence in Delivery" },
@@ -382,7 +391,7 @@ export const walletProvisioning = {
   title: "Google Pay & Samsung Pay — Wallet Provisioning at Scale",
   shortTitle: "Wallet Provisioning at Scale",
   subtitle:
-    "Own product backlog and B2B integration specifications for the edge applications connecting a major card network to Google Pay and Samsung Pay — validating that a live card portfolio migration stays invisible to wallet users, while expanding the underlying specification to support international issuers.",
+    "Own product backlog and B2B integration specifications for the edge applications connecting a major US card network to Google Pay and Samsung Pay — validating that a live card portfolio migration stays invisible to wallet users, while expanding the underlying specification to support international issuers.",
   repoUrl: "https://developers.google.com/pay/issuers/apis/push-provisioning/android",
   repoLabel: "View Push Provisioning API Docs",
   badges: ["Wallet Provisioning", "International Expansion", "Digital Payments"],

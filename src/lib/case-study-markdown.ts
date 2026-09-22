@@ -65,10 +65,11 @@ The integration split into two domains: Enrolment/Unenrolment (generating and un
 
 **Built traceability into the step-up verification chain.** Google's spec allows a retrieval request to step up into an identity-verification flow (their own "yellow path") when extra assurance is needed — which meant a single attempt could fan out into a separate OTP dispatch and OTP validation call. I proposed the mechanism that kept those three requests traceable back to one original attempt, rather than three disconnected events.
 
-**Strict deployment gating.** Because of the scale of the card network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.
+**Strict deployment gating.** Because of the scale of the network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.
 
 ## Outcomes
 
+- $900K settled volume in the first 45 days
 - 275,000+ successful autofill requests in the first 60 days
 - Zero actual card details ever exposed to merchants (by design of the token + DCID model)
 - Star Award – Excellence in Delivery (December 2024)
@@ -87,7 +88,7 @@ export const walletProvisioningMarkdown = `# Google Pay & Samsung Pay — Wallet
 
 ## Two live fault lines at once
 
-The edge applications connecting the network to Google Pay and Samsung Pay sit on two live fault lines at once. A large-scale card portfolio migration means the underlying card programme itself is changing — and a digital wallet token has to survive that change without the cardholder noticing.
+The edge applications connecting a major US card network to Google Pay and Samsung Pay sit on two live fault lines at once. A large-scale card portfolio migration means the underlying card programme itself is changing — and a digital wallet token has to survive that change without the cardholder noticing.
 
 At the same time, specifications and validation rules originally written around a single primary issuer's conventions have to generalize as international franchise issuers come on board, without losing the rigor that keeps bad data out.
 

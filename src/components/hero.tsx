@@ -49,7 +49,7 @@ function QuickProfileCard() {
           </div>
         </div>
         <div className="flex flex-col gap-4 border-t border-ink-200 pt-5 dark:border-white/10">
-          <ProfileRow icon={Briefcase} label="Role" value="Product Owner, Cognizant" />
+          <ProfileRow icon={Briefcase} label="Role" value="Payments Product Owner, Cognizant" />
           <ProfileRow icon={CreditCard} label="Domain" value="Digital Payments · Wallets" />
           <ProfileRow icon={GraduationCap} label="Education" value="MBA, IIT Bombay" />
           <ProfileRow icon={MapPin} label="Location" value="Reading, UK" />
