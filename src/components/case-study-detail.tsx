@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
-import { Badge, DownloadCaseStudyButton } from "@/components/ui";
+import { Badge, DownloadCaseStudyButton, ResumeDownloadButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
 import { VisualsCarousel } from "@/components/visuals-carousel";
 import { ScopeLanes } from "@/components/scope-lanes";
@@ -384,13 +384,16 @@ export function CaseStudyDetail({
           ))}
         </div>
 
-        <a
-          href={`mailto:${identity.email}`}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
-        >
-          <Mail className="h-4 w-4" aria-hidden />
-          Talk about this work
-        </a>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${identity.email}`}
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-4px_rgba(13,125,92,0.5)] transition-transform hover:scale-[1.02]"
+          >
+            <Mail className="h-4 w-4" aria-hidden />
+            Talk about this work
+          </a>
+          <ResumeDownloadButton />
+        </div>
       </div>
     </div>
   );
