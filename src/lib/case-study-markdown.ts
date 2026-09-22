@@ -118,6 +118,8 @@ At the same time, specifications and validation rules originally written around 
 
 **Internationalizing a single-issuer spec.** Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer went live in 2025; a second is currently onboarding, validated end-to-end in production ahead of general availability.
 
+**Making a legacy, partner-published spec audit-ready.** Network-driven specs come with real controls. Ours is legacy — published to partners as PDFs, only once or twice a year — so whenever my work needs a spec change, I document it in Jira under the relevant epic with the updated draft attached, and log it in a tracker that ties every change back to its Jira ID. When a recent audit asked us to produce evidence for every change made, that tracker answered it directly — nothing to reconstruct after the fact.
+
 ## Outcomes
 
 - First international issuer live on push provisioning, 2025
@@ -125,6 +127,7 @@ At the same time, specifications and validation rules originally written around 
 - Digital wallet tokens continue to work for cardholders through a live, large-scale card portfolio migration — validated in pre-production ahead of each production wave, so the migration stays invisible to the wallet experience
 - Closed out the legacy tail of a live token repersonalization campaign, coordinating directly with Google over several months to clean up tokens that never migrated
 - Proved a specification built for a single issuer could generalize internationally — first market live in 2025, a second validated end-to-end in production ahead of general availability
+- Passed a recent audit on full spec-change traceability — every change traced from tracker entry to Jira ticket, with nothing needing reconstruction after the fact
 
 ---
 

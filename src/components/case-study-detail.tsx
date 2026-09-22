@@ -351,7 +351,7 @@ export function CaseStudyDetail({
           <h2 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
             {caselets.heading}
           </h2>
-          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {caselets.items.map((c) => (
               <div
                 key={c.title}
