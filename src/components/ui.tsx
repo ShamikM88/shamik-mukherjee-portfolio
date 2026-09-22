@@ -77,11 +77,15 @@ export function DownloadCaseStudyButton({
 const RESUME_OPTIONS = [
   {
     href: "/resume/Shamik_Mukherjee_CV_UK_Ireland.pdf",
+    // Plain text codes, not flag emoji — combined-flag sequences (GB+IE) fall back to
+    // raw region-indicator letters ("GBIE") on systems without full emoji-ZWJ support.
+    code: "GB · IE",
     label: "UK / Ireland format",
-    sublabel: "Banking-style CV",
+    sublabel: null,
   },
   {
     href: "/resume/Shamik_Mukherjee_CV_Germany_Lebenslauf.pdf",
+    code: "DE",
     label: "Germany format",
     sublabel: "Lebenslauf",
   },
@@ -135,10 +139,15 @@ export function ResumeDownloadButton({ className = "" }: { className?: string })
               download
               role="menuitem"
               onClick={() => setOpen(false)}
-              className="flex flex-col gap-0.5 px-4 py-3 transition-colors hover:bg-ink-50 dark:hover:bg-white/10"
+              className="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-ink-50 dark:hover:bg-white/10"
             >
-              <span className="text-sm font-medium text-ink-900 dark:text-white">{opt.label}</span>
-              <span className="text-xs text-ink-500 dark:text-ink-400">{opt.sublabel}</span>
+              <span className="flex flex-col gap-0.5">
+                <span className="text-sm font-medium text-ink-900 dark:text-white">{opt.label}</span>
+                {opt.sublabel && <span className="text-xs text-ink-500 dark:text-ink-400">{opt.sublabel}</span>}
+              </span>
+              <span className="flex-shrink-0 rounded-full bg-ink-100 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-ink-500 dark:bg-white/10 dark:text-ink-400">
+                {opt.code}
+              </span>
             </a>
           ))}
         </div>
