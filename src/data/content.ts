@@ -54,20 +54,19 @@ export const about = {
   // support its own "what this taught me" narrative the way an MBA or a job does - but it's
   // still fully present in Education below, so nothing is silently dropped. The Summer
   // Intern (SBI, 05/2013-07/2013) stays excluded too, same standing decision as CVs.
+  // Reverse chronological - most recent chapter first, matching the "current state before
+  // backstory" order the rest of the page uses (hero leads with now, not with 2010).
   chapters: [
     {
-      icon: "building",
-      dates: "Dec 2010 – Jun 2012",
-      company: "Tata Consultancy Services",
-      subtitle: "Software Engineer, Mumbai",
-      description: "Engineered enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules.",
-    },
-    {
-      icon: "graduation",
-      dates: "2012 – 2014",
-      company: "SJMSOM, IIT Bombay",
-      subtitle: "M.Mgmt. (MBA equivalent)",
-      description: "Business strategy, operations, and commercial decision-making — GPA 8.38/10.0.",
+      icon: "rocket",
+      dates: "May 2022 – Present",
+      company: "Cognizant Technology Solutions",
+      subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
+      description: "Moved onsite to the UK, then into the Product Owner role outright.",
+      highlights: [
+        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Star Award – Excellence in Delivery (2024)",
+        "Now leading Google Pay & Samsung Pay wallet-provisioning for a card migration programme",
+      ],
     },
     {
       icon: "briefcase",
@@ -82,15 +81,18 @@ export const about = {
       ],
     },
     {
-      icon: "rocket",
-      dates: "May 2022 – Present",
-      company: "Cognizant Technology Solutions",
-      subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
-      description: "Moved onsite to the UK, then into the Product Owner role outright.",
-      highlights: [
-        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Star Award – Excellence in Delivery (2024)",
-        "Now leading Google Pay & Samsung Pay wallet-provisioning for a card migration programme",
-      ],
+      icon: "graduation",
+      dates: "2012 – 2014",
+      company: "SJMSOM, IIT Bombay",
+      subtitle: "M.Mgmt. (MBA equivalent)",
+      description: "Business strategy, operations, and commercial decision-making — GPA 8.38/10.0.",
+    },
+    {
+      icon: "building",
+      dates: "Dec 2010 – Jun 2012",
+      company: "Tata Consultancy Services",
+      subtitle: "Software Engineer, Mumbai",
+      description: "Engineered enhancements to India's largest securities depository (NSDL) — dematerialisation and securities transfer modules.",
     },
   ],
   // Reflective counterpart to the chapters above - what each one actually taught me,

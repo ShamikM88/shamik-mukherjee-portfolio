@@ -45,7 +45,7 @@ export function AboutSection() {
             Career timeline
           </p>
           <h3 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
-            The path so far
+            Four chapters, one thread
           </h3>
           <ol className="relative mt-10 flex flex-col gap-6 border-l-2 border-ink-200 pl-10 dark:border-white/10 sm:pl-12">
             {about.chapters.map((chapter) => {
