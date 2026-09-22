@@ -17,7 +17,11 @@ export function Hero() {
               <span className="text-gradient-brand">{identity.taglineHighlight}</span>
             </h1>
 
-            <div className="flex max-w-lg flex-col gap-1.5 leading-relaxed text-ink-600 dark:text-ink-300">
+            {/* max-w-2xl, not the old max-w-lg: at wide viewports the H1 above wraps based on
+                the full grid column width, so a narrower cap here created an asymmetric gap
+                between the headline's right edge and this block's. Widened to track it more
+                closely instead of stopping short. */}
+            <div className="flex max-w-2xl flex-col gap-1.5 leading-relaxed text-ink-600 dark:text-ink-300">
               <p className="text-xl font-medium text-ink-800 dark:text-ink-100">{identity.headline}</p>
               <p className="text-lg">{identity.domainLine}</p>
               {/* Reuses About's own accurate phrasing verbatim — "13+ years" is total career
