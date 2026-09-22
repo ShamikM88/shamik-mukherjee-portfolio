@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { identity, statStrip } from "@/data/content";
+import { identity, statStrip, statStripIntro } from "@/data/content";
 
 export function Hero() {
   return (
@@ -63,7 +63,7 @@ export function Hero() {
         </div>
 
         <p className="mt-10 text-sm font-medium text-ink-500 dark:text-ink-400 sm:mt-20">
-          Two AI systems shipped solo — strategy through shipped code.
+          {statStripIntro}
         </p>
         <div className="mt-5 flex flex-col gap-8 border-t border-ink-200 pt-10 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           {statStrip.map((stat) => (

@@ -7,6 +7,80 @@
 // see CLAUDE.md in ai-job-search for the reconciliation rule: any fact corrected
 // on the page must also be corrected in the source .md file and re-synced here.
 
+export const chromeAutofillMarkdown = `# Virtual Card Autofill for Google Chrome — PM Case Study
+
+2026-09-21 · @ShamikM88
+
+## Context
+
+Online checkout has to balance high security against low friction. To solve it, a major US card network partnered with Google to autofill virtual cards directly inside Chrome, so a shopper's real card number never reaches the merchant.
+
+Google defined the overarching solution and API framework (Virtual Cards v1) — but the reality of enterprise software is that execution is where integrations actually succeed or fail. Translating Google's strict cloud requirements into the network's highly regulated, legacy backend architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug into, so delivery meant standing up a new microservice — the edge component for all inbound Google traffic into the network, spanning enrolment, unenrolment, retrieval, and sendOTP — hosted on OpenShift (OCP).
+
+The integration split into two domains: Enrolment/Unenrolment (generating and unlinking the token — essentially mirror-image operations) and Retrieval (fetching the tokenized details dynamically during a transaction). I owned the Retrieval flow — the critical path that fires at the exact moment a user is trying to pay, where the tolerance for friction, latency, or failure was zero.
+
+## Scope
+
+**Technical Translation (Architecture to Action)**
+- Broke down dense enterprise architecture flows into structured epics and rigorously defined user stories.
+- Scoped and drove delivery of the Retrieval endpoint on a new microservice — the edge component for all inbound Google traffic into the network (enrolment, unenrolment, retrieval, sendOTP) — hosted on OpenShift (OCP), since nothing in the existing estate could serve it.
+- Mapped and mitigated complex failure scenarios (e.g. network timeouts) to ensure graceful UI fallbacks.
+
+**Cross-Domain Alignment (Systems & Stakeholder Coordination)**
+- Partnered deeply with the Enrolment/Unenrolment-flow PO to keep domain boundaries clean and state management seamless.
+- Integrated the Retrieval flow within the edge application against downstream systems — to get the risk decision on the retrieval request, and to fetch the token and DCID cryptogram details.
+- Communicated directly with Google stakeholders during high-stakes integration testing to triage edge cases.
+
+**Definition of Done (Quality & Governance)**
+- Every story had to clear the full pre-prod test suite, meet every acceptance criterion, and deploy to production before it counted as Done — no partial credit.
+- Any new functionality shipped with matching observability — new monitors or dashboard widgets — in the same story, never backfilled later.
+- Every functional story was scoped as a vertical slice that could be productionized independently.
+
+**Out of Scope (Clear Boundaries)**
+- Overarching partner commercial relations (owned by account executives).
+- Enrolment/unenrolment flows (owned by a peer PO).
+
+## The technical puzzle
+
+**A. Dynamic cryptograms (DCID).** The retrieval flow isn't just about passing a static number — it's about real-time security. Instead of the user's real card number, Chrome autofills a token plus a DCID: a dynamic, one-time equivalent of a physical card's CVV, generated fresh per transaction and dead the moment payment settles. Even intercepted mid-transaction, it's already useless.
+
+**B. Zero-tolerance latency.** Getting the cryptography right — managing real-time latency, error handling, and payload security on every single checkout — was a massive engineering puzzle. It's unglamorous infrastructure, but when built right, it just works and nobody notices.
+
+## How I worked it
+
+1. **Transcribed the spec into epics, sequenced by release of value.** I translated Google's functional flow and API spec directly into epics and user stories — broken down by incremental release of value, not by technical layer: the green flow without risk checks first, then the green flow with risk checks added, then the yellow flow with OTP integration layered in last.
+2. **Coordinated across every team the flow touched, not just my own.** Retrieval didn't sit in isolation — it depended on downstream teams for the risk decision, the token, and the DCID cryptogram, ran in parallel with the peer PO owning Enrolment/Unenrolment, and needed direct engagement with Google's own team during integration testing. I owned every story and edge case on Retrieval, but shipping it meant staying aligned across all three fronts at once.
+3. **Held every story to a DoD that didn't stop at "deployed".** A local unit test passing wasn't proof of anything at this scale — nothing left the backlog as Done until it cleared the full pre-prod suite and was verified in production. That same bar covered observability too: if a story shipped new functionality, the monitoring and dashboards for it shipped in the same story, never as a follow-up.
+4. **Validated live before trusting it at scale.** There was no user-facing feedback loop on this — real behavior was the only signal that mattered. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time — seeing individual transactions work end to end before the flow was trusted with real volume.
+
+## Execution calls I made
+
+**Chased a 7-8s response time down to inside Google's 5s limit.** Performance testing threw a curve ball: Google's own NFR required retrievals to respond within 5 seconds. Green flow was fine at 2.4s, but the yellow flow — now hitting the real fraud system — was taking 7-8s. I worked with the engineers to trace it through Datadog to the fraud system's own downstream calls, then worked with that team directly; they optimized their APIs, cut their own downstream call count, and got green flow to 1-1.2s and yellow flow to 3.5-4s. On the yellow path, that response isn't even the card details — it's Google's instruction that the user needs to complete a step-up challenge first. A 5-second wait just to learn that, before any OTP round-trip has even started, wasn't something I was willing to accept.
+
+**Surfaced a risk that wasn't mine to prioritize.** Chasing that latency fix surfaced a second-order risk: a user re-clicking autofill while waiting would generate extra requests that needed idempotent handling to avoid duplicate processing. As PO on this initiative, prioritization calls like this sat with the PM, not me — so I raised it as input rather than deciding it myself. It became an MVP2 item, delivered by the Enrolment team in Q2 2025.
+
+**Mocked the fraud signal rather than waiting on it.** Our first release of value was the green flow with no risk checks — the fraud team's side simply wasn't prioritized yet. For the next release, I had two options: halt development citing a downstream blocker, or keep moving. We worked with the fraud team to understand, at a high level, how they'd tentatively process Google's risk signals — not their actual business rules, just a close approximation — and built a mock from that. Even our integration environment ran against it until the real system was ready.
+
+**Wrote the certification tests myself, because nobody else would.** No one was resourced to write Google's certification test cases — every team was heads-down on their own deliverables. The peer PO on Enrolment and I each knew our own domain well enough to cover it ourselves: I wrote the Retrieval test cases, they wrote Enrolment/Unenrolment's — prerequisites, test data, and expected behaviour for every scenario. Mine included working with engineers to identify specific test cards mapped to each risk outcome — some hardwired to route into the green flow, some into yellow, some into red.
+
+**Built traceability into the step-up verification chain.** Google's spec allows a retrieval request to step up into an identity-verification flow (their own "yellow path") when extra assurance is needed — which meant a single attempt could fan out into a separate OTP dispatch and OTP validation call. I proposed the mechanism that kept those three requests traceable back to one original attempt, rather than three disconnected events.
+
+**Strict deployment gating.** Because of the scale of the card network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.
+
+## Outcomes
+
+- 275,000+ successful autofill requests in the first 60 days
+- Zero actual card details ever exposed to merchants (by design of the token + DCID model)
+- Star Award – Excellence in Delivery (December 2024)
+- Delivered to production, November 2024, and driving top-of-wallet usage for the network since
+- Partner certification testing for the retrieval flow — sandbox and production alike — passed with zero functional defects, against test cases I wrote myself
+- Cut yellow-flow (risk-checked) response time from 7-8s to 3.5-4s, and green-flow from 2.4s to 1-1.2s — both comfortably inside Google's 5-second requirement
+
+---
+
+Role: Product Owner — translated architecture to epics, managed backlog, enforced Definition of Done · Timeline: Launched Nov 2024 · Stack: OpenShift (OCP) · Enterprise API Integration · JWE · Status: Live in production
+`;
+
 export const openCamMarkdown = `# OpenCAM Framework — PM Case Study
 
 2026-09-17 · @ShamikM88

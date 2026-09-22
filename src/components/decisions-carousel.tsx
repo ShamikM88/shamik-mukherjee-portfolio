@@ -36,6 +36,10 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
     el.scrollBy({ left: direction === "left" ? -step : step, behavior: "smooth" });
   }
 
+  // Exact 2-up fit only when there's nothing to peek at; 3+ items get a deliberately
+  // narrower card so the next one pokes into view as a "there's more" cue.
+  const twoUp = items.length <= 2;
+
   return (
     <div className="relative">
       {/* Left arrow — sits at the left edge of the first visible card */}
@@ -60,16 +64,26 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
         <ChevronRight className="h-4 w-4" aria-hidden />
       </button>
 
-      {/* Viewport shows exactly 2 cards */}
+      {/* Right fade is wide: that card is a deliberately-clipped teaser, so washing
+          into it is fine. Left fade is a thin edge vignette only — that card is fully
+          in view and meant to be read, so the "more to scroll back to" cue can't eat
+          into its text the way the right one does. */}
+      {canScrollRight && (
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-[5] w-16 bg-gradient-to-l from-ink-50 to-transparent dark:from-ink-950 sm:w-28" />
+      )}
+      {canScrollLeft && (
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[5] w-6 bg-gradient-to-r from-ink-50 to-transparent dark:from-ink-950 sm:w-10" />
+      )}
+
       <div
         ref={scrollerRef}
-        className="flex gap-4 overflow-x-auto pt-2 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 pt-2 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:scroll-pl-10"
       >
         {items.map((item) => (
           <div
             key={item.title}
             data-decision-card
-            className="flex w-full flex-shrink-0 flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07] sm:w-[calc(50%-0.5rem)]"
+            className={`flex w-[85%] flex-shrink-0 snap-start flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07] ${twoUp ? "sm:w-[calc(50%-0.5rem)]" : "sm:w-[45%]"}`}
           >
             <h3 className="font-display text-sm font-semibold text-ink-900 dark:text-white sm:overflow-hidden sm:text-ellipsis sm:whitespace-nowrap">
               {item.title}

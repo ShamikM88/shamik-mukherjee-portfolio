@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, X, ZoomIn } from "lucide-react";
 
-type VisualItem = { caption: string; src: string; alt: string };
+/** sourceUrl is optional - a citation link to the original/public source of this visual, e.g. a public post being screenshotted. */
+type VisualItem = { caption: string; src: string; alt: string; sourceUrl?: string; sourceLabel?: string };
 
 export function VisualsCarousel({ items }: { items: VisualItem[] }) {
   const scrollerRef = React.useRef<HTMLDivElement>(null);
@@ -52,6 +53,9 @@ export function VisualsCarousel({ items }: { items: VisualItem[] }) {
 
   // No arrows needed at all if everything already fits (e.g. exactly 2 items on desktop).
   const needsNav = items.length > 2;
+  // Exact 2-up fit only when there's nothing to peek at; 3+ items get a deliberately
+  // narrower card so the next one pokes into view as a "there's more" cue.
+  const twoUp = items.length <= 2;
   const active = lightboxIndex !== null ? items[lightboxIndex] : null;
 
   return (
@@ -76,18 +80,28 @@ export function VisualsCarousel({ items }: { items: VisualItem[] }) {
           >
             <ChevronRight className="h-4 w-4" aria-hidden />
           </button>
+          {/* Right fade is wide: that card is a deliberately-clipped teaser, so washing
+              into it is fine. Left fade is a thin edge vignette only — that card is fully
+              in view and meant to be read, so the "more to scroll back to" cue can't eat
+              into its text the way the right one does. */}
+          {canScrollRight && (
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-[5] w-16 bg-gradient-to-l from-ink-50 to-transparent dark:from-ink-950 sm:w-28" />
+          )}
+          {canScrollLeft && (
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-[5] w-6 bg-gradient-to-r from-ink-50 to-transparent dark:from-ink-950 sm:w-10" />
+          )}
         </>
       )}
 
       <div
         ref={scrollerRef}
-        className="flex gap-4 overflow-x-auto pt-2 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 pt-2 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:scroll-pl-10"
       >
         {items.map((item, i) => (
           <div
             key={item.caption}
             data-visual-card
-            className="flex w-full flex-shrink-0 flex-col gap-2 rounded-2xl p-1 transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover sm:w-[calc(50%-0.5rem)]"
+            className={`flex w-[85%] flex-shrink-0 snap-start flex-col gap-2 rounded-2xl p-1 transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover ${twoUp ? "sm:w-[calc(50%-0.5rem)]" : "sm:w-[45%]"}`}
           >
             <button
               type="button"
@@ -101,6 +115,17 @@ export function VisualsCarousel({ items }: { items: VisualItem[] }) {
               </span>
             </button>
             <p className="text-xs text-ink-500 dark:text-ink-400">{item.caption}</p>
+            {item.sourceUrl && (
+              <a
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit items-center gap-1 text-xs font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+              >
+                <ExternalLink className="h-3 w-3" aria-hidden />
+                {item.sourceLabel ?? "View original post"}
+              </a>
+            )}
           </div>
         ))}
       </div>

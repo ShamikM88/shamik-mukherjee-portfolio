@@ -1,4 +1,4 @@
-// All copy on this site is sourced from two files in the private ai-job-search repo
+// All copy on this site is sourced from files in the private ai-job-search repo
 // (never committed here): `01-candidate-profile.md` and
 // `documents/cv/OpenCAM_Framework_PM_Case_Study.md`. Section B (job-search automation)
 // also draws specific figures from a third, closely-related document in that repo —
@@ -6,6 +6,17 @@
 // only summarize that project at a high level. Every field below traces to one of
 // those three; nothing here is invented or rounded up. Update this file, not the
 // components, when a fact changes upstream.
+//
+// `chromeAutofill` (added 2026-09-21) has no equivalent long-form source doc yet - its
+// facts trace to `01-candidate-profile.md`, the candidate's own public LinkedIn posts
+// (3mo Virtual Card autofill post, 3mo tokenisation/DCID follow-up post), and two
+// candidate-confirmed technical details (OCP, JWE) not written down anywhere else.
+// PGP was in an earlier draft but is NOT included - the candidate was unable to confirm
+// it, so it was dropped rather than left in unverified. The client name stays masked
+// ("a major US card network" / "the network") in every field here, same as everywhere
+// else - the one approved exception is the real Facebook-post screenshot in this case
+// study's own visuals, which may show real branding since it's referencing an
+// already-public post rather than naming the client in prose.
 
 export const identity = {
   name: "Shamik Mukherjee",
@@ -29,7 +40,7 @@ export const about = {
   // Short hero assertion + supporting subtext, rendered as two visual tiers instead
   // of one dense paragraph.
   headline: "13+ years connecting technology, business, and delivery.",
-  bio: "An IIT Bombay MBA and Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The two case studies on this site are that work.",
+  bio: "An IIT Bombay MBA and Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The case studies on this site cover both: real payments delivery at work, and two AI systems shipped solo outside it.",
   heroStats: [
     { value: "13+", label: "Years of experience" },
     { value: "4", label: "Career chapters" },
@@ -165,11 +176,190 @@ export const about = {
   },
 };
 
+// Intro line for the stat strip below the hero - kept here alongside statStrip since
+// the two are tightly coupled (the line has to accurately describe whatever's in the
+// strip). Updated 2026-09-21 when the Chrome Autofill case study became the lead case
+// study: the line now explicitly covers day-job delivery + the two solo AI systems,
+// not just "two AI systems", to stay accurate now that the strip leads with a
+// day-job stat rather than being 100% AI-project stats.
+export const statStripIntro = "Real payments delivery at work — two AI systems shipped solo outside it.";
+
 export const statStrip = [
+  { value: "275K+", label: "Successful Autofill Requests in First 60 Days", sublabel: "Chrome Virtual Card Autofill" },
   { value: "1", label: "Multi-Agent AI System Shipped 0→1, Solo", sublabel: "OpenCAM Framework" },
-  { value: "2", label: "Feedback-Driven Features Shipped the Same Week Requested", sublabel: "OpenCAM Framework" },
   { value: "4", label: "Custom Features Shipped on a Forked Base", sublabel: "Job-search automation" },
 ];
+
+export const chromeAutofill = {
+  title: "Virtual Card Autofill for Google Chrome — Retrieval Flow",
+  shortTitle: "Chrome Virtual Card Autofill",
+  subtitle:
+    "Owned the technical delivery for the retrieval flow of a major Virtual Card integration with Google Chrome, translating Google's API architecture into an enterprise delivery programme that processed 275,000+ requests in its first 60 days.",
+  repoUrl: "https://developers.google.com/pay/virtual-cards-v1",
+  badges: ["API Integration", "Digital Payments", "Enterprise Delivery"],
+  meta: {
+    role: "Product Owner — translated architecture to epics, managed backlog, enforced Definition of Done",
+    timeline: "Launched Nov 2024",
+    stack: "OpenShift (OCP) · Enterprise API Integration · JWE",
+    status: "Live in production",
+  },
+  problem: {
+    heading: "The context",
+    paragraphs: [
+      "Online checkout has to balance high security against low friction. To solve it, a major US card network partnered with Google to autofill virtual cards directly inside Chrome, so a shopper's real card number never reaches the merchant.",
+      "Google defined the overarching solution and API framework (Virtual Cards v1) — but the reality of enterprise software is that execution is where integrations actually succeed or fail. Translating Google's strict cloud requirements into the network's highly regulated, legacy backend architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug into, so delivery meant standing up a new microservice — the edge component for all inbound Google traffic into the network, spanning enrolment, unenrolment, retrieval, and sendOTP — hosted on OpenShift (OCP).",
+    ],
+    frictionBullets: [
+      "The integration split into two domains: Enrolment/Unenrolment (generating and unlinking the token — essentially mirror-image operations) and Retrieval (fetching the tokenized details dynamically during a transaction).",
+      "I owned the Retrieval flow — the critical path that fires at the exact moment a user is trying to pay. The tolerance for friction, latency, or failure here was zero.",
+    ],
+  },
+  scope: {
+    heading: "My scope: driving technical execution",
+    lanes: [
+      {
+        label: "Technical Translation",
+        sublabel: "Architecture to Action",
+        tone: "brand-strong" as const,
+        items: [
+          "Broke down dense enterprise architecture flows into structured epics and rigorously defined user stories.",
+          "Scoped and drove delivery of the Retrieval endpoint on a new microservice — the edge component for all inbound Google traffic into the network (enrolment, unenrolment, retrieval, sendOTP) — hosted on OpenShift (OCP), since nothing in the existing estate could serve it.",
+          "Mapped and mitigated complex failure scenarios (e.g. network timeouts) to ensure graceful UI fallbacks.",
+        ],
+      },
+      {
+        label: "Cross-Domain Alignment",
+        sublabel: "Systems & Stakeholder Coordination",
+        tone: "blue" as const,
+        items: [
+          "Partnered deeply with the Enrolment/Unenrolment-flow PO to keep domain boundaries clean and state management seamless.",
+          "Integrated the Retrieval flow within the edge application against downstream systems — to get the risk decision on the retrieval request, and to fetch the token and DCID cryptogram details.",
+          "Communicated directly with Google stakeholders during high-stakes integration testing to triage edge cases.",
+        ],
+      },
+      {
+        label: "Definition of Done",
+        sublabel: "Quality & Governance",
+        tone: "ember" as const,
+        items: [
+          "Every story had to clear the full pre-prod test suite, meet every acceptance criterion, and deploy to production before it counted as Done — no partial credit.",
+          "Any new functionality shipped with matching observability — new monitors or dashboard widgets — in the same story, never backfilled later.",
+          "Every functional story was scoped as a vertical slice that could be productionized independently.",
+        ],
+      },
+      {
+        label: "Out of Scope",
+        sublabel: "Clear Boundaries",
+        tone: "muted" as const,
+        items: [
+          "Overarching partner commercial relations (owned by account executives).",
+          "Enrolment/unenrolment flows (owned by a peer PO).",
+        ],
+      },
+    ],
+  },
+  features: {
+    heading: "The technical puzzle",
+    items: [
+      {
+        letter: "A",
+        title: "Dynamic cryptograms (DCID)",
+        body: "The retrieval flow isn't just about passing a static number — it's about real-time security. Instead of the user's real card number, Chrome autofills a token plus a DCID: a dynamic, one-time equivalent of a physical card's CVV, generated fresh per transaction and dead the moment payment settles. Even intercepted mid-transaction, it's already useless.",
+      },
+      {
+        letter: "B",
+        title: "Zero-tolerance latency",
+        body: "Getting the cryptography right — managing real-time latency, error handling, and payload security on every single checkout — was a massive engineering puzzle. It's unglamorous infrastructure, but when built right, it just works and nobody notices.",
+      },
+    ],
+  },
+  process: {
+    heading: "How I worked it",
+    steps: [
+      {
+        title: "Transcribed the spec into epics, sequenced by release of value",
+        body: "I translated Google's functional flow and API spec directly into epics and user stories — broken down by incremental release of value, not by technical layer: the green flow without risk checks first, then the green flow with risk checks added, then the yellow flow with OTP integration layered in last.",
+      },
+      {
+        title: "Coordinated across every team the flow touched, not just my own",
+        body: "Retrieval didn't sit in isolation — it depended on downstream teams for the risk decision, the token, and the DCID cryptogram, ran in parallel with the peer PO owning Enrolment/Unenrolment, and needed direct engagement with Google's own team during integration testing. I owned every story and edge case on Retrieval, but shipping it meant staying aligned across all three fronts at once.",
+      },
+      {
+        title: "Held every story to a DoD that didn't stop at \"deployed\"",
+        body: "A local unit test passing wasn't proof of anything at this scale — nothing left the backlog as Done until it cleared the full pre-prod suite and was verified in production. That same bar covered observability too: if a story shipped new functionality, the monitoring and dashboards for it shipped in the same story, never as a follow-up.",
+      },
+      {
+        title: "Validated live before trusting it at scale",
+        body: "There was no user-facing feedback loop on this — real behavior was the only signal that mattered. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time — seeing individual transactions work end to end before the flow was trusted with real volume.",
+      },
+    ],
+  },
+  decisions: {
+    heading: "Execution calls I made",
+    items: [
+      {
+        title: "Chased a 7-8s response time down to inside Google's 5s limit",
+        body: "Performance testing threw a curve ball: Google's own NFR required retrievals to respond within 5 seconds. Green flow was fine at 2.4s, but the yellow flow — now hitting the real fraud system — was taking 7-8s. I worked with the engineers to trace it through Datadog to the fraud system's own downstream calls, then worked with that team directly; they optimized their APIs, cut their own downstream call count, and got green flow to 1-1.2s and yellow flow to 3.5-4s. On the yellow path, that response isn't even the card details — it's Google's instruction that the user needs to complete a step-up challenge first. A 5-second wait just to learn that, before any OTP round-trip has even started, wasn't something I was willing to accept.",
+      },
+      {
+        title: "Surfaced a risk that wasn't mine to prioritize",
+        body: "Chasing that latency fix surfaced a second-order risk: a user re-clicking autofill while waiting would generate extra requests that needed idempotent handling to avoid duplicate processing. As PO on this initiative, prioritization calls like this sat with the PM, not me — so I raised it as input rather than deciding it myself. It became an MVP2 item, delivered by the Enrolment team in Q2 2025.",
+      },
+      {
+        title: "Mocked the fraud signal rather than waiting on it",
+        body: "Our first release of value was the green flow with no risk checks — the fraud team's side simply wasn't prioritized yet. For the next release, I had two options: halt development citing a downstream blocker, or keep moving. We worked with the fraud team to understand, at a high level, how they'd tentatively process Google's risk signals — not their actual business rules, just a close approximation — and built a mock from that. Even our integration environment ran against it until the real system was ready.",
+      },
+      {
+        title: "Wrote the certification tests myself, because nobody else would",
+        body: "No one was resourced to write Google's certification test cases — every team was heads-down on their own deliverables. The peer PO on Enrolment and I each knew our own domain well enough to cover it ourselves: I wrote the Retrieval test cases, they wrote Enrolment/Unenrolment's — prerequisites, test data, and expected behaviour for every scenario. Mine included working with engineers to identify specific test cards mapped to each risk outcome — some hardwired to route into the green flow, some into yellow, some into red.",
+      },
+      {
+        title: "Built traceability into the step-up verification chain",
+        body: "Google's spec allows a retrieval request to step up into an identity-verification flow (their own \"yellow path\") when extra assurance is needed — which meant a single attempt could fan out into a separate OTP dispatch and OTP validation call. I proposed the mechanism that kept those three requests traceable back to one original attempt, rather than three disconnected events.",
+      },
+      {
+        title: "Strict deployment gating",
+        body: "Because of the scale of the card network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.",
+      },
+    ],
+  },
+  outcomes: {
+    heading: "The impact",
+    stats: [
+      { value: "275K+", label: "successful autofill requests in the first 60 days" },
+      { value: "Zero", label: "actual card details exposed to merchants" },
+      { value: "2024", label: "Star Award – Excellence in Delivery" },
+    ],
+    bullets: [
+      "Successfully delivered the retrieval flow to production in November 2024.",
+      "Delivered a frictionless checkout experience at enterprise scale, directly driving top-of-wallet usage for the network.",
+      "Partner certification testing for the retrieval flow — sandbox and production alike — passed with zero functional defects, against test cases I wrote myself.",
+      "Cut yellow-flow (risk-checked) response time from 7-8s to 3.5-4s, and green-flow from 2.4s to 1-1.2s — both comfortably inside Google's 5-second requirement.",
+    ],
+  },
+  visuals: {
+    heading: "Inside the integration",
+    items: [
+      {
+        caption:
+          "Google's public sequence diagram for the Virtual Cards v1 API — my scope focused heavily on the rigorous execution of the Checkout/Retrieval phase.",
+        src: "/build-shots/gca-sequence-diagram.png",
+        alt: "Sequence diagram showing the Virtual Card API checkout flow",
+        sourceUrl: "https://developers.google.com/pay/virtual-cards-v1",
+        sourceLabel: "View Google's API docs",
+      },
+      {
+        caption:
+          "The network's public Facebook post announcing the feature launch, validating the consumer-facing scale of the infrastructure delivered.",
+        src: "/build-shots/gca-facebook-announcement.png",
+        alt: "Social media announcement for Google Chrome Virtual Card Autofill",
+        sourceUrl:
+          "https://www.facebook.com/discover/posts/enjoy-an-extra-layer-of-security-at-checkout-in-google-chrome-with-a-virtual-car/975952347900846/",
+        sourceLabel: "View original Facebook post",
+      },
+    ],
+  },
+};
 
 export const openCam = {
   title: "OpenCAM — Autonomous Maker-Checker Framework",

@@ -8,7 +8,7 @@ import { VisualsCarousel } from "@/components/visuals-carousel";
 import { ScopeLanes } from "@/components/scope-lanes";
 
 type Meta = { role: string; timeline: string; stack: string; status: string };
-type TextBlock = { heading: string; paragraphs: string[]; frictionBullets?: string[] };
+type TextBlock = { heading: string; paragraphs: ReactNode[]; frictionBullets?: string[] };
 type StepBlock = { heading: string; steps: { title: string; body: string }[] };
 type ItemBlock = { heading: string; items: { title: string; body: string }[] };
 type OutcomeBlock = { heading: string; stats: { value: string; label: string }[]; bullets: string[] };
@@ -26,6 +26,7 @@ export function CaseStudyDetail({
   badges,
   subtitle,
   repoUrl,
+  repoLabel = "View Source",
   markdown,
   markdownFilename,
   meta,
@@ -45,11 +46,14 @@ export function CaseStudyDetail({
   workflowIllustration,
   strategy,
   governanceNote,
+  showApproachLink = true,
 }: {
   title: string;
   badges: string[];
   subtitle: string;
   repoUrl: string;
+  /** Label for the repoUrl link — defaults to "View Source"; override for links that aren't a code repo (e.g. a public API reference). */
+  repoLabel?: string;
   markdown: string;
   markdownFilename: string;
   meta: Meta;
@@ -77,6 +81,8 @@ export function CaseStudyDetail({
   strategy?: StrategyBlock;
   /** One-line callout explaining a deliberately lighter governance model vs. the other case study — optional. */
   governanceNote?: { text: string; linkHref: string; linkLabel: string };
+  /** Show the "compare delivery models" link under Decisions — only relevant to the two AI-governance case studies (OpenCAM/Fork). Defaults true for backward compatibility. */
+  showApproachLink?: boolean;
 }) {
   return (
     <div className="flex flex-col gap-16">
@@ -100,7 +106,7 @@ export function CaseStudyDetail({
             className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
           >
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            View Source
+            {repoLabel}
           </a>
           {baseRepo && (
             <a
@@ -161,8 +167,8 @@ export function CaseStudyDetail({
           {problem.heading}
         </h2>
         <div className="mt-4 flex max-w-2xl flex-col gap-4">
-          {problem.paragraphs.map((p) => (
-            <p key={p} className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
+          {problem.paragraphs.map((p, i) => (
+            <p key={i} className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
               {p}
             </p>
           ))}
@@ -302,13 +308,15 @@ export function CaseStudyDetail({
         <div className="mt-6">
           <DecisionsCarousel items={decisions.items} />
         </div>
-        <Link
-          href="/approach/"
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
-        >
-          See how this compares to the other project&apos;s delivery model
-          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-        </Link>
+        {showApproachLink && (
+          <Link
+            href="/approach/"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+          >
+            See how this compares to the other project&apos;s delivery model
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+          </Link>
+        )}
       </div>
 
       {/* Outcomes */}

@@ -69,6 +69,36 @@ function DashPanel({ x, y, accent }: { x: number; y: number; accent: string }) {
   );
 }
 
+export function ChromeAutofillThumbnail() {
+  const id = "gca";
+  return (
+    <ThumbFrame gradientId={id} accentFrom="#f4a340" accentTo="#c8661c" glowColor="#e6832a">
+      <g transform="translate(56,70)">
+        <rect width="130" height="86" rx="12" fill="#1e2338" stroke="#343b58" />
+        <rect x="14" y="16" width="70" height="10" rx="5" fill="#3a4160" />
+        <rect x="14" y="34" width="102" height="8" rx="4" fill="#3a4160" />
+        <rect x="14" y="58" width="60" height="16" rx="6" fill={`url(#${id}-accent)`} />
+      </g>
+      <path
+        d="M198 112l24 0"
+        stroke="#4b5372"
+        strokeWidth="2.5"
+        strokeDasharray="5 5"
+        fill="none"
+      />
+      <path d="M216 106l8 6-8 6" stroke="#4b5372" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(240,78)">
+        <circle cx="36" cy="36" r="36" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="2.5" />
+        <text x="36" y="30" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="#e6832a">
+          DCID
+        </text>
+        <path d="M20 42l10 8 22-20" stroke="#e6832a" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <rect x="60" y="184" width="240" height="2" rx="1" fill="#343b58" />
+    </ThumbFrame>
+  );
+}
+
 export function OpenCamThumbnail() {
   const id = "opencam";
   return (
@@ -117,6 +147,37 @@ export function ForkThumbnail() {
         <rect key={col.x} x={col.x} y={168 - col.h} width="32" height={col.h} rx="6" fill={col.color} fillOpacity="0.85" />
       ))}
       <rect x="200" y="176" width="148" height="2" rx="1" fill="#343b58" />
+    </ThumbFrame>
+  );
+}
+
+export function ChromeAutofillBanner() {
+  const id = "gca-banner";
+  return (
+    <ThumbFrame gradientId={id} viewBox="0 0 800 380" accentFrom="#f4a340" accentTo="#c8661c" glowColor="#e6832a">
+      <g transform="translate(70,110)">
+        <rect width="220" height="150" rx="14" fill="#1e2338" stroke="#343b58" />
+        <rect x="20" y="24" width="110" height="12" rx="6" fill="#3a4160" />
+        <rect x="20" y="52" width="170" height="10" rx="5" fill="#3a4160" />
+        <rect x="20" y="76" width="90" height="24" rx="8" fill={`url(#${id}-accent)`} />
+        <text x="20" y="130" fontFamily="monospace" fontSize="12" fill="#8890b5">
+          Checkout
+        </text>
+      </g>
+      <path d="M320 185l60 0" stroke="#4b5372" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+      <path d="M368 176l14 9-14 9" stroke="#4b5372" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(410,105)">
+        <circle cx="80" cy="80" r="80" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="3" />
+        <text x="80" y="68" textAnchor="middle" fontFamily="monospace" fontSize="18" fill="#e6832a">
+          DCID
+        </text>
+        <path d="M44 92l24 18 50-46" stroke="#e6832a" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="80" y="118" textAnchor="middle" fontFamily="monospace" fontSize="10" fill="#8890b5">
+          one-time · expires on settle
+        </text>
+      </g>
+      <DashPanel x={620} y={70} accent="#e6832a" />
+      <rect x="70" y="278" width="260" height="3" rx="1.5" fill="#343b58" />
     </ThumbFrame>
   );
 }
