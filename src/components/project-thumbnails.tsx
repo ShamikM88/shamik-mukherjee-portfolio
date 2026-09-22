@@ -99,24 +99,49 @@ export function ChromeAutofillThumbnail() {
   );
 }
 
+// Deliberately a different composition from ChromeAutofillThumbnail's linear card->arrow->badge
+// flow: two wallet panels each connect to their OWN spec document. The two specs overlap heavily
+// (NWS/GNWS are ~90-95% the same) but are genuinely separate, not one shared document - GNWS
+// (conceived later) is drawn larger, extending beyond NWS on both ends, since it has more
+// capabilities defined than NWS does. Confirmed by candidate 2026-09-22 - do not simplify back
+// to a single merged spec.
 export function WalletProvisioningThumbnail() {
   const id = "wallet-prov";
   return (
     <ThumbFrame gradientId={id} accentFrom="#a78bfa" accentTo="#7c3aed" glowColor="#8b5cf6">
-      <g transform="translate(50,66)">
-        <rect x="10" y="10" width="120" height="78" rx="12" fill="#1e2338" stroke="#4a4468" strokeDasharray="4 4" opacity="0.55" />
-        <rect width="120" height="78" rx="12" fill="#1e2338" stroke="#343b58" />
-        <rect x="14" y="16" width="66" height="10" rx="5" fill="#3a4160" />
-        <rect x="14" y="36" width="92" height="8" rx="4" fill="#3a4160" />
-        <rect x="14" y="58" width="56" height="16" rx="6" fill={`url(#${id}-accent)`} />
+      <g transform="translate(24,82)">
+        <rect width="88" height="68" rx="10" fill="#1e2338" stroke="#343b58" />
+        <circle cx="22" cy="22" r="8" fill="#60a5fa" />
+        <rect x="14" y="40" width="60" height="7" rx="3.5" fill="#3a4160" />
+        <rect x="14" y="52" width="44" height="7" rx="3.5" fill="#3a4160" />
       </g>
-      <path d="M198 105l24 0" stroke="#4b5372" strokeWidth="2.5" strokeDasharray="5 5" fill="none" />
-      <path d="M216 99l8 6-8 6" stroke="#4b5372" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <g transform="translate(240,70)">
-        <circle cx="36" cy="36" r="36" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="2.5" />
-        <path d="M20 38l10 8 22-20" stroke="#a78bfa" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(288,82)">
+        <rect width="88" height="68" rx="10" fill="#1e2338" stroke="#343b58" />
+        <circle cx="22" cy="22" r="8" fill="#f4a340" />
+        <rect x="14" y="40" width="60" height="7" rx="3.5" fill="#3a4160" />
+        <rect x="14" y="52" width="44" height="7" rx="3.5" fill="#3a4160" />
       </g>
-      <rect x="60" y="184" width="240" height="2" rx="1" fill="#343b58" />
+      <path d="M114 116l18 0" stroke="#4b5372" strokeWidth="2.5" strokeDasharray="5 5" fill="none" />
+      <path d="M126 110l8 6-8 6" stroke="#4b5372" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M286 116l-24 0" stroke="#4b5372" strokeWidth="2.5" strokeDasharray="5 5" fill="none" />
+      <path d="M270 110l-8 6 8 6" stroke="#4b5372" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {/* NWS spec (Google-tinted) */}
+      <g transform="translate(136,56)">
+        <rect width="82" height="112" rx="10" fill="#1e2338" stroke="#60a5fa" strokeOpacity="0.55" strokeWidth="2" />
+        <rect x="13" y="16" width="52" height="8" rx="4" fill="#60a5fa" fillOpacity="0.75" />
+        <rect x="13" y="34" width="56" height="6" rx="3" fill="#3a4160" />
+        <rect x="13" y="46" width="56" height="6" rx="3" fill="#3a4160" />
+      </g>
+      {/* GNWS spec (Samsung-tinted) - larger, drawn on top, extends beyond NWS both above and below */}
+      <g transform="translate(176,44)">
+        <rect width="82" height="138" rx="10" fill="#1a1e30" stroke="#f4a340" strokeOpacity="0.65" strokeWidth="2" />
+        <rect x="13" y="16" width="52" height="8" rx="4" fill="#f4a340" fillOpacity="0.85" />
+        <rect x="13" y="34" width="56" height="6" rx="3" fill="#3a4160" />
+        <rect x="13" y="46" width="56" height="6" rx="3" fill="#3a4160" />
+        <rect x="13" y="58" width="40" height="6" rx="3" fill="#3a4160" />
+        <rect x="13" y="116" width="46" height="6" rx="3" fill="#3a4160" />
+      </g>
+      <rect x="60" y="200" width="280" height="2" rx="1" fill="#343b58" />
     </ThumbFrame>
   );
 }
@@ -204,31 +229,60 @@ export function ChromeAutofillBanner() {
   );
 }
 
+// Two wallets, each with their OWN spec - deliberately not one shared document. NWS and GNWS
+// overlap ~90-95% in content but are genuinely separate specs; GNWS (conceived later) is drawn
+// larger, extending beyond NWS on both ends, since it has more capabilities defined. Confirmed
+// by candidate 2026-09-22 - do not simplify back to a single merged spec.
 export function WalletProvisioningBanner() {
   const id = "wallet-prov-banner";
   return (
     <ThumbFrame gradientId={id} viewBox="0 0 800 380" accentFrom="#a78bfa" accentTo="#7c3aed" glowColor="#8b5cf6">
-      <g transform="translate(70,110)">
-        <rect x="14" y="14" width="220" height="150" rx="14" fill="#1e2338" stroke="#4a4468" strokeDasharray="6 6" opacity="0.55" />
-        <rect width="220" height="150" rx="14" fill="#1e2338" stroke="#343b58" />
-        <rect x="20" y="24" width="110" height="12" rx="6" fill="#3a4160" />
-        <rect x="20" y="52" width="170" height="10" rx="5" fill="#3a4160" />
-        <rect x="20" y="76" width="90" height="24" rx="8" fill={`url(#${id}-accent)`} />
-        <text x="20" y="130" fontFamily="monospace" fontSize="12" fill="#8890b5">
-          New Issuer
+      <g transform="translate(40,140)">
+        <rect width="120" height="92" rx="12" fill="#1e2338" stroke="#343b58" />
+        <circle cx="26" cy="26" r="11" fill="#60a5fa" />
+        <rect x="18" y="52" width="84" height="9" rx="4.5" fill="#3a4160" />
+        <rect x="18" y="68" width="60" height="9" rx="4.5" fill="#3a4160" />
+        <text x="18" y="40" fontFamily="monospace" fontSize="10" fill="#8890b5">
+          Google Pay
         </text>
       </g>
-      <path d="M340 185l60 0" stroke="#4b5372" strokeWidth="3" strokeDasharray="6 6" fill="none" />
-      <path d="M388 176l14 9-14 9" stroke="#4b5372" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <g transform="translate(430,105)">
-        <circle cx="80" cy="80" r="80" fill="#0f1220" stroke={`url(#${id}-accent)`} strokeWidth="3" />
-        <path d="M44 92l24 18 50-46" stroke="#a78bfa" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="80" y="140" textAnchor="middle" fontFamily="monospace" fontSize="11" fill="#8890b5">
-          token unaffected
+      <g transform="translate(380,140)">
+        <rect width="120" height="92" rx="12" fill="#1e2338" stroke="#343b58" />
+        <circle cx="26" cy="26" r="11" fill="#f4a340" />
+        <rect x="18" y="52" width="84" height="9" rx="4.5" fill="#3a4160" />
+        <rect x="18" y="68" width="60" height="9" rx="4.5" fill="#3a4160" />
+        <text x="18" y="40" fontFamily="monospace" fontSize="10" fill="#8890b5">
+          Samsung Pay
+        </text>
+      </g>
+      <path d="M162 186l20 0" stroke="#4b5372" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+      <path d="M174 178l10 8-10 8" stroke="#4b5372" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M380 186l-22 0" stroke="#4b5372" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+      <path d="M366 178l-10 8 10 8" stroke="#4b5372" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {/* NWS spec (Google-tinted) */}
+      <g transform="translate(190,95)">
+        <rect width="120" height="165" rx="14" fill="#1e2338" stroke="#60a5fa" strokeOpacity="0.55" strokeWidth="2.5" />
+        <rect x="20" y="24" width="78" height="11" rx="5.5" fill="#60a5fa" fillOpacity="0.75" />
+        <rect x="20" y="50" width="84" height="8" rx="4" fill="#3a4160" />
+        <rect x="20" y="66" width="84" height="8" rx="4" fill="#3a4160" />
+        <text x="20" y="145" fontFamily="monospace" fontSize="10" fill="#8890b5">
+          Google Pay spec
+        </text>
+      </g>
+      {/* GNWS spec (Samsung-tinted) - larger, drawn on top, extends beyond NWS both above and below */}
+      <g transform="translate(230,75)">
+        <rect width="120" height="205" rx="14" fill="#1a1e30" stroke="#f4a340" strokeOpacity="0.65" strokeWidth="2.5" />
+        <rect x="20" y="24" width="78" height="11" rx="5.5" fill="#f4a340" fillOpacity="0.85" />
+        <rect x="20" y="50" width="84" height="8" rx="4" fill="#3a4160" />
+        <rect x="20" y="66" width="84" height="8" rx="4" fill="#3a4160" />
+        <rect x="20" y="82" width="60" height="8" rx="4" fill="#3a4160" />
+        <rect x="20" y="172" width="68" height="8" rx="4" fill="#3a4160" />
+        <text x="20" y="185" fontFamily="monospace" fontSize="10" fill="#8890b5">
+          Samsung Pay spec
         </text>
       </g>
       <DashPanel x={620} y={70} accent="#8b5cf6" />
-      <rect x="70" y="278" width="260" height="3" rx="1.5" fill="#343b58" />
+      <rect x="40" y="300" width="460" height="3" rx="1.5" fill="#343b58" />
     </ThumbFrame>
   );
 }

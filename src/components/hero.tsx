@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { identity, statStrip, statStripIntro } from "@/data/content";
+import { identity, about, statStrip, statStripIntro } from "@/data/content";
 
 export function Hero() {
   return (
@@ -8,10 +8,17 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-20">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_400px] lg:gap-12">
           <div className="flex flex-col items-start gap-7">
-            <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-              Currently: {identity.currentRole} · {identity.currentEmployer}
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white/60 px-3.5 py-1.5 text-xs font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+                Currently: {identity.currentRole} · {identity.currentEmployer}
+              </span>
+              {/* One proof point visible without scrolling — everything else backing up the
+                  hero's claims otherwise lives below the fold in the stat strip. */}
+              <span className="inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-xs font-medium text-brand-700 dark:border-brand-500/25 dark:bg-brand-500/10 dark:text-brand-300">
+                275K+ successful requests shipped in production
+              </span>
+            </div>
 
             <h1 className="text-balance font-display text-4xl font-semibold leading-[1.08] text-ink-900 dark:text-white sm:text-5xl lg:text-[3.75rem]">
               {identity.taglineLead}
@@ -22,6 +29,10 @@ export function Hero() {
             <div className="flex max-w-lg flex-col gap-1.5 leading-relaxed text-ink-600 dark:text-ink-300">
               <p className="text-xl font-medium text-ink-800 dark:text-ink-100">{identity.headline}</p>
               <p className="text-lg">{identity.domainLine}</p>
+              {/* Reuses About's own accurate phrasing verbatim — "13+ years" is total career
+                  tenure (engineering, pre-sales, delivery), not years spent as a PM/PO specifically.
+                  Appending it directly to the job title above would misleadingly imply the latter. */}
+              <p className="text-lg">{about.headline}</p>
               <p className="text-lg">Based in {identity.location}.</p>
             </div>
 

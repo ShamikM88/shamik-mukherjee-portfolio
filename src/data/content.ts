@@ -186,10 +186,15 @@ export const about = {
 // day-job stat rather than being 100% AI-project stats.
 export const statStripIntro = "Real payments delivery at work — two AI systems shipped solo outside it.";
 
+// Deliberately 3 of the 4 case studies, not one-per-project: every value here has to land
+// as an achievement in under a second of skim time. Job-search automation doesn't currently
+// have a number that clears that bar without either being gameable (postings processed - just
+// run the scraper more) or reading as an engineering-output count rather than impact (commits
+// shipped) - it stays fully present as case study #4, just not in this top-of-page highlight.
 export const statStrip = [
   { value: "275K+", label: "Successful Autofill Requests in First 60 Days", sublabel: "Chrome Virtual Card Autofill" },
-  { value: "1", label: "Multi-Agent AI System Shipped 0→1, Solo", sublabel: "OpenCAM Framework" },
-  { value: "4", label: "Custom Features Shipped on a Forked Base", sublabel: "Job-search automation" },
+  { value: "1st", label: "International Issuer Live on Push Provisioning", sublabel: "Google Pay & Samsung Pay" },
+  { value: "15–30 min", label: "Time-to-First-Draft, Down from a Full Business Day", sublabel: "OpenCAM Framework" },
 ];
 
 export const chromeAutofill = {
@@ -381,7 +386,7 @@ export const chromeAutofill = {
 // than "currently onboarding."
 export const walletProvisioning = {
   title: "Google Pay & Samsung Pay — Wallet Provisioning at Scale",
-  shortTitle: "Google Pay & Samsung Pay",
+  shortTitle: "Wallet Provisioning at Scale",
   subtitle:
     "Own product backlog and B2B integration specifications for the edge applications connecting a major card network to Google Pay and Samsung Pay — validating that a live card portfolio migration stays invisible to wallet users, while expanding the underlying specification to support international issuers.",
   repoUrl: "https://developers.google.com/pay/issuers/apis/push-provisioning/android",

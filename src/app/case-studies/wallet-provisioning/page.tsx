@@ -39,7 +39,7 @@ export default function WalletProvisioningPage() {
             markdownFilename="Google-Pay-Samsung-Pay-Wallet-Provisioning-Case-Study.md"
             meta={walletProvisioning.meta}
             calloutNote={{
-              text: "Specifications run in one of two directions: built to a partner's spec, or owned by the network with partners building to it. This sits on the network-driven side — Google and Samsung integrate against a B2B specification my team defines and maintains.",
+              text: "Specifications run in one of two directions: built to a partner's spec, or owned by the network with partners building to it. This sits on the network-driven side — Google and Samsung each integrate against their own B2B specification, both of which my team defines and maintains.",
             }}
             problem={walletProvisioning.problem}
             scope={walletProvisioning.scope}
