@@ -1,8 +1,12 @@
+import { Check, X } from "lucide-react";
+
+type LaneItem = string | { text: string; delivered: boolean };
+
 type Lane = {
   label: string;
   sublabel: string;
   tone: "brand-strong" | "blue" | "ember" | "muted";
-  items: string[];
+  items: LaneItem[];
 };
 
 const toneStyles: Record<Lane["tone"], { border: string; label: string; dot: string; item: string }> = {
@@ -45,12 +49,27 @@ export function ScopeLanes({ lanes }: { lanes: Lane[] }) {
             <h3 className={`font-display text-sm font-semibold ${s.label}`}>{lane.label}</h3>
             <p className="mt-0.5 text-xs text-ink-400">{lane.sublabel}</p>
             <ul className="mt-3 flex flex-col gap-2">
-              {lane.items.map((item) => (
-                <li key={item} className={`flex gap-2.5 text-sm leading-relaxed ${s.item}`}>
-                  <span className={`mt-2 h-1 w-1 flex-shrink-0 rounded-full ${s.dot}`} aria-hidden />
-                  {item}
-                </li>
-              ))}
+              {lane.items.map((item) => {
+                const isTracked = typeof item !== "string";
+                const text = isTracked ? item.text : item;
+                return (
+                  <li key={text} className={`flex gap-2.5 text-sm leading-relaxed ${s.item}`}>
+                    {isTracked ? (
+                      item.delivered ? (
+                        <Check
+                          className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-brand-500 dark:text-brand-400"
+                          aria-label="Delivered"
+                        />
+                      ) : (
+                        <X className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-ink-400 dark:text-ink-500" aria-label="Not built" />
+                      )
+                    ) : (
+                      <span className={`mt-2 h-1 w-1 flex-shrink-0 rounded-full ${s.dot}`} aria-hidden />
+                    )}
+                    {text}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         );

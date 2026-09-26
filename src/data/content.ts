@@ -530,7 +530,7 @@ export const openCam = {
     ],
   },
   scope: {
-    heading: "What I scoped in, and what I explicitly didn't",
+    heading: "What I scoped into MVP v1, and what I explicitly didn't",
     lanes: [
       {
         label: "Must have",
@@ -553,13 +553,13 @@ export const openCam = {
       },
       {
         label: "Could have",
-        sublabel: "Post-MVP depth",
+        sublabel: "Post-MVP depth — ✓/✗ shows what's actually shipped since",
         tone: "ember" as const,
         items: [
-          "Forward-year projections & stress testing",
-          "Conditions Subsequent tracking, Net Debt/EBITDA & FCF ratios",
-          "Source-citation hyperlinking",
-          "AML/sanctions/PEP screening & ESG scoring",
+          { text: "Forward-year projections & stress testing", delivered: true },
+          { text: "Conditions Subsequent tracking, Net Debt/EBITDA & FCF ratios", delivered: true },
+          { text: "Source-citation hyperlinking", delivered: true },
+          { text: "AML/sanctions/PEP screening & ESG scoring", delivered: false },
         ],
       },
       {
@@ -567,8 +567,56 @@ export const openCam = {
         sublabel: "Explicitly deferred, disclosed not hidden",
         tone: "muted" as const,
         items: [
-          "Multi-currency/FX support — today's desk is GBP-only",
-          "Full covenant step-down/cure-period modeling — scoped down to just Conditions Subsequent tracking",
+          { text: "Multi-currency/FX support — today's desk is GBP-only", delivered: false },
+          {
+            text: "Full covenant step-down/cure-period modeling — scoped down to just Conditions Subsequent tracking",
+            delivered: false,
+          },
+        ],
+      },
+    ],
+  },
+  mvp2: {
+    heading: "What I'm scoping for round 2 (\"Hardening Cycle 2\")",
+    intro:
+      "Not a second MVP sprint — MVP v1 already shipped and is in real use. This is the next MoSCoW pass, run the same disciplined way: foundational gaps first, polish and deferred scope disclosed honestly, same as round 1.",
+    lanes: [
+      {
+        label: "Must have",
+        sublabel: "Foundational correctness/architecture gaps",
+        tone: "brand-strong" as const,
+        items: [
+          "Fix the dangling Parent/UBO Guideline cross-reference — the template already points to guidance that was never written (#96)",
+          "Wire the primary interface through to the tested financial-formula code, not around it (#98)",
+          "Extend the ground-truth figures schema to cover metrics the framework already requires citing — Working Capital Days, collateral exposure (#99)",
+        ],
+      },
+      {
+        label: "Should have",
+        sublabel: "Fast-follow depth",
+        tone: "blue" as const,
+        items: [
+          "Systematic Parent/UBO research guidance — full ownership chain, ownership percentages, recent ownership changes, and the materiality judgment call for when it warrants a full Ultimate Parent section (#96)",
+        ],
+      },
+      {
+        label: "Could have",
+        sublabel: "Post-round-2 depth, if capacity allows",
+        tone: "ember" as const,
+        items: [
+          "HoldCo/OpCo group/subsidiary financial consolidation (#48)",
+          "Render Group/Parent/UBO structure as a tree diagram instead of prose (#113)",
+          "Charts/graphs in CAMs — sector trends, SWOT, positioning, stock price (#114)",
+        ],
+      },
+      {
+        label: "Won't have",
+        sublabel: "Explicitly deferred, disclosed not hidden",
+        tone: "muted" as const,
+        items: [
+          "Full covenant step-down/cure-period modeling (#33) — same bundled-scope call as MVP v1; may be worth revisiting if I ever open this up for wider adoption beyond my own use",
+          "FX/multi-currency support (#49) — today's desk is still GBP-only; the kind of gap that would gate wider adoption if this were ever forked for a multi-currency desk",
+          "AML/sanctions/PEP screening & ESG scoring (#35) — my wife's desk has a separately-owned AML team whose system already supplies this as an input; building it into OpenCAM would duplicate, not fill, a gap",
         ],
       },
     ],
@@ -588,16 +636,21 @@ export const openCam = {
       },
       {
         letter: "C",
+        title: "Institutional Credit Policy Referencing",
+        body: "A one-time /calibrate-policy command derives a fork-local credit policy from an institution's own policy documents. The Underwriter treats it as advisory drafting guidance; the Risk Reviewer treats it as a mandatory, independently-verified audit obligation — any violation is REJECTED-worthy regardless of what the Underwriter declared, the same asymmetric-weight pattern used everywhere else in the governance model.",
+      },
+      {
+        letter: "D",
         title: "Financial Spreading & Auditable Excel Export",
         body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead — the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed, a real reduction in audit guarantee, disclosed rather than buried.",
       },
       {
-        letter: "D",
+        letter: "E",
         title: "Confidentiality-by-Design",
         body: "Every artifact derived from a user's real business — calibration samples, templates, deal state, output — writes only to git-ignored paths, enforced as a build rule, not audited in after the fact.",
       },
       {
-        letter: "E",
+        letter: "F",
         title: "Standalone Research Workflow (/research)",
         body: "A separate command for an analyst who just needs the qualitative picture — company and sector research, Go/No-Go screening — without running the full CAM pipeline. It writes the same state.json keys the full pipeline would, so a deal that later needs a full CAM can continue straight in without redoing anything, and exports its own standalone Research Brief through a script kept deliberately separate from the full CAM exporter.",
       },
@@ -676,13 +729,21 @@ export const openCam = {
         title: "Severity order beats arrival order",
         body: "Working the 19-issue gap-analysis backlog, I shipped the highest-criticality correctness and security fixes first (PR #41: date-resume logic, a race condition, a hardcoded model), then lower-severity display bugs (PR #42), then feature work — any fix that could change a credit decision landed before anything cosmetic did.",
       },
+      {
+        title: "Caught Claude Code skipping my own instruction, mid-deal",
+        body: "Running a real deal, Claude Code declared 20+ source citations across triage and commercial research but never once called the script that actually saves the underlying material — despite the instruction being right there in the command files I'd written myself. I caught it by asking directly where the material was; the sources folder didn't exist until I had it backfilled by hand. Fixed by code-enforcing that a declared citation has something saved behind it — the same \"don't just instruct, verify\" discipline the rest of the governance model runs on, now applied to my own oversight of the AI doing the drafting.",
+      },
+      {
+        title: "A \"lightweight\" path had zero independent audit",
+        body: "/research, the standalone qualitative-brief command, never ran the Risk Reviewer — a Go/No-Go legal screen carried real decision weight with no independent check. Giving it a Checker pass surfaced a second, sharper bug: the existing compliance checker assumes a full CAM's shape, so pointed at a research-only brief it would have silently returned \"compliant: true\" with zero reasons — not because the brief was sound, but because nothing matched what the checks look for. Caught by a manual smoke test before the fix shipped.",
+      },
     ],
   },
   outcomes: {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "330+", label: "passing tests (up from 188 at MVP)" },
+      { value: "439+", label: "passing tests (up from 188 at MVP)" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
     ],
     bullets: [
@@ -694,17 +755,20 @@ export const openCam = {
     heading: "Inside the build",
     items: [
       {
-        caption: "Merged pull requests on GitHub — every change reviewed before merge, none pushed direct to main.",
+        caption:
+          "Merged pull requests on GitHub, from earlier in the build — every change reviewed before merge, none pushed direct to main. The live count above has grown since this snapshot; the discipline it shows hasn't.",
         src: "/build-shots/opencam-prs.png",
         alt: "Merged pull requests on the open-cam-framework GitHub repository",
       },
       {
-        caption: "The 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list.",
+        caption:
+          "The original 19-issue gap-analysis audit, tracked and closed on GitHub as real issues, not a private todo list — the first of what's now a recurring practice.",
         src: "/build-shots/opencam-issues.png",
         alt: "Closed GitHub issues from the 19-issue gap-analysis audit",
       },
       {
-        caption: "Feature requests tracked as GitHub enhancement issues — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess.",
+        caption:
+          "A snapshot of feature requests tracked under GitHub's enhancement label, from earlier in the build — the spreading-schema and automation-model fixes that came from real usage, not a backlog guess. Some have since been reclassified as tech debt as the labeling taxonomy matured; the live backlog board above reflects the current split.",
         src: "/build-shots/opencam-enhancements.png",
         alt: "GitHub issues tracked with the enhancement label — feature requests from real usage",
       },
@@ -843,8 +907,8 @@ export const governanceComparison = {
   // Numbers above the fold, matching the stat-forward pattern used everywhere else on the
   // site - this page previously had zero figures until a full scroll past the intro.
   heroStats: [
-    { value: "330+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
-    { value: "19", label: "Issues Tracked in a Public Gap Audit", sublabel: "Controlled · OpenCAM" },
+    { value: "439+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
+    { value: "19", label: "Issues Surfaced by Gap-Analysis Audits", sublabel: "Controlled · OpenCAM" },
     { value: "Same-Day", label: "Fix Shipped, No PR Queue", sublabel: "Lightweight · Job Search" },
   ],
   modes: [
@@ -856,7 +920,7 @@ export const governanceComparison = {
       dimensions: [
         { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
         { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
-        { label: "QA Model", value: "330+ automated tests, regression-gated" },
+        { label: "QA Model", value: "439+ automated tests, regression-gated" },
         { label: "Target Audience", value: "Other institutions (forkable, not yet forked)" },
         { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
       ],
@@ -888,7 +952,7 @@ export const governanceComparison = {
       },
       {
         question: "What's the cheapest honest proof?",
-        answer: "For OpenCAM, that meant 330+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
+        answer: "For OpenCAM, that meant 439+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
       },
     ],
   },
