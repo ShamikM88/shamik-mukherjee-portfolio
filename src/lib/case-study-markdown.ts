@@ -240,8 +240,14 @@ Shipped the same week as the other reprioritized item (PR #61, closing Issue #56
 
 \`\`\`mermaid
 flowchart LR
-    A[/calibrate<br/>house tone + template, once/] --> B[/triage<br/>legal ID, UBO, Go/No-Go/]
-    A --> R[/research<br/>standalone company/sector research + Go/No-Go/]
+    subgraph Setup["One-time setup — not run per deal"]
+        A[/calibrate<br/>writing style + CAM template, per deal type/]
+        AP[/calibrate-policy<br/>institution's credit policy, org-wide/]
+    end
+    A -.-> G
+    AP -.-> G
+    B[/triage<br/>legal ID, UBO, Go/No-Go/]
+    R[/research<br/>standalone company/sector research + Go/No-Go/]
     R -.-> RB[Research Brief .docx<br/>standalone export]
     B --> C[/spread<br/>ratios from raw financials/]
     R --> C
@@ -252,7 +258,7 @@ flowchart LR
     G --> H[.docx + .xlsx export]
 \`\`\`
 
-Note: a deal continuing from \`/research\` rejoins directly at \`/spread\`, skipping \`/commercial\` — \`/research\` already produced that output as part of its own combined step. The diagram shows the fork/rejoin at a high level; see Feature E (Section 4) for the exact mechanics.
+Note: \`/calibrate\` and \`/calibrate-policy\` are one-time setup, not something an analyst runs per deal — \`/calibrate\` derives house writing style and a CAM template per deal type; \`/calibrate-policy\` derives an institution's own credit policy, org-wide (Feature C, Section 4). Every actual deal starts at \`/triage\` or \`/research\` instead, both already reading whichever style/template/policy is in place. Separately: a deal continuing from \`/research\` rejoins directly at \`/spread\`, skipping \`/commercial\` — \`/research\` already produced that output as part of its own combined step. The diagram shows both of these at a high level; see Feature F (Section 4) for \`/research\`'s exact mechanics.
 
 Each step checkpoints its results to a per-deal \`state.json\` the moment it finishes. That way, a compacted conversation or a resumed session never loses work that's already done — only the step still in progress is ever at risk.
 
