@@ -224,7 +224,7 @@ export const chromeAutofill = {
     heading: "The context",
     paragraphs: [
       "Online checkout has to balance high security against low friction. To solve it, a major US card network partnered with Google to autofill virtual cards directly inside Chrome, so a shopper's real card number never reaches the merchant. For the network, this wasn't just a UX fix — friction at checkout is what loses top-of-wallet usage to a competing card.",
-      "Google defined the overarching solution and API framework (Virtual Cards v1) — but the reality of enterprise software is that execution is where integrations actually succeed or fail. Translating Google's strict cloud requirements into the network's highly regulated, legacy backend architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug into, so delivery meant standing up a new microservice — the edge component for all inbound Google traffic into the network, spanning enrolment, unenrolment, retrieval, and sendOTP — hosted on OpenShift (OCP).",
+      "Google defined the overarching solution and API framework (Virtual Cards v1), but the reality of enterprise software is that execution is where integrations actually succeed or fail. Translating Google's strict cloud requirements into the network's highly regulated, legacy backend architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug into. Delivery meant standing up a new microservice (the edge component for all inbound Google traffic into the network, spanning enrolment, unenrolment, retrieval, and sendOTP), hosted on OpenShift (OCP).",
     ],
     frictionBullets: [
       "The integration split into two domains: Enrolment/Unenrolment (generating and unlinking the token — essentially mirror-image operations) and Retrieval (fetching the tokenized details dynamically during a transaction).",
@@ -311,7 +311,7 @@ export const chromeAutofill = {
         // flagged near-zero discovery/validation language across the case studies - same facts,
         // reframed to name the validation instinct explicitly rather than leaving it implicit
         // under "process."
-        body: "There was no user-facing feedback loop on this — real behavior was the only signal that mattered, so validation meant watching it myself rather than waiting on a research or support channel that didn't exist yet. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time — seeing individual transactions work end to end before the flow was trusted with real volume.",
+        body: "There was no user-facing feedback loop on this: real behavior was the only signal that mattered, so validation meant watching it myself rather than waiting on a research or support channel that didn't exist yet. Rollout was phased and tightly controlled: 1% of eligible cardholders first, then 10%, then 100%, and in that first phase only specific Google-whitelisted email addresses could even see the feature. I ran live retrievals myself against a dummy shopping-cart URL Google's own team shared, watching the autofill actually populate and tracing the full flow through Kibana in real time, seeing individual transactions work end to end before the flow was trusted with real volume.",
       },
     ],
   },
@@ -320,7 +320,7 @@ export const chromeAutofill = {
     items: [
       {
         title: "Chased a 7-8s response time down to inside Google's 5s limit",
-        body: "Performance testing threw a curve ball: Google's own NFR required retrievals to respond within 5 seconds. Green flow was fine at 2.4s, but the yellow flow — now hitting the real fraud system — was taking 7-8s. I worked with the engineers to trace it through Datadog to the fraud system's own downstream calls, then worked with that team directly; they optimized their APIs, cut their own downstream call count, and got green flow to 1-1.2s and yellow flow to 3.5-4s. On the yellow path, that response isn't even the card details — it's Google's instruction that the user needs to complete a step-up challenge first. A 5-second wait just to learn that, before any OTP round-trip has even started, wasn't something I was willing to accept.",
+        body: "Performance testing threw a curve ball: Google's own NFR required retrievals to respond within 5 seconds. Green flow was fine at 2.4s, but the yellow flow (now hitting the real fraud system) was taking 7-8s. I worked with the engineers to trace it through Datadog to the fraud system's own downstream calls, then worked with that team directly; they optimized their APIs, cut their own downstream call count, and got green flow to 1-1.2s and yellow flow to 3.5-4s. On the yellow path, that response isn't even the card details: it's Google's instruction that the user needs to complete a step-up challenge first. A 5-second wait just to learn that, before any OTP round-trip has even started, wasn't something I was willing to accept.",
       },
       {
         title: "Surfaced a risk that wasn't mine to prioritize",
@@ -328,11 +328,11 @@ export const chromeAutofill = {
       },
       {
         title: "Built a mock fraud signal to keep moving",
-        body: "Our first release of value was the green flow with no risk checks — the fraud team's side simply wasn't prioritized yet. For the next release, I had two options: halt development citing a downstream blocker, or keep moving. We worked with the fraud team to understand, at a high level, how they'd tentatively process Google's risk signals — not their actual business rules, just a close approximation — and built a mock from that. Even our integration environment ran against it until the real system was ready.",
+        body: "Our first release of value was the green flow with no risk checks, since the fraud team's side simply wasn't prioritized yet. For the next release, I had two options: halt development citing a downstream blocker, or keep moving. We worked with the fraud team to understand, at a high level, how they'd tentatively process Google's risk signals (not their actual business rules, just a close approximation) and built a mock from that. Even our integration environment ran against it until the real system was ready.",
       },
       {
         title: "Wrote the certification tests myself, because nobody else would",
-        body: "No one was resourced to write Google's certification test cases — every team was heads-down on their own deliverables. The peer PO on Enrolment and I each knew our own domain well enough to cover it ourselves: I wrote the Retrieval test cases, they wrote Enrolment/Unenrolment's — prerequisites, test data, and expected behaviour for every scenario. Mine included working with engineers to identify specific test cards mapped to each risk outcome — some hardwired to route into the green flow, some into yellow, some into red.",
+        body: "No one was resourced to write Google's certification test cases: every team was heads-down on their own deliverables. The peer PO on Enrolment and I each knew our own domain well enough to cover it ourselves. I wrote the Retrieval test cases, and they wrote Enrolment/Unenrolment's, each covering prerequisites, test data, and expected behaviour for every scenario. Mine included working with engineers to identify specific test cards mapped to each risk outcome, some hardwired to route into the green flow, some into yellow, some into red.",
       },
       {
         title: "Built traceability into the step-up verification chain",
@@ -471,7 +471,7 @@ export const walletProvisioning = {
     items: [
       {
         title: "Validating that a card migration is invisible to the wallet",
-        body: "When a large card portfolio moves to a new underlying issuer, the physical card changes — but a digital wallet token shouldn't care. My teams validate the functional behavior of provisioned Google Pay and Samsung Pay tokens through every migration wave in pre-production: confirming that once the new card is live, the wallet token quietly picks up the new payment profile with zero cardholder friction — no re-enrollment, no re-adding the card, nothing for the cardholder to notice. The plastic changes; the wallet just keeps working.",
+        body: "When a large card portfolio moves to a new underlying issuer, the physical card changes, but a digital wallet token shouldn't care. My teams validate the functional behavior of provisioned Google Pay and Samsung Pay tokens through every migration wave in pre-production: confirming that once the new card is live, the wallet token quietly picks up the new payment profile with zero cardholder friction (no re-enrollment, no re-adding the card, nothing for the cardholder to notice). The plastic changes; the wallet just keeps working.",
       },
       {
         title: "Token cleanup on a live repersonalization",
@@ -483,7 +483,7 @@ export const walletProvisioning = {
       },
       {
         title: "Making a legacy, partner-published spec audit-ready",
-        body: "Network-driven specs come with real controls. Ours is legacy — published to partners as PDFs, only once or twice a year — so whenever my work needs a spec change, I document it in Jira under the relevant epic with the updated draft attached, and log it in a tracker that ties every change back to its Jira ID. When a recent audit asked us to produce evidence for every change made, that tracker answered it directly — nothing to reconstruct after the fact.",
+        body: "Network-driven specs come with real controls. Ours is legacy, published to partners as PDFs only once or twice a year, so whenever my work needs a spec change, I document it in Jira under the relevant epic with the updated draft attached, and log it in a tracker that ties every change back to its Jira ID. When a recent audit asked us to produce evidence for every change made, that tracker answered it directly: nothing to reconstruct after the fact.",
       },
     ],
   },
@@ -642,7 +642,7 @@ export const openCam = {
       {
         letter: "D",
         title: "Financial Spreading & Auditable Excel Export",
-        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead — the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed — a real reduction in audit guarantee.",
+        body: "Every ratio (TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion %) is computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead: the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed, a real reduction in audit guarantee.",
       },
       {
         letter: "E",
@@ -712,7 +712,7 @@ export const openCam = {
       },
       {
         title: "The model narrates; code computes",
-        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — and a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities — the model can narrate a number, but it can never produce one.",
+        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good, plus a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities. The model can narrate a number, but it can never produce one.",
       },
       {
         title: "Shipped the bounded piece, flagged the rest",
@@ -732,11 +732,11 @@ export const openCam = {
       },
       {
         title: "Caught Claude Code skipping my own instruction, mid-deal",
-        body: "Running a real deal, Claude Code declared 20+ source citations across triage and commercial research but never once called the script that actually saves the underlying material — despite the instruction being right there in the command files I'd written myself. I caught it by asking directly where the material was; the sources folder didn't exist until I had it backfilled by hand. Fixed by code-enforcing that a declared citation has something saved behind it, so the same gap can't happen again unnoticed — this time in my own oversight of the AI doing the drafting.",
+        body: "Running a real deal, Claude Code declared 20+ source citations across triage and commercial research but never once called the script that actually saves the underlying material, despite the instruction being right there in the command files I'd written myself. I caught it by asking directly where the material was; the sources folder didn't exist until I had it backfilled by hand. Fixed by code-enforcing that a declared citation has something saved behind it, so the same gap can't happen again unnoticed, this time in my own oversight of the AI doing the drafting.",
       },
       {
         title: "A \"lightweight\" path had zero independent audit",
-        body: "/research, the standalone qualitative-brief command, never ran the Risk Reviewer — a Go/No-Go legal screen carried real decision weight with no independent check. Giving it a Checker pass surfaced a second, sharper bug: the existing compliance checker assumes a full CAM's shape, so pointed at a research-only brief it would have silently returned \"compliant: true\" with zero reasons, regardless of whether the brief was actually sound — nothing matched what the checks look for. Caught by a manual smoke test before the fix shipped.",
+        body: "/research, the standalone qualitative-brief command, never ran the Risk Reviewer: a Go/No-Go legal screen carried real decision weight with no independent check. Giving it a Checker pass surfaced a second, sharper bug: the existing compliance checker assumes a full CAM's shape, so pointed at a research-only brief it would have silently returned \"compliant: true\" with zero reasons, regardless of whether the brief was actually sound. Nothing matched what the checks look for. Caught by a manual smoke test before the fix shipped.",
       },
     ],
   },
@@ -899,7 +899,7 @@ export const governanceComparison = {
   // a new muscle for me") spent its first line pre-empting an objection instead of just
   // stating the judgment call and letting the Chrome Autofill anchor support it.
   subhead:
-    "Every proposal and programme needs a different amount of process — too much slows down low-risk work, too little lets real risk through. I made that call for years in pre-sales and delivery, most visibly on the Chrome Autofill retrieval flow, governed by a formal Definition of Done, staged production rollout, and Google's own certification testing. I bring the same judgment to the two AI-directed systems I run solo today — just scaled to a different kind of risk.",
+    "Every proposal and programme needs a different amount of process: too much slows down low-risk work, too little lets real risk through. I made that call for years in pre-sales and delivery, most visibly on the Chrome Autofill retrieval flow, governed by a formal Definition of Done, staged production rollout, and Google's own certification testing. I bring the same judgment to the two AI-directed systems I run solo today, just scaled to a different kind of risk.",
   // Moved here from the About page's "How I work" section - this is specifically about
   // governance-matching, and belongs on the page dedicated to that topic rather than
   // competing with About's broader "how I think about product" narrative.
