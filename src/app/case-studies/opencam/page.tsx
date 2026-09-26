@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ScopeLanes } from "@/components/scope-lanes";
+import { OpenCamWorkflowDiagram } from "@/components/opencam-workflow-diagram";
 import { OpenCamBanner } from "@/components/project-thumbnails";
 import { LiveMergedPRCount, LiveClosedIssueCount, LiveTestCount } from "@/components/live-github-stat";
 import { ImpactEffortQuadrant } from "@/components/impact-effort-quadrant";
@@ -45,15 +45,7 @@ export default function OpenCamPage() {
             scope={openCam.scope}
             features={openCam.features}
             workflow={openCam.workflow}
-            workflowIllustration={
-              <Image
-                src="/illustrations/opencam-workflow.jpg"
-                alt="OpenCAM pipeline diagram: /calibrate forks into /triage or /research, both converging into /spread, /collateral, /project, /assemble; /research also has a standalone Research Brief export"
-                width={1200}
-                height={896}
-                className="h-full w-full object-cover"
-              />
-            }
+            workflowIllustration={<OpenCamWorkflowDiagram />}
             strategy={openCam.strategy}
             process={openCam.process}
             decisions={openCam.decisions}
