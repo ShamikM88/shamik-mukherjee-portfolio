@@ -564,7 +564,7 @@ export const openCam = {
       },
       {
         label: "Won't have",
-        sublabel: "Explicitly deferred, disclosed not hidden",
+        sublabel: "Explicitly deferred",
         tone: "muted" as const,
         items: [
           { text: "Multi-currency/FX support — today's desk is GBP-only", delivered: false },
@@ -579,7 +579,7 @@ export const openCam = {
   mvp2: {
     heading: "What I'm scoping for round 2 (\"Hardening Cycle 2\")",
     intro:
-      "Not a second MVP sprint — MVP v1 already shipped and is in real use. This is the next MoSCoW pass, run the same disciplined way: foundational gaps first, polish and deferred scope disclosed honestly, same as round 1.",
+      "MVP v1 shipped and is already in real use. This next MoSCoW pass follows it, in the same priority order as round 1: fix foundational gaps before adding polish.",
     lanes: [
       {
         label: "Must have",
@@ -611,7 +611,7 @@ export const openCam = {
       },
       {
         label: "Won't have",
-        sublabel: "Explicitly deferred, disclosed not hidden",
+        sublabel: "Deferred for this round",
         tone: "muted" as const,
         items: [
           "Full covenant step-down/cure-period modeling (#33) — same bundled-scope call as MVP v1; may be worth revisiting if I ever open this up for wider adoption beyond my own use",
@@ -627,7 +627,7 @@ export const openCam = {
       {
         letter: "A",
         title: "Maker-Checker Governance Loop",
-        body: "Two genuinely independent agents — an Underwriter drafts, a Risk Reviewer audits — with no shared reasoning context, and the power to only downgrade a verdict, never upgrade one. Maker and Checker can run on different underlying models, so drafting and audit don't share the same blind spots.",
+        body: "Two independent agents — an Underwriter drafts, a Risk Reviewer audits — with no shared reasoning context, and the power to only downgrade a verdict, never upgrade one. Maker and Checker can run on different underlying models, so drafting and audit don't share the same blind spots.",
       },
       {
         letter: "B",
@@ -642,7 +642,7 @@ export const openCam = {
       {
         letter: "D",
         title: "Financial Spreading & Auditable Excel Export",
-        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead — the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed, a real reduction in audit guarantee, disclosed rather than buried.",
+        body: "Every ratio — TNW, EBITDA, DSCR, Gross Leverage, Net Debt/EBITDA, FCF Conversion % — computed straight from the same raw line items shown in the workbook, with formulas generated from a label-based row layout so a reorder can't silently break a reference. An analyst can also supply figures already spread against their own institution's template instead — the CAM then carries an explicit caveat disclosing the spreading wasn't independently recomputed — a real reduction in audit guarantee.",
       },
       {
         letter: "E",
@@ -731,7 +731,7 @@ export const openCam = {
       },
       {
         title: "Caught Claude Code skipping my own instruction, mid-deal",
-        body: "Running a real deal, Claude Code declared 20+ source citations across triage and commercial research but never once called the script that actually saves the underlying material — despite the instruction being right there in the command files I'd written myself. I caught it by asking directly where the material was; the sources folder didn't exist until I had it backfilled by hand. Fixed by code-enforcing that a declared citation has something saved behind it — the same \"don't just instruct, verify\" discipline the rest of the governance model runs on, now applied to my own oversight of the AI doing the drafting.",
+        body: "Running a real deal, Claude Code declared 20+ source citations across triage and commercial research but never once called the script that actually saves the underlying material — despite the instruction being right there in the command files I'd written myself. I caught it by asking directly where the material was; the sources folder didn't exist until I had it backfilled by hand. Fixed by code-enforcing that a declared citation has something saved behind it, so the same gap can't happen again unnoticed — this time in my own oversight of the AI doing the drafting.",
       },
       {
         title: "A \"lightweight\" path had zero independent audit",
@@ -748,7 +748,7 @@ export const openCam = {
     ],
     bullets: [
       "Trust turned out to be a product feature: the debt-free-DSCR catch is concrete evidence that code-level verification, not model judgment, is what makes the loop actually trustworthy.",
-      "Real usage surfaced the two highest-value roadmap items faster than the original audit backlog did — ship it, use it, let genuine friction drive the backlog.",
+      "Real usage surfaced the two highest-value roadmap items faster than the original audit backlog did — ship it, use it, let real friction drive the backlog.",
     ],
   },
   visuals: {
