@@ -28,7 +28,7 @@ const PIPE: PipeNode[] = [
 
 const OUTPUTS: OutputNode[] = [
   { key: "brief", cx: 985, y: 220, lines: ["Research", "Brief"], icons: ["word"] },
-  { key: "spreadOut", cx: 985, y: 368, lines: ["Spreading", "Template"], icons: ["excel"] },
+  { key: "spreadOut", cx: 215, y: 368, lines: ["Spreading", "Template"], icons: ["excel"] },
   { key: "camOut", cx: 985, y: 838, lines: ["Full CAM", ".docx + .xlsx"], icons: ["word", "excel"] },
 ];
 
@@ -98,7 +98,9 @@ export function OpenCamWorkflowDiagram() {
   const bottom = (k: string) => ({ x: pb[k].cx, y: pb[k].y + pb[k].h });
   const top = (k: string) => ({ x: pb[k].cx, y: pb[k].y });
   const rightMid = (k: string) => ({ x: pb[k].x + pb[k].w, y: pb[k].y + pb[k].h / 2 });
+  const leftMid = (k: string) => ({ x: pb[k].x, y: pb[k].y + pb[k].h / 2 });
   const outLeftMid = (k: string) => ({ x: ob[k].x, y: ob[k].y + ob[k].h / 2 });
+  const outRightMid = (k: string) => ({ x: ob[k].x + ob[k].w, y: ob[k].y + ob[k].h / 2 });
 
   return (
     <svg viewBox="0 0 1200 1060" className="h-full w-full" role="img" aria-label="OpenCAM pipeline diagram">
@@ -172,14 +174,19 @@ export function OpenCamWorkflowDiagram() {
       })}
 
       {/* triage (blue, solid) -> spread ; research (teal, dashed - optional continuation) -> spread */}
-      <Arrow d={`M${bottom("triage").x},${bottom("triage").y} V${top("spread").y}`} color={BLUE} marker="arrowhead-blue" dashed={false} />
+      <Arrow
+        d={`M${bottom("triage").x},${bottom("triage").y} V${bottom("triage").y + 30} H${top("spread").x} V${top("spread").y}`}
+        color={BLUE}
+        marker="arrowhead-blue"
+        dashed={false}
+      />
       <Arrow d={`M${bottom("research").x},${bottom("research").y} v40 H${top("spread").x + 20} v14`} color={TEAL} marker="arrowhead-teal" />
 
       {/* research -> Research Brief (solid - guaranteed) */}
       <Arrow d={`M${rightMid("research").x},${rightMid("research").y} H${outLeftMid("brief").x}`} color={TEAL} marker="arrowhead-teal" dashed={false} />
 
-      {/* spread -> Spreading Template (solid - guaranteed once /spread runs) */}
-      <Arrow d={`M${rightMid("spread").x},${rightMid("spread").y} H${outLeftMid("spreadOut").x}`} marker="arrowhead" dashed={false} />
+      {/* spread -> Spreading Template (solid - guaranteed once /spread runs) - on the left, so it doesn't cross the research bypass curve on the right */}
+      <Arrow d={`M${leftMid("spread").x},${leftMid("spread").y} H${outRightMid("spreadOut").x}`} marker="arrowhead" dashed={false} />
 
       {/* triage lane continues, solid blue: spread -> commercial -> collateral */}
       <Arrow d={`M${bottom("spread").x},${bottom("spread").y} V${top("commercial").y}`} color={BLUE} marker="arrowhead-blue" dashed={false} />
