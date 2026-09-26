@@ -258,7 +258,9 @@ flowchart LR
     G --> H[.docx + .xlsx export]
 \`\`\`
 
-Note: \`/calibrate\` and \`/calibrate-policy\` are one-time setup, not something an analyst runs per deal — \`/calibrate\` derives house writing style and a CAM template per deal type; \`/calibrate-policy\` derives an institution's own credit policy, org-wide (Feature C, Section 4). Every actual deal starts at \`/triage\` or \`/research\` instead, both already reading whichever style/template/policy is in place. Separately: a deal continuing from \`/research\` rejoins directly at \`/spread\`, skipping \`/commercial\` — \`/research\` already produced that output as part of its own combined step. The diagram shows both of these at a high level; see Feature F (Section 4) for \`/research\`'s exact mechanics.
+Note: \`/triage\` and \`/research\` are the two entry points every deal actually starts at; both write the same state, so a deal can continue into the full pipeline later without redoing work. A deal continuing from \`/research\` rejoins directly at \`/spread\` and skips \`/commercial\`, since \`/research\` already produced that output as part of its own combined step (see Feature F, Section 4, for the exact mechanics).
+
+\`/calibrate\` and \`/calibrate-policy\` are one-time, org-level setup: \`/calibrate\` derives house writing style and a CAM template per deal type; \`/calibrate-policy\` derives an institution's own credit policy, org-wide (Feature C, Section 4). Every deal afterward just reads whichever is already in place.
 
 Each step checkpoints its results to a per-deal \`state.json\` the moment it finishes. That way, a compacted conversation or a resumed session never loses work that's already done — only the step still in progress is ever at risk.
 

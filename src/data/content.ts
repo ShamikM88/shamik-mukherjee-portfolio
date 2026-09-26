@@ -659,9 +659,9 @@ export const openCam = {
   workflow: {
     heading: "How the pipeline actually connects",
     intro:
-      "Two entry points, one shared spine. Every deal starts at /triage for a full CAM or /research for a standalone qualitative brief — both write the same state, so a deal can always continue into the full pipeline later without redoing work.",
+      "Two entry points, one shared spine. Every deal starts at /triage for a full CAM or /research for a standalone qualitative brief. Both write the same state, so a deal can continue into the full pipeline later without redoing work. A deal continuing from /research rejoins directly at /spread and skips /commercial, since /research already produced that output itself.",
     note:
-      "/calibrate and /calibrate-policy (shown above the divider) are one-time setup, not something run per deal — house writing style and a CAM template, and an institution's own credit policy, each calibrated once and referenced by every deal after. One nuance the per-deal flow itself simplifies: a deal continuing from /research rejoins directly at /spread, skipping /commercial entirely — /research already produced that output.",
+      "/calibrate and /calibrate-policy (above the divider) are one-time, org-level setup: /calibrate derives house writing style and a CAM template; /calibrate-policy derives an institution's own credit policy. Every deal afterward just reads whichever is already in place.",
   },
   strategy: {
     heading: "Validation & strategic context",
