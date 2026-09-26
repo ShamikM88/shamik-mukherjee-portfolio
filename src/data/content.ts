@@ -118,13 +118,13 @@ export const about = {
       },
       {
         title: "Owning outcomes in delivery",
-        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build production-grade AI systems on the side. Different tools, same discipline: define what \"done\" means, and don't sign off until it's actually true.",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build production-grade AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true.",
       },
     ],
   },
   whatIBring: {
     heading: "A translator and an owner",
-    body: "I'm most useful where the problem is ambiguous and the stakeholder landscape is complex — moving from a client conversation to a product decision, then staying close enough to delivery to help a team ship with clarity.",
+    body: "I'm most useful where the problem is ambiguous and the stakeholders are numerous and don't naturally agree — moving from a client conversation to a product decision, then staying close enough to delivery to help a team ship with clarity.",
     tags: ["Product Discovery", "Stakeholder Alignment", "Pre-Sales & Solution Shaping", "AI-Directed Delivery", "Evidence-Led Decisions"],
   },
   // Full Education (incl. B.Tech) and Awards history lives on the CV, not the portfolio -
@@ -165,7 +165,7 @@ export const about = {
     heading: "How I work",
     paragraphs: [
       "I don't start with a roadmap. I start by watching someone actually stuck — my wife re-keying figures into a spreading template by hand, working out a covenant ratio against a deadline she didn't set. Or me, rereading an email because the tracker no longer matched what was actually happening. If I can't point to a specific moment someone hit a wall, I don't trust the feature enough to build it.",
-      "None of this is a separate skill I picked up because AI is trendy, either. Writing acceptance criteria, deciding what \"done\" actually means, and reviewing work before it ships is what I've done for a living for years — directing Claude Code is the same discipline, pointed at a different kind of team member. The bar I'd hold a sprint deliverable to is the bar I hold an AI-generated change to. If something comes back marked \"fixed,\" I ask what I'd ask any developer: fixed where, exactly, and is that the part that actually matters or just the part that was easy to check. Deciding what ships this week versus what gets disclosed as deferred rather than quietly dropped is scope management I'd run on any programme, payments or otherwise.",
+      "None of this is a separate skill I picked up because AI is trendy, either. Writing acceptance criteria, deciding what \"done\" actually means, and reviewing work before it ships is what I've done for a living for years — directing Claude Code is the same discipline, pointed at a different kind of team member. The bar I'd hold a sprint deliverable to is the bar I hold an AI-generated change to. If something comes back marked \"fixed,\" I ask what I'd ask any developer: fixed where, exactly, and is that the part that actually matters or just the part that was easy to check. Deciding what ships this week versus what gets flagged as a deliberate deferral is scope management I'd run on any programme, payments or otherwise.",
     ],
     // The full "how much process should this get" story now lives on the Approach page
     // (governanceComparison below) - this is a short, in-context pointer to it rather
@@ -249,7 +249,7 @@ export const chromeAutofill = {
         sublabel: "Systems & Stakeholder Coordination",
         tone: "blue" as const,
         items: [
-          "Partnered deeply with the Enrolment/Unenrolment-flow PO to keep domain boundaries clean and state management seamless.",
+          "Partnered deeply with the Enrolment/Unenrolment-flow PO to keep domain boundaries clean and state management consistent.",
           "Integrated the Retrieval flow within the edge application against downstream systems — to get the risk decision on the retrieval request, and to fetch the token and DCID cryptogram details.",
           "Communicated directly with Google stakeholders during high-stakes integration testing to triage edge cases.",
         ],
@@ -327,7 +327,7 @@ export const chromeAutofill = {
         body: "Chasing that latency fix surfaced a second-order risk: a user re-clicking autofill while waiting would generate extra requests that needed idempotent handling to avoid duplicate processing. As PO on this initiative, prioritization calls like this sat with the PM, not me — so I raised it as input rather than deciding it myself. It became an MVP2 item, delivered by the Enrolment team in Q2 2025.",
       },
       {
-        title: "Mocked the fraud signal rather than waiting on it",
+        title: "Built a mock fraud signal to keep moving",
         body: "Our first release of value was the green flow with no risk checks — the fraud team's side simply wasn't prioritized yet. For the next release, I had two options: halt development citing a downstream blocker, or keep moving. We worked with the fraud team to understand, at a high level, how they'd tentatively process Google's risk signals — not their actual business rules, just a close approximation — and built a mock from that. Even our integration environment ran against it until the real system was ready.",
       },
       {
@@ -509,7 +509,7 @@ export const openCam = {
   // fact (a real bug the governance model actually caught) rather than the 15-30 min target,
   // which is aspirational and unvalidated at scale (N=1) - see the Status field above.
   takeaway:
-    "A real correctness bug — a debt-free company's DSCR silently computed as 0, not undefined — caught before it could reach a credit committee. Proof the governance model works, not just a design claim.",
+    "A real correctness bug: a debt-free company's DSCR silently computed as 0 instead of undefined, caught before it could reach a credit committee. Concrete proof the governance model works in practice.",
   repoUrl: "https://github.com/ShamikM88/open-cam-framework",
   badges: ["Multi-Agent AI", "Credit Risk"],
   meta: {
@@ -686,7 +686,7 @@ export const openCam = {
     heading: "How I worked it",
     steps: [
       {
-        title: "Started from a real workflow, not a hypothesis",
+        title: "Started from watching a real workflow break down",
         body: "Modeled the primary persona directly on my wife's own day as a credit analyst — the actual friction was manual spreading and narrative drafting under deadline pressure, not a problem I picked because it sounded interesting.",
       },
       {
@@ -698,7 +698,7 @@ export const openCam = {
         body: "Once the MVP worked, I audited the live codebase for 19 further issues and merged fixes in risk-weighted severity order — correctness and security bugs first, cosmetic issues after, feature work last.",
       },
       {
-        title: "Reprioritized around real feedback, not backlog guesses",
+        title: "Reprioritized around real feedback from a live deal",
         body: "Two items came directly from my wife hitting the pipeline's limits on a real deal — a rigid spreading schema and an all-or-nothing automation model — and I pulled both to the top of the queue and shipped them the same week.",
       },
     ],
@@ -707,15 +707,15 @@ export const openCam = {
     heading: "Calls I made, and why",
     items: [
       {
-        title: "Independent agents, not one prompt",
+        title: "No shared context between Maker and Checker",
         body: "A single agent auditing its own draft agrees with itself. The Underwriter and Risk Reviewer share no reasoning context, and the Reviewer can only downgrade a verdict — its value comes from auditing cold.",
       },
       {
-        title: "Code computes numbers, not the model",
+        title: "The model narrates; code computes",
         body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good — and a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities — the model can narrate a number, but it can never produce one.",
       },
       {
-        title: "Cut scope, don't half-implement",
+        title: "Shipped the bounded piece, flagged the rest",
         body: "One issue bundled four separable asks together. Rather than push all four through unreviewed, I shipped just the well-bounded piece and explicitly disclosed the other three as deferred, not quietly dropped.",
       },
       {
@@ -736,7 +736,7 @@ export const openCam = {
       },
       {
         title: "A \"lightweight\" path had zero independent audit",
-        body: "/research, the standalone qualitative-brief command, never ran the Risk Reviewer — a Go/No-Go legal screen carried real decision weight with no independent check. Giving it a Checker pass surfaced a second, sharper bug: the existing compliance checker assumes a full CAM's shape, so pointed at a research-only brief it would have silently returned \"compliant: true\" with zero reasons — not because the brief was sound, but because nothing matched what the checks look for. Caught by a manual smoke test before the fix shipped.",
+        body: "/research, the standalone qualitative-brief command, never ran the Risk Reviewer — a Go/No-Go legal screen carried real decision weight with no independent check. Giving it a Checker pass surfaced a second, sharper bug: the existing compliance checker assumes a full CAM's shape, so pointed at a research-only brief it would have silently returned \"compliant: true\" with zero reasons, regardless of whether the brief was actually sound — nothing matched what the checks look for. Caught by a manual smoke test before the fix shipped.",
       },
     ],
   },
@@ -843,11 +843,11 @@ export const fork = {
     heading: "Calls I made, and why",
     items: [
       {
-        title: "Direct-to-master, not PR-per-change",
+        title: "Why direct-to-master here",
         body: "Contrast this with OpenCAM, a multi-user tool that has to be defensible to someone else. This is solo personal tooling — direct-to-master rapid feedback loops win when I'm the only stakeholder.",
       },
       {
-        title: "Full history checked, not just this run",
+        title: "Checks the whole scrape history",
         body: "ID-based checks only catch a repost when the ID matches. Comparing normalized company + title against every existing entry, regardless of prior scrape date, catches the case ID checks structurally can't.",
       },
       {
