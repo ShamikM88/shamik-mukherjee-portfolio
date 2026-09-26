@@ -53,6 +53,58 @@ export function LiveMergedPRCount({ repo, fallback }: { repo: string; fallback: 
   );
 }
 
+export function LiveClosedIssueCount({ repo, fallback }: { repo: string; fallback: number }) {
+  const url = `https://api.github.com/search/issues?q=${encodeURIComponent(`repo:${repo} is:issue is:closed`)}`;
+  const { value, isLive } = useLiveCount(
+    url,
+    (data) => (data as { total_count?: number }).total_count,
+    fallback,
+  );
+  return (
+    <span title={isLive ? "Fetched live from GitHub" : "Last known count"}>
+      {value}+ issues closed
+    </span>
+  );
+}
+
+/**
+ * Counts every issue ever tagged gap-analysis, open or closed - not just the
+ * original named 19-issue audit. Gap-analysis passes are periodic and
+ * ongoing, so this grows across future audits without any code change here;
+ * it only depends on the label being applied consistently on the repo side.
+ * Bare number only (matches LiveTestCount/LiveCommitsAhead) - caller supplies
+ * its own label text.
+ */
+export function LiveGapAnalysisCount({ repo, fallback }: { repo: string; fallback: number }) {
+  const url = `https://api.github.com/search/issues?q=${encodeURIComponent(`repo:${repo} is:issue label:gap-analysis`)}`;
+  const { value, isLive } = useLiveCount(
+    url,
+    (data) => (data as { total_count?: number }).total_count,
+    fallback,
+  );
+  return <span title={isLive ? "Fetched live from GitHub" : "Last known count"}>{value}</span>;
+}
+
+/**
+ * Test count has no GitHub API of its own - it's a CI-time fact, not repo
+ * metadata. OpenCAM's CI code-enforces a checked-in badges/test-count.json
+ * against the real pytest count (PR #118), so this fetches that file's raw
+ * content from the default branch instead of a GitHub API endpoint.
+ * Renders the bare number only (matches LiveCommitsAhead) - callers pair it
+ * with their own label text rather than a baked-in suffix.
+ */
+export function LiveTestCount({ repo, fallback }: { repo: string; fallback: number }) {
+  const url = `https://raw.githubusercontent.com/${repo}/main/badges/test-count.json`;
+  const { value, isLive } = useLiveCount(
+    url,
+    (data) => (data as { passed?: number }).passed,
+    fallback,
+  );
+  return (
+    <span title={isLive ? "Fetched live from GitHub" : "Last known count"}>{value}+</span>
+  );
+}
+
 export function LiveCommitsAhead({
   repo,
   base,

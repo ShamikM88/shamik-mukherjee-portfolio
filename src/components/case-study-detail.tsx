@@ -16,7 +16,12 @@ type OutcomeBlock = { heading: string; stats: { value: string; label: string }[]
 type VisualBlock = { heading: string; items: { caption: string; src: string; alt: string }[] };
 type ScopeBlock = {
   heading: string;
-  lanes: { label: string; sublabel: string; tone: "brand-strong" | "blue" | "ember" | "muted"; items: string[] }[];
+  lanes: {
+    label: string;
+    sublabel: string;
+    tone: "brand-strong" | "blue" | "ember" | "muted";
+    items: (string | { text: string; delivered: boolean })[];
+  }[];
 };
 type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
 type StrategyBlock = { heading: string; intro: string; cards: { title: string; body: string }[] };
@@ -47,6 +52,8 @@ export function CaseStudyDetail({
   headerExtra,
   outcomeStatOverrides,
   scope,
+  scopeExtra,
+  outcomesExtra,
   features,
   workflow,
   workflowIllustration,
@@ -87,6 +94,13 @@ export function CaseStudyDetail({
   baseRepo?: { url: string; label: string };
   /** MoSCoW scope breakdown — optional, not every case study has this depth of source material. */
   scope?: ScopeBlock;
+  /** Rendered directly below the MoSCoW lanes, inside the same Scope section — e.g. a live
+   *  backlog-prioritization board that picks up where the static MoSCoW lanes leave off. */
+  scopeExtra?: ReactNode;
+  /** Rendered directly below the Outcomes bullets — e.g. a forward-looking MoSCoW round 2 /
+   *  "what's next" section, paired with a live backlog-triage board. Kept separate from the
+   *  historical Scope section higher up the page, which explains why the shipped Features exist. */
+  outcomesExtra?: ReactNode;
   /** Structured feature/product-requirements list — optional. */
   features?: FeatureBlock;
   /** Workflow/pipeline diagram section — optional, needs both the text block and the illustration. */
@@ -224,6 +238,7 @@ export function CaseStudyDetail({
           <div className="mt-6">
             <ScopeLanes lanes={scope.lanes} />
           </div>
+          {scopeExtra && <div className="mt-8">{scopeExtra}</div>}
         </div>
       )}
 
@@ -402,6 +417,7 @@ export function CaseStudyDetail({
             </li>
           ))}
         </ul>
+        {outcomesExtra && <div className="mt-8">{outcomesExtra}</div>}
       </div>
 
       {/* Supporting visuals */}

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { governanceComparison } from "@/data/content";
+import { LiveTestCount, LiveGapAnalysisCount } from "@/components/live-github-stat";
 
 const MODE_ICONS = [ShieldCheck, Zap];
 
@@ -66,7 +67,15 @@ export default function ApproachPage() {
           <div className="mt-10 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
             {governanceComparison.heroStats.map((stat) => (
               <div key={stat.label} className="flex flex-col">
-                <dd className="font-display text-3xl font-bold text-ink-900 dark:text-white">{stat.value}</dd>
+                <dd className="font-display text-3xl font-bold text-ink-900 dark:text-white">
+                  {stat.label === "Regression-Gated Tests" ? (
+                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={439} />
+                  ) : stat.label === "Issues Surfaced by Gap-Analysis Audits" ? (
+                    <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} />
+                  ) : (
+                    stat.value
+                  )}
+                </dd>
                 <dd className="mt-1 text-sm text-ink-600 dark:text-ink-300">{stat.label}</dd>
                 <dt className="mt-0.5 text-xs uppercase tracking-wider text-brand-600 dark:text-brand-400">
                   {stat.sublabel}
