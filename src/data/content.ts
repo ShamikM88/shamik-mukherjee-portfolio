@@ -340,7 +340,7 @@ export const chromeAutofill = {
       },
       {
         title: "Strict deployment gating",
-        body: "Because of the scale of the network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, but meant nothing ever reached production only to fail in a way pre-prod should have caught.",
+        body: "Because of the scale of the network, passing a local unit test wasn't enough. I held the line on our Definition of Done: a sprint deliverable was only marked Done once it was successfully deployed to our OpenShift (OCP) environments and verified against integration tests. It slowed individual sprints down in the short term, and it wasn't airtight — a couple of minor bugs still reached production and were fixed in the next sprint — but it kept failures small and caught close to the source instead of compounding.",
       },
     ],
   },
@@ -354,7 +354,7 @@ export const chromeAutofill = {
     ],
     bullets: [
       "Successfully delivered the retrieval flow to production in November 2024.",
-      "Delivered a frictionless checkout experience at enterprise scale, directly driving top-of-wallet usage for the network.",
+      "Delivered a frictionless checkout experience at enterprise scale, built to protect top-of-wallet usage against a competing card.",
       "Partner certification testing for the retrieval flow — sandbox and production alike — passed with zero functional defects, against test cases I wrote myself.",
       "Cut yellow-flow (risk-checked) response time from 7-8s to 3.5-4s, and green-flow from 2.4s to 1-1.2s — both comfortably inside Google's 5-second requirement.",
     ],
