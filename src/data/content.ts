@@ -815,7 +815,7 @@ export const fork = {
     heading: "What was missing",
     paragraphs: [
       "The framework's default output was a static snapshot and application outcomes lived entirely in employer emails I had to notice, reread, and hand-transcribe — with dozens of applications in flight, status updates silently lagged reality.",
-      "Portal-level dedup only matched on exact URL or job ID, which missed an employer relisting an unfilled role under a brand-new ID. That wasn't hypothetical: a role I'd already been rejected from was scraped three times under three different LinkedIn IDs, and the surviving copy nearly went out again in a fresh application batch before I caught it.",
+      "Portal-level dedup only matched on exact URL or job ID, which missed an employer relisting an unfilled role under a brand-new ID. That wasn't hypothetical: a role I'd already been rejected from was scraped three times under three different LinkedIn IDs, and the surviving copy nearly went out again in a fresh application batch before I caught it (commit 992a944).",
     ],
   },
   process: {
@@ -827,7 +827,7 @@ export const fork = {
       },
       {
         title: "Ran it direct-to-master, deliberately",
-        body: "48 fork-specific commits with no PR-per-change or issue-tracked backlog — a live scraper hitting real job portals needed a tight edit-run-observe loop, and review overhead has no payoff when I'm the only contributor and the only person affected by a regression.",
+        body: "57 fork-specific commits with no PR-per-change or issue-tracked backlog — a live scraper hitting real job portals needed a tight edit-run-observe loop, and review overhead has no payoff when I'm the only contributor and the only person affected by a regression.",
       },
       {
         title: "Closed the repost gap after it actually cost me",
@@ -848,7 +848,7 @@ export const fork = {
       },
       {
         title: "Checks the whole scrape history",
-        body: "ID-based checks only catch a repost when the ID matches. Comparing normalized company + title against every existing entry, regardless of prior scrape date, catches the case ID checks structurally can't.",
+        body: "ID-based checks only catch a repost when the ID matches. Comparing normalized company + title against every existing entry, regardless of prior scrape date, catches the case ID checks structurally can't (commit 992a944).",
       },
       {
         title: "Cache once, reuse everywhere",
@@ -866,7 +866,7 @@ export const fork = {
       // [0], was [2]) in sync if this array is ever reordered again.
       { value: "0", label: "PII or client data ever committed — verified via git audit" },
       { value: "150+", label: "job postings processed & auto-deduped" },
-      { value: "48", label: "fork-specific commits shipped, direct-to-master" },
+      { value: "57", label: "fork-specific commits shipped, direct-to-master" },
     ],
     bullets: [
       "The repost-hardening fix closes a failure mode that had already cost one wasted application before it shipped — zero repeats since.",

@@ -325,7 +325,7 @@ This framework is early-stage, built and validated with one target user — my w
 
 export const jobSearchForkMarkdown = `# AI Job Search Fork — Feature Spotlight / Micro-Case Study
 
-2026-09-18 · @ShamikM88
+2026-09-18, refreshed 2026-09-27 · @ShamikM88
 
 ## 1. Project Snapshot & Product Context
 
@@ -349,16 +349,16 @@ Replaced the framework's static export with a live, server-rendered local dashbo
 Built a new \`/gmail-sync\` command that scans Gmail for interview/offer/rejection signals against every open application and proposes tracker updates for my review before writing anything — plus a separate track that detects and dedupes job-recommendation digest emails (StepStone, LinkedIn, Indeed) straight into the scrape pipeline instead of letting them go unread. **Outcome:** one representative five-day-lookback run surfaced 7 rejection updates and 2 net-new leads from 11 scanned threads in a single pass, replacing what had been ad hoc, easy-to-miss manual inbox triage.
 
 ### C. Cross-Portal & Re-post Hardening
-Extended dedup beyond ID-based matching (exact URL, LinkedIn/StepStone job ID) to a same-company-title check against the *entire* scrape history, not just the current run's pool — catching an employer relisting an unfilled role under a fresh job ID. **Outcome:** directly closes a real, already-occurred gap — the role that had been scraped three times under three different LinkedIn job IDs across two dates. Two of the three were already caught as duplicates of each other, but nothing had checked either against the oldest entry, and the surviving "ranked" copy was one step from a live application batch before I caught it manually. The fix prevents that exact failure mode going forward.
+Extended dedup beyond ID-based matching (exact URL, LinkedIn/StepStone job ID) to a same-company-title check against the *entire* scrape history, not just the current run's pool — catching an employer relisting an unfilled role under a fresh job ID. **Outcome:** directly closes a real, already-occurred gap — the role that had been scraped three times under three different LinkedIn job IDs across two dates. Two of the three were already caught as duplicates of each other, but nothing had checked either against the oldest entry, and the surviving "ranked" copy was one step from a live application batch before I caught it manually. The fix prevents that exact failure mode going forward (commit \`992a944\`).
 
 ### D. Cost-Efficiency Caching
 Added a posting-text cache (shared by \`/rank\` and \`/apply\`) and a company-research cache: each keys off a normalized filename (URL or company name, lowercased with non-alphanumeric runs collapsed to hyphens) rather than a live re-fetch — postings cache indefinitely since a published listing's text doesn't change, company research on a 30-day TTL since that can go stale. **Outcome:** any posting or company hit by both a \`/rank\` triage pass and a later \`/apply\` pass now costs one fetch instead of two, eliminating a duplicate fetch-and-research pass on the common rank-then-apply path.
 
 ## 4. Product Ownership & Delivery Governance
 
-As sole developer and end user of this fork, I ran it in what I'd call **Fast-Iterate Personal Tooling mode**: direct commits to \`master\` across 48 fork-specific commits (2026-08-11 through today), not a PR-per-change or Issue-tracked backlog. That was a deliberate choice, not an oversight — a live scraper hitting real job portals against my own job search needed a tight edit-run-observe loop, and the administrative overhead of PR review and issue triage has no payoff when I'm the only contributor and the only person affected by a regression.
+As sole developer and end user of this fork, I ran it in what I'd call **Fast-Iterate Personal Tooling mode**: direct commits to \`master\` across 57 fork-specific commits (2026-08-11 through 2026-09-27), not a PR-per-change or Issue-tracked backlog. That was a deliberate choice, not an oversight — a live scraper hitting real job portals against my own job search needed a tight edit-run-observe loop, and the administrative overhead of PR review and issue triage has no payoff when I'm the only contributor and the only person affected by a regression.
 
-Contrast this with **OpenCAM Framework**, a separate open-source project I also built and designed for other institutions to adopt: that one runs under strict PR-only, Issue-tracked governance (35 merged PRs, zero direct-to-main commits), because a multi-user, production-adjacent tool has to be defensible to someone other than me. **Solo personal utility tooling benefits from direct-to-master rapid feedback loops; production or multi-user systems don't get that same latitude, and I don't conflate the two.**
+Contrast this with **OpenCAM Framework**, a separate open-source project I also built and designed for other institutions to adopt: that one runs under strict PR-only, Issue-tracked governance (61+ merged PRs, zero direct-to-main commits), because a multi-user, production-adjacent tool has to be defensible to someone other than me. **Solo personal utility tooling benefits from direct-to-master rapid feedback loops; production or multi-user systems don't get that same latitude, and I don't conflate the two.**
 
 One discipline I held constant regardless of governance model: **local data confidentiality.** Every piece of sensitive data this fork touches — the application tracker, the scraped-job cache, Gmail sync state, cached company research and job postings, and a confidential-client reference file — is git-ignored and lives only on my local disk.
 
