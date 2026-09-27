@@ -37,14 +37,14 @@ export const identity = {
   // Personal-brand tagline, not a sourced fact - an honest characterization of the
   // actual pattern across both case studies below (shipped, AI-directed delivery).
   taglineLead: "I ship digital payments products —",
-  taglineHighlight: "off the clock, I direct AI to build production-grade systems, solo.",
+  taglineHighlight: "off the clock, I direct AI to build rigorously engineered systems, solo.",
 };
 
 export const about = {
   // Short hero assertion + supporting subtext, rendered as two visual tiers instead
   // of one dense paragraph.
   headline: "13+ years connecting technology, business, and delivery.",
-  bio: "An IIT Bombay MBA and Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build production-grade AI systems solo. The case studies on this site cover both: real payments delivery at work, and two AI systems shipped solo outside it.",
+  bio: "An IIT Bombay MBA and Product Owner in digital payments, currently leading wallet-provisioning and card-migration work that connects a major US card network to Google Pay and Samsung Pay. My path has moved between engineering, pre-sales, and delivery — and outside the day job, I direct Claude Code to build rigorously engineered AI systems solo. The case studies on this site cover both: real payments delivery at work, and two AI systems shipped solo outside it.",
   heroStats: [
     { value: "13+", label: "Years of experience" },
     { value: "4", label: "Career chapters" },
@@ -118,7 +118,7 @@ export const about = {
       },
       {
         title: "Owning outcomes in delivery",
-        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build production-grade AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true.",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build rigorously engineered AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true.",
       },
     ],
   },
@@ -669,8 +669,8 @@ export const openCam = {
       "This framework is early-stage, built and validated with one target user — my wife, a corporate credit analyst. I'd rather show the reasoning openly than present these as more settled than they are.",
     cards: [
       {
-        title: "Buy vs. build",
-        body: "Platforms like nCino or Moody's CreditLens run on vendor-defined schemas and don't give an inspectable, code-level audit trail of how a specific AI draft was checked — that's the exact gap this closes, while keeping confidential deal data off a third-party cloud entirely.",
+        title: "Built to augment, not replace",
+        body: "My wife never had access to a platform like nCino or Moody's CreditLens at her workplace, so this isn't a competitive swap-out — it fills a gap that simply existed for her. It's also deliberately scoped to speed up a first draft with an inspectable audit trail, not replace her judgment the way larger, better-resourced platforms are attempting.",
       },
       {
         title: "Unit economics",
