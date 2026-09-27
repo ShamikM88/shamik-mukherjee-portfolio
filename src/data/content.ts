@@ -475,11 +475,11 @@ export const walletProvisioning = {
       },
       {
         title: "Token cleanup on a live repersonalization",
-        body: "A live Google Wallet token repersonalization campaign left a long tail — cardholders who hadn't reopened their wallet or had inactive devices never picked up their new payment profile. I planned the date-wise batch schedule for the repersonalization notifications and worked with L1 support to run it, then spent two to three months coordinating directly with Google to unlink the tokens that never came back, cleaning up the legacy tail without disrupting cardholders who'd already migrated.",
+        body: "A live Google Wallet token repersonalization campaign left a long tail — cardholders who hadn't reopened their wallet or had inactive devices never picked up their new payment profile. The process ran in two staged batches: the network sent 'tickle' notifications for every token still on the old SDK, then Google processed those and pushed repersonalization calls back, both ramping up over several days. I planned our batch schedule, worked with L1 support to run it, and tracked completion against both stages over two to three months to identify who was actually stuck — couldn't be tickled after several retries, or tickled but never repersonalized by a set date. About 30 days after Google's ramp-up hit 100%, I aligned with Google that the rest weren't coming back; the network then initiated the unlinks and kept Google and the issuer informed as the cleanup progressed, with Google and me closely coordinating throughout — closing the tail without touching cardholders who'd already migrated.",
       },
       {
         title: "Internationalizing a single-issuer spec",
-        body: "Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer went live in 2025; a second is currently onboarding, validated end-to-end in production ahead of general availability.",
+        body: "Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer onto this integration went live in 2025; a second is currently onboarding, validated end-to-end in production ahead of general availability.",
       },
       {
         title: "Making a legacy, partner-published spec audit-ready",
@@ -489,12 +489,12 @@ export const walletProvisioning = {
   },
   outcomes: {
     heading: "The impact",
-    stats: [{ value: "2025", label: "first international issuer live on push provisioning" }],
+    stats: [{ value: "2025", label: "first international issuer onto this integration, live on push provisioning" }],
     bullets: [
       "Directs two squads' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
       "Digital wallet tokens continue to work for cardholders through a live, large-scale card portfolio migration — validated in pre-production ahead of each production wave, so the migration stays invisible to the wallet experience.",
       "Closed out the legacy tail of a live token repersonalization campaign, coordinating directly with Google over several months to clean up tokens that never migrated.",
-      "Proved a specification built for a single issuer could generalize internationally — first market live in 2025, a second validated end-to-end in production ahead of general availability.",
+      "Proved a specification built for a single issuer could generalize internationally — first market onto this integration live in 2025, a second validated end-to-end in production ahead of general availability.",
       "Passed a recent audit on full spec-change traceability — every change traced from tracker entry to Jira ticket, with nothing needing reconstruction after the fact.",
     ],
   },
