@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -34,11 +33,11 @@ const problemWithLink = {
       >
         Virtual Cards v1
       </a>
-      ) — but the reality of enterprise software is that execution is where integrations actually succeed or fail.
+      ), but the reality of enterprise software is that execution is where integrations actually succeed or fail.
       Translating Google&apos;s strict cloud requirements into the network&apos;s highly regulated, legacy backend
       architecture was where the real delivery risk lived: there was nowhere in the existing estate for this to plug
-      into, so delivery meant standing up a new microservice — the edge component for all inbound Google traffic
-      into the network, spanning enrolment, unenrolment, retrieval, and sendOTP — hosted on OpenShift (OCP).
+      into. Delivery meant standing up a new microservice (the edge component for all inbound Google traffic into
+      the network, spanning enrolment, unenrolment, retrieval, and sendOTP), hosted on OpenShift (OCP).
     </>,
   ],
 };
@@ -49,13 +48,13 @@ export default function ChromeAutofillPage() {
       <Nav />
       <main>
         <div className="mx-auto max-w-5xl px-6 pt-10 sm:px-8">
-          <Link
+          <a
             href="/#work"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 transition-colors hover:text-ink-900 dark:text-ink-400 dark:hover:text-white"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
             All case studies
-          </Link>
+          </a>
         </div>
         <div className="mx-auto max-w-5xl px-6 py-10 sm:px-8 sm:py-14">
           <CaseStudyDetail
