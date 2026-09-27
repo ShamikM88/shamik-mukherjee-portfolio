@@ -796,12 +796,12 @@ export const fork = {
   title: "AI Job Search — Pipeline & Status Automation",
   shortTitle: "AI Job Search Automation",
   subtitle:
-    "Extended an open-source job-search framework with Gmail status sync, repost-dedup hardening, a live application dashboard, and a shared posting-fetch cache — automation layered on a forked base, not authored from scratch.",
+    "Extended an open-source job-search framework with Gmail recommendation-lead detection, repost-dedup hardening, a live application dashboard, and a shared posting-fetch cache — automation layered on a forked base, not authored from scratch.",
   // Added per a VP-of-Product review (2026-09-23) - leads with the governance/audit fact and
   // the concrete same-day-fix story, not the "150+ postings processed" figure the statStrip
   // comment below already calls out as gameable (just run the scraper more).
   takeaway:
-    "Zero PII or client data ever committed, verified by a full git-history audit — and a real repost bug (one already-rejected role scraped three times, nearly reapplied to) closed the same day it was caught.",
+    "Zero PII or client data ever committed, verified by a full git-history audit — and a real repost bug (one already-rejected role scraped three times under three different LinkedIn IDs, nearly reapplied to) closed for good once caught (commit 992a944).",
   baseRepoUrl: "https://github.com/MadsLorentzen/ai-job-search",
   forkRepoUrl: "https://github.com/ShamikM88/ai-job-search",
   badges: ["Agentic AI", "Personal Tooling"],
@@ -816,6 +816,34 @@ export const fork = {
     paragraphs: [
       "The framework's default output was a static snapshot and application outcomes lived entirely in employer emails I had to notice, reread, and hand-transcribe — with dozens of applications in flight, status updates silently lagged reality.",
       "Portal-level dedup only matched on exact URL or job ID, which missed an employer relisting an unfilled role under a brand-new ID. That wasn't hypothetical: a role I'd already been rejected from was scraped three times under three different LinkedIn IDs, and the surviving copy nearly went out again in a fresh application batch before I caught it (commit 992a944).",
+    ],
+  },
+  scope: {
+    heading: "What's mine, and what came with the fork",
+    lanes: [
+      {
+        label: "Inherited from upstream",
+        sublabel: "MadsLorentzen/ai-job-search",
+        tone: "muted" as const,
+        items: [
+          "Core /apply workflow: fit evaluation → CV/cover-letter drafting → compile → verify",
+          "Job-scraping CLI framework and the portal-skill pattern",
+          "Gmail sync's core mechanism: propose-then-approve tracker status updates",
+          "Base /rank and /outcome command structure",
+        ],
+      },
+      {
+        label: "Built on top",
+        sublabel: "57+ fork-specific commits",
+        tone: "brand-strong" as const,
+        items: [
+          "Extended Gmail sync to also detect and register job-recommendation digest emails as new scrape leads — the base sync only covered existing applications",
+          "Live, filterable application dashboard — iterated from an early CSV export through a static version to today's live one; job_scraper/ didn't exist in upstream at all",
+          "Cross-portal repost-dedup hardening — two real incidents, two fixes (PR #1, then commit 992a944)",
+          "Shared posting-fetch cache between /rank and /apply",
+          "Security guards enforcing gitignore/permissions/hooks discipline on a public fork",
+        ],
+      },
     ],
   },
   process: {
@@ -877,7 +905,7 @@ export const fork = {
     heading: "Inside the build",
     items: [
       {
-        caption: "48 fork-specific commits on GitHub, diverged from the upstream MadsLorentzen/ai-job-search base.",
+        caption: "57 fork-specific commits on GitHub, diverged from the upstream MadsLorentzen/ai-job-search base.",
         src: "/build-shots/fork-commits.png",
         alt: "Commit history on the ai-job-search fork's GitHub repository",
       },

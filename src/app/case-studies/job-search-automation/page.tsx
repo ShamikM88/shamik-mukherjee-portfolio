@@ -38,6 +38,7 @@ export default function JobSearchAutomationPage() {
             markdownFilename="AI-Job-Search-Fork-Case-Study.md"
             meta={fork.meta}
             problem={fork.problem}
+            scope={fork.scope}
             process={fork.process}
             decisions={fork.decisions}
             outcomes={fork.outcomes}
@@ -49,7 +50,7 @@ export default function JobSearchAutomationPage() {
             // (2026-09-23) so "0 PII..." leads instead of the gameable "150+ postings" figure;
             // this override must track whichever index the "48 commits" stat now sits at.
             outcomeStatOverrides={{
-              2: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={48} />,
+              2: <LiveCommitsAhead repo="ShamikM88/ai-job-search" base="MadsLorentzen:master" fallback={57} />,
             }}
             calloutNote={{
               text: "Run in Fast-Iterate mode — lighter process ceremony by design for solo personal tooling, not a lower bar.",
