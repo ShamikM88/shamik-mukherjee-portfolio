@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: SITE_URL,
     siteName: "Shamik Mukherjee — Portfolio",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
     locale: "en_GB",
     type: "website",
   },
@@ -53,7 +52,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.svg",
