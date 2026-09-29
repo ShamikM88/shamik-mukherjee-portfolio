@@ -801,7 +801,7 @@ export const fork = {
   // the concrete same-day-fix story, not the "150+ postings processed" figure the statStrip
   // comment below already calls out as gameable (just run the scraper more).
   takeaway:
-    "Zero PII or client data ever committed, verified by a full git-history audit — and a real repost bug (one already-rejected role scraped three times under three different LinkedIn IDs, nearly reapplied to) closed for good once caught (commit 992a944).",
+    "Confirmed clean of PII or client data via a full git-history audit — and a real repost bug (one already-rejected role scraped three times under three different LinkedIn IDs, nearly reapplied to) closed for good once caught (commit 992a944).",
   baseRepoUrl: "https://github.com/MadsLorentzen/ai-job-search",
   forkRepoUrl: "https://github.com/ShamikM88/ai-job-search",
   badges: ["Agentic AI", "Personal Tooling"],
@@ -892,7 +892,7 @@ export const fork = {
       // the scraper more); the governance/audit stat is the strongest, least-gameable one here,
       // and is also what CASE_STUDY_CARDS pulls for the home-page card - keep that index (now
       // [0], was [2]) in sync if this array is ever reordered again.
-      { value: "0", label: "PII or client data ever committed — verified via git audit" },
+      { value: "0", label: "PII or client data currently exposed — confirmed via full git-history audit" },
       { value: "150+", label: "job postings processed & auto-deduped" },
       { value: "57", label: "fork-specific commits shipped, direct-to-master" },
     ],
