@@ -21,8 +21,8 @@ const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-const SITE_URL = "https://shamik-mukherjee-portfolio.vercel.app";
-const TITLE = "Shamik Mukherjee — Product Manager / Senior Product Owner";
+const SITE_URL = "https://shamik.mukherjee.pro";
+const TITLE = "Shamik Mukherjee — Senior Product Owner, targeting Product Manager scope";
 const DESCRIPTION =
   "Product Owner in digital payments and tokenization, building AI-directed multi-agent systems solo. See OpenCAM Framework (a Maker-Checker credit underwriting system) and an automated job-search pipeline.";
 
