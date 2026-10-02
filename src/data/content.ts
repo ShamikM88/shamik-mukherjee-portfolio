@@ -583,12 +583,21 @@ export const openCam = {
     lanes: [
       {
         label: "Must have",
-        sublabel: "Foundational correctness/architecture gaps",
+        sublabel: "Foundational correctness/architecture gaps — ✓ all closed",
         tone: "brand-strong" as const,
         items: [
-          "Fix the dangling Parent/UBO Guideline cross-reference — the template already points to guidance that was never written (#96)",
-          "Wire the primary interface through to the tested financial-formula code, not around it (#98)",
-          "Extend the ground-truth figures schema to cover metrics the framework already requires citing — Working Capital Days, collateral exposure (#99)",
+          {
+            text: "Fix the dangling Parent/UBO Guideline cross-reference — the template already pointed to guidance that was never written (#96)",
+            delivered: true,
+          },
+          {
+            text: "Wire the primary interface through to the tested financial-formula code, not around it (#98)",
+            delivered: true,
+          },
+          {
+            text: "Extend the ground-truth figures schema to cover metrics the framework already requires citing — Working Capital Days, collateral exposure (#99)",
+            delivered: true,
+          },
         ],
       },
       {
@@ -596,7 +605,18 @@ export const openCam = {
         sublabel: "Fast-follow depth",
         tone: "blue" as const,
         items: [
-          "Systematic Parent/UBO research guidance — full ownership chain, ownership percentages, recent ownership changes, and the materiality judgment call for when it warrants a full Ultimate Parent section (#96)",
+          {
+            text: "Systematic Parent/UBO research guidance — full ownership chain, ownership percentages, recent ownership changes, and the materiality judgment call for when it warrants a full Ultimate Parent section (#96)",
+            delivered: true,
+          },
+          {
+            text: "/project gains an analyst-supplied mode for forward-year projections, mirroring /spread's existing one, so a non-standard spreading convention doesn't get silently forced through the framework's own formulas (#124)",
+            delivered: false,
+          },
+          {
+            text: "Read-back confirmation and cross-footing for screenshot-sourced spreading, so a transcription error can't become the deal's ground truth unnoticed (#132)",
+            delivered: false,
+          },
         ],
       },
       {
@@ -607,6 +627,7 @@ export const openCam = {
           "HoldCo/OpCo group/subsidiary financial consolidation (#48)",
           "Render Group/Parent/UBO structure as a tree diagram instead of prose (#113)",
           "Charts/graphs in CAMs — sector trends, SWOT, positioning, stock price (#114)",
+          "Jurisdiction-agnostic PII heuristics — today's redaction patterns are UK-specific in a framework designed to be forked by any institution (#111)",
         ],
       },
       {

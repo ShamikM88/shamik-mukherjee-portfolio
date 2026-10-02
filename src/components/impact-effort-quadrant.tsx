@@ -18,19 +18,19 @@ type IssuePoint = {
   url: string;
   x: number;
   y: number;
-  color: "could" | "wont" | "delta";
+  color: "should" | "could" | "wont" | "delta";
   shape: Shape;
 };
 
 const EFFORT: Record<string, number> = { XS: 1, S: 2, M: 3, L: 4, XL: 5 };
 const IMPACT: Record<string, number> = { high: 4, medium: 2.5, low: 1 };
 // Reuses the exact tones the static MoSCoW lanes above already use for
-// could/wont (ember/muted), so a point's color means the same thing in both
-// places. Delta deliberately does NOT reuse brand teal - that's "Must have"'s
-// color up there, and delta means the opposite (never a MoSCoW question at
-// all) - reusing it would send a mixed signal. Violet is the site's fourth
-// qualitative accent, genuinely unused by any MoSCoW tone.
-const COLOR_HEX = { could: "#e6832a", wont: "#788592", delta: "#8b5cf6" } as const;
+// should/could/wont (blue/ember/muted), so a point's color means the same
+// thing in both places. Delta deliberately does NOT reuse brand teal - that's
+// "Must have"'s color up there, and delta means the opposite (never a MoSCoW
+// question at all) - reusing it would send a mixed signal. Violet is the
+// site's fourth qualitative accent, genuinely unused by any MoSCoW tone.
+const COLOR_HEX = { should: "#3b82f6", could: "#e6832a", wont: "#788592", delta: "#8b5cf6" } as const;
 
 // Deterministic offset seeded by issue number - same-tier issues fan out
 // instead of stacking on identical coordinates, but reload with the same
@@ -53,11 +53,13 @@ function mapIssue(item: GithubIssue): IssuePoint {
   const labels = item.labels.map((l) => l.name);
   const sizeKey = labels.find((l) => l.startsWith("size/"))?.slice(5) ?? "S";
   const impactKey = labels.find((l) => l.startsWith("impact/"))?.slice(7) ?? "medium";
-  const color: IssuePoint["color"] = labels.includes("moscow/could")
-    ? "could"
-    : labels.includes("moscow/wont")
-      ? "wont"
-      : "delta";
+  const color: IssuePoint["color"] = labels.includes("moscow/should")
+    ? "should"
+    : labels.includes("moscow/could")
+      ? "could"
+      : labels.includes("moscow/wont")
+        ? "wont"
+        : "delta";
 
   return {
     number: item.number,
@@ -70,15 +72,19 @@ function mapIssue(item: GithubIssue): IssuePoint {
   };
 }
 
-// Real, verified open-issue snapshot (2026-09-26, post tech-debt backfill) -
+// Real, verified open-issue snapshot (2026-10-02, post MVP2 MoSCoW triage) -
 // used only if the live fetch fails, same silent-fallback convention as the
 // other live-github-stat components. Kept as raw GithubIssue shape so it
-// goes through the same mapIssue() logic as live data.
+// goes through the same mapIssue() logic as live data. #96/#98/#99 closed
+// since the prior snapshot (their Must/Should-have work shipped) and are
+// dropped here to match - the live query only ever returns open issues.
 const FALLBACK_ISSUES: GithubIssue[] = [
+  { number: 132, title: "Screenshot-sourced spreading has no transcription safeguards (read-back confirmation, cross-footing)", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/132", labels: [{ name: "enhancement" }, { name: "size/S" }, { name: "impact/high" }, { name: "moscow/should" }] },
+  { number: 124, title: "/project has no analyst-supplied mode -- forward-year projections always run through the framework's own formulas", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/124", labels: [{ name: "enhancement" }, { name: "size/M" }, { name: "impact/high" }, { name: "moscow/should" }] },
   { number: 117, title: "Consider splitting README.md into a docs/ folder if it keeps growing", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/117", labels: [{ name: "impact/low" }] },
   { number: 114, title: "Add support for charts/graphs in CAMs (sector trends, SWOT, positioning, stock price)", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/114", labels: [{ name: "enhancement" }, { name: "size/M" }, { name: "impact/low" }] },
   { number: 113, title: "Render Group/Parent/UBO structure as a tree diagram instead of prose", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/113", labels: [{ name: "enhancement" }, { name: "size/S" }, { name: "impact/low" }] },
-  { number: 111, title: "pii_scan.py's PII heuristics are UK-specific in a framework designed to be forked by any institution", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/111", labels: [{ name: "tech-debt" }, { name: "size/S" }, { name: "impact/medium" }] },
+  { number: 111, title: "pii_scan.py's PII heuristics are UK-specific in a framework designed to be forked by any institution", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/111", labels: [{ name: "tech-debt" }, { name: "size/S" }, { name: "impact/medium" }, { name: "moscow/could" }] },
   { number: 110, title: "docx_builder.py has no handling for H4+ Markdown headings", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/110", labels: [{ name: "bug" }, { name: "size/XS" }, { name: "impact/low" }] },
   { number: 109, title: "calibrate.py silently truncates calibration samples to 12,000 characters with no warning", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/109", labels: [{ name: "bug" }, { name: "size/S" }, { name: "impact/medium" }] },
   { number: 108, title: "config/settings.json documents several fields that no script actually reads", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/108", labels: [{ name: "tech-debt" }, { name: "size/S" }, { name: "impact/medium" }] },
@@ -87,10 +93,7 @@ const FALLBACK_ISSUES: GithubIssue[] = [
   { number: 105, title: "docx_builder.py's inline code span rendering has no test", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/105", labels: [{ name: "tech-debt" }, { name: "size/XS" }, { name: "impact/low" }] },
   { number: 104, title: "_FileLock's Windows PermissionError retry branch is untested", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/104", labels: [{ name: "tech-debt" }, { name: "size/XS" }, { name: "impact/medium" }] },
   { number: 103, title: "calibrate.py's --mock mode has zero test coverage", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/103", labels: [{ name: "tech-debt" }, { name: "size/S" }, { name: "impact/low" }] },
-  { number: 99, title: "Ground-truth figures schema is missing metrics the framework requires citing (Working Capital Days, collateral exposure)", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/99", labels: [{ name: "tech-debt" }, { name: "size/M" }, { name: "impact/high" }] },
-  { number: 98, title: "The primary interface never actually invokes the tested financial-formula code", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/98", labels: [{ name: "tech-debt" }, { name: "size/L" }, { name: "impact/high" }] },
   { number: 97, title: "Multi-day deals can export into a different dated folder than their own audit trail", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/97", labels: [{ name: "bug" }, { name: "size/S" }, { name: "impact/medium" }] },
-  { number: 96, title: "Parent/UBO Support research has no systematic guidance", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/96", labels: [{ name: "enhancement" }, { name: "tech-debt" }, { name: "impact/high" }] },
   { number: 49, title: "No FX handling or multi-currency support", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/49", labels: [{ name: "enhancement" }, { name: "size/M" }, { name: "impact/low" }, { name: "moscow/wont" }] },
   { number: 48, title: "No HoldCo/OpCo group/subsidiary consolidation", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/48", labels: [{ name: "enhancement" }, { name: "size/L" }, { name: "impact/high" }, { name: "moscow/could" }] },
   { number: 35, title: "No AML/sanctions/PEP screening or ESG scoring", html_url: "https://github.com/ShamikM88/open-cam-framework/issues/35", labels: [{ name: "enhancement" }, { name: "size/L" }, { name: "impact/high" }, { name: "moscow/could" }] },
@@ -98,6 +101,7 @@ const FALLBACK_ISSUES: GithubIssue[] = [
 ];
 
 const LEGEND_COLOR = [
+  { key: "should", label: "Should have" },
   { key: "could", label: "Could have" },
   { key: "wont", label: "Won't have" },
   { key: "delta", label: "Delta (outside MoSCoW)" },
@@ -189,7 +193,7 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
     chartRef.current = new Chart(canvasRef.current, {
       type: "scatter",
       data: {
-        datasets: [makeDataset("could"), makeDataset("wont"), makeDataset("delta")],
+        datasets: [makeDataset("should"), makeDataset("could"), makeDataset("wont"), makeDataset("delta")],
       },
       options: {
         responsive: true,
