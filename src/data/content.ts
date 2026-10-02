@@ -537,19 +537,24 @@ export const openCam = {
         sublabel: "MVP — shipped in PRs #1–20",
         tone: "brand-strong" as const,
         items: [
-          "CAM template system",
-          "Spreading engine with formula validation",
-          ".docx export",
-          "The Maker-Checker governance loop itself",
-          "Deterministic policy engine layered on LLM narrative",
-          "Critical correctness/security fixes before wider use",
+          { text: "CAM template system", delivered: true },
+          { text: "Spreading engine with formula validation", delivered: true },
+          { text: ".docx export", delivered: true },
+          { text: "The Maker-Checker governance loop itself", delivered: true },
+          { text: "Deterministic policy engine layered on LLM narrative", delivered: true },
+          { text: "Critical correctness/security fixes before wider use", delivered: true },
         ],
       },
       {
         label: "Should have",
         sublabel: "Fast-follow — shipped in PR #24",
         tone: "blue" as const,
-        items: ["Wiring policy checks into the primary slash-command interface, not just the headless script"],
+        items: [
+          {
+            text: "Wiring policy checks into the primary slash-command interface, not just the headless script",
+            delivered: true,
+          },
+        ],
       },
       {
         label: "Could have",
