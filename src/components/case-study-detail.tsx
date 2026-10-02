@@ -20,7 +20,7 @@ type ScopeBlock = {
     label: string;
     sublabel: string;
     tone: "brand-strong" | "blue" | "ember" | "muted";
-    items: (string | { text: string; delivered: boolean })[];
+    items: (string | { text: string; status: "done" | "pending" | "wont" })[];
   }[];
 };
 type FeatureBlock = { heading: string; items: { letter: string; title: string; body: string }[] };
