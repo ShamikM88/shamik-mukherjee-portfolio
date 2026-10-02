@@ -15,10 +15,13 @@ type Lane = {
 // lane's own tone instead of a fixed per-status palette, so a checkmark in
 // the ember-toned "Could have" lane reads ember, not an unrelated teal - the
 // same color already used for that lane's heading and bullet dot.
-const STATUS_ICON: Record<ItemStatus, { Icon: typeof Check; label: string }> = {
-  done: { Icon: Check, label: "Delivered" },
-  pending: { Icon: Circle, label: "Not yet built / still open" },
-  wont: { Icon: X, label: "Decided against" },
+// Size is per-icon, not shared: Circle is a filled ring that reads visually
+// heavier than Check/X at the same box size, so it needs a smaller box to
+// look the same weight as the other two at a glance.
+const STATUS_ICON: Record<ItemStatus, { Icon: typeof Check; label: string; size: string }> = {
+  done: { Icon: Check, label: "Delivered", size: "h-3.5 w-3.5" },
+  pending: { Icon: Circle, label: "Not yet built / still open", size: "h-2.5 w-2.5" },
+  wont: { Icon: X, label: "Decided against", size: "h-3.5 w-3.5" },
 };
 
 const LEGEND: { status: ItemStatus; text: string }[] = [
@@ -80,8 +83,8 @@ export function ScopeLanes({ lanes }: { lanes: Lane[] }) {
                     <li key={text} className={`flex gap-2.5 text-sm leading-relaxed ${s.item}`}>
                       {isTracked ? (
                         (() => {
-                          const { Icon, label } = STATUS_ICON[item.status];
-                          return <Icon className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${s.label}`} aria-label={label} />;
+                          const { Icon, label, size } = STATUS_ICON[item.status];
+                          return <Icon className={`mt-0.5 ${size} flex-shrink-0 ${s.label}`} aria-label={label} />;
                         })()
                       ) : (
                         <span className={`mt-2 h-1 w-1 flex-shrink-0 rounded-full ${s.dot}`} aria-hidden />
@@ -98,13 +101,13 @@ export function ScopeLanes({ lanes }: { lanes: Lane[] }) {
       {hasTrackedItems && (
         <div className="mt-4 flex flex-wrap gap-4 text-xs text-ink-400">
           {LEGEND.map(({ status, text }) => {
-            const { Icon } = STATUS_ICON[status];
+            const { Icon, size } = STATUS_ICON[status];
             return (
               <span key={status} className="inline-flex items-center gap-1.5">
                 {/* Neutral color here deliberately - the legend explains the shape
                     convention, which holds across every lane's own tone, not one
                     lane's color specifically. */}
-                <Icon className="h-3.5 w-3.5 flex-shrink-0 text-ink-400 dark:text-ink-500" aria-hidden />
+                <Icon className={`${size} flex-shrink-0 text-ink-400 dark:text-ink-500`} aria-hidden />
                 {text}
               </span>
             );
