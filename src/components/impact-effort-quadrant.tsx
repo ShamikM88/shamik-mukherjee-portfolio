@@ -185,17 +185,27 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
 
     const byColor = (color: IssuePoint["color"]) => points.filter((p) => p.color === color);
 
+    // Delta is always the largest group by count - it's every issue nobody has
+    // triaged into the MoSCoW scheme yet, which on a real backlog outnumbers the
+    // deliberately-classified issues most of the time. A same-size, same-opacity
+    // dot would let the biggest group visually dominate a chart whose whole point
+    // is to highlight the decisions that WERE made, not the undecided majority.
+    // Shrinking and fading delta keeps it present (still real data, still
+    // clickable/hoverable) but reads as background context, not the headline.
+    const isDelta = (color: IssuePoint["color"]) => color === "delta";
+
     const makeDataset = (color: IssuePoint["color"]) => {
       const items = byColor(color);
+      const faded = isDelta(color);
       return {
         data: items.map((p) => ({ x: p.x, y: p.y, title: p.title, number: p.number, url: p.url })),
-        backgroundColor: COLOR_HEX[color],
-        borderColor: ring,
-        borderWidth: 1.5,
+        backgroundColor: faded ? `${COLOR_HEX[color]}66` : COLOR_HEX[color],
+        borderColor: faded ? "transparent" : ring,
+        borderWidth: faded ? 0 : 1.5,
         pointStyle: items.map((p) => p.shape),
-        pointRadius: 7,
-        pointHoverRadius: 9,
-        pointHoverBorderWidth: 2,
+        pointRadius: faded ? 4 : 7,
+        pointHoverRadius: faded ? 6 : 9,
+        pointHoverBorderWidth: faded ? 1 : 2,
       };
     };
 
