@@ -18,19 +18,23 @@ type IssuePoint = {
   url: string;
   x: number;
   y: number;
-  color: "should" | "could" | "wont" | "delta";
+  color: "must" | "should" | "could" | "wont" | "delta";
   shape: Shape;
 };
 
 const EFFORT: Record<string, number> = { XS: 1, S: 2, M: 3, L: 4, XL: 5 };
 const IMPACT: Record<string, number> = { high: 4, medium: 2.5, low: 1 };
 // Reuses the exact tones the static MoSCoW lanes above already use for
-// should/could/wont (blue/ember/muted), so a point's color means the same
-// thing in both places. Delta deliberately does NOT reuse brand teal - that's
-// "Must have"'s color up there, and delta means the opposite (never a MoSCoW
-// question at all) - reusing it would send a mixed signal. Violet is the
-// site's fourth qualitative accent, genuinely unused by any MoSCoW tone.
-const COLOR_HEX = { should: "#3b82f6", could: "#e6832a", wont: "#788592", delta: "#8b5cf6" } as const;
+// must/should/could/wont (brand teal/blue/ember/muted), so a point's color
+// means the same thing in both places. Delta deliberately does NOT reuse
+// brand teal - that's must's own color now, and delta means the opposite
+// (never a MoSCoW question at all) - reusing it would send a mixed signal.
+// Violet is the site's fourth qualitative accent, genuinely unused by any
+// MoSCoW tone. (No open issue currently carries moscow/must - MVP v1's and
+// round 2's must-have work both shipped before this was written - but the
+// category exists so a future must-have issue is never silently miscolored
+// as delta the way should-have issues were until #124/#132 surfaced it.)
+const COLOR_HEX = { must: "#149c72", should: "#3b82f6", could: "#e6832a", wont: "#788592", delta: "#8b5cf6" } as const;
 
 // Deterministic offset seeded by issue number - same-tier issues fan out
 // instead of stacking on identical coordinates, but reload with the same
@@ -53,13 +57,15 @@ function mapIssue(item: GithubIssue): IssuePoint {
   const labels = item.labels.map((l) => l.name);
   const sizeKey = labels.find((l) => l.startsWith("size/"))?.slice(5) ?? "S";
   const impactKey = labels.find((l) => l.startsWith("impact/"))?.slice(7) ?? "medium";
-  const color: IssuePoint["color"] = labels.includes("moscow/should")
-    ? "should"
-    : labels.includes("moscow/could")
-      ? "could"
-      : labels.includes("moscow/wont")
-        ? "wont"
-        : "delta";
+  const color: IssuePoint["color"] = labels.includes("moscow/must")
+    ? "must"
+    : labels.includes("moscow/should")
+      ? "should"
+      : labels.includes("moscow/could")
+        ? "could"
+        : labels.includes("moscow/wont")
+          ? "wont"
+          : "delta";
 
   return {
     number: item.number,
@@ -101,6 +107,7 @@ const FALLBACK_ISSUES: GithubIssue[] = [
 ];
 
 const LEGEND_COLOR = [
+  { key: "must", label: "Must have" },
   { key: "should", label: "Should have" },
   { key: "could", label: "Could have" },
   { key: "wont", label: "Won't have" },
@@ -193,7 +200,7 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
     chartRef.current = new Chart(canvasRef.current, {
       type: "scatter",
       data: {
-        datasets: [makeDataset("should"), makeDataset("could"), makeDataset("wont"), makeDataset("delta")],
+        datasets: [makeDataset("must"), makeDataset("should"), makeDataset("could"), makeDataset("wont"), makeDataset("delta")],
       },
       options: {
         responsive: true,
