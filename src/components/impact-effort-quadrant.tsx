@@ -218,7 +218,7 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { top: 20, right: 20, bottom: 4, left: 4 } },
+        layout: { padding: { top: 20, right: window.innerWidth < 640 ? 6 : 20, bottom: 4, left: 4 } },
         onClick: (_evt, elements) => {
           const el = elements[0];
           if (!el) return;
@@ -326,7 +326,7 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
           ))}
         </div>
       </div>
-      <div className="relative h-[400px] w-full p-4">
+      <div className="relative h-[480px] w-full p-2 sm:h-[400px] sm:p-4">
         <canvas
           ref={canvasRef}
           role="img"
