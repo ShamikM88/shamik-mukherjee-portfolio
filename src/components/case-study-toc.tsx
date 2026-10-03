@@ -31,6 +31,7 @@ export function CaseStudyToc() {
           const section = p.parentElement as HTMLElement;
           const id = `section-${i}`;
           section.id = id;
+          section.style.scrollMarginTop = "104px";
           return { id, label: toTitle(p.textContent ?? ""), top: section.getBoundingClientRect().top + window.scrollY };
         });
       setItems(found);
