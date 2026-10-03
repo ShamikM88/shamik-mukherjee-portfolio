@@ -17,9 +17,7 @@ wasn't in the original two-file grounding list but covers exactly the project Se
 describes, so its figures were used with that noted.
 
 All copy lives in one place — [`src/data/content.ts`](./src/data/content.ts) — so a fact that
-changes upstream only needs updating there, not hunted through components. The full-text
-case studies embedded in the "Copy Markdown" buttons live in
-[`src/lib/case-study-markdown.ts`](./src/lib/case-study-markdown.ts).
+changes upstream only needs updating there, not hunted through components.
 
 The actual card-network client behind the Professional Experience entries is intentionally
 masked as "a leading US card network" in the source profile — that masking is carried through

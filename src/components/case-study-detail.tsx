@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ExternalLink, GitFork, Mail, ArrowRight } from "lucide-react";
 import { identity } from "@/data/content";
-import { Badge, DownloadCaseStudyButton, ResumeDownloadButton } from "@/components/ui";
+import { Badge, ResumeDownloadButton } from "@/components/ui";
 import { DecisionsCarousel } from "@/components/decisions-carousel";
 import { VisualsCarousel } from "@/components/visuals-carousel";
 import { ScopeLanes } from "@/components/scope-lanes";
@@ -37,8 +37,6 @@ export function CaseStudyDetail({
   takeaway,
   repoUrl,
   repoLabel = "View Source",
-  markdown,
-  markdownFilename,
   meta,
   problem,
   process,
@@ -70,8 +68,6 @@ export function CaseStudyDetail({
   repoUrl: string;
   /** Label for the repoUrl link — defaults to "View Source"; override for links that aren't a code repo (e.g. a public API reference). */
   repoLabel?: string;
-  markdown: string;
-  markdownFilename: string;
   meta: Meta;
   problem: TextBlock;
   /** Optional — a case study told through caselets instead can omit this. */
@@ -133,7 +129,6 @@ export function CaseStudyDetail({
           </p>
         )}
         <div className="flex gap-2">
-          <DownloadCaseStudyButton markdown={markdown} filename={markdownFilename} />
           <a
             href={repoUrl}
             target="_blank"

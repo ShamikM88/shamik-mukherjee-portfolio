@@ -5,7 +5,6 @@ import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { WalletProvisioningBanner } from "@/components/project-thumbnails";
 import { walletProvisioning } from "@/data/content";
-import { walletProvisioningMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
   title: `${walletProvisioning.shortTitle} — Shamik Mukherjee`,
@@ -35,8 +34,6 @@ export default function WalletProvisioningPage() {
             repoUrl={walletProvisioning.repoUrl}
             repoLabel={walletProvisioning.repoLabel}
             showApproachLink={false}
-            markdown={walletProvisioningMarkdown}
-            markdownFilename="Google-Pay-Samsung-Pay-Wallet-Provisioning-Case-Study.md"
             meta={walletProvisioning.meta}
             calloutNote={{
               text: "Specifications run in one of two directions: built to a partner's spec, or owned by the network with partners building to it. This sits on the network-driven side — Google and Samsung each integrate against their own B2B specification, both of which my team defines and maintains.",

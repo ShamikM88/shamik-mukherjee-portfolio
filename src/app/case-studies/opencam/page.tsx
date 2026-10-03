@@ -9,7 +9,6 @@ import { OpenCamBanner } from "@/components/project-thumbnails";
 import { LiveMergedPRCount, LiveClosedIssueCount, LiveTestCount } from "@/components/live-github-stat";
 import { ImpactEffortQuadrant } from "@/components/impact-effort-quadrant";
 import { openCam } from "@/data/content";
-import { openCamMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
   title: `${openCam.shortTitle} — Shamik Mukherjee`,
@@ -37,8 +36,6 @@ export default function OpenCamPage() {
             subtitle={openCam.subtitle}
             takeaway={openCam.takeaway}
             repoUrl={openCam.repoUrl}
-            markdown={openCamMarkdown}
-            markdownFilename="OpenCAM-Framework-Case-Study.md"
             meta={openCam.meta}
             problem={openCam.problem}
             scope={openCam.scope}

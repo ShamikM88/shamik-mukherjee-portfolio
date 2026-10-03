@@ -6,7 +6,6 @@ import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ForkBanner } from "@/components/project-thumbnails";
 import { LiveCommitsAhead } from "@/components/live-github-stat";
 import { fork } from "@/data/content";
-import { jobSearchForkMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
   title: `${fork.shortTitle} — Shamik Mukherjee`,
@@ -34,8 +33,6 @@ export default function JobSearchAutomationPage() {
             subtitle={fork.subtitle}
             takeaway={fork.takeaway}
             repoUrl={fork.forkRepoUrl}
-            markdown={jobSearchForkMarkdown}
-            markdownFilename="AI-Job-Search-Fork-Case-Study.md"
             meta={fork.meta}
             problem={fork.problem}
             scope={fork.scope}

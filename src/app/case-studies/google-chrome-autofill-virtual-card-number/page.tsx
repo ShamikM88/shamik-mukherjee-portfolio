@@ -5,7 +5,6 @@ import { Footer } from "@/components/footer";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ChromeAutofillBanner } from "@/components/project-thumbnails";
 import { chromeAutofill } from "@/data/content";
-import { chromeAutofillMarkdown } from "@/lib/case-study-markdown";
 
 export const metadata: Metadata = {
   title: `${chromeAutofill.shortTitle} — Shamik Mukherjee`,
@@ -17,8 +16,7 @@ export const metadata: Metadata = {
 // rather than in content.ts's plain-string paragraphs, since content.ts is a .ts file
 // and can't hold JSX - only this one paragraph is reconstructed; paragraph 1 is pulled
 // straight from content.ts unchanged, so there's only one wording to keep in sync
-// (this paragraph's own text still needs to match content.ts / case-study-markdown.ts
-// if either is ever edited).
+// (this paragraph's own text still needs to match content.ts if either is ever edited).
 const problemWithLink = {
   ...chromeAutofill.problem,
   paragraphs: [
@@ -65,8 +63,6 @@ export default function ChromeAutofillPage() {
             repoUrl={chromeAutofill.repoUrl}
             repoLabel="View Google's API Docs"
             showApproachLink={false}
-            markdown={chromeAutofillMarkdown}
-            markdownFilename="Chrome-Virtual-Card-Autofill-Case-Study.md"
             meta={chromeAutofill.meta}
             problem={problemWithLink}
             scope={chromeAutofill.scope}
