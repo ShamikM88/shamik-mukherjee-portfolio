@@ -5,10 +5,10 @@ import { ResumeDownloadButton } from "@/components/ui";
 
 export function Footer({ showCta = true }: { showCta?: boolean }) {
   return (
-    <footer id="contact" className="border-t border-ink-200 dark:border-white/10">
+    <footer id="contact" className="border-t border-ice-200 dark:border-white/10">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         {showCta && (
-          <div className="rounded-3xl border border-ink-200 bg-white px-8 py-16 text-center dark:border-white/10 dark:bg-white/[0.03]">
+          <div className="rounded-3xl border border-ice-200 bg-ice-50 px-8 py-16 text-center dark:border-white/10 dark:bg-white/[0.03]">
             <h2 className="text-balance font-display text-3xl font-semibold text-ink-900 dark:text-white sm:text-4xl">
               Let&apos;s build something people love.
             </h2>
@@ -28,7 +28,7 @@ export function Footer({ showCta = true }: { showCta?: boolean }) {
                 href={identity.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
               >
                 <Linkedin className="h-4 w-4" aria-hidden />
                 LinkedIn

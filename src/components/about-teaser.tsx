@@ -5,9 +5,9 @@ import { Badge } from "@/components/ui";
 
 export function AboutTeaser() {
   return (
-    <section className="border-t border-ink-200 dark:border-white/10">
+    <section className="border-t border-ice-200 dark:border-white/10">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
-        <div className="grid grid-cols-1 gap-8 rounded-3xl border border-ink-200 bg-white p-8 dark:border-white/10 dark:bg-white/[0.03] sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
+        <div className="grid grid-cols-1 gap-8 rounded-3xl border border-ice-200 bg-ice-50 p-8 dark:border-white/10 dark:bg-white/[0.03] sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
               About

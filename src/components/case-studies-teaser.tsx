@@ -38,7 +38,7 @@ export function CaseStudiesTeaser() {
   }
 
   return (
-    <section id="work" className="border-t border-ink-200 dark:border-white/10">
+    <section id="work" className="border-t border-ice-200 dark:border-white/10">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -60,7 +60,7 @@ export function CaseStudiesTeaser() {
             onClick={() => scrollByCard("left")}
             disabled={!canScrollLeft}
             aria-label="Scroll case studies left"
-            className="absolute -left-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
+            className="absolute -left-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
           >
             <ChevronLeft className="h-4 w-4" aria-hidden />
           </button>
@@ -69,7 +69,7 @@ export function CaseStudiesTeaser() {
             onClick={() => scrollByCard("right")}
             disabled={!canScrollRight}
             aria-label="Scroll case studies right"
-            className="absolute -right-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
+            className="absolute -right-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
           >
             <ChevronRight className="h-4 w-4" aria-hidden />
           </button>

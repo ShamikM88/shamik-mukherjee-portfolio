@@ -300,8 +300,8 @@ export function ImpactEffortQuadrant({ repo }: { repo: string }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-ink-200 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-200 px-4 py-3 dark:border-white/10">
+    <div className="overflow-hidden rounded-2xl border border-ice-200 bg-ice-50 dark:border-white/10 dark:bg-white/[0.02]">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ice-200 px-4 py-3 dark:border-white/10">
         <div className="flex flex-wrap gap-3 text-xs text-ink-500 dark:text-ink-400">
           {LEGEND_COLOR.map((l) => (
             <span

@@ -15,7 +15,7 @@ function ProfileRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-ink-200 bg-white text-brand-600 dark:border-white/10 dark:bg-ink-900 dark:text-brand-400">
+      <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-brand-600 dark:border-white/10 dark:bg-ink-900 dark:text-brand-400">
         <Icon className="h-4 w-4" aria-hidden />
       </span>
       <div className="min-w-0">
@@ -35,7 +35,7 @@ function QuickProfileCard() {
       {/* Neutral dark glow, not the brand-green gradient used elsewhere - reads as soft
           elevation/depth behind the card rather than a colored wash. */}
       <div className="absolute -inset-3 rounded-[2.25rem] bg-ink-900 opacity-20 blur-2xl dark:bg-black dark:opacity-40" aria-hidden />
-      <div className="relative flex flex-col gap-5 rounded-[2rem] border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]">
+      <div className="relative flex flex-col gap-5 rounded-[2rem] border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03]">
         {/* Stacked, not side-by-side: a horizontal row forces the photo to compete with the
             name/subtitle for the card's ~260px content width. Centering the photo above the
             text instead removes that ceiling, so it can scale independently of the text. */}
@@ -48,7 +48,7 @@ function QuickProfileCard() {
             <p className="text-xs text-ink-500 dark:text-ink-400">Quick profile</p>
           </div>
         </div>
-        <div className="flex flex-col gap-4 border-t border-ink-200 pt-5 dark:border-white/10">
+        <div className="flex flex-col gap-4 border-t border-ice-200 pt-5 dark:border-white/10">
           <ProfileRow icon={Briefcase} label="Role" value="Payments Product Owner, Cognizant" />
           <ProfileRow icon={CreditCard} label="Domain" value="Digital Payments · Wallets" />
           <ProfileRow icon={GraduationCap} label="Education" value="MBA, IIT Bombay" />
@@ -102,7 +102,7 @@ export function Hero() {
               </a>
               <a
                 href="/about/"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
               >
                 About me
               </a>
@@ -118,7 +118,7 @@ export function Hero() {
             work + solo AI systems) in a smaller font right before the numbers proved it. Spacing
             tightened from the original mt-20/pt-10 so the stat strip - the site's one piece of
             hard evidence above everything else - lands close to the fold. */}
-        <div className="mt-10 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:mt-14 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <div className="mt-10 flex flex-col gap-8 border-t border-ice-200 pt-6 dark:border-white/10 sm:mt-14 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           {statStrip.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <dd className="font-display text-4xl font-bold text-ink-900 dark:text-white">

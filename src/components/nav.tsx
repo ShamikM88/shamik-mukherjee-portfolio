@@ -64,7 +64,7 @@ export function Nav() {
           <ResumeDownloadButton className="ml-1 hidden md:block" />
           <a
             href={`mailto:${identity.email}`}
-            className="hidden items-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 md:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full border border-ink-300 bg-ice-50 px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 md:inline-flex"
           >
             <Mail className="h-4 w-4" aria-hidden />
             Let&apos;s talk
@@ -98,7 +98,7 @@ export function Nav() {
           <div className="mt-3 flex flex-col gap-2 border-t border-ink-200/70 pt-3 dark:border-white/10">
             <a
               href={`mailto:${identity.email}`}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2.5 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-300 bg-ice-50 px-4 py-2.5 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
             >
               <Mail className="h-4 w-4" aria-hidden />
               Let&apos;s talk

@@ -110,7 +110,7 @@ export function CaseStudyCard({ card, className = "" }: { card: CaseStudyCardDat
     <Link
       href={card.href}
       data-case-study-card
-      className={`group flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/25 ${accent.border} ${className}`}
+      className={`group flex flex-col overflow-hidden rounded-2xl border border-ice-200 bg-ice-50 transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/25 ${accent.border} ${className}`}
     >
       <div className="aspect-[5/3] w-full overflow-hidden">{card.thumbnail}</div>
 

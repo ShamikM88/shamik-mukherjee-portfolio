@@ -64,7 +64,7 @@ export default function ApproachPage() {
           </p>
 
           {/* Numbers above the fold, same pattern as every other page on the site */}
-          <div className="mt-10 flex flex-col gap-8 border-t border-ink-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+          <div className="mt-10 flex flex-col gap-8 border-t border-ice-200 pt-6 dark:border-white/10 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
             {governanceComparison.heroStats.map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <dd className="font-display text-3xl font-bold text-ink-900 dark:text-white">
@@ -102,7 +102,7 @@ export default function ApproachPage() {
                   <Link
                     key={item.title}
                     href={item.linkHref}
-                    className={`group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-blue-400"}`}
+                    className={`group flex flex-col rounded-2xl border border-ice-200 bg-ice-50 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25 ${isControlled ? "hover:border-brand-300" : "hover:border-blue-400"}`}
                   >
                     <p
                       className={`text-xs font-semibold uppercase tracking-wider ${isControlled ? "text-brand-600 dark:text-brand-400" : "text-blue-600 dark:text-blue-400"}`}
@@ -140,7 +140,7 @@ export default function ApproachPage() {
                 return (
                   <div
                     key={mode.label}
-                    className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]"
+                    className="rounded-2xl border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03]"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
@@ -190,7 +190,7 @@ export default function ApproachPage() {
               {governanceComparison.decisionQuestions.items.map((item, i) => (
                 <div
                   key={item.question}
-                  className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+                  className="rounded-2xl border border-ice-200 bg-ice-50 p-5 dark:border-white/10 dark:bg-white/[0.03]"
                 >
                   <p className="font-display text-sm font-semibold text-brand-600 dark:text-brand-400">
                     {String(i + 1).padStart(2, "0")}
@@ -206,7 +206,7 @@ export default function ApproachPage() {
 
           {/* Closing statement - states the transfer back to a hiring context explicitly,
               rather than leaving the reader to infer it from two AI side-project examples. */}
-          <div className="mt-16 max-w-3xl border-t border-ink-200 pt-8 dark:border-white/10">
+          <div className="mt-16 max-w-3xl border-t border-ice-200 pt-8 dark:border-white/10">
             <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300">{governanceComparison.closing}</p>
           </div>
         </div>

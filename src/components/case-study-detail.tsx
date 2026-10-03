@@ -133,7 +133,7 @@ export function CaseStudyDetail({
             href={repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-ice-200 bg-ice-50 px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
           >
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             {repoLabel}
@@ -143,14 +143,14 @@ export function CaseStudyDetail({
               href={baseRepo.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ice-200 bg-ice-50 px-3 py-1.5 text-xs font-medium text-ink-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-ink-300 dark:hover:border-white/30 dark:hover:text-white"
             >
               <GitFork className="h-3.5 w-3.5" aria-hidden />
               {baseRepo.label}
             </a>
           )}
           {headerExtra && (
-            <span className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600 dark:border-white/15 dark:bg-white/5 dark:text-ink-300">
+            <span className="inline-flex items-center gap-1.5 rounded-lg border border-ice-200 bg-ice-50 px-3 py-1.5 text-xs font-medium text-ink-600 dark:border-white/15 dark:bg-white/5 dark:text-ink-300">
               {headerExtra}
             </span>
           )}
@@ -161,7 +161,7 @@ export function CaseStudyDetail({
       <div className="aspect-[800/380] w-full overflow-hidden rounded-2xl">{heroIllustration}</div>
 
       {/* Meta bar */}
-      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03] sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Role</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-700 dark:text-ink-200">{meta.role}</p>
@@ -250,7 +250,7 @@ export function CaseStudyDetail({
             {features.items.map((f) => (
               <div
                 key={f.letter}
-                className="flex gap-4 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+                className="flex gap-4 rounded-2xl border border-ice-200 bg-ice-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
               >
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-100 font-display text-sm font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
                   {f.letter}
@@ -275,7 +275,7 @@ export function CaseStudyDetail({
             {workflow.heading}
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-center">
-            <div className="overflow-hidden rounded-2xl border border-ink-200 dark:border-white/10">
+            <div className="overflow-hidden rounded-2xl border border-ice-200 dark:border-white/10">
               {workflowIllustration}
             </div>
             <div className="flex flex-col gap-4">
@@ -302,7 +302,7 @@ export function CaseStudyDetail({
             {strategy.cards.map((c) => (
               <div
                 key={c.title}
-                className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+                className="rounded-2xl border border-ice-200 bg-ice-50 p-5 dark:border-white/10 dark:bg-white/[0.03]"
               >
                 <h3 className="font-display text-sm font-semibold text-ink-900 dark:text-white">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{c.body}</p>
@@ -323,7 +323,7 @@ export function CaseStudyDetail({
             {process.steps.map((step, i) => (
               <div
                 key={step.title}
-                className="flex scale-100 gap-4 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:scale-[1.015] hover:bg-ink-50 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
+                className="flex scale-100 gap-4 rounded-2xl border border-ice-200 bg-ice-50 p-5 transition-all duration-200 hover:scale-[1.015] hover:bg-ink-50 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]"
               >
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-100 font-display text-sm font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
                   {i + 1}
@@ -375,7 +375,7 @@ export function CaseStudyDetail({
             {caselets.items.map((c) => (
               <div
                 key={c.title}
-                className="flex flex-col gap-2.5 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+                className="flex flex-col gap-2.5 rounded-2xl border border-ice-200 bg-ice-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
               >
                 <h3 className="font-display text-base font-semibold text-ink-900 dark:text-white">{c.title}</h3>
                 <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300">{c.body}</p>
@@ -395,7 +395,7 @@ export function CaseStudyDetail({
           {outcomes.stats.map((s, i) => (
             <div
               key={s.label}
-              className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+              className="rounded-2xl border border-ice-200 bg-ice-50 p-5 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <p className="font-display text-2xl font-bold text-brand-600 dark:text-brand-400">
                 {outcomeStatOverrides?.[i] ?? s.value}
@@ -431,7 +431,7 @@ export function CaseStudyDetail({
       )}
 
       {/* Related + CTA */}
-      <div className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+      <div className="rounded-2xl border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Next</p>
         <h2 className="mt-2 font-display text-xl font-semibold text-ink-900 dark:text-white">More case studies</h2>
 

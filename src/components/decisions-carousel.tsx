@@ -48,7 +48,7 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
         onClick={() => scrollByCard("left")}
         disabled={!canScrollLeft}
         aria-label="Scroll decisions left"
-        className="absolute -left-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
+        className="absolute -left-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden />
       </button>
@@ -59,7 +59,7 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
         onClick={() => scrollByCard("right")}
         disabled={!canScrollRight}
         aria-label="Scroll decisions right"
-        className="absolute -right-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
+        className="absolute -right-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-ink-600 shadow-card transition-all duration-200 hover:border-brand-300 hover:bg-ink-50 hover:text-brand-700 disabled:pointer-events-none disabled:opacity-30 dark:border-white/15 dark:bg-ink-900 dark:text-ink-300 dark:hover:border-white/30 dark:hover:bg-white/[0.1] dark:hover:text-white"
       >
         <ChevronRight className="h-4 w-4" aria-hidden />
       </button>
@@ -83,7 +83,7 @@ export function DecisionsCarousel({ items }: { items: { title: string; body: str
           <div
             key={item.title}
             data-decision-card
-            className={`flex w-[85%] flex-shrink-0 snap-start flex-col gap-3 rounded-2xl border border-ink-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07] ${twoUp ? "sm:w-[calc(50%-0.5rem)]" : "sm:w-[45%]"}`}
+            className={`flex w-[85%] flex-shrink-0 snap-start flex-col gap-3 rounded-2xl border border-ice-200 bg-ice-50 p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-ink-50 hover:shadow-card-hover dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.07] ${twoUp ? "sm:w-[calc(50%-0.5rem)]" : "sm:w-[45%]"}`}
           >
             <h3 className="font-display text-sm font-semibold text-ink-900 dark:text-white sm:overflow-hidden sm:text-ellipsis sm:whitespace-nowrap">
               {item.title}

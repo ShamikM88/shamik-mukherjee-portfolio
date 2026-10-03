@@ -71,7 +71,7 @@ export function ScopeLanes({ lanes }: { lanes: Lane[] }) {
           return (
             <div
               key={lane.label}
-              className={`rounded-2xl ${s.border} border-x border-b border-ink-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]`}
+              className={`rounded-2xl ${s.border} border-x border-b border-ice-200 bg-ice-50 p-5 dark:border-white/10 dark:bg-white/[0.03]`}
             >
               <h3 className={`font-display text-sm font-semibold ${s.label}`}>{lane.label}</h3>
               <p className="mt-0.5 text-xs text-ink-400">{lane.sublabel}</p>

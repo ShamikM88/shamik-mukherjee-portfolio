@@ -29,7 +29,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-2xl border border-ink-200 bg-white p-6 shadow-card transition-all duration-200 dark:border-white/10 dark:bg-white/[0.03] ${
+      className={`rounded-2xl border border-ice-200 bg-ice-50 p-6 shadow-card transition-all duration-200 dark:border-white/10 dark:bg-white/[0.03] ${
         hover ? "hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover dark:hover:border-white/25" : ""
       } ${className}`}
     >
@@ -84,7 +84,7 @@ export function ResumeDownloadButton({ className = "" }: { className?: string })
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="inline-flex items-center gap-1.5 rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+        className="inline-flex items-center gap-1.5 rounded-full border border-ink-300 bg-ice-50 px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
       >
         <FileDown className="h-4 w-4" aria-hidden />
         Resume
@@ -94,7 +94,7 @@ export function ResumeDownloadButton({ className = "" }: { className?: string })
       {open && (
         <div
           role="menu"
-          className="absolute right-0 z-20 mt-2 w-60 overflow-hidden rounded-xl border border-ink-200 bg-white shadow-card-hover dark:border-white/15 dark:bg-ink-900"
+          className="absolute right-0 z-20 mt-2 w-60 overflow-hidden rounded-xl border border-ice-200 bg-ice-50 shadow-card-hover dark:border-white/15 dark:bg-ink-900"
         >
           {RESUME_OPTIONS.map((opt) => (
             <a

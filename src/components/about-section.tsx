@@ -7,7 +7,7 @@ const CHAPTER_ICONS = { building: Building2, graduation: GraduationCap, briefcas
 
 export function AboutSection() {
   return (
-    <section id="about" className="border-t border-ink-200 dark:border-white/10">
+    <section id="about" className="border-t border-ice-200 dark:border-white/10">
       <div className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-28">
         <h2 className="font-display text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
           About me
@@ -33,7 +33,7 @@ export function AboutSection() {
           </span>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-ink-200 pt-8 dark:border-white/10">
+        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-ice-200 pt-8 dark:border-white/10">
           {about.heroStats.map((stat) => (
             <div key={stat.label}>
               <p className="font-display text-2xl font-bold text-brand-600 dark:text-brand-400">{stat.value}</p>
@@ -50,15 +50,15 @@ export function AboutSection() {
           <h3 className="mt-2 font-display text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl">
             Four chapters, one thread
           </h3>
-          <ol className="relative mt-10 flex flex-col gap-6 border-l-2 border-ink-200 pl-10 dark:border-white/10 sm:pl-12">
+          <ol className="relative mt-10 flex flex-col gap-6 border-l-2 border-ice-200 pl-10 dark:border-white/10 sm:pl-12">
             {about.chapters.map((chapter) => {
               const Icon = CHAPTER_ICONS[chapter.icon as keyof typeof CHAPTER_ICONS];
               return (
                 <li key={chapter.company + chapter.dates} className="relative">
-                  <span className="absolute -left-[52px] top-0 flex h-9 w-9 items-center justify-center rounded-full border border-ink-200 bg-white text-brand-600 dark:border-white/10 dark:bg-ink-900 dark:text-brand-400 sm:-left-[58px]">
+                  <span className="absolute -left-[52px] top-0 flex h-9 w-9 items-center justify-center rounded-full border border-ice-200 bg-ice-50 text-brand-600 dark:border-white/10 dark:bg-ink-900 dark:text-brand-400 sm:-left-[58px]">
                     <Icon className="h-4 w-4" aria-hidden />
                   </span>
-                  <div className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="rounded-2xl border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03]">
                     <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                       {chapter.dates}
                     </p>
@@ -101,7 +101,7 @@ export function AboutSection() {
             {about.progression.items.map((item, i) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-ink-200 bg-white p-6 dark:border-white/10 dark:bg-white/[0.03]"
+                className="rounded-2xl border border-ice-200 bg-ice-50 p-6 dark:border-white/10 dark:bg-white/[0.03]"
               >
                 <p className="font-display text-sm font-semibold text-brand-600 dark:text-brand-400">
                   {String(i + 1).padStart(2, "0")}
@@ -187,7 +187,7 @@ export function AboutSection() {
         </div>
 
         {/* Next Chapter CTA */}
-        <div className="mt-20 rounded-3xl border border-ink-200 bg-white p-8 text-center dark:border-white/10 dark:bg-white/[0.03] sm:p-12">
+        <div className="mt-20 rounded-3xl border border-ice-200 bg-ice-50 p-8 text-center dark:border-white/10 dark:bg-white/[0.03] sm:p-12">
           <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
             {about.nextChapter.eyebrow}
           </p>
@@ -209,13 +209,13 @@ export function AboutSection() {
               href={identity.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
             >
               LinkedIn
             </a>
             <a
               href={`mailto:${identity.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
             >
               <Mail className="h-4 w-4" aria-hidden />
               Email me

@@ -41,6 +41,13 @@ const config: Config = {
           500: "#8b5cf6",
           600: "#7c3aed",
         },
+        // Light-mode surfaces: a pale blue page with near-white cards and a matching
+        // blue-grey border, so the cards read as part of the page rather than sitting on it.
+        ice: {
+          50: "#fbfdff",
+          100: "#edf5fb",
+          200: "#d2e1ee",
+        },
         ink: {
           50: "#f6f7f8",
           100: "#eceef0",
