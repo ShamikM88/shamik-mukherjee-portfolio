@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { CaseStudyToc } from "@/components/case-study-toc";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ForkBanner } from "@/components/project-thumbnails";
 import { LiveCommitsAhead } from "@/components/live-github-stat";
@@ -16,6 +17,7 @@ export default function JobSearchAutomationPage() {
   return (
     <>
       <Nav />
+      <CaseStudyToc />
       <main>
         <div className="mx-auto max-w-5xl px-6 pt-10 sm:px-8">
           <a

@@ -9,6 +9,7 @@ import { OpenCamBanner } from "@/components/project-thumbnails";
 import { LiveMergedPRCount, LiveClosedIssueCount, LiveTestCount } from "@/components/live-github-stat";
 import { ImpactEffortQuadrant } from "@/components/impact-effort-quadrant";
 import { openCam } from "@/data/content";
+import { CaseStudyToc } from "@/components/case-study-toc";
 
 export const metadata: Metadata = {
   title: `${openCam.shortTitle} — Shamik Mukherjee`,
@@ -19,6 +20,7 @@ export default function OpenCamPage() {
   return (
     <>
       <Nav />
+      <CaseStudyToc />
       <main>
         <div className="mx-auto max-w-5xl px-6 pt-10 sm:px-8">
           <a

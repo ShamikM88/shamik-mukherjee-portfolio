@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { CaseStudyToc } from "@/components/case-study-toc";
 import { CaseStudyDetail } from "@/components/case-study-detail";
 import { ChromeAutofillBanner } from "@/components/project-thumbnails";
 import { chromeAutofill } from "@/data/content";
@@ -44,6 +45,7 @@ export default function ChromeAutofillPage() {
   return (
     <>
       <Nav />
+      <CaseStudyToc />
       <main>
         <div className="mx-auto max-w-5xl px-6 pt-10 sm:px-8">
           <a
