@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
+import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
+import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { CaseStudyToc } from "@/components/case-study-toc";
 import { ProcessRail } from "./process-rail";
 import { ProofBand, TechnicalBand } from "./technical";
@@ -61,10 +61,10 @@ function CardBlock({ card }: { card: Card }) {
   );
 }
 
-function renderSection(s: Section, key: number): ReactNode {
+function renderSection(s: Section, key: number, id?: string): ReactNode {
   if (s.kind === "prose") {
     return (
-      <section key={key} className={SECTION}>
+      <section key={key} className={SECTION}>{id && <Anchor id={id} />}
         <p className={EYEBROW}>{s.eyebrow}</p>
         <h2 className={H2}>{s.heading}</h2>
         <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-600">
@@ -94,7 +94,7 @@ function renderSection(s: Section, key: number): ReactNode {
 
   if (s.kind === "cards") {
     return (
-      <section key={key} className={SECTION}>
+      <section key={key} className={SECTION}>{id && <Anchor id={id} />}
         <p className={EYEBROW}>{s.eyebrow}</p>
         <h2 className={H2}>{s.heading}</h2>
         {s.intro && <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600">{s.intro}</p>}
@@ -109,7 +109,7 @@ function renderSection(s: Section, key: number): ReactNode {
 
   if (s.kind === "steps") {
     return (
-      <section key={key} className={SECTION}>
+      <section key={key} className={SECTION}>{id && <Anchor id={id} />}
         <p className={EYEBROW}>{s.eyebrow}</p>
         <h2 className={H2}>{s.heading}</h2>
         <ol className="mt-6 grid gap-3 md:grid-cols-2">
@@ -131,7 +131,7 @@ function renderSection(s: Section, key: number): ReactNode {
 
   // Strategy board: MoSCoW lanes laid out side by side, not a Jira-style column board.
   return (
-    <section key={key} className={SECTION}>
+    <section key={key} className={SECTION}>{id && <Anchor id={id} />}
       <p className={EYEBROW}>{s.eyebrow}</p>
       <h2 className={H2}>{s.heading}</h2>
       {s.intro && <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600">{s.intro}</p>}
@@ -152,13 +152,46 @@ function renderSection(s: Section, key: number): ReactNode {
   );
 }
 
+// Six-stage index for long case studies. A static, keyboard-operable list of in-page links, not
+// a sticky sidebar: it appears once under the hero and wraps to a 3-column grid on phones.
+const RAIL = [
+  { label: "Context", href: "#stage-context" },
+  { label: "Constraint", href: "#stage-graph" },
+  { label: "Observed", href: "#stage-graph" },
+  { label: "Decision", href: "#stage-decision" },
+  { label: "Execution", href: "#stage-execution" },
+  { label: "Outcome", href: "#stage-outcome" },
+];
+
+function StageRail() {
+  return (
+    <nav aria-label="Case stages" className="mx-auto max-w-5xl px-6 sm:px-8">
+      <ol className="grid grid-cols-3 gap-2 border-y border-ice-200 py-4 sm:grid-cols-6">
+        {RAIL.map((r, i) => (
+          <li key={r.label}>
+            <a
+              href={r.href}
+              className="group flex flex-col gap-1 rounded-md px-2 py-1.5 text-left transition-colors hover:bg-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-500"
+            >
+              <span className="font-mono text-[10px] text-brand-600">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-xs font-semibold text-ink-700 group-hover:text-ink-900">{r.label}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
 export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
   const receiptCols = c.receipts.length >= 4 ? "sm:grid-cols-4" : "sm:grid-cols-3";
   const modeAnchor = c.mode === "Controlled Delivery" ? "controlled" : "lightweight";
+  // Execution is the first steps section, or the second section for cases without one.
+  const execIndex = Math.max(1, c.sections.findIndex((s) => s.kind === "steps"));
 
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
-      <Nav />
+      <EvidenceNav />
       <CaseStudyToc />
       <main>
         {/* 10-second layer: what it was, what it did, what it cost to deliver */}
@@ -217,6 +250,8 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
           {hero && <div className="mt-10 overflow-hidden rounded-2xl border border-ice-200 bg-ice-50">{hero}</div>}
         </section>
 
+        <StageRail />
+
         {/* 60-second layer: ownership, then the execution graph */}
         <section className={SECTION}>
           <p className={EYEBROW}>My scope</p>
@@ -241,7 +276,7 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
           </div>
         </section>
 
-        <section className={SECTION}>
+        <section className={SECTION}><Anchor id="stage-graph" />
           <p className={EYEBROW}>Execution graph · click a stage</p>
           <h2 className={H2}>From the problem to the outcome</h2>
           <div className="mt-8">
@@ -250,9 +285,9 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
         </section>
 
         {/* Full deep dive: the original long-form material, recomposed in the new structure */}
-        {c.sections.map((s, i) => renderSection(s, i))}
+        {c.sections.map((s, i) => renderSection(s, i, i === 0 ? "stage-context" : i === execIndex ? "stage-execution" : undefined))}
 
-        <section className={SECTION}>
+        <section className={SECTION}><Anchor id="stage-decision" />
           <p className={EYEBROW}>Decision records</p>
           <h2 className={H2}>{c.decisions.heading}</h2>
           <div className="mt-6 grid gap-3 md:grid-cols-2">
@@ -310,7 +345,7 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
 
         <TechnicalBand heading={c.technical.heading} panels={c.technical.panels} />
 
-        <section className={SECTION}>
+        <section className={SECTION}><Anchor id="stage-outcome" />
           <p className={EYEBROW}>{c.impact.heading}</p>
           <h2 className={H2}>What it delivered</h2>
           <ul className="mt-6 space-y-3 text-base leading-relaxed text-ink-600">
@@ -386,7 +421,13 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
           </div>
         </section>
       </main>
-      <Footer showCta={false} showToolLine={false} />
+      <EvidenceFooter />
     </div>
   );
+}
+
+// Zero-height in-page target for the stage rail. It sits inside each section rather than on the
+// section itself, because CaseStudyToc sets section ids of its own.
+function Anchor({ id }: { id: string }) {
+  return <span id={id} aria-hidden="true" className="block h-0 scroll-mt-28" />;
 }

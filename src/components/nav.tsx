@@ -14,13 +14,17 @@ const LINKS = [
   { href: "/#contact", label: "Contact" },
 ];
 
-export function Nav() {
+export type NavLink = { href: string; label: string };
+
+// Defaults are the live site's navigation. Evidence pages pass their own links and home, so the
+// shared component never changes what the live site renders.
+export function Nav({ homeHref = "/", links = LINKS }: { homeHref?: string; links?: NavLink[] }) {
   const [open, setOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink-200/70 bg-ink-50/85 backdrop-blur-md dark:border-white/10 dark:bg-ink-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-8">
-        <a href="/" className="flex items-center gap-2.5">
+        <a href={homeHref} className="flex items-center gap-2.5">
           <span className="relative h-9 w-9 flex-shrink-0 overflow-hidden rounded-xl">
             <Image src={identity.photo} alt="" fill sizes="36px" className="object-cover" />
           </span>
@@ -30,7 +34,7 @@ export function Nav() {
         </a>
 
         <nav className="hidden items-center gap-5 text-sm font-medium text-ink-600 dark:text-ink-300 md:flex lg:gap-8">
-          {LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -84,7 +88,7 @@ export function Nav() {
       {open && (
         <div className="border-t border-ink-200/70 bg-ink-50/95 px-6 py-4 backdrop-blur-md dark:border-white/10 dark:bg-ink-950/95 sm:px-8 md:hidden">
           <nav className="flex flex-col gap-1">
-            {LINKS.map((link) => (
+            {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}

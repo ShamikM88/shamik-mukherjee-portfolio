@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LiveMergedPRCount, LiveClosedIssueCount } from "@/components/live-github-stat";
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
+import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
+import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { identity } from "@/data/content";
 import { GOLDEN_CASES } from "./golden/cases";
 import type { CaseFile } from "./golden/types";
 
 export const metadata: Metadata = {
-  title: "Evidence (review variant) — Shamik Mukherjee",
-  description: "Review variant: the evidence home for product leadership, payments and AI delivery.",
+  title: "Evidence — Shamik Mukherjee",
+  description: "The evidence home for product leadership, payments and AI delivery.",
   robots: { index: false, follow: false },
 };
 
@@ -86,7 +86,7 @@ export default function EvidenceHome() {
 
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
-      <Nav />
+      <EvidenceNav />
       <main>
         {/* 10-second layer */}
         <section className="mx-auto max-w-5xl px-6 pb-12 pt-14 sm:px-8 sm:pt-20">
@@ -216,7 +216,7 @@ export default function EvidenceHome() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} showToolLine={false} />
+      <EvidenceFooter />
     </div>
   );
 }

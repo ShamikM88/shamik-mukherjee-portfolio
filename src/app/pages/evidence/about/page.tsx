@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { about, identity } from "@/data/content";
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
+import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
+import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
 
 export const metadata: Metadata = {
-  title: "About (review variant) — Shamik Mukherjee",
+  title: "About — Shamik Mukherjee",
   robots: { index: false, follow: false },
 };
 
@@ -57,7 +57,7 @@ const LENSES = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
-      <Nav />
+      <EvidenceNav />
       <main>
         {/* Editorial hero: large type, one accent, the profile in two sentences */}
         <section className="mx-auto max-w-5xl px-6 pb-12 pt-14 sm:px-8 sm:pt-20">
@@ -175,11 +175,11 @@ export default function AboutPage() {
           <h2 className={H2}>What I can be trusted with</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {about.skills.map((g) => (
-              <div key={g.category} className={CARD}>
-                <div className="font-display text-base font-semibold text-ink-900">{g.category}</div>
+              <div key={g.category} className="border-t border-ice-200 pt-4">
+                <div className="font-display text-sm font-semibold text-ink-700">{g.category}</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {g.tags.map((t) => (
-                    <span key={t} className="rounded-md border border-ice-200 bg-white px-2.5 py-1 text-xs text-ink-700">
+                    <span key={t} className="rounded-md bg-ice-100 px-2 py-0.5 text-[11px] text-ink-600">
                       {t}
                     </span>
                   ))}
@@ -187,7 +187,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <div className={`${CARD} mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-2`}>
+          <div className="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ice-200 pt-4">
             <span className="font-mono text-[11px] uppercase tracking-wider text-ink-500">languages</span>
             {about.languages.map((l) => (
               <span key={l} className="text-sm text-ink-700">
@@ -231,7 +231,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} showToolLine={false} />
+      <EvidenceFooter />
     </div>
   );
 }

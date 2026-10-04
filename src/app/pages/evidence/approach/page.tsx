@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { governanceComparison } from "@/data/content";
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
+import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
+import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
 import { LiveGapAnalysisCount } from "@/components/live-github-stat";
 
 export const metadata: Metadata = {
-  title: "How I work (review variant) — Shamik Mukherjee",
+  title: "How I work — Shamik Mukherjee",
   robots: { index: false, follow: false },
 };
 
@@ -30,7 +30,7 @@ const APPLIES_TO = {
 export default function ApproachPage() {
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
-      <Nav />
+      <EvidenceNav />
       <main>
         {/* Hero: the principle, with the three figures that carry it */}
         <section className="mx-auto max-w-5xl px-6 pb-12 pt-14 sm:px-8 sm:pt-20">
@@ -185,7 +185,7 @@ export default function ApproachPage() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} showToolLine={false} />
+      <EvidenceFooter />
     </div>
   );
 }

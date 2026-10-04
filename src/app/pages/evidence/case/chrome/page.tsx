@@ -6,7 +6,7 @@ import { goldenCase } from "../../golden/cases";
 const c = goldenCase("chrome");
 
 export const metadata: Metadata = {
-  title: `${c.short} (review variant) — Shamik Mukherjee`,
+  title: `${c.name} — Shamik Mukherjee`,
   robots: { index: false, follow: false },
 };
 

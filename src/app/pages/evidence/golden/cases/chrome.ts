@@ -230,7 +230,8 @@ export const chrome: CaseFile = {
     },
   ],
   decisions: { heading: src.decisions.heading, items: decisions },
-  technical: { heading: "retrieval path", panels: technical },
+  // Latency is the focal point for this case, so the comparison leads the technical band.
+  technical: { heading: "retrieval path", panels: [technical[1], technical[0]] },
   impact: { heading: src.outcomes.heading, bullets: src.outcomes.bullets },
   proof: {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
