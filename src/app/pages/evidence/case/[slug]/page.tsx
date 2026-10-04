@@ -7,8 +7,10 @@ import { StageRail } from "../../stage-rail";
 
 export const dynamicParams = false;
 
+// Chrome has its own static route (case/chrome/page.tsx) as the golden template; the
+// remaining cases stay on this shared template until they are rebuilt.
 export function generateStaticParams() {
-  return CASES.map((c) => ({ slug: c.slug }));
+  return CASES.filter((c) => c.slug !== "chrome").map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
