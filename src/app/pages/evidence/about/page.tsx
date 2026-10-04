@@ -7,6 +7,7 @@ import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
 
 export const metadata: Metadata = {
   title: "About — Shamik Mukherjee",
+  description: "Career, lenses and capabilities: payments product ownership, pre-sales, delivery, and AI-directed systems.",
   robots: { index: false, follow: false },
 };
 

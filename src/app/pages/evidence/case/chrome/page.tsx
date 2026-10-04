@@ -7,6 +7,7 @@ const c = goldenCase("chrome");
 
 export const metadata: Metadata = {
   title: `${c.name} — Shamik Mukherjee`,
+  description: c.proposition,
   robots: { index: false, follow: false },
 };
 

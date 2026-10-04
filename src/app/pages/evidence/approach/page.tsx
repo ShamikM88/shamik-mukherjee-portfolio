@@ -8,13 +8,21 @@ import { LiveGapAnalysisCount } from "@/components/live-github-stat";
 
 export const metadata: Metadata = {
   title: "How I work — Shamik Mukherjee",
+  description: "How I decide how much process a piece of work needs: controlled and lightweight delivery, and the proof behind each.",
   robots: { index: false, follow: false },
 };
 
 const { heroStats, modes, decisionQuestions, proof, closing } = governanceComparison;
 // "Target audience" describes OpenCAM's go-to-market, not how I operate, so it stays on the case.
 const [rawControlled, rawLightweight] = modes;
-const controlled = { ...rawControlled, dimensions: rawControlled.dimensions.filter((d) => d.label !== "Target Audience") };
+// The issue count is stated once, here: 33 is the live total across all gap-analysis audits, and
+// 19 is the first (original) OpenCAM audit. Both are kept so the number cannot be misread.
+const clarify = (d: { label: string; value: string }) =>
+  d.label === "Issue Tracking" ? { ...d, value: "33 surfaced across gap-analysis audits; 19 in the original OpenCAM audit" } : d;
+const controlled = {
+  ...rawControlled,
+  dimensions: rawControlled.dimensions.filter((d) => d.label !== "Target Audience").map(clarify),
+};
 const lightweight = { ...rawLightweight, dimensions: rawLightweight.dimensions.filter((d) => d.label !== "Target Audience") };
 
 // Each mode applies to these cases. Links go to the golden case pages inside the evidence hierarchy.
