@@ -27,7 +27,14 @@ export const chromeOwnership = {
   ],
 };
 
-export type Stage = { key: string; label: string; headline: string; points: string[] };
+export type Stage = {
+  key: string;
+  label: string;
+  headline: string;
+  points: string[];
+  // Optional headline figure shown large above the points, so a stage reads at a glance.
+  figure?: { value: string; label: string };
+};
 
 export const chromeStages: Stage[] = [
   {
@@ -44,6 +51,7 @@ export const chromeStages: Stage[] = [
     key: "constraint",
     label: "Constraint",
     headline: "Google's 5-second retrieval limit, on the path that fires as the shopper pays.",
+    figure: { value: "≤5.0s", label: "Google's retrieval target" },
     points: [
       "Retrieval is the critical path. Tolerance for latency, friction or failure there was zero.",
       "The integration split into two domains: Enrolment/Unenrolment (generating and unlinking the token) and Retrieval (fetching the tokenised details during a transaction).",
@@ -53,6 +61,7 @@ export const chromeStages: Stage[] = [
     key: "observed",
     label: "Observed",
     headline: "The green path was fine. The yellow path was not.",
+    figure: { value: "2.4s / 7–8s", label: "green / yellow, before the fraud-system work" },
     points: [
       "Green flow, with no risk checks: 2.4s.",
       "Yellow flow, once it hit the real fraud system: 7–8s.",
@@ -72,6 +81,7 @@ export const chromeStages: Stage[] = [
     key: "execution",
     label: "Execution",
     headline: "Sequenced by release of value, gated by a Definition of Done that did not stop at deployed.",
+    figure: { value: "1 → 10 → 100%", label: "phased rollout of eligible cardholders" },
     points: [
       "Epics ran in release order: green without risk checks, then green with them, then yellow with OTP layered in last.",
       "I wrote the Retrieval certification test cases myself, with test cards mapped to green, yellow and red outcomes.",
@@ -83,6 +93,7 @@ export const chromeStages: Stage[] = [
     key: "outcome",
     label: "Outcome",
     headline: "Both paths inside Google's limit, with certification passed.",
+    figure: { value: "275K+", label: "successful autofill requests in 60 days" },
     points: [
       "Green 1–1.2s. Yellow 3.5–4s.",
       "$900K settled in 45 days. 275K+ successful requests in 60 days.",

@@ -29,6 +29,13 @@ const SECTION = "mx-auto max-w-5xl px-6 py-14 sm:px-8 sm:py-16";
 
 const { problem, scope, features, process, outcomes, visuals, decisions, meta } = chromeAutofill;
 
+// Written per artefact, in the order the source case study lists them. Each line states what
+// the reader is looking at and why it counts as evidence; it adds no new facts.
+const ARTEFACT_WHY = [
+  "It maps the external API contract onto the Retrieval surface I owned, the part of the flow where the latency and step-up work sat.",
+  "It is external evidence that the capability went live and reached consumers, not only an internal delivery claim.",
+];
+
 export default function ChromeGoldenCase() {
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
@@ -287,21 +294,26 @@ export default function ChromeGoldenCase() {
           <p className={EYEBROW}>{visuals.heading}</p>
           <h2 className={H2}>Artefacts from the integration and the launch</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {visuals.items.map((v) => (
+            {visuals.items.map((v, i) => (
               <figure key={v.src} className={`${CARD} flex flex-col gap-4`}>
+                <div className="font-mono text-[11px] text-ember-600">ARTEFACT {String(i + 1).padStart(2, "0")}</div>
                 <div className="overflow-hidden rounded-lg border border-ice-200 bg-white">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={v.src} alt={v.alt} loading="lazy" className="h-auto w-full" />
                 </div>
-                <figcaption className="text-sm leading-relaxed text-ink-600">
-                  {v.caption}{" "}
+                <figcaption className="space-y-3 text-sm leading-relaxed text-ink-600">
+                  <p>{v.caption}</p>
+                  <p>
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-brand-600">Why it matters </span>
+                    {ARTEFACT_WHY[i]}
+                  </p>
                   <a
                     href={v.sourceUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-medium text-brand-600 underline underline-offset-4 hover:text-brand-700"
+                    className="inline-block font-medium text-brand-600 underline underline-offset-4 hover:text-brand-700"
                   >
-                    {v.sourceLabel} ↗
+                    Source: {v.sourceLabel} ↗
                   </a>
                 </figcaption>
               </figure>

@@ -42,6 +42,12 @@ export function ProcessRail({ stages, initial = "constraint" }: { stages: Stage[
       </div>
 
       <div className="mt-6 rounded-2xl border border-brand-200 bg-ice-50 p-6 sm:p-8">
+        {current.figure && (
+          <div className="mb-5 border-b border-brand-100 pb-5">
+            <div className="font-display text-3xl font-semibold text-brand-600 sm:text-4xl">{current.figure.value}</div>
+            <div className="mt-1 text-sm text-ink-500">{current.figure.label}</div>
+          </div>
+        )}
         <h3 className="font-display text-xl font-semibold leading-snug text-ink-900 sm:text-2xl">{current.headline}</h3>
         <ul className="mt-5 space-y-3 text-sm leading-relaxed text-ink-600 sm:text-base">
           {current.points.map((p) => (
