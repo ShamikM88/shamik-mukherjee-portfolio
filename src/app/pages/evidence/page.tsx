@@ -216,7 +216,7 @@ export default function EvidenceHome() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} />
+      <Footer showCta={false} showToolLine={false} />
     </div>
   );
 }

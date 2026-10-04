@@ -115,7 +115,7 @@ const decisions: Decision[] = [
     title: "Made one attempt traceable across the step-up chain",
     problem: "Google's step-up path can fan one retrieval out into a separate OTP dispatch and OTP validation. That is three requests that could show up as disconnected events.",
     decision: "Proposed the mechanism that keeps all three traceable back to one original attempt.",
-    why: "Three disconnected events are hard to follow back to a single shopper attempt.",
+    why: "To keep the three requests traceable back to one original attempt.",
     result: "The three requests stay tied to one original attempt.",
     fullAccount: full(4),
   },

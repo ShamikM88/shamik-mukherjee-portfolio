@@ -386,7 +386,7 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
           </div>
         </section>
       </main>
-      <Footer showCta={false} />
+      <Footer showCta={false} showToolLine={false} />
     </div>
   );
 }

@@ -65,7 +65,8 @@ export default function AboutPage() {
           <h1 className="mt-4 text-balance font-display text-5xl font-semibold leading-[1.05] text-ink-900 sm:text-6xl">
             I learned product from the inside of the system.
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-600">{about.bio}</p>
+          <p className="mt-6 font-display text-base font-semibold text-brand-700">{identity.headline}</p>
+          <p className="mt-3 max-w-3xl text-lg leading-relaxed text-ink-600">{about.bio}</p>
 
           <dl className="mt-10 grid gap-3 sm:grid-cols-4">
             {about.heroStats.map((s) => (
@@ -230,7 +231,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} />
+      <Footer showCta={false} showToolLine={false} />
     </div>
   );
 }

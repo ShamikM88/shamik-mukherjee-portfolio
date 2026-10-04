@@ -4,6 +4,7 @@ import { governanceComparison } from "@/data/content";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
+import { LiveGapAnalysisCount } from "@/components/live-github-stat";
 
 export const metadata: Metadata = {
   title: "How I work (review variant) — Shamik Mukherjee",
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 };
 
 const { heroStats, modes, decisionQuestions, proof, closing } = governanceComparison;
-const [controlled, lightweight] = modes;
+// "Target audience" describes OpenCAM's go-to-market, not how I operate, so it stays on the case.
+const [rawControlled, rawLightweight] = modes;
+const controlled = { ...rawControlled, dimensions: rawControlled.dimensions.filter((d) => d.label !== "Target Audience") };
+const lightweight = { ...rawLightweight, dimensions: rawLightweight.dimensions.filter((d) => d.label !== "Target Audience") };
 
 // Each mode applies to these cases. Links go to the golden case pages inside the evidence hierarchy.
 const APPLIES_TO = {
@@ -42,7 +46,10 @@ export default function ApproachPage() {
             {heroStats.map((s) => (
               <div key={s.label} className={CARD}>
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-3xl font-semibold text-brand-600">{s.value}</dd>
+                <dd className="font-display text-3xl font-semibold text-brand-600">
+                  {/* Live total across all gap-analysis audits (the first audit was 19); fallback is the last known count. */}
+                  {s.label.startsWith("Issues") ? <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} /> : s.value}
+                </dd>
                 <dd className="mt-2 text-sm leading-snug text-ink-700">{s.label}</dd>
                 <dd className="mt-1 font-mono text-[11px] text-ink-500">{s.sublabel}</dd>
               </div>
@@ -135,8 +142,8 @@ export default function ApproachPage() {
 
         {/* Proof in practice: the two stories, restored from the source and linked into the evidence cases */}
         <section className={SECTION}>
-          <p className={EYEBROW}>proof in practice</p>
-          <h2 className={H2}>{proof.heading}</h2>
+          <p className={EYEBROW}>the evidence</p>
+          <h2 className={H2}>Proof in practice</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {proof.items.map((p) => (
               <article key={p.title} className={CARD}>
@@ -178,7 +185,7 @@ export default function ApproachPage() {
           </div>
         </section>
       </main>
-      <Footer showCta={false} />
+      <Footer showCta={false} showToolLine={false} />
     </div>
   );
 }

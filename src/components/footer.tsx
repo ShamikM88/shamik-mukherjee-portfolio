@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { identity } from "@/data/content";
 import { ResumeDownloadButton } from "@/components/ui";
 
-export function Footer({ showCta = true }: { showCta?: boolean }) {
+export function Footer({ showCta = true, showToolLine = true }: { showCta?: boolean; showToolLine?: boolean }) {
   return (
     <footer id="contact" className="border-t border-ice-200 dark:border-white/10">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
@@ -55,7 +55,7 @@ export function Footer({ showCta = true }: { showCta?: boolean }) {
             <Link href="/approach/" className="transition-colors hover:text-brand-600 dark:hover:text-brand-400">
               Delivery approach
             </Link>
-            <span>Built with Claude Code</span>
+            {showToolLine && <span>Built with Claude Code</span>}
           </div>
         </div>
       </div>
