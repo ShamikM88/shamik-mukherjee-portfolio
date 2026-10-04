@@ -4,7 +4,8 @@ import { LiveMergedPRCount, LiveClosedIssueCount } from "@/components/live-githu
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { identity } from "@/data/content";
-import { CASES, caseBySlug, type Case } from "./data";
+import { GOLDEN_CASES } from "./golden/cases";
+import type { CaseFile } from "./golden/types";
 
 export const metadata: Metadata = {
   title: "Evidence (review variant) — Shamik Mukherjee",
@@ -19,17 +20,13 @@ const H2 = "mt-2 font-display text-2xl font-semibold leading-snug text-ink-900 s
 const CARD = "rounded-2xl border border-ice-200 bg-ice-50 p-5 sm:p-6";
 const SECTION = "mx-auto max-w-5xl px-6 py-14 sm:px-8 sm:py-16";
 
-// Grouped by how the work was done, so a recruiter never reads solo projects as employer work.
-const AT_WORK = ["chrome", "wallet"];
-const SOLO_LAB = ["opencam", "job-search"];
+// The decision archive is drawn from the case files themselves, so every row links back to its
+// case. Two per case keeps the home scannable; the full set lives on each case page.
+const archive = GOLDEN_CASES.flatMap((c) =>
+  c.decisions.items.slice(0, 2).map((d) => ({ slug: c.slug, short: c.short, title: d.title, result: d.result })),
+);
 
-const bySlug = (slugs: string[]) => slugs.map((s) => caseBySlug(s)!);
-
-// The decision archive is drawn from the case-study decisions themselves, so every row links
-// back to its case. Trade-off text is deliberately not shown on public pages.
-const archive = CASES.flatMap((c) => c.decisions.map((d) => ({ slug: c.slug, short: c.short, title: d.title, result: d.result })));
-
-function ShipCard({ c, index }: { c: Case; index: number }) {
+function ShipCard({ c, index }: { c: CaseFile; index: number }) {
   const lead = c.receipts.slice(0, 2);
   return (
     <article className={`${CARD} flex flex-col`}>
@@ -59,15 +56,15 @@ function ShipCard({ c, index }: { c: Case; index: number }) {
         <dl className="mt-4 space-y-3 text-sm leading-relaxed">
           <div>
             <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">Constraint</dt>
-            <dd className="mt-0.5 text-ink-600">{c.graph.constraint}</dd>
+            <dd className="mt-0.5 text-ink-600">{c.inspect.constraint}</dd>
           </div>
           <div>
             <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">Decision</dt>
-            <dd className="mt-0.5 text-ink-600">{c.graph.decision}</dd>
+            <dd className="mt-0.5 text-ink-600">{c.inspect.decision}</dd>
           </div>
           <div>
             <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">Outcome</dt>
-            <dd className="mt-0.5 text-ink-600">{c.graph.outcome}</dd>
+            <dd className="mt-0.5 text-ink-600">{c.inspect.outcome}</dd>
           </div>
         </dl>
       </details>
@@ -83,9 +80,9 @@ function ShipCard({ c, index }: { c: Case; index: number }) {
 }
 
 export default function EvidenceHome() {
-  const cases = bySlug([...AT_WORK, ...SOLO_LAB]);
-  const atWork = cases.filter((c) => AT_WORK.includes(c.slug));
-  const solo = cases.filter((c) => SOLO_LAB.includes(c.slug));
+  // Grouped by how the work was done, so a recruiter never reads solo projects as employer work.
+  const atWork = GOLDEN_CASES.filter((c) => c.group === "work");
+  const solo = GOLDEN_CASES.filter((c) => c.group === "lab");
 
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">

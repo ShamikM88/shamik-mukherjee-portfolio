@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import type { Stage } from "./chrome-content";
+import type { Stage } from "./types";
 
-export function ProcessRail({ stages, initial = "constraint" }: { stages: Stage[]; initial?: string }) {
+export function ProcessRail({ stages, initial }: { stages: Stage[]; initial: string }) {
   const [active, setActive] = useState(initial);
   const current = stages.find((s) => s.key === active) ?? stages[0];
 
