@@ -56,6 +56,8 @@ export type Section =
       eyebrow: string;
       heading: string;
       intro?: string;
+      // Optional link(s) beneath the legend - e.g. to a canonical product artifact this scope call traces to.
+      links?: { label: string; href: string }[];
       lanes: { label: string; sublabel: string; tone: "brand" | "blue" | "ember" | "muted"; items: ScopeItem[] }[];
     };
 

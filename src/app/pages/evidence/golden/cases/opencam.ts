@@ -228,6 +228,12 @@ export const opencam: CaseFile = {
       kind: "moscow",
       eyebrow: src.scope.heading.split(",")[0],
       heading: src.scope.heading,
+      links: [
+        {
+          label: "Read the MVP v1 PRD, reconstructed from this scope call's own pull requests",
+          href: "https://github.com/ShamikM88/open-cam-framework/blob/main/docs/mvp-v1-prd.md",
+        },
+      ],
       lanes: src.scope.lanes.map((lane) => ({
         label: lane.label,
         sublabel: lane.sublabel,

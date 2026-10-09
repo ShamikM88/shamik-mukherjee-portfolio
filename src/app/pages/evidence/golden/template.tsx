@@ -148,6 +148,21 @@ function renderSection(s: Section, key: number, id?: string): ReactNode {
         <span className="text-brand-600">✓</span> shipped · <span className="text-ink-500">○</span> open ·{" "}
         <span className="text-ink-400">—</span> decided against
       </p>
+      {s.links && (
+        <p className="mt-4">
+          {s.links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-brand-600 underline underline-offset-4 hover:text-brand-700"
+            >
+              {l.label} ↗
+            </a>
+          ))}
+        </p>
+      )}
     </section>
   );
 }
