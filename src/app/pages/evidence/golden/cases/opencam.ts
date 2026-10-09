@@ -230,7 +230,7 @@ export const opencam: CaseFile = {
       heading: src.scope.heading,
       links: [
         {
-          label: "Read the MVP v1 PRD, reconstructed from this scope call's own pull requests",
+          label: "Open the retrospective MVP v1 PRD - problem, scope, requirements and acceptance criteria, reconstructed from delivery evidence",
           href: "https://github.com/ShamikM88/open-cam-framework/blob/main/docs/mvp-v1-prd.md",
         },
       ],
