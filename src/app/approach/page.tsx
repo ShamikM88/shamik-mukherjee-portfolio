@@ -69,7 +69,7 @@ export default function ApproachPage() {
               <div key={stat.label} className="flex flex-col">
                 <dd className="font-display text-3xl font-bold text-ink-900 dark:text-white">
                   {stat.label === "Regression-Gated Tests" ? (
-                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={439} />
+                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={1870} />
                   ) : stat.label === "Issues Surfaced by Gap-Analysis Audits" ? (
                     <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} />
                   ) : (

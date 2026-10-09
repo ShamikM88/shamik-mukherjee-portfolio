@@ -4,7 +4,7 @@ import { governanceComparison } from "@/data/content";
 import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
 import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
-import { LiveGapAnalysisCount } from "@/components/live-github-stat";
+import { LiveGapAnalysisCount, LiveTestCount } from "@/components/live-github-stat";
 
 export const metadata: Metadata = {
   title: "How I work — Shamik Mukherjee",
@@ -56,7 +56,13 @@ export default function ApproachPage() {
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="font-display text-3xl font-semibold text-brand-600">
                   {/* Live total across all gap-analysis audits (the first audit was 19); fallback is the last known count. */}
-                  {s.label.startsWith("Issues") ? <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} /> : s.value}
+                  {s.label.startsWith("Issues") ? (
+                    <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} />
+                  ) : s.label.startsWith("Regression-Gated") ? (
+                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={1870} />
+                  ) : (
+                    s.value
+                  )}
                 </dd>
                 <dd className="mt-2 text-sm leading-snug text-ink-700">{s.label}</dd>
                 <dd className="mt-1 font-mono text-[11px] text-ink-500">{s.sublabel}</dd>

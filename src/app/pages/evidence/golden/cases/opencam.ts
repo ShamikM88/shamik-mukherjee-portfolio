@@ -1,9 +1,17 @@
+import { createElement } from "react";
 import { openCam as src } from "@/data/content";
+import { LiveTestCount } from "@/components/live-github-stat";
 import type { CaseFile, Decision, Stage, TechnicalPanel } from "../types";
 
 // OpenCAM is the strongest dark-architecture case. Every decision, scope lane and figure is
 // restated from src/data/content.ts; full accounts are pulled from its decisions list by index.
 const full = (i: number) => src.decisions.items[i].body;
+
+// The repo has no API for a live test count (it's a CI-time fact, not repo metadata), so this
+// reads badges/test-count.json off the default branch, same as the long-form case study page.
+// Wired to the component (not a static string) because the static "439+" this replaced had
+// already drifted to 1870 by the time it was caught - see docs/decisions.md D14.
+const liveTestCount = createElement(LiveTestCount, { repo: "ShamikM88/open-cam-framework", fallback: 1870 });
 
 const toneOf = (t: "brand-strong" | "blue" | "ember" | "muted") => (t === "brand-strong" ? "brand" : t);
 
@@ -59,7 +67,7 @@ const stages: Stage[] = [
     key: "outcome",
     label: "Outcome",
     headline: "The DSCR error was caught before it could reach committee.",
-    figure: { value: "439+", label: "passing tests, up from 188 at MVP" },
+    figure: { value: liveTestCount, label: "passing tests, up from 188 at MVP" },
     points: [
       "Trust turned out to be a product feature: code-level verification, not model judgment, is what makes the loop trustworthy.",
       "Real usage surfaced the two highest-value roadmap items faster than the original audit backlog did.",
@@ -188,7 +196,7 @@ export const opencam: CaseFile = {
   meta: src.meta,
   receipts: [
     { value: "15–30 min", label: "target time to first draft, from about a business day", note: "a target, validated with one analyst" },
-    { value: "439+", label: "passing tests" },
+    { value: liveTestCount, label: "passing tests" },
     { value: "DSCR", label: "computed as 0 instead of undefined, caught before committee" },
   ],
   ownership: {
@@ -271,7 +279,7 @@ export const opencam: CaseFile = {
   proof: {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
     tiles: [
-      { value: "439+", label: "passing tests, up from 188 at MVP" },
+      { value: liveTestCount, label: "passing tests, up from 188 at MVP" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
       { value: "0 → undefined", label: "the DSCR error, caught before committee" },
       { value: "1", label: "analyst validated to date: early-stage, not yet at scale" },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LiveMergedPRCount, LiveClosedIssueCount } from "@/components/live-github-stat";
+import { LiveMergedPRCount, LiveClosedIssueCount, LiveTestCount } from "@/components/live-github-stat";
 import { EvidenceNav } from "@/app/pages/evidence/evidence-chrome";
 import { EvidenceFooter } from "@/app/pages/evidence/evidence-chrome";
 import { identity } from "@/data/content";
@@ -189,7 +189,9 @@ export default function EvidenceHome() {
                 <div className="mt-2 font-mono text-[10px] text-ink-500">scope: OpenCAM repo</div>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-                <div className="font-display text-2xl font-semibold text-brand-400 sm:text-3xl">439+ passing tests</div>
+                <div className="font-display text-2xl font-semibold text-brand-400 sm:text-3xl">
+                  <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={1870} /> passing tests
+                </div>
                 <div className="mt-2 font-mono text-[10px] text-ink-500">scope: OpenCAM</div>
               </div>
             </div>

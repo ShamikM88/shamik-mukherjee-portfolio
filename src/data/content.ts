@@ -797,7 +797,7 @@ export const openCam = {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "439+", label: "passing tests (up from 188 at MVP)" },
+      { value: "1,870+", label: "passing tests (up from 188 at MVP)" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
     ],
     bullets: [
@@ -989,7 +989,7 @@ export const governanceComparison = {
   // Numbers above the fold, matching the stat-forward pattern used everywhere else on the
   // site - this page previously had zero figures until a full scroll past the intro.
   heroStats: [
-    { value: "439+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
+    { value: "1,870+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
     { value: "19", label: "Issues Surfaced by Gap-Analysis Audits", sublabel: "Controlled · OpenCAM" },
     { value: "Same-Day", label: "Fix Shipped, No PR Queue", sublabel: "Lightweight · Job Search" },
   ],
@@ -1002,7 +1002,7 @@ export const governanceComparison = {
       dimensions: [
         { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
         { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
-        { label: "QA Model", value: "439+ automated tests, regression-gated" },
+        { label: "QA Model", value: "1,870+ automated tests, regression-gated" },
         { label: "Target Audience", value: "Other institutions (forkable, not yet forked)" },
         { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
       ],
@@ -1034,7 +1034,7 @@ export const governanceComparison = {
       },
       {
         question: "What's the cheapest honest proof?",
-        answer: "For OpenCAM, that meant 439+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
+        answer: "For OpenCAM, that meant 1,870+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
       },
     ],
   },

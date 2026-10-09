@@ -1,9 +1,13 @@
 // Shared shape for every golden-template case. Each case file in ./cases fills this in from its
 // original long-form source (src/data/content.ts), so the template itself carries no facts.
 
+import type { ReactNode } from "react";
+
 export type Tone = "owned" | "shared" | "external" | "alert" | "muted";
 
-export type Receipt = { value: string; label: string; note?: string };
+// ReactNode (not just string) so a case can wire a figure to a Live* component
+// (see golden/cases/opencam.ts) instead of a static number that goes stale.
+export type Receipt = { value: ReactNode; label: string; note?: string };
 
 export type Stage = {
   key: string;
@@ -11,7 +15,7 @@ export type Stage = {
   headline: string;
   points: string[];
   // Optional headline figure shown large above the points.
-  figure?: { value: string; label: string };
+  figure?: { value: ReactNode; label: string };
 };
 
 export type ScopeItem = string | { text: string; status?: "done" | "pending" | "wont" };
@@ -130,7 +134,7 @@ export type CaseFile = {
   decisions: { heading: string; items: Decision[] };
   technical: { heading: string; panels: TechnicalPanel[] };
   impact: { heading: string; bullets: string[] };
-  proof: { chain: string[]; tiles: { value: string; label: string }[] };
+  proof: { chain: string[]; tiles: { value: ReactNode; label: string }[] };
   artefacts?: { heading: string; items: Artefact[] };
   sources: { label: string; href: string; note: string }[];
   neighbours: { prev: { slug: string; label: string }; next: { slug: string; label: string } };

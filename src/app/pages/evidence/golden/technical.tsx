@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { FlowNode, TechnicalPanel, Tone } from "./types";
 
 // The dark environment is reserved for system detail: architecture, timings, and proof.
@@ -155,7 +156,7 @@ export function TechnicalBand({ heading, panels }: { heading: string; panels: Te
   );
 }
 
-export function ProofBand({ proof }: { proof: { chain: string[]; tiles: { value: string; label: string }[] } }) {
+export function ProofBand({ proof }: { proof: { chain: string[]; tiles: { value: ReactNode; label: string }[] } }) {
   return (
     <div className="bg-ink-950 text-white">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-20">
