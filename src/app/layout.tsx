@@ -24,9 +24,9 @@ const mono = IBM_Plex_Mono({
 });
 
 const SITE_URL = "https://shamik.mukherjee.pro";
-const TITLE = "Shamik Mukherjee — Senior Product Owner, targeting Product Manager scope";
+const TITLE = "Evidence — Shamik Mukherjee";
 const DESCRIPTION =
-  "Product Owner in digital payments and tokenization, building AI-directed multi-agent systems solo. See OpenCAM Framework (a Maker-Checker credit underwriting system) and an automated job-search pipeline.";
+  "The evidence home for product leadership, payments and AI delivery.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -2,13 +2,14 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import { identity } from "@/data/content";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ResumeDownloadButton } from "@/components/ui";
 
 const LINKS = [
-  { href: "/#work", label: "Case studies" },
+  { href: "/#ship", label: "Case studies" },
   { href: "/approach/", label: "Delivery approach" },
   { href: "/about/", label: "About" },
   { href: "/#contact", label: "Contact" },
@@ -24,24 +25,24 @@ export function Nav({ homeHref = "/", links = LINKS }: { homeHref?: string; link
   return (
     <header className="sticky top-0 z-40 border-b border-ink-200/70 bg-ink-50/85 backdrop-blur-md dark:border-white/10 dark:bg-ink-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-8">
-        <a href={homeHref} className="flex items-center gap-2.5">
+        <Link href={homeHref} className="flex items-center gap-2.5">
           <span className="relative h-9 w-9 flex-shrink-0 overflow-hidden rounded-xl">
             <Image src={identity.photo} alt="" fill sizes="36px" className="object-cover" />
           </span>
           <span className="hidden font-display text-sm font-semibold text-ink-900 dark:text-white sm:inline">
             {identity.name}
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-5 text-sm font-medium text-ink-600 dark:text-ink-300 md:flex lg:gap-8">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="-mx-3 rounded-full px-3 py-1.5 transition-colors hover:bg-ink-900/5 hover:text-ink-900 dark:hover:bg-white/10 dark:hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -89,14 +90,14 @@ export function Nav({ homeHref = "/", links = LINKS }: { homeHref?: string; link
         <div className="border-t border-ink-200/70 bg-ink-50/95 px-6 py-4 backdrop-blur-md dark:border-white/10 dark:bg-ink-950/95 sm:px-8 md:hidden">
           <nav className="flex flex-col gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-900/5 dark:text-ink-200 dark:hover:bg-white/10"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="mt-3 flex flex-col gap-2 border-t border-ink-200/70 pt-3 dark:border-white/10">

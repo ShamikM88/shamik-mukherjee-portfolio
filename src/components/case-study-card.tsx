@@ -29,7 +29,7 @@ export type CaseStudyCardData = {
 export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
   {
     id: "chrome-autofill",
-    href: "/case-studies/google-chrome-autofill-virtual-card-number/",
+    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
     thumbnail: <ChromeAutofillThumbnail />,
     tags: chromeAutofill.badges,
     title: chromeAutofill.shortTitle,
@@ -42,7 +42,7 @@ export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
   },
   {
     id: "wallet-provisioning",
-    href: "/case-studies/wallet-provisioning/",
+    href: "/archive/case-studies/wallet-provisioning/",
     thumbnail: <WalletProvisioningThumbnail />,
     tags: walletProvisioning.badges,
     title: walletProvisioning.shortTitle,
@@ -55,7 +55,7 @@ export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
   },
   {
     id: "opencam",
-    href: "/case-studies/opencam/",
+    href: "/archive/case-studies/opencam/",
     thumbnail: <OpenCamThumbnail />,
     tags: openCam.badges,
     title: openCam.shortTitle,
@@ -68,7 +68,7 @@ export const CASE_STUDY_CARDS: CaseStudyCardData[] = [
   },
   {
     id: "fork",
-    href: "/case-studies/job-search-automation/",
+    href: "/archive/case-studies/job-search-automation/",
     thumbnail: <ForkThumbnail />,
     tags: fork.badges,
     title: fork.shortTitle,

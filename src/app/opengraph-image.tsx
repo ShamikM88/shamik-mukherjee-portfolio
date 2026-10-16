@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
-import { identity, statStrip } from "@/data/content";
+import { identity } from "@/data/content";
 
 export const dynamic = "force-static";
-export const alt = "Shamik Mukherjee — Senior Product Owner, targeting Product Manager scope";
+export const alt = "Evidence — I like hard problems. Product leadership at the point where business ambiguity meets engineering reality.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,34 +51,32 @@ export default async function Image() {
             {identity.name}
           </div>
           <div style={{ display: "flex", fontSize: 30, color: BRAND_300, marginTop: 16 }}>
-            {identity.headline}
+            I like hard problems.
           </div>
           <div style={{ display: "flex", fontSize: 24, color: "#e2e8f0", marginTop: 12 }}>
-            Digital Payments · Tokenization · Multi-Agent AI Systems
+            Digital Payments · AI Engineering · Technical Delivery
           </div>
         </div>
 
         <div style={{ display: "flex", gap: 24 }}>
-          {statStrip.map((stat) => (
+          {
+          ["Product leadership", "Payments", "AI"].map((label) => (
             <div
-              key={stat.label}
+              key={label}
               style={{
                 display: "flex",
-                flexDirection: "column",
                 flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
                 backgroundColor: BRAND_800_TRANSLUCENT,
                 borderRadius: 16,
-                padding: "20px 24px",
+                padding: "28px 24px",
               }}
             >
-              <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: "white" }}>
-                {stat.value}
-              </div>
-              <div style={{ display: "flex", fontSize: 18, color: "#cbd5e1", marginTop: 6 }}>
-                {stat.label}
-              </div>
+              <div style={{ display: "flex", fontSize: 24, color: "#cbd5e1" }}>{label}</div>
             </div>
-          ))}
+          ))
+        }
         </div>
       </div>
     ),
