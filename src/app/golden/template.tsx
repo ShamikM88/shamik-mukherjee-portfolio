@@ -451,13 +451,13 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
           <ul className="mt-6 space-y-3 text-sm text-ink-600">
             {c.sources.map((s) => (
               <li key={s.href}>
-                <a
+                <Link
                   href={s.href}
                   {...(s.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
                   className="font-medium text-brand-600 underline underline-offset-4"
                 >
                   {s.label}
-                </a>
+                </Link>
                 <span className="text-ink-500"> · {s.note}</span>
               </li>
             ))}

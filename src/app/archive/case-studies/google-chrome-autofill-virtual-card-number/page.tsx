@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ArchiveNav } from "@/app/archive/archive-chrome";
 import { ArchiveFooter } from "@/app/archive/archive-chrome";
@@ -49,13 +50,13 @@ export default function ChromeAutofillPage() {
       <CaseStudyToc />
       <main>
         <div className="mx-auto max-w-5xl px-6 pt-10 sm:px-8">
-          <a
+          <Link
             href="/archive/#work"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 transition-colors hover:text-ink-900 dark:text-ink-400 dark:hover:text-white"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
             All case studies
-          </a>
+          </Link>
         </div>
         <div className="mx-auto max-w-5xl px-6 py-10 sm:px-8 sm:py-14">
           <CaseStudyDetail
