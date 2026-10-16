@@ -15,6 +15,12 @@ export const CARD = "rounded-2xl border border-ice-200 bg-ice-50 p-5 sm:p-6";
 export const SECTION = "mx-auto max-w-5xl px-6 py-14 sm:px-8 sm:py-16";
 
 const TONE_TEXT = { brand: "text-brand-600", blue: "text-blue-600", ember: "text-ember-600", muted: "text-ink-500" } as const;
+const TONE_BORDER = {
+  brand: "border-brand-600",
+  blue: "border-blue-600",
+  ember: "border-ember-600",
+  muted: "border-ink-300",
+} as const;
 const STATUS = {
   done: { mark: "✓", cls: "text-brand-600" },
   pending: { mark: "○", cls: "text-ink-500" },
@@ -44,6 +50,40 @@ function ScopeList({ items }: { items: ScopeItem[] }) {
         );
       })}
     </ul>
+  );
+}
+
+// MoSCoW lane items as uniform-width notes, not plain bullets. Every lane's notes are the same
+// width (140px at sm+); a lane with more than 6 items wraps to 2 columns instead of growing taller
+// than its neighbors indefinitely - everything else stays a single column. Below sm, notes go full
+// width since lanes themselves stack full width there.
+// Shared with the lane wrapper's own width (laneWidthClass below) - the card has to be given this
+// width explicitly, not left to size from content, or a long heading/sublabel with nowhere to wrap
+// blows the flex item out to its one-line max-content width instead of the grid's fixed width.
+const laneCols = (n: number) => (n > 6 ? 2 : 1);
+const laneWidthClass = (n: number) => (laneCols(n) === 2 ? "sm:w-[336px]" : "sm:w-[188px]");
+
+function ScopeNotes({ items, tone }: { items: ScopeItem[]; tone: keyof typeof TONE_BORDER }) {
+  const cols = laneCols(items.length) === 2 ? "sm:grid-cols-[140px_140px]" : "sm:grid-cols-[140px]";
+  return (
+    <div className={`mt-3 grid grid-cols-1 gap-2 ${cols}`}>
+      {items.map((it) => {
+        const status = typeof it === "string" ? undefined : it.status;
+        return (
+          <div
+            key={itemText(it)}
+            className={`rounded-md border-l-[3px] bg-white px-2 py-1.5 text-xs leading-snug text-ink-800 ${TONE_BORDER[tone]}`}
+          >
+            {status && (
+              <span aria-hidden className={`mr-1 font-mono ${STATUS[status].cls}`}>
+                {STATUS[status].mark}
+              </span>
+            )}
+            {itemText(it)}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -129,18 +169,20 @@ function renderSection(s: Section, key: number, id?: string): ReactNode {
     );
   }
 
-  // Strategy board: MoSCoW lanes laid out side by side, not a Jira-style column board.
+  // Lanes are sized to their own content, not forced to equal width - a lane with a long list
+  // (Round 2's "Should have") wraps to 2 note-columns instead of stretching every lane to match
+  // its height or cramping its own notes into one narrow column. See ScopeNotes above.
   return (
     <section key={key} className={SECTION}>{id && <Anchor id={id} />}
       <p className={EYEBROW}>{s.eyebrow}</p>
       <h2 className={H2}>{s.heading}</h2>
       {s.intro && <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600">{s.intro}</p>}
-      <div className="mt-6 grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         {s.lanes.map((lane) => (
-          <div key={lane.label} className={CARD}>
+          <div key={lane.label} className={`${CARD} sm:flex-none ${laneWidthClass(lane.items.length)}`}>
             <div className={`font-display text-base font-semibold ${TONE_TEXT[lane.tone]}`}>{lane.label}</div>
             <div className="mt-0.5 font-mono text-[11px] leading-snug text-ink-500">{lane.sublabel}</div>
-            <ScopeList items={lane.items} />
+            <ScopeNotes items={lane.items} tone={lane.tone} />
           </div>
         ))}
       </div>
