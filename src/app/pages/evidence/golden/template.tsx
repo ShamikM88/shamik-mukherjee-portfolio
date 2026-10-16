@@ -135,7 +135,7 @@ function renderSection(s: Section, key: number, id?: string): ReactNode {
       <p className={EYEBROW}>{s.eyebrow}</p>
       <h2 className={H2}>{s.heading}</h2>
       {s.intro && <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600">{s.intro}</p>}
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {s.lanes.map((lane) => (
           <div key={lane.label} className={CARD}>
             <div className={`font-display text-base font-semibold ${TONE_TEXT[lane.tone]}`}>{lane.label}</div>
