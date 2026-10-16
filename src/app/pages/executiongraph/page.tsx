@@ -21,19 +21,19 @@ const receipts = [
     value: "$900K",
     what: "settled in the first 45 days",
     source: "Chrome Virtual Card Autofill",
-    href: "/case-studies/google-chrome-autofill-virtual-card-number",
+    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
   },
   {
     value: "1st",
     what: "international issuer live on push provisioning",
     source: "Wallet Provisioning at Scale",
-    href: "/case-studies/wallet-provisioning",
+    href: "/archive/case-studies/wallet-provisioning/",
   },
   {
     value: "DSCR 0 → undefined",
     what: "a real correctness bug, caught before a credit committee",
     source: "OpenCAM Framework",
-    href: "/case-studies/opencam",
+    href: "/archive/case-studies/opencam/",
   },
 ];
 

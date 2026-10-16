@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/archive/about",
+      "permanent": false
+    },
+    {
+      "source": "/approach",
+      "destination": "/archive/approach",
+      "permanent": false
+    },
+    {
+      "source": "/case-studies/:path*",
+      "destination": "/archive/case-studies/:path*",
+      "permanent": false
+    }
+  ]
+}
