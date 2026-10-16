@@ -190,7 +190,7 @@ export default function EvidenceHome() {
               </div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
                 <div className="font-display text-2xl font-semibold text-brand-400 sm:text-3xl">
-                  <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={1870} /> passing tests
+                  <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={2970} /> passing tests
                 </div>
                 <div className="mt-2 font-mono text-[10px] text-ink-500">scope: OpenCAM</div>
               </div>

@@ -11,7 +11,7 @@ const full = (i: number) => src.decisions.items[i].body;
 // reads badges/test-count.json off the default branch, same as the long-form case study page.
 // Wired to the component (not a static string) because the static "439+" this replaced had
 // already drifted to 1870 by the time it was caught - see docs/decisions.md D14.
-const liveTestCount = createElement(LiveTestCount, { repo: "ShamikM88/open-cam-framework", fallback: 1870 });
+const liveTestCount = createElement(LiveTestCount, { repo: "ShamikM88/open-cam-framework", fallback: 2970 });
 
 const toneOf = (t: "brand-strong" | "blue" | "ember" | "muted") => (t === "brand-strong" ? "brand" : t);
 
