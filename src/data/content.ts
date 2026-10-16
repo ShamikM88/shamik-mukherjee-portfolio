@@ -587,7 +587,7 @@ export const openCam = {
   mvp2: {
     heading: "What I'm scoping for round 2 (\"Hardening Cycle 2\")",
     intro:
-      "MVP v1 shipped and is already in real use. This next MoSCoW pass follows it, in the same priority order as round 1: fix foundational gaps before adding polish.",
+      "MVP v1 shipped and is already in real use. This pass follows it, in the same priority order as round 1, and keeps absorbing what later audits and real use turn up.",
     lanes: [
       {
         label: "Must have",
@@ -619,11 +619,11 @@ export const openCam = {
           },
           {
             text: "Analyst-supplied mode for /project's forward-year projections, mirroring /spread's existing one (#124)",
-            status: "pending" as const,
+            status: "done" as const,
           },
           {
             text: "Read-back confirmation and cross-footing for screenshot-sourced spreading (#132)",
-            status: "pending" as const,
+            status: "done" as const,
           },
           {
             text: "Treat fetched web pages, PDFs, and analyst notes as untrusted data in both agent prompts (#150)",
@@ -635,6 +635,30 @@ export const openCam = {
           },
           {
             text: "CI guard failing the build if a confidential-data path is ever tracked in git (#149)",
+            status: "done" as const,
+          },
+          {
+            text: "Give /collateral the same deterministic ground-truthing every other figure already has (#266)",
+            status: "pending" as const,
+          },
+          {
+            text: "Resolve a mistyped deal name instead of silently starting a second deal under it (#268)",
+            status: "pending" as const,
+          },
+          {
+            text: "Require a /research brief to end with a populated Sources section before export (#318, from real /research use)",
+            status: "pending" as const,
+          },
+          {
+            text: "Read primary source documents for a group borrower, not only registry summaries (#322, from real /research use)",
+            status: "pending" as const,
+          },
+          {
+            text: "Stop the interactive review loop and ask the analyst after three REJECTED passes (#323, from real /research use)",
+            status: "pending" as const,
+          },
+          {
+            text: "Make Checker independence from earlier verdicts structural, not just instructional (#324, from real /research use)",
             status: "pending" as const,
           },
         ],
@@ -645,8 +669,8 @@ export const openCam = {
         tone: "ember" as const,
         items: [
           { text: "HoldCo/OpCo group/subsidiary financial consolidation (#48)", status: "pending" as const },
-          { text: "Render Group/Parent/UBO structure as a tree diagram instead of prose (#113)", status: "pending" as const },
-          { text: "Charts/graphs in CAMs — sector trends, SWOT, positioning, stock price (#114)", status: "pending" as const },
+          { text: "Render Group/Parent/UBO structure as a tree diagram instead of prose (#113)", status: "done" as const },
+          { text: "Charts/graphs in CAMs — sector trends, SWOT, positioning, stock price (#114)", status: "done" as const },
           {
             text: "Jurisdiction-agnostic PII heuristics — today's redaction patterns are UK-specific in a framework designed to be forked by any institution (#111)",
             status: "pending" as const,
