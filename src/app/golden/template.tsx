@@ -267,7 +267,7 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
 
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-medium">
             <Link
-              href={`/approach#${modeAnchor}`}
+              href={`/approach/#${modeAnchor}`}
               className="inline-flex items-center gap-1.5 rounded-lg border border-brand-300 bg-brand-50 px-3 py-1.5 text-brand-700 hover:border-brand-500"
             >
               {c.mode} →
