@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ResumeDownloadButton } from "@/components/ui";
 
 const LINKS = [
-  { href: "/#work", label: "Case studies" },
+  { href: "/#ship", label: "Case studies" },
   { href: "/approach/", label: "Delivery approach" },
   { href: "/about/", label: "About" },
   { href: "/#contact", label: "Contact" },
