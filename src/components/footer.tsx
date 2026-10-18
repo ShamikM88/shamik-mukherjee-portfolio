@@ -7,20 +7,26 @@ export function Footer({
   showCta = true,
   showToolLine = true,
   approachHref = "/approach/",
+  enableDarkMode = true,
 }: {
   showCta?: boolean;
   showToolLine?: boolean;
   approachHref?: string;
+  enableDarkMode?: boolean;
 }) {
+  // Tailwind's dark: variant matches any ancestor with the "dark" class, so it can't be scoped
+  // off locally when the global theme is dark - the classes themselves must be omitted instead.
+  const d = (cls: string) => (enableDarkMode ? cls : "");
+
   return (
-    <footer id="contact" className="border-t border-ice-200 dark:border-white/10">
+    <footer id="contact" className={`border-t border-ice-200 ${d("dark:border-white/10")}`}>
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         {showCta && (
-          <div className="rounded-3xl border border-ice-200 bg-ice-50 px-8 py-16 text-center dark:border-white/10 dark:bg-white/[0.03]">
-            <h2 className="text-balance font-display text-3xl font-semibold text-ink-900 dark:text-white sm:text-4xl">
+          <div className={`rounded-3xl border border-ice-200 bg-ice-50 px-8 py-16 text-center ${d("dark:border-white/10 dark:bg-white/[0.03]")}`}>
+            <h2 className={`text-balance font-display text-3xl font-semibold text-ink-900 sm:text-4xl ${d("dark:text-white")}`}>
               Let&apos;s build something people love.
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-base text-ink-600 dark:text-ink-300">
+            <p className={`mx-auto mt-3 max-w-md text-base text-ink-600 ${d("dark:text-ink-300")}`}>
               I&apos;m actively looking for my next Product Manager / Product Owner role. If this
               resonates, say hello.
             </p>
@@ -36,7 +42,7 @@ export function Footer({
                 href={identity.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className={`inline-flex items-center gap-2 rounded-full border border-ink-300 bg-ice-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors hover:border-ink-400 ${d("dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10")}`}
               >
                 <Linkedin className="h-4 w-4" aria-hidden />
                 LinkedIn
@@ -56,11 +62,11 @@ export function Footer({
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub profile"
-              className="transition-colors hover:text-brand-600 dark:hover:text-brand-400"
+              className={`transition-colors hover:text-brand-600 ${d("dark:hover:text-brand-400")}`}
             >
               <Github className="h-4 w-4" aria-hidden />
             </a>
-            <Link href={approachHref} className="transition-colors hover:text-brand-600 dark:hover:text-brand-400">
+            <Link href={approachHref} className={`transition-colors hover:text-brand-600 ${d("dark:hover:text-brand-400")}`}>
               Delivery approach
             </Link>
             {showToolLine && <span>Built with Claude Code</span>}
