@@ -231,7 +231,7 @@ export const opencam: CaseFile = {
       links: [
         {
           label: "Open the retrospective MVP v1 PRD - problem, scope, requirements and acceptance criteria, reconstructed from delivery evidence",
-          href: "https://github.com/ShamikM88/open-cam-framework/blob/main/docs/mvp-v1-prd.md",
+          href: "https://github.com/ShamikM88/open-cam-framework/wiki/mvp-v1-prd",
         },
       ],
       lanes: src.scope.lanes.map((lane) => ({
