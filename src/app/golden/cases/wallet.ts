@@ -37,13 +37,13 @@ const stages: Stage[] = [
     headline: "Validate each migration wave in pre-production before it reaches cardholders.",
     points: [
       "Validation came before production, for every wave of the card migration.",
-      "Cross-cutting work went through shared epics across the two squads, not a merged backlog.",
+      "Cross-cutting work went through shared epics across the two scrum teams, not a merged backlog.",
     ],
   },
   {
     key: "execution",
     label: "Execution",
-    headline: "Two squads, two boards, one synchronised contract.",
+    headline: "Two scrum teams, two boards, one synchronised contract.",
     points: [
       "Separate Jira boards for the Google Pay and Samsung Pay component teams.",
       "Specification changes documented in Jira under the relevant epic, with every change logged in a tracker.",
@@ -71,7 +71,7 @@ const decisions: Decision[] = [
     fullAccount: src.caselets.items[0].body,
   },
   {
-    title: "Two squads, separate boards, shared epics",
+    title: "Two scrum teams, separate boards, shared epics",
     problem: "Two component teams each had their own backlog, but cross-cutting work like the card migration validation had to move together.",
     decision: "Kept separate Jira boards and synchronised cross-cutting initiatives through shared epics, rather than merging the backlogs.",
     result: "The card migration validation ran across both teams' boards without merging their backlogs.",
@@ -143,11 +143,11 @@ export const wallet: CaseFile = {
   receipts: [
     { value: "1st", label: "international issuer live on push provisioning, 2025" },
     { value: "0", label: "cardholder-facing disruption through the migration" },
-    { value: "2", label: "squads on separate boards, synchronised through shared epics" },
+    { value: "2", label: "scrum teams (~6 engineers each) on separate boards, synchronised through shared epics" },
   ],
   ownership: {
     owned: [
-      "Backlog across the Google Pay and Samsung Pay squads",
+      "Backlog across the Google Pay and Samsung Pay scrum teams",
       "B2B integration specifications partners build against",
       "Pre-production validation of every migration wave",
     ],

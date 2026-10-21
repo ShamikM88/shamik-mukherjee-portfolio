@@ -64,7 +64,7 @@ const stages: Stage[] = [
     key: "outcome",
     label: "Outcome",
     headline: "Both paths inside Google's limit, with certification passed.",
-    figure: { value: "275K+", label: "successful autofill requests in 60 days" },
+    figure: { value: "275K+", label: "autofill requests, first 60 days: launch to 100% eligible cardholders" },
     points: [
       "Green 1–1.2s. Yellow 3.5–4s.",
       "$900K settled in 45 days. 275K+ successful requests in 60 days.",
@@ -170,8 +170,8 @@ export const chrome: CaseFile = {
   mode: "Controlled Delivery",
   meta: src.meta,
   receipts: [
-    { value: "$900K", label: "settled in the first 45 days" },
-    { value: "275K+", label: "successful autofill requests in 60 days" },
+    { value: "$900K", label: "settled, first 45 days: launch to 100% eligible cardholders" },
+    { value: "275K+", label: "autofill requests, first 60 days: launch to 100% eligible cardholders" },
     { value: "<5s", label: "Google's latency requirement, met on both paths", note: "green 1–1.2s · yellow 3.5–4s" },
     { value: "0", label: "card details exposed to merchants" },
   ],

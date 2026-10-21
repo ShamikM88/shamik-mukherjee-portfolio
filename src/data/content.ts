@@ -118,7 +118,7 @@ export const about = {
       },
       {
         title: "Owning outcomes in delivery",
-        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build rigorously engineered AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true.",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build rigorously engineered AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true. The scope I'm not yet carrying: setting the roadmap itself, not just delivering against one set by a client PM — and owning the trade-off conversation with commercial stakeholders directly, not through an escalation.",
       },
     ],
   },
@@ -198,7 +198,7 @@ export const about = {
 // provisioning is code-complete but not yet toggled on in production, so it cannot have any
 // international issuer live on it; the old sublabel overclaimed by implying both platforms.
 export const statStrip = [
-  { value: "$900K", label: "Settled Volume in First 45 Days", sublabel: "Chrome Virtual Card Autofill" },
+  { value: "$900K", label: "Settled Volume, First 45 Days: Launch to 100% Eligible Cardholders", sublabel: "Chrome Virtual Card Autofill" },
   { value: "1st", label: "International Issuer Live on Push Provisioning", sublabel: "Google Pay" },
   { value: "15–30 min", label: "Time-to-First-Draft, Down from a Full Business Day", sublabel: "OpenCAM Framework" },
 ];
@@ -347,8 +347,8 @@ export const chromeAutofill = {
   outcomes: {
     heading: "The impact",
     stats: [
-      { value: "$900K", label: "settled volume in the first 45 days" },
-      { value: "275K+", label: "successful autofill requests in the first 60 days" },
+      { value: "$900K", label: "settled volume, first 45 days: launch to 100% eligible cardholders" },
+      { value: "275K+", label: "autofill requests, first 60 days: launch to 100% eligible cardholders" },
       { value: "Zero", label: "actual card details exposed to merchants" },
       { value: "2024", label: "Star Award – Excellence in Delivery" },
     ],
@@ -394,7 +394,7 @@ export const chromeAutofill = {
 // Diners Club/DCI, nor any internal programme name ("Well Managed") is named anywhere below -
 // per the candidate's own explicit instruction, this is told at "the right level of
 // abstraction": a live card portfolio migration and international issuer onboarding, both
-// described functionally. Internal team names (the two squads) are also masked - never named,
+// described functionally. Internal team names (the two scrum teams) are also masked - never named,
 // per the candidate's explicit instruction to "just say two teams." The second international
 // issuer (masked as such) had not yet reached general availability as of this file's last edit
 // (2026-09-22) - re-verify with the candidate before ever describing it as live/launched rather
@@ -412,7 +412,7 @@ export const walletProvisioning = {
   repoLabel: "View Push Provisioning API Docs",
   badges: ["Wallet Provisioning", "International Expansion", "Digital Payments"],
   meta: {
-    role: "Product Owner (Proxy PO → PO) — backlog ownership across two squads, B2B integration spec ownership, card migration validation, international issuer onboarding",
+    role: "Product Owner (Proxy PO → PO) — backlog ownership across two scrum teams, B2B integration spec ownership, card migration validation, international issuer onboarding",
     timeline: "Mid 2022 – present",
     stack: "Legacy On-Prem Applications · Dual-DC Hosting (US) · B2B Integration Specs",
     status: "Active — ongoing, expanding internationally",
@@ -425,14 +425,14 @@ export const walletProvisioning = {
     ],
   },
   scope: {
-    heading: "My scope: two squads, one backlog owner",
+    heading: "My scope: two scrum teams, one backlog owner",
     lanes: [
       {
         label: "Backlog Ownership",
-        sublabel: "Two Squads, Two Boards",
+        sublabel: "Two Scrum Teams, Two Boards",
         tone: "brand-strong" as const,
         items: [
-          "Epics, user stories, and acceptance criteria across two squads' separate backlogs (Google Pay and Samsung Pay component teams).",
+          "Epics, user stories, and acceptance criteria across two scrum teams' separate backlogs (Google Pay and Samsung Pay component teams).",
           "Cross-cutting initiatives — like the card migration validation — synchronized across both teams' boards through shared epics, not a merged backlog.",
         ],
       },
@@ -491,7 +491,7 @@ export const walletProvisioning = {
     heading: "The impact",
     stats: [{ value: "2025", label: "first international issuer onto this integration, live on push provisioning" }],
     bullets: [
-      "Directs two squads' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
+      "Directs two scrum teams' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
       "Digital wallet tokens continue to work for cardholders through a live, large-scale card portfolio migration — validated in pre-production ahead of each production wave, so the migration stays invisible to the wallet experience.",
       "Closed out the legacy tail of a live token repersonalization campaign, coordinating directly with Google over several months to clean up tokens that never migrated.",
       "Proved a specification built for a single issuer could generalize internationally — first market onto this integration live in 2025, a second validated end-to-end in production ahead of general availability.",

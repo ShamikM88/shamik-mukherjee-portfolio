@@ -82,6 +82,10 @@ export default function EvidenceHome() {
   // Grouped by how the work was done, so a recruiter never reads solo projects as employer work.
   const atWork = GOLDEN_CASES.filter((c) => c.group === "work");
   const solo = GOLDEN_CASES.filter((c) => c.group === "lab");
+  // OpenCAM leads the AI-lab group; job-search is a lighter, personal-tooling build, demoted to
+  // a link strip so it doesn't read as a peer of the production payments work above it.
+  const flagship = solo.find((c) => c.slug === "opencam");
+  const alsoBuilt = solo.find((c) => c.slug === "job-search");
 
   return (
     <div className="min-h-screen bg-ice-100 text-ink-900">
@@ -94,7 +98,7 @@ export default function EvidenceHome() {
             I like hard problems.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600">
-            Product leadership at the point where business ambiguity meets engineering reality.
+            Senior Product Owner targeting Product Manager scope — where business ambiguity meets engineering reality.
           </p>
           <p className="mt-4 text-sm font-medium text-ink-500">Digital Payments · AI Engineering · Technical Delivery</p>
           <a
@@ -111,6 +115,7 @@ export default function EvidenceHome() {
           <dl className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
               ["Current", "Product Owner · Digital Payments"],
+              ["Based", "Reading, UK · exploring UK, Germany & Ireland"],
               ["Current scope", "Google Pay · Samsung Pay · card migration"],
               ["Background", "Engineering · MBA (IIT Bombay) · Pre-sales · Delivery"],
               ["AI lab", "Multi-agent AI · governed systems · Claude Code"],
@@ -139,11 +144,25 @@ export default function EvidenceHome() {
 
           <div className="mt-12">
             <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-ink-500">Solo AI lab · directed through Claude Code</h3>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {solo.map((c, i) => (
-                <ShipCard key={c.slug} c={c} index={atWork.length + i} />
-              ))}
-            </div>
+            {/* OpenCAM is the flagship AI-lab project - full width, not split evenly with job-search,
+                which is a lighter personal-tooling build and is demoted to a link strip below. */}
+            {flagship && (
+              <div className="mt-4">
+                <ShipCard c={flagship} index={atWork.length} />
+              </div>
+            )}
+            {alsoBuilt && (
+              <Link
+                href={`/case/${alsoBuilt.slug}`}
+                className="mt-3 flex items-center justify-between rounded-xl border border-dashed border-ice-300 px-4 py-3 text-sm transition-colors hover:border-ice-400 hover:bg-ice-50"
+              >
+                <span>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-ink-500">Also built</span>
+                  <span className="ml-2 font-medium text-ink-900">{alsoBuilt.name}</span>
+                </span>
+                <span className="text-ink-500">process contrast →</span>
+              </Link>
+            )}
           </div>
         </section>
 
