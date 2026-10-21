@@ -513,7 +513,7 @@ export const openCam = {
   repoUrl: "https://github.com/ShamikM88/open-cam-framework",
   badges: ["Multi-Agent AI", "Credit Risk"],
   meta: {
-    role: "Product Manager — strategy, prompt architecture, policy rules; directed Claude Code for all implementation",
+    role: "Product Manager — strategy, prompt architecture, policy rules; Claude Code directed and executed implementation throughout, with ChatGPT and Perplexity recently added for code review, PRs and design analysis",
     timeline: "Sep 2026 · ongoing",
     stack: "Python · Claude Code · Anthropic API · Deterministic policy engine",
     status: "Early-stage · validated with one analyst to date",

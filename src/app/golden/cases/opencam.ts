@@ -201,7 +201,7 @@ export const opencam: CaseFile = {
   ],
   ownership: {
     owned: ["Strategy and product direction", "Prompt architecture", "Policy rules, and the MoSCoW scope calls"],
-    shared: ["Implementation, directed and reviewed through Claude Code"],
+    shared: ["Implementation, directed and executed through Claude Code — ChatGPT and Perplexity recently added for code review, PRs and design analysis"],
     sharedLabel: "AI-executed",
     outOfScope: [
       "AML, sanctions and PEP screening: a separate AML team's system supplies it",
