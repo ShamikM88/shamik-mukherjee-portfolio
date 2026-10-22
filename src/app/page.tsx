@@ -115,7 +115,7 @@ export default function EvidenceHome() {
           <dl className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
               ["Current", "Product Owner · Digital Payments"],
-              ["Based", "Reading, UK · exploring UK, Germany & Ireland"],
+              ["Based", "Reading, UK · right to work (UK) · Chancenkarte in progress (DE) · sponsorship sought (IE)"],
               ["Current scope", "Google Pay · Samsung Pay · card migration"],
               ["Background", "Engineering · MBA (IIT Bombay) · Pre-sales · Delivery"],
               ["AI lab", "Multi-agent AI · governed systems · Claude Code"],

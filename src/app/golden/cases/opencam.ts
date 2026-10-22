@@ -67,7 +67,7 @@ const stages: Stage[] = [
     key: "outcome",
     label: "Outcome",
     headline: "The DSCR error was caught before it could reach committee.",
-    figure: { value: liveTestCount, label: "passing tests, up from 188 at MVP" },
+    figure: { value: liveTestCount, label: "passing tests, up from 188 at MVP — spanning unit, policy-engine and prompt-regression tests" },
     points: [
       "Trust turned out to be a product feature: code-level verification, not model judgment, is what makes the loop trustworthy.",
       "Real usage surfaced the two highest-value roadmap items faster than the original audit backlog did.",
@@ -285,7 +285,7 @@ export const opencam: CaseFile = {
   proof: {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
     tiles: [
-      { value: liveTestCount, label: "passing tests, up from 188 at MVP" },
+      { value: liveTestCount, label: "passing tests, up from 188 at MVP — spanning unit, policy-engine and prompt-regression tests" },
       { value: "0", label: "financial figures the model is allowed to compute itself" },
       { value: "0 → undefined", label: "the DSCR error, caught before committee" },
       { value: "1", label: "analyst validated to date: early-stage, not yet at scale" },

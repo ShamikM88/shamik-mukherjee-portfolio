@@ -68,7 +68,7 @@ export const about = {
       subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
       description: "Moved onsite to the UK, then into the Product Owner role outright.",
       highlights: [
-        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Star Award – Excellence in Delivery (2024)",
+        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Cognizant Star Award – Excellence in Delivery (2024)",
         "Now leading Google Pay & Samsung Pay wallet-provisioning for a card migration programme",
       ],
     },
@@ -81,7 +81,7 @@ export const about = {
       highlights: [
         "Led a 10-engineer QA team through a major network upgrade, including new tokenisation capabilities",
         "Owned the full bid lifecycle — RFP/RFI to commercial modelling — across banking & financial services",
-        "Won proposals totalling >$100M TCV across DevOps, test automation, and QE programmes",
+        "Won proposals totalling >$100M TCV across DevOps, test automation, and QE programmes — a mix of single-tower QA proposals and integrated multi-tower bids spanning dev, testing, and support",
       ],
     },
     {
@@ -350,7 +350,7 @@ export const chromeAutofill = {
       { value: "$900K", label: "settled volume, first 45 days: launch to 100% eligible cardholders" },
       { value: "275K+", label: "autofill requests, first 60 days: launch to 100% eligible cardholders" },
       { value: "Zero", label: "actual card details exposed to merchants" },
-      { value: "2024", label: "Star Award – Excellence in Delivery" },
+      { value: "2024", label: "Cognizant Star Award – Excellence in Delivery" },
     ],
     bullets: [
       "Successfully delivered the retrieval flow to production in November 2024.",
@@ -492,6 +492,7 @@ export const walletProvisioning = {
     stats: [{ value: "2025", label: "first international issuer onto this integration, live on push provisioning" }],
     bullets: [
       "Directs two scrum teams' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
+      "This integration has been in production 8–12 years; the measure of success here isn't adoption, it's that card-network-scale migrations and new issuer onboarding keep landing with zero cardholder-facing disruption, release after release.",
       "Digital wallet tokens continue to work for cardholders through a live, large-scale card portfolio migration — validated in pre-production ahead of each production wave, so the migration stays invisible to the wallet experience.",
       "Closed out the legacy tail of a live token repersonalization campaign, coordinating directly with Google over several months to clean up tokens that never migrated.",
       "Proved a specification built for a single issuer could generalize internationally — first market onto this integration live in 2025, a second validated end-to-end in production ahead of general availability.",

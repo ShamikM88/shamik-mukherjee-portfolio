@@ -69,7 +69,7 @@ const stages: Stage[] = [
       "Green 1–1.2s. Yellow 3.5–4s.",
       "$900K settled in 45 days. 275K+ successful requests in 60 days.",
       "Sandbox and production certification passed with zero functional defects, against test cases I wrote.",
-      "Star Award – Excellence in Delivery, 2024.",
+      "Cognizant Star Award – Excellence in Delivery, 2024.",
     ],
   },
 ];
@@ -239,7 +239,7 @@ export const chrome: CaseFile = {
       { value: "Zero", label: "functional defects in sandbox and production certification" },
       { value: "1 → 10 → 100%", label: "phased rollout, Google-whitelisted accounts first" },
       { value: "Zero", label: "card details exposed to merchants" },
-      { value: "2024", label: "Star Award – Excellence in Delivery" },
+      { value: "2024", label: "Cognizant Star Award – Excellence in Delivery" },
     ],
   },
   artefacts: {
