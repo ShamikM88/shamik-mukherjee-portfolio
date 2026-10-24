@@ -205,11 +205,6 @@ export const wallet: CaseFile = {
   },
   sources: [
     { label: "Google Push Provisioning API documentation", href: src.repoUrl, note: "the integration partners build against" },
-    {
-      label: "Original long-form case study",
-      href: "/archive/case-studies/wallet-provisioning/",
-      note: "on the live site, unchanged during review",
-    },
   ],
   neighbours: {
     prev: { slug: "chrome", label: "Chrome Virtual Card Autofill" },

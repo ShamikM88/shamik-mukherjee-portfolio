@@ -266,11 +266,6 @@ export const chrome: CaseFile = {
   sources: [
     { label: "Google Virtual Cards v1: API documentation", href: src.repoUrl, note: "the framework this integration implements" },
     { label: "The network's public launch post", href: src.visuals.items[1].sourceUrl, note: "consumer-facing launch announcement" },
-    {
-      label: "Original long-form case study",
-      href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
-      note: "on the live site, unchanged during review",
-    },
   ],
   neighbours: {
     prev: { slug: "job-search", label: "AI Job Search" },

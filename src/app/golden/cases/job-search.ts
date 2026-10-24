@@ -210,7 +210,6 @@ export const jobSearch: CaseFile = {
   sources: [
     { label: "ShamikM88/ai-job-search: the fork", href: src.forkRepoUrl, note: "my commits on top of the base" },
     { label: "MadsLorentzen/ai-job-search: the upstream base", href: src.baseRepoUrl, note: "the framework this extends" },
-    { label: "Original long-form case study", href: "/archive/case-studies/job-search-automation/", note: "on the live site, unchanged during review" },
   ],
   neighbours: {
     prev: { slug: "opencam", label: "OpenCAM" },
