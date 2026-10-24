@@ -35,7 +35,7 @@ const SHIPPED: Entry[] = [
       { label: "EXECUTION", value: "Worked with the fraud team on their APIs; wrote the certification tests myself" },
       { label: "OUTCOME", value: "Yellow 3.5–4s, green 1–1.2s · 275K+ requests · $900K settled in 45 days" },
     ],
-    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
+    href: "/case/chrome/",
   },
   {
     id: "wallet",
@@ -49,7 +49,7 @@ const SHIPPED: Entry[] = [
       { label: "EXECUTION", value: "Token cleanup on a live repersonalization, sequenced by release of value" },
       { label: "OUTCOME", value: "First international issuer live on push provisioning in 2025" },
     ],
-    href: "/archive/case-studies/wallet-provisioning/",
+    href: "/case/wallet/",
   },
   {
     id: "opencam",
@@ -63,7 +63,7 @@ const SHIPPED: Entry[] = [
       { label: "EXECUTION", value: "Independent maker and checker agents; the checker can only downgrade" },
       { label: "OUTCOME", value: "Every figure checked against ground-truth financials within a 0.5% tolerance" },
     ],
-    href: "/archive/case-studies/opencam/",
+    href: "/case/opencam/",
   },
 ];
 
@@ -79,7 +79,7 @@ const CATCH: Entry = {
     { label: "CAUGHT", value: "Found in a codebase audit, before any credit committee" },
     { label: "FIX", value: "DSCR is undefined when there is no debt service, not zero" },
   ],
-  href: "/archive/case-studies/opencam/",
+  href: "/case/opencam/",
 };
 
 const LOG: { ts: string; tag: "DECIDE" | "CATCH"; domain: Entry["domain"]; line: string; href: string }[] = [
@@ -88,28 +88,28 @@ const LOG: { ts: string; tag: "DECIDE" | "CATCH"; domain: Entry["domain"]; line:
     tag: "DECIDE",
     domain: "Payments",
     line: "Built a mock fraud signal to keep delivery moving while a downstream dependency was unresolved.",
-    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
+    href: "/case/chrome/",
   },
   {
     ts: "2024-11",
     tag: "DECIDE",
     domain: "Payments",
     line: "Chased the yellow path from 7–8s to 3.5–4s, inside Google's 5s limit.",
-    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
+    href: "/case/chrome/",
   },
   {
     ts: "2026-09",
     tag: "DECIDE",
     domain: "AI",
     line: "Let the model narrate; let the code compute. Covenants evaluated deterministically.",
-    href: "/archive/case-studies/opencam/",
+    href: "/case/opencam/",
   },
   {
     ts: "2026-09",
     tag: "CATCH",
     domain: "Risk",
     line: "A debt-free company's DSCR computed as 0 instead of undefined, caught before committee.",
-    href: "/archive/case-studies/opencam/",
+    href: "/case/opencam/",
   },
 ];
 
@@ -174,9 +174,9 @@ export function TerminalConsole() {
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           {[
-            { value: "275K+", label: "successful autofill requests in 60 days", href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/", source: "chrome-autofill" },
-            { value: "$900K", label: "settled in the first 45 days", href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/", source: "chrome-autofill" },
-            { value: "<5s", label: "Google's latency SLA, delivered against", href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/", source: "chrome-autofill" },
+            { value: "275K+", label: "successful autofill requests in 60 days", href: "/case/chrome/", source: "chrome-autofill" },
+            { value: "$900K", label: "settled in the first 45 days", href: "/case/chrome/", source: "chrome-autofill" },
+            { value: "<5s", label: "Google's latency SLA, delivered against", href: "/case/chrome/", source: "chrome-autofill" },
           ].map((r) => (
             <Link key={r.label} href={r.href} className="group flex flex-col justify-between rounded-lg border p-5 hover:bg-white/[0.03]" style={{ borderColor: LINE, background: PANEL }}>
               <div>

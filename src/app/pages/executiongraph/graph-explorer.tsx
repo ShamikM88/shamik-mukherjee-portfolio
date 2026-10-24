@@ -22,7 +22,7 @@ const PROJECTS: Project[] = [
     id: "chrome",
     name: "Chrome Virtual Card Autofill",
     domain: "Payments",
-    href: "/archive/case-studies/google-chrome-autofill-virtual-card-number/",
+    href: "/case/chrome/",
     steps: {
       Context: "Google's retrieval flow had a hard 5-second latency limit.",
       Constraint: "The yellow path was running 7-8 seconds, inside a downstream fraud dependency.",
@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     id: "wallet",
     name: "Wallet Provisioning at Scale",
     domain: "Payments",
-    href: "/archive/case-studies/wallet-provisioning/",
+    href: "/case/wallet/",
     steps: {
       Context: "A live card portfolio migration, with wallets that must not notice it.",
       Constraint: "Zero cardholder-facing disruption, across Google Pay and Samsung Pay.",
@@ -49,7 +49,7 @@ const PROJECTS: Project[] = [
     id: "opencam",
     name: "OpenCAM — Maker-Checker Framework",
     domain: "AI",
-    href: "/archive/case-studies/opencam/",
+    href: "/case/opencam/",
     steps: {
       Context: "Credit memos drafted by an LLM were fast, but no check stopped a wrong number reaching committee.",
       Constraint: "A model can narrate a figure. It must never be the thing that produces one.",
