@@ -304,7 +304,6 @@ export const opencam: CaseFile = {
   },
   sources: [
     { label: "OpenCAM source repository", href: src.repoUrl, note: "the code, tests and merged pull requests" },
-    { label: "Original long-form case study", href: "/archive/case-studies/opencam/", note: "on the live site, unchanged during review" },
   ],
   neighbours: {
     prev: { slug: "wallet", label: "Wallet Provisioning" },
