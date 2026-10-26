@@ -11,7 +11,7 @@ const full = (i: number) => src.decisions.items[i].body;
 // reads badges/test-count.json off the default branch, same as the long-form case study page.
 // Wired to the component (not a static string) because the static "439+" this replaced had
 // already drifted to 1870 by the time it was caught - see docs/decisions.md D14.
-const liveTestCount = createElement(LiveTestCount, { repo: "ShamikM88/open-cam-framework", fallback: 2970 });
+const liveTestCount = createElement(LiveTestCount, { repo: "ShamikM88/open-cam-framework", fallback: 4960 });
 
 const toneOf = (t: "brand-strong" | "blue" | "ember" | "muted") => (t === "brand-strong" ? "brand" : t);
 
@@ -28,7 +28,7 @@ const stages: Stage[] = [
   {
     key: "constraint",
     label: "Constraint",
-    headline: "A model can narrate a figure. It must never produce one.",
+    headline: "A model can narrate a figure. It isn't the source of one.",
     points: [
       "Every covenant is evaluated against a ratio computed from raw financials, not drafted by the model.",
       "The model writes the narrative around figures that code has already computed.",
@@ -49,7 +49,7 @@ const stages: Stage[] = [
     label: "Decision",
     headline: "Covenants evaluated deterministically: PASS, FAIL or UNRESOLVABLE, never silently defaulted.",
     points: [
-      "The model can narrate a number, but it can never produce one.",
+      "The model can narrate a number, but it isn't the source of one.",
       "The fix covered a second, near-identical bug where Provisions and Other Long-Term Liabilities never reached total liabilities.",
     ],
   },
@@ -57,7 +57,7 @@ const stages: Stage[] = [
     key: "execution",
     label: "Execution",
     headline: "Independent maker and checker agents, with the checker able only to downgrade a verdict.",
-    figure: { value: "20 PRs", label: "merged in a single day to ship the Maker-Checker loop" },
+    figure: { value: "20 PRs", label: "merged over one weekend to ship the Maker-Checker loop" },
     points: [
       "The Underwriter drafts and the Risk Reviewer audits, with no shared reasoning context between them.",
       "A gap-analysis audit of 19 further issues was merged in risk-weighted severity order.",
@@ -88,7 +88,7 @@ const decisions: Decision[] = [
     title: "The model narrates; code computes",
     problem: "An LLM drafting the memo could state a figure that no check had ever computed. A debt-free DSCR was silently defaulted, and a second bug dropped liabilities from the total.",
     decision: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted.",
-    why: "The model can narrate a number, but it can never produce one.",
+    why: "The model can narrate a number, but it isn't the source of one.",
     result: "The debt-free DSCR bug is fixed for good, along with the near-identical liabilities bug.",
     fullAccount: full(1),
   },
@@ -176,12 +176,14 @@ const technical: TechnicalPanel[] = [
 ];
 
 const artefactWhy = [
-  "It shows the change discipline: every change went through a pull request, none pushed straight to main.",
+  "It shows the change discipline: since the first week, every change has gone through a pull request.",
   "The 19-issue audit tracked as real issues, the record behind the risk-sequenced fixes.",
   "Feature requests that came from real usage, not a backlog guess.",
   "Every ratio traceable to a raw line item. This is the reviewer's check on a figure.",
   "The grounding note says which inputs came from the relationship team and were not verified.",
   "LGD and coverage computed from disclosed inputs, not typed in by hand.",
+  "Work is triaged by status, not just listed: items waiting on a decision or review are held visibly apart from work that is simply not started.",
+  "The reasoning is written down where a reader can check it: design decisions, the financial model, how far a generated memo can be trusted, and what must never be committed.",
 ];
 
 export const opencam: CaseFile = {
@@ -212,7 +214,7 @@ export const opencam: CaseFile = {
   stages,
   initial: "constraint",
   inspect: {
-    constraint: "A model can narrate a figure. It must never produce one.",
+    constraint: "A model can narrate a figure. It isn't the source of one.",
     decision: "Covenants evaluated deterministically: PASS, FAIL or UNRESOLVABLE.",
     outcome: "The DSCR error was caught before it could reach committee.",
   },
@@ -286,7 +288,7 @@ export const opencam: CaseFile = {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
     tiles: [
       { value: liveTestCount, label: "passing tests, up from 188 at MVP — spanning unit, policy-engine and prompt-regression tests" },
-      { value: "0", label: "financial figures the model is allowed to compute itself" },
+      { value: "Code", label: "computes every ratio and covenant result. Collateral exposure is the exception (#266)" },
       { value: "0 → undefined", label: "the DSCR error, caught before committee" },
       { value: "1", label: "analyst validated to date: early-stage, not yet at scale" },
     ],
@@ -304,6 +306,7 @@ export const opencam: CaseFile = {
   },
   sources: [
     { label: "OpenCAM source repository", href: src.repoUrl, note: "the code, tests and merged pull requests" },
+    { label: "OpenCAM wiki", href: `${src.repoUrl}/wiki`, note: "26 pages of documentation, including the reconstructed MVP v1 requirements document" },
   ],
   neighbours: {
     prev: { slug: "wallet", label: "Wallet Provisioning" },

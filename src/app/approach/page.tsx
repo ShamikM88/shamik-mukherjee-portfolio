@@ -58,7 +58,7 @@ export default function ApproachPage() {
                   {s.label.startsWith("Issues") ? (
                     <LiveGapAnalysisCount repo="ShamikM88/open-cam-framework" fallback={33} />
                   ) : s.label.startsWith("Regression-Gated") ? (
-                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={2970} />
+                    <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={4960} />
                   ) : (
                     s.value
                   )}

@@ -88,7 +88,7 @@ export default function OpenCamPage() {
             // Test count has no GitHub API, so it's fetched from badges/test-count.json
             // (code-enforced against real pytest output, PR #118) instead of search API.
             outcomeStatOverrides={{
-              1: <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={2970} />,
+              1: <LiveTestCount repo="ShamikM88/open-cam-framework" fallback={4960} />,
             }}
           />
         </div>

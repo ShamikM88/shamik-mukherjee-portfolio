@@ -756,7 +756,7 @@ export const openCam = {
       },
       {
         title: "Enterprise adoption",
-        body: "Because it runs locally and writes nothing but git-ignored files, an analyst or a bank could use it without sending a single confidential figure to a third-party service, and without IT needing to approve a new vendor integration into core banking systems.",
+        body: "Because it runs locally and writes nothing but git-ignored files, no deal data sits on a platform I operate. The model still sees whatever you give it, so check your own policy before using real deal data.",
       },
     ],
   },
@@ -768,8 +768,8 @@ export const openCam = {
         body: "Modeled the primary persona directly on my wife's own day as a credit analyst — the actual friction was manual spreading and narrative drafting under deadline pressure, not a problem I picked because it sounded interesting.",
       },
       {
-        title: "Shipped the Maker-Checker loop in one day",
-        body: "Scoped the MVP tightly — 20 merged PRs in a single day — around one correct, end-to-end loop before going deep on any single feature: template system, spreading engine, .docx export, and the governance loop itself.",
+        title: "Shipped the Maker-Checker loop in one weekend",
+        body: "Scoped the MVP tightly — 20 merged PRs over one weekend — around one correct, end-to-end loop before going deep on any single feature: template system, spreading engine, .docx export, and the governance loop itself.",
       },
       {
         title: "Ran a dedicated gap-analysis audit, sequenced by risk",
@@ -790,7 +790,7 @@ export const openCam = {
       },
       {
         title: "The model narrates; code computes",
-        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good, plus a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities. The model can narrate a number, but it can never produce one.",
+        body: "Every covenant is evaluated PASS / FAIL / UNRESOLVABLE against a ratio computed deterministically, never silently defaulted. That's what fixes the debt-free-DSCR bug for good, plus a second, near-identical bug where Provisions and Other Long-Term Liabilities silently never reached total_liabilities. The model can narrate a number, but it isn't the source of one.",
       },
       {
         title: "Shipped the bounded piece, flagged the rest",
@@ -823,7 +823,7 @@ export const openCam = {
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
       { value: "2,970+", label: "passing tests (up from 188 at MVP)" },
-      { value: "0", label: "financial figures the model is allowed to compute itself" },
+      { value: "Code", label: "computes every ratio and covenant result. Collateral exposure is the exception (#266)" },
     ],
     bullets: [
       "Trust turned out to be a product feature: the debt-free-DSCR catch is concrete evidence that code-level verification, not model judgment, is what makes the loop actually trustworthy.",
@@ -835,7 +835,7 @@ export const openCam = {
     items: [
       {
         caption:
-          "Merged pull requests on GitHub, from earlier in the build — every change reviewed before merge, none pushed direct to main. The live count above has grown since this snapshot; the discipline it shows hasn't.",
+          "Merged pull requests on GitHub, from earlier in the build — since the first week, every change has gone through a pull request. The live count above has grown since this snapshot; the discipline it shows hasn't.",
         src: "/build-shots/opencam-prs.png",
         alt: "Merged pull requests on the open-cam-framework GitHub repository",
       },
@@ -865,6 +865,18 @@ export const openCam = {
         caption: "The Collateral section's LGD/coverage workout — average vs. max LGD, cover %, all computed from the same disclosed inputs. Synthetic demo data.",
         src: "/build-shots/opencam-cam-collateral-demo.png",
         alt: "CAM Collateral section showing LGD and coverage calculations — synthetic demo data",
+      },
+      {
+        caption:
+          "The backlog as a GitHub Projects board, as of 26 October 2026: 155 delivered, 13 not started, 9 blocked or on hold waiting on a decision or review, 2 in progress. The board itself is private; the issues it tracks are public on the repository.",
+        src: "/build-shots/opencam-kanban-board.png",
+        alt: "GitHub Projects kanban board for the OpenCAM Framework backlog, with columns for Backlog, Blocked or on hold, In progress, In review and Done",
+      },
+      {
+        caption:
+          "The repository's wiki: 26 pages published from the docs folder, covering architecture, the financial model and policy engine, AI assurance, testing and CI, security and confidentiality, and the reconstructed MVP v1 requirements document.",
+        src: "/build-shots/opencam-wiki-home.png",
+        alt: "Home page of the OpenCAM Framework wiki, listing the documentation pages",
       },
     ],
   },
