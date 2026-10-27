@@ -823,7 +823,7 @@ export const openCam = {
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
       { value: "2,970+", label: "passing tests (up from 188 at MVP)" },
-      { value: "Code", label: "computes every ratio and covenant result. Collateral exposure is the exception (#266)" },
+      { value: "Code", label: "computes the ratios and covenant results. Collateral exposure is the exception (#266)" },
     ],
     bullets: [
       "Trust turned out to be a product feature: the debt-free-DSCR catch is concrete evidence that code-level verification, not model judgment, is what makes the loop actually trustworthy.",

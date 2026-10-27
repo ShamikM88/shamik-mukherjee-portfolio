@@ -288,7 +288,7 @@ export const opencam: CaseFile = {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
     tiles: [
       { value: liveTestCount, label: "passing tests, up from 188 at MVP — spanning unit, policy-engine and prompt-regression tests" },
-      { value: "Code", label: "computes every ratio and covenant result. Collateral exposure is the exception (#266)" },
+      { value: "Code", label: "computes the ratios and covenant results. Collateral exposure is the exception (#266)" },
       { value: "0 → undefined", label: "the DSCR error, caught before committee" },
       { value: "1", label: "analyst validated to date: early-stage, not yet at scale" },
     ],
