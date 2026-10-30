@@ -203,7 +203,7 @@ export const opencam: CaseFile = {
   ],
   ownership: {
     owned: ["Strategy and product direction", "Prompt architecture", "Policy rules, and the MoSCoW scope calls"],
-    shared: ["Implementation, directed and executed through Claude Code — ChatGPT and Perplexity recently added for code review, PRs and design analysis"],
+    shared: ["Implementation, directed and executed through Claude Code, with ChatGPT and Perplexity on free tiers raising and reviewing PRs, all logged on one public issue (#245)"],
     sharedLabel: "AI-executed",
     outOfScope: [
       "AML, sanctions and PEP screening: a separate AML team's system supplies it",
@@ -293,6 +293,37 @@ export const opencam: CaseFile = {
       { value: "1", label: "analyst validated to date: early-stage, not yet at scale" },
     ],
   },
+  beforeArtefacts: [
+    {
+      kind: "cards",
+      eyebrow: "How it is built",
+      heading: "Three AI tools, one repo, one human",
+      intro:
+        "By mid-October the backlog was growing faster than one paid Claude plan could clear it. ChatGPT and Perplexity both have free tiers, so I treated them as spare capacity. The catch was trust: if I could not tell who did what, I could not rely on any of it. Figures are as of 30 October 2026.",
+      cards: [
+        {
+          title: "The ticket is the spec",
+          body: "Every task is a story with acceptance criteria, a scope, files that are off limits, and a point where the agent stops and asks.",
+        },
+        {
+          title: "Claim, status, outcome",
+          body: "Each agent posts a CLAIM before it starts, a STATUS as it goes and an OUTCOME at the end, with its product named in the header. All three post from one GitHub account, so that header is the only way to tell them apart.",
+        },
+        {
+          title: "Say what you can run",
+          body: "Each agent states what it can actually execute and marks every claim verified or not. ChatGPT could read the repo through GitHub but could not clone it or run the tests, and said so in over a hundred log entries. The automated tests were its only proof.",
+        },
+        {
+          title: "Build and review stay separate",
+          body: "The free tools raised PRs and a one-off Claude credit paid for reviewing them. A builder may review its own PR in a fresh session, but that is labelled lower independence. Of the 170 PRs discussed in the log, 148 have merged.",
+        },
+        {
+          title: "Learned, not designed up front",
+          body: "In the first six days (12 to 17 October), 102 of 104 log entries did not name the tool that wrote them and none carried a [V] verified marker. In the last six (25 to 30 October), all 245 named it and 190 had one.",
+        },
+      ],
+    },
+  ],
   artefacts: {
     heading: src.visuals.heading,
     items: src.visuals.items.map((v, i) => ({
@@ -306,6 +337,7 @@ export const opencam: CaseFile = {
   },
   sources: [
     { label: "OpenCAM source repository", href: src.repoUrl, note: "the code, tests and merged pull requests" },
+    { label: "Agent log (issue #245)", href: `${src.repoUrl}/issues/245`, note: "741 comments from 12 to 30 October 2026: every agent's claim, status and outcome, in public" },
     { label: "OpenCAM wiki", href: `${src.repoUrl}/wiki`, note: "26 pages of documentation, including the reconstructed MVP v1 requirements document" },
   ],
   neighbours: {

@@ -417,6 +417,8 @@ export function GoldenCase({ c, hero }: { c: CaseFile; hero?: ReactNode }) {
 
         <ProofBand proof={c.proof} />
 
+        {c.beforeArtefacts?.map((s, i) => renderSection(s, 1000 + i))}
+
         {c.artefacts && (
           <section className={SECTION}>
             <p className={EYEBROW}>{c.artefacts.heading}</p>

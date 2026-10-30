@@ -137,6 +137,8 @@ export type CaseFile = {
   technical: { heading: string; panels: TechnicalPanel[] };
   impact: { heading: string; bullets: string[] };
   proof: { chain: string[]; tiles: { value: ReactNode; label: string }[] };
+  // Optional sections rendered after the proof band and before the artefacts.
+  beforeArtefacts?: Section[];
   artefacts?: { heading: string; items: Artefact[] };
   sources: { label: string; href: string; note: string }[];
   neighbours: { prev: { slug: string; label: string }; next: { slug: string; label: string } };
