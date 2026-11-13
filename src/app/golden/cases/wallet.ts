@@ -52,10 +52,10 @@ const stages: Stage[] = [
   {
     key: "outcome",
     label: "Outcome",
-    headline: "First international issuer live in 2025. Passed an audit on spec-change traceability.",
-    figure: { value: "2025", label: "first international issuer live on push provisioning" },
+    headline: "Two international issuers live, in 2025 and 2026. Passed an audit on spec-change traceability.",
+    figure: { value: "2", label: "international issuers live on push provisioning" },
     points: [
-      "A second international issuer is onboarding, validated end-to-end in production ahead of general availability.",
+      "The second international issuer went live in 2026, validated end-to-end in production ahead of general availability.",
       "Cardholders kept their wallet tokens through a live, large-scale migration.",
     ],
   },
@@ -82,7 +82,7 @@ const decisions: Decision[] = [
     problem: "A specification built for one issuer, including one country's name and address formats, had to work for international issuers.",
     decision: "Relaxed the validation enough to fit each international issuer, without loosening it so far it stopped catching bad data.",
     why: "Loosening it far enough to stop catching bad data would defeat the point of a single rigorous standard.",
-    result: "The first international issuer went live in 2025. A second is onboarding, validated end-to-end in production ahead of general availability.",
+    result: "The first international issuer went live in 2025, and a second followed in 2026.",
     fullAccount: src.caselets.items[2].body,
   },
   {
@@ -141,7 +141,7 @@ export const wallet: CaseFile = {
   mode: "Controlled Delivery",
   meta: src.meta,
   receipts: [
-    { value: "1st", label: "international issuer live on push provisioning, 2025" },
+    { value: "2", label: "international issuers live on push provisioning, 2025 and 2026" },
     { value: "0", label: "cardholder-facing disruption through the migration" },
     { value: "2", label: "scrum teams (~6 engineers each) on separate boards, synchronised through shared epics" },
   ],
@@ -164,7 +164,7 @@ export const wallet: CaseFile = {
   inspect: {
     constraint: "Zero cardholder-facing disruption, across two wallets.",
     decision: "Validate each migration wave in pre-production before it reaches cardholders.",
-    outcome: "First international issuer live in 2025. Passed an audit on spec-change traceability.",
+    outcome: "Two international issuers live, in 2025 and 2026. Passed an audit on spec-change traceability.",
   },
   sections: [
     {
@@ -197,7 +197,7 @@ export const wallet: CaseFile = {
   proof: {
     chain: ["claim", "case", "decision", "implementation", "test", "outcome"],
     tiles: [
-      { value: "2025", label: "first international issuer live on push provisioning" },
+      { value: "2", label: "international issuers live on push provisioning, 2025 and 2026" },
       { value: "Zero", label: "cardholder-facing disruption through the migration" },
       { value: "Passed", label: "a recent audit on full spec-change traceability" },
       { value: "Closed", label: "the legacy token tail, coordinated with Google over several months" },

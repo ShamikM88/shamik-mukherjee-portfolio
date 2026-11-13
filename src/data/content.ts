@@ -193,13 +193,15 @@ export const about = {
 // confirmed by candidate 2026-09-22 - because this strip's own bar (impact, not an engineering
 // throughput count) is exactly what a raw request count fails; 275K+ still appears on the case
 // study page itself alongside this figure, just not promoted to this top-level highlight.
-// "1st International Issuer" sublabel is Google Pay only, not "Google Pay & Samsung Pay" - the
+// "International Issuers" sublabel is Google Pay only, not "Google Pay & Samsung Pay" - the
 // wallet-provisioning case study's Out of Scope is explicit that Samsung Wallet push
 // provisioning is code-complete but not yet toggled on in production, so it cannot have any
 // international issuer live on it; the old sublabel overclaimed by implying both platforms.
+// Value moved from "1st" to "2" on 2026-11-13, when the candidate confirmed the second
+// international issuer is live on Google Pay push provisioning (2025 and 2026 go-lives).
 export const statStrip = [
   { value: "$900K", label: "Settled Volume, First 45 Days: Launch to 100% Eligible Cardholders", sublabel: "Chrome Virtual Card Autofill" },
-  { value: "1st", label: "International Issuer Live on Push Provisioning", sublabel: "Google Pay" },
+  { value: "2", label: "International Issuers Live on Push Provisioning", sublabel: "Google Pay" },
   { value: "15–30 min", label: "Time-to-First-Draft, Down from a Full Business Day", sublabel: "OpenCAM Framework" },
 ];
 
@@ -396,9 +398,8 @@ export const chromeAutofill = {
 // abstraction": a live card portfolio migration and international issuer onboarding, both
 // described functionally. Internal team names (the two scrum teams) are also masked - never named,
 // per the candidate's explicit instruction to "just say two teams." The second international
-// issuer (masked as such) had not yet reached general availability as of this file's last edit
-// (2026-09-22) - re-verify with the candidate before ever describing it as live/launched rather
-// than "currently onboarding."
+// issuer (masked as such - never name it, its network or its country) is live: the candidate
+// confirmed on 2026-11-13 that it went live in 2026, so both issuers are described as live.
 export const walletProvisioning = {
   title: "Google Pay & Samsung Pay — Wallet Provisioning at Scale",
   shortTitle: "Wallet Provisioning at Scale",
@@ -407,7 +408,7 @@ export const walletProvisioning = {
   // Added per a VP-of-Product review (2026-09-23) - see chromeAutofill's takeaway for the
   // same rationale.
   takeaway:
-    "First international issuer live on push provisioning in 2025, with zero cardholder-facing disruption through an ongoing, large-scale card portfolio migration.",
+    "Two international issuers live on push provisioning, in 2025 and 2026, with zero cardholder-facing disruption through an ongoing, large-scale card portfolio migration.",
   repoUrl: "https://developers.google.com/pay/issuers/apis/push-provisioning/android",
   repoLabel: "View Push Provisioning API Docs",
   badges: ["Wallet Provisioning", "International Expansion", "Digital Payments"],
@@ -479,7 +480,7 @@ export const walletProvisioning = {
       },
       {
         title: "Internationalizing a single-issuer spec",
-        body: "Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer onto this integration went live in 2025; a second is currently onboarding, validated end-to-end in production ahead of general availability.",
+        body: "Our B2B integration specification for Google Wallet push provisioning was written with one primary issuer in mind, including validation rules built around a single country's cardholder name and address formats. Bringing international franchise issuers onto the same capability meant relaxing that validation without loosening it so far it stopped catching bad data. The first international issuer onto this integration went live in 2025, and a second followed in 2026, validated end-to-end in production ahead of general availability.",
       },
       {
         title: "Making a legacy, partner-published spec audit-ready",
@@ -489,7 +490,7 @@ export const walletProvisioning = {
   },
   outcomes: {
     heading: "The impact",
-    stats: [{ value: "2025", label: "first international issuer onto this integration, live on push provisioning" }],
+    stats: [{ value: "2", label: "international issuers onto this integration, live on push provisioning (2025 and 2026)" }],
     bullets: [
       "Directs two scrum teams' separate backlogs (Google Pay and Samsung Pay component teams) as independent Jira boards, synchronizing cross-cutting initiatives — like the card migration validation — through shared epics rather than merging them.",
       "This integration has been in production 8–12 years; the measure of success here isn't adoption, it's that card-network-scale migrations and new issuer onboarding keep landing with zero cardholder-facing disruption, release after release.",
