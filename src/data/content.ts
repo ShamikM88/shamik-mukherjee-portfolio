@@ -80,7 +80,7 @@ export const about = {
       subtitle: "Onsite Delivery Manager & Proxy PO → Product Owner",
       description: "Moved onsite to the UK, then into the Product Owner role outright.",
       highlights: [
-        "Virtual Card autofill retrieval flow: 275,000+ requests in 60 days; Cognizant Star Award – Excellence in Delivery (2024)",
+        "Virtual Card autofill retrieval flow: 276,000+ requests in 60 days; Cognizant Star Award – Excellence in Delivery (2024)",
         "Now leading Google Pay & Samsung Pay wallet-provisioning for a card migration programme",
       ],
     },
@@ -130,7 +130,7 @@ export const about = {
       },
       {
         title: "Owning outcomes in delivery",
-        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 275,000+ requests in its first 60 days, and now directing Claude Code to build rigorously engineered AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true. The scope I'm not yet carrying: setting the roadmap itself, not just delivering against one set by a client PM — and owning the trade-off conversation with commercial stakeholders directly, not through an escalation.",
+        body: "Returning to delivery as a Product Owner made me accountable for outcomes, not just proposals — shipping the retrieval flow behind a virtual-card autofill feature to 276,000+ requests in its first 60 days, and now directing Claude Code to build rigorously engineered AI systems on the side. The discipline stays the same either way: define what \"done\" means, and don't sign off until it's actually true. The scope I'm not yet carrying: setting the roadmap itself, not just delivering against one set by a client PM — and owning the trade-off conversation with commercial stakeholders directly, not through an escalation.",
       },
     ],
   },
@@ -221,7 +221,7 @@ export const chromeAutofill = {
   title: "Virtual Card Autofill for Google Chrome — Retrieval Flow",
   shortTitle: "Chrome Virtual Card Autofill",
   subtitle:
-    "Owned the technical delivery for the retrieval flow of a major Virtual Card integration with Google Chrome, translating Google's API architecture into an enterprise delivery programme that processed 275,000+ requests in its first 60 days.",
+    "Owned the technical delivery for the retrieval flow of a major Virtual Card integration with Google Chrome, translating Google's API architecture into an enterprise delivery programme that processed 276,000+ requests in its first 60 days.",
   // Added per a VP-of-Product review (2026-09-23) - gives the reader a headline outcome before
   // the Problem/Scope/Process deep-dive, instead of making them read to the bottom for it.
   takeaway:
@@ -835,7 +835,7 @@ export const openCam = {
     heading: "What changed",
     stats: [
       { value: "15–30 min", label: "time-to-first-draft target, from ~1 business day" },
-      { value: "2,970+", label: "passing tests (up from 188 at MVP)" },
+      { value: "6,000+", label: "passing tests (up from 188 at MVP)" },
       { value: "Code", label: "computes the ratios and covenant results. Collateral exposure is the exception (#266)" },
     ],
     bullets: [
@@ -1039,7 +1039,7 @@ export const governanceComparison = {
   // Numbers above the fold, matching the stat-forward pattern used everywhere else on the
   // site - this page previously had zero figures until a full scroll past the intro.
   heroStats: [
-    { value: "2,970+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
+    { value: "6,000+", label: "Regression-Gated Tests", sublabel: "Controlled · OpenCAM" },
     { value: "19", label: "Issues Surfaced by Gap-Analysis Audits", sublabel: "Controlled · OpenCAM" },
     { value: "Same-Day", label: "Fix Shipped, No PR Queue", sublabel: "Lightweight · Job Search" },
   ],
@@ -1052,7 +1052,7 @@ export const governanceComparison = {
       dimensions: [
         { label: "Commit Policy", value: "100% PR-based, zero direct-to-main" },
         { label: "Issue Tracking", value: "Formal GitHub Issues (19-issue gap audit)" },
-        { label: "QA Model", value: "2,970+ automated tests, regression-gated" },
+        { label: "QA Model", value: "6,000+ automated tests, regression-gated" },
         { label: "Target Audience", value: "Other institutions (forkable, not yet forked)" },
         { label: "Risk Profile", value: "Production-adjacent, third-party dependent" },
       ],
@@ -1084,7 +1084,7 @@ export const governanceComparison = {
       },
       {
         question: "What's the cheapest honest proof?",
-        answer: "For OpenCAM, that meant 2,970+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
+        answer: "For OpenCAM, that meant 6,000+ regression-gated tests and an independent Maker-Checker loop before anything reached a real analyst. For personal tooling, the test was simpler: does it work on my own real job search, today? When a scraping bug let a rejected role resurface under a different ID, catching it in daily use and shipping the fix that same day was proof enough.",
       },
     ],
   },
