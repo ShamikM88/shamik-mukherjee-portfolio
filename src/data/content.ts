@@ -24,7 +24,7 @@ export const identity = {
   // leveling/positioning to a VP audience. Restated as a stated trajectory instead, and now
   // matches the "I'm exploring Product Manager and Product Owner roles" framing already used
   // on About's Next Chapter section - per a VP-of-Product review (2026-09-23).
-  headline: "Senior Product Owner — targeting Product Manager scope",
+  headline: "Senior Product Owner → Product Manager | Digital Payments, Platform Integrations & Governed AI",
   currentRole: "Product Owner",
   currentEmployer: "Cognizant Technology Solutions",
   domainLine: "Digital Payments · Tokenization · Wallet Integrations (Google Pay, Samsung Pay) · Agile Delivery",

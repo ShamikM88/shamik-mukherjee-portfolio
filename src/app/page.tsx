@@ -98,7 +98,7 @@ export default function EvidenceHome() {
             I like hard problems.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600">
-            Senior Product Owner targeting Product Manager scope — where business ambiguity meets engineering reality.
+            Senior Product Owner → Product Manager — where business ambiguity meets engineering reality.
           </p>
           <p className="mt-4 text-sm font-medium text-ink-500">Digital Payments · AI Engineering · Technical Delivery</p>
           <a
@@ -115,7 +115,7 @@ export default function EvidenceHome() {
           <dl className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
               ["Current", "Product Owner · Digital Payments"],
-              ["Based", "Reading, UK · right to work (UK) · Chancenkarte in progress (DE) · sponsorship sought (IE)"],
+              ["Based", "Reading, UK · right to work (UK) · open to relocation (DE, IE) with employer sponsorship"],
               ["Current scope", "Google Pay · Samsung Pay · card migration"],
               ["Background", "Engineering · MBA (IIT Bombay) · Pre-sales · Delivery"],
               ["AI lab", "Multi-agent AI · governed systems · Claude Code"],
