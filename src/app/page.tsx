@@ -119,12 +119,35 @@ export default function EvidenceHome() {
               ["Current scope", "Google Pay · Samsung Pay · card migration"],
               ["Background", "Engineering · MBA (IIT Bombay) · Pre-sales · Delivery"],
               ["AI lab", "Multi-agent AI · governed systems · Claude Code"],
-            ].map(([k, v]) => (
-              <div key={k} className={CARD}>
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">{k}</dt>
-                <dd className="mt-2 font-display text-base font-semibold leading-snug text-ink-900">{v}</dd>
-              </div>
-            ))}
+              ["Certified", "Claude Certified Architect (Professional) · Anthropic, 2026"],
+            ].map(([k, v]) => {
+              const certified = k === "Certified"
+              const Wrapper = certified ? "a" : "div"
+              const linkProps = certified
+                ? {
+                    href: "https://www.credly.com/badges/e6410de7-a216-4b61-a17c-a9ca18043db3",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }
+                : {}
+              return (
+              <Wrapper key={k} {...linkProps} className={`${CARD} ${certified ? "flex items-center gap-4 transition-colors hover:border-ice-400" : ""}`}>
+                {k === "Certified" && (
+                  <img
+                    src="/badges/claude-certified-architect-professional.png"
+                    alt="Claude Certified Architect, Professional badge from Anthropic"
+                    width={64}
+                    height={64}
+                    className="h-16 w-16 shrink-0"
+                  />
+                )}
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">{k}</dt>
+                  <dd className="mt-2 font-display text-base font-semibold leading-snug text-ink-900">{v}</dd>
+                </div>
+              </Wrapper>
+              )
+            })}
           </dl>
         </section>
 

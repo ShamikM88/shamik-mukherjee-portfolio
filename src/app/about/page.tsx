@@ -77,6 +77,25 @@ export default function AboutPage() {
               </div>
             ))}
           </dl>
+
+          <a
+            href="https://www.credly.com/badges/e6410de7-a216-4b61-a17c-a9ca18043db3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${CARD} mt-3 flex items-center gap-4 transition-colors hover:border-ice-400`}
+          >
+            <img
+              src="/badges/claude-certified-architect-professional.png"
+              alt="Claude Certified Architect, Professional badge from Anthropic"
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0"
+            />
+            <span className="font-display text-base font-semibold leading-snug text-ink-900">
+              Claude Certified Architect (Professional) · Anthropic, 2026
+            </span>
+            <span className="ml-auto shrink-0 text-sm font-medium text-brand-600">Verify on Credly ↗</span>
+          </a>
         </section>
 
         {/* The five lenses, each tied to the role that added it */}
