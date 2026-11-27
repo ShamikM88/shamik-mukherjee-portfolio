@@ -40,6 +40,18 @@ export const identity = {
   taglineHighlight: "off the clock, I direct AI to build rigorously engineered systems, solo.",
 };
 
+// Certifications, newest first. The homepage card shows the first entry (plus a "more" link when
+// there are several) and the About page lists them all, so adding one here updates both places.
+export const certifications = [
+  {
+    name: "Claude Certified Architect (Professional)",
+    issuer: "Anthropic",
+    year: 2026,
+    image: "/badges/claude-certified-architect-professional.png",
+    url: "https://www.credly.com/badges/e6410de7-a216-4b61-a17c-a9ca18043db3",
+  },
+]
+
 export const about = {
   // Short hero assertion + supporting subtext, rendered as two visual tiers instead
   // of one dense paragraph.

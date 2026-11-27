@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { about, identity } from "@/data/content";
+import { about, certifications, identity } from "@/data/content";
 import { EvidenceNav } from "@/app/evidence-chrome";
 import { EvidenceFooter } from "@/app/evidence-chrome";
 import { CARD, EYEBROW, H2, SECTION } from "../golden/template";
@@ -78,24 +78,23 @@ export default function AboutPage() {
             ))}
           </dl>
 
-          <a
-            href="https://www.credly.com/badges/e6410de7-a216-4b61-a17c-a9ca18043db3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${CARD} mt-3 flex items-center gap-4 transition-colors hover:border-ice-400`}
-          >
-            <img
-              src="/badges/claude-certified-architect-professional.png"
-              alt="Claude Certified Architect, Professional badge from Anthropic"
-              width={48}
-              height={48}
-              className="h-12 w-12 shrink-0"
-            />
-            <span className="font-display text-base font-semibold leading-snug text-ink-900">
-              Claude Certified Architect (Professional) · Anthropic, 2026
-            </span>
-            <span className="ml-auto shrink-0 text-sm font-medium text-brand-600">Verify on Credly ↗</span>
-          </a>
+          <div className="mt-3 grid gap-3">
+            {certifications.map((c) => (
+              <a
+                key={c.url}
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${CARD} flex items-center gap-4 transition-colors hover:border-ice-400`}
+              >
+                <img src={c.image} alt={`${c.name} badge from ${c.issuer}`} width={48} height={48} className="h-12 w-12 shrink-0" />
+                <span className="font-display text-base font-semibold leading-snug text-ink-900">
+                  {c.name} · {c.issuer}, {c.year}
+                </span>
+                <span className="ml-auto shrink-0 text-sm font-medium text-brand-600">Verify ↗</span>
+              </a>
+            ))}
+          </div>
         </section>
 
         {/* The five lenses, each tied to the role that added it */}

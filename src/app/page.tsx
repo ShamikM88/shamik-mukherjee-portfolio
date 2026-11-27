@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LiveMergedPRCount, LiveClosedIssueCount, LiveTestCount } from "@/components/live-github-stat";
 import { EvidenceNav } from "@/app/evidence-chrome";
 import { EvidenceFooter } from "@/app/evidence-chrome";
-import { identity } from "@/data/content";
+import { certifications, identity } from "@/data/content";
 import { GOLDEN_CASES } from "./golden/cases";
 import type { CaseFile } from "./golden/types";
 
@@ -119,13 +119,13 @@ export default function EvidenceHome() {
               ["Current scope", "Google Pay · Samsung Pay · card migration"],
               ["Background", "Engineering · MBA (IIT Bombay) · Pre-sales · Delivery"],
               ["AI lab", "Multi-agent AI · governed systems · Claude Code"],
-              ["Certified", "Claude Certified Architect (Professional) · Anthropic, 2026"],
+              ["Certified", `${certifications[0]!.name} · ${certifications[0]!.issuer}, ${certifications[0]!.year}`],
             ].map(([k, v]) => {
               const certified = k === "Certified"
               const Wrapper = certified ? "a" : "div"
               const linkProps = certified
                 ? {
-                    href: "https://www.credly.com/badges/e6410de7-a216-4b61-a17c-a9ca18043db3",
+                    href: certifications[0]!.url,
                     target: "_blank",
                     rel: "noopener noreferrer",
                   }
@@ -134,8 +134,8 @@ export default function EvidenceHome() {
               <Wrapper key={k} {...linkProps} className={`${CARD} ${certified ? "flex items-center gap-4 transition-colors hover:border-ice-400" : ""}`}>
                 {k === "Certified" && (
                   <img
-                    src="/badges/claude-certified-architect-professional.png"
-                    alt="Claude Certified Architect, Professional badge from Anthropic"
+                    src={certifications[0]!.image}
+                    alt={`${certifications[0]!.name} badge from ${certifications[0]!.issuer}`}
                     width={64}
                     height={64}
                     className="h-16 w-16 shrink-0"
@@ -144,6 +144,9 @@ export default function EvidenceHome() {
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-wider text-ink-500">{k}</dt>
                   <dd className="mt-2 font-display text-base font-semibold leading-snug text-ink-900">{v}</dd>
+                  {certified && certifications.length > 1 && (
+                    <dd className="mt-1 text-sm font-medium text-brand-600">+{certifications.length - 1} more on the About page</dd>
+                  )}
                 </div>
               </Wrapper>
               )
